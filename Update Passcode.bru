@@ -1,0 +1,19 @@
+meta {
+  name: Update Passcode
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/auth/update-passcode
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "set_passcode": true,
+    "current_passcode": "123456",
+    "new_passcode": "1234567890"
+  }
+}
