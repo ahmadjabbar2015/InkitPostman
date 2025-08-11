@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Inkit",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
