@@ -17,3 +17,13 @@ body:json {
   //   "email": "ahmad@gmail.com"
   }
 }
+
+script:post-response {
+  let body = res.getBody();
+  
+  let token = body.data.token;
+  
+  bru.setEnvVar('token',token);
+  
+  
+}
