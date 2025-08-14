@@ -1,0 +1,29 @@
+meta {
+  name: Verify OTP
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/auth/verify-otp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": 1,
+    "otp": "042798"
+  //   "email": "ahmad@gmail.com"
+  }
+}
+
+script:post-response {
+  let body = res.getBody();
+  
+  let token = body.data.token;
+  
+  bru.setEnvVar('token',token);
+  
+  
+}
