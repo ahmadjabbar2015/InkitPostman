@@ -7,12 +7,17 @@ meta {
 post {
   url: {{baseURL}}/v1/auth/update-passcode
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
   {
-    "set_passcode": true,
-    "new_passcode": "1234567890"
+    "setPasscode": true,
+    "newPasscode": "1234",
+    "newPasscode_confirmation": "1234"
   }
 }
