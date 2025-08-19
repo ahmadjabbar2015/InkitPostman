@@ -1,19 +1,19 @@
 meta {
-  name: Verify OTP
+  name: Forgot Passcode
   type: http
-  seq: 9
+  seq: 12
 }
 
 post {
-  url: {{baseURL}}/v1/auth/verify-otp
+  url: {{baseURL}}/v1/auth/forgot-passcode
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "userId": 1,
-    "otp": "697544"
+    "username": "HOD-123456",
+    "password": "123456"
   //   "email": "ahmad@gmail.com"
   }
 }
