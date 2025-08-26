@@ -1,20 +1,18 @@
 meta {
-  name: Verify OTP
+  name: Resend OTP
   type: http
-  seq: 9
+  seq: 4
 }
 
 post {
-  url: {{baseURL}}/v1/auth/verify-otp
+  url: {{baseURL}}/v1/auth/resend-otp
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "userId": 1,
-    "otp": "697544"
-  //   "email": "ahmad@gmail.com"
+    "userId": 1
   }
 }
 

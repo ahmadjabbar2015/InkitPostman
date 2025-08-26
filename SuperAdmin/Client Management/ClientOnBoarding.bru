@@ -1,0 +1,52 @@
+meta {
+  name: ClientOnBoarding
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/clients
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "businessLegalName": "Alpha Solutions Pvt Ltd",
+    "countryId": 2,
+    "cityId": 5,
+    "businessAddress": "22 Business Park",
+    "postcode": "44556",
+    "directorAsAdmin": false,
+    "directorAsContactPerson": false,
+    "director": {
+      "name": "Michael Brown",
+      "email": "saada@logicodetech.com",
+      "mobile": "5551112222"
+    },
+    "admin": {
+      "name": "Laura White",
+      "email": "ahmadjabbar2015@outlook.com",
+      "mobile": "9998887777"
+    },
+    "contactPersons": {
+      "name": "Imran Khan",
+      "email": "imran.khan@example.com",
+      "mobile": "7776665555",
+      "address": "12 City Center"
+    },
+    "houseDetails": {
+      "houseName": "Red Villa",
+      "houseContactNumber": "333222111",
+      "countryId": 2,
+      "cityId": 5,
+      "houseAddress": "221 Residency Road",
+      "postCode": "44557",
+      "houseStaticIp": "192.168.3.10",
+      "housePrefix": "RV",
+      "letterheadFormat": "PDF",
+      "createOFSTEDLogin": true,
+      "createREG44Login": false
+    }
+  }
+}

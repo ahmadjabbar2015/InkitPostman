@@ -1,18 +1,20 @@
 meta {
-  name: Resend OTP
+  name: Forgot Passcode
   type: http
-  seq: 11
+  seq: 3
 }
 
 post {
-  url: {{baseURL}}/v1/auth/resend-otp
+  url: {{baseURL}}/v1/auth/forgot-passcode
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "userId": 1
+    "username": "HOD-123456",
+    "password": "123456"
+  //   "email": "ahmad@gmail.com"
   }
 }
 
