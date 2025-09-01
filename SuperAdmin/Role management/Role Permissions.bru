@@ -1,0 +1,27 @@
+meta {
+  name: Role Permissions
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/global-roles/1/permissions
+  body: none
+  auth: inherit
+}
+
+body:json {
+  {
+    "success": true,
+    "message": "Global role onboarded successfully",
+    "data": {
+      "id": 2,
+      "name": "Manager",
+      "slug": "manager",
+      "code": "r_02",
+      "description": "Manages users",
+      "is_default": false
+    }
+  }
+  
+}
