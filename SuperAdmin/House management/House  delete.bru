@@ -1,0 +1,31 @@
+meta {
+  name: House  delete
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseURL}}/houses/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "client_id": 1,
+    "house_name": "Green Villa",
+    "house_contact_number": "+92-300-1234567",
+    "country_id": 2,
+    "city_id": 5,
+    "house_address": "123 Main Street, Lahore",
+    "working_start_time": "09:00",
+    "working_end_time": "18:00",
+    "postcode": "54000",
+    "house_static_ip": "192.168.1.10",
+    "house_prefix": "GV",
+    "letterhead_format": "Standard",
+    "create_ofsted_login": true,
+    "create_reg44_login": false
+  }
+  
+}

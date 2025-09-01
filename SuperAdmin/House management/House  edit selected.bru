@@ -1,0 +1,11 @@
+meta {
+  name: House  edit selected
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseURL}}/houses
+  body: json
+  auth: inherit
+}
