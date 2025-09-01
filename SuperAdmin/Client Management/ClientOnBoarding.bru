@@ -1,52 +1,53 @@
 meta {
   name: ClientOnBoarding
   type: http
-  seq: 2
+  seq: 3
 }
 
 post {
-  url: {{baseURL}}/clients
+  url: {{baseURL}}/v1/clients/
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "businessLegalName": "",
-    "countryId": 2,
-    "cityId": 5,
-    "businessAddress": "",
-    "postcode": "44556",
+    "businessLegalName": "Nova Care saServices",
+    "countryId": 3,
+    "cityId": 8,
+    "businessAddress": "45 Greenfield Avenue",
+    "postcode": "67890",
     "directorAsAdmin": false,
     "directorAsContactPerson": false,
     "director": {
-      "name": "Michael Brown",
-      "email": "saada@logicodetech.com",
-      "mobile": "5551112222"
+      "name": "Ethan Williams",
+      "email": "ethan.willi2244ams33@novacare.com",
+      "mobile": "5554441234"
     },
     "admin": {
-      "name": "Laura White",
-      "email": "ahmadjabbar2015@outlook.com",
-      "mobile": "9998887777"
+      "name": "Sophia Johnson",
+      "email": "sophia.jo3223h44nson@novacare.com",
+      "mobile": "8887776666"
     },
     "contactPersons": {
-      "name": "Imran Khan",
-      "email": "imran.khan@example.com",
-      "mobile": "7776665555",
-      "address": "12 City Center"
+      "name": "Daniel Lee",
+      "email": "daniel.lee@23234novacare.com",
+      "mobile": "7775554444",
+      "address": "101 Business Park Road"
     },
     "houseDetails": {
-      "houseName": "Red Villa",
-      "houseContactNumber": "333222111",
-      "countryId": 2,
-      "cityId": 5,
-      "houseAddress": "221 Residency Road",
-      "postCode": "44557",
-      "houseStaticIp": "192.168.3.10",
-      "housePrefix": "RV",
-      "letterheadFormat": "PDF",
+      "houseName": "Blue Horizon",
+      "houseContactNumber": "444333222",
+      "countryId": 3,
+      "cityId": 8,
+      "houseAddress": "78 Seaview Boulevard",
+      "postCode": "67891",
+      "houseStaticIp": "192.168.10.25",
+      "housePrefix": "BH",
+      "letterheadFormat": "DOCX",
       "createOFSTEDLogin": true,
-      "createREG44Login": false
+      "createREG44Login": true
     }
   }
+  
 }
