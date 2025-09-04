@@ -1,0 +1,25 @@
+meta {
+  name: House Role creation
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/2/roles
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "manager",
+    "description": "This is a test house role",
+    "is_custom": true,
+    "global_role_id": 4
+  }
+  
+}
