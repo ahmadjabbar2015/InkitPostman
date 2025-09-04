@@ -1,0 +1,22 @@
+meta {
+  name: House Role Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseURL}}/v1/house/2/roles/5
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "name": "saad manager update"
+  }
+  
+}
