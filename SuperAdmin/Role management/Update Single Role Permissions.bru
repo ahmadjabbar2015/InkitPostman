@@ -1,0 +1,23 @@
+meta {
+  name: Update Single Role Permissions
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseURL}}/v1/global-roles/18/permissions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "permissions": [
+      { "id": 9, "checked": true },
+      { "id": 11, "checked": true },
+      { "id": 12, "checked": false },
+      { "id": 13, "checked": true }
+      // ... all permissions with new states
+    ]
+  }
+}

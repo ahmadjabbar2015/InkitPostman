@@ -1,0 +1,36 @@
+meta {
+  name: Update Multiple Roles Permissions
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseURL}}/v1/permissions/multi
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "updates": [
+      {
+        "permission_id": 10,
+        "roles": {
+          "1": true,
+          "2": false,
+          "3": true
+          // ... per role (only changed states needed)
+        }
+      },
+      {
+        "permission_id": 11,
+        "roles": {
+          "1": false,
+          "4": true,
+          "8": false
+        }
+      }
+      // ... for each changed permission
+    ]
+  }
+}
