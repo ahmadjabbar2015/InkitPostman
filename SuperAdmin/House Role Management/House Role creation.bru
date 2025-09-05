@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/2/roles
+  url: {{baseURL}}/v1/house/1/roles
   body: json
   auth: bearer
 }
@@ -16,10 +16,10 @@ auth:bearer {
 
 body:json {
   {
-    "name": "manager",
+    "name": "supty manager",
     "description": "This is a test house role",
-    "is_custom": true,
-    "global_role_id": 4
+    "is_custom": true
+  
   }
   
 }
