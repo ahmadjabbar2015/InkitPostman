@@ -1,0 +1,21 @@
+meta {
+  name: bypass static ip update
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseURL}}/v1/house/2/roles/2/bypass-static-ip
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "bypass_static_ip": false
+  }
+}
