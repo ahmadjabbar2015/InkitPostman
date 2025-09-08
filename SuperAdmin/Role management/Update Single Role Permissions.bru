@@ -12,12 +12,24 @@ patch {
 
 body:json {
   {
+    "roleId": 1,
     "permissions": [
-      { "id": 22, "checked": true },
-      { "id": 11, "checked": true },
-      { "id": 12, "checked": false },
-      { "id": 13, "checked": true }
-      // ... all permissions with new states
+      {
+        "id": 1,
+        "checked": true,
+        "children": [
+          {
+            "id": 22,
+            "checked": true,
+            "children": [
+              {
+                "id": 23,
+                "checked": false
+              }
+            ]
+          }
+        ]
+      }
     ]
   }
 }
