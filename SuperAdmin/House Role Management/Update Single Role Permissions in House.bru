@@ -1,11 +1,11 @@
 meta {
-  name: Update Single Role Permissions
+  name: Update Single Role Permissions in House
   type: http
-  seq: 7
+  seq: 6
 }
 
 patch {
-  url: {{baseURL}}/v1/global-roles/1/permissions
+  url: {{baseURL}}/v1/house-permissions/1/permissions
   body: json
   auth: inherit
 }
