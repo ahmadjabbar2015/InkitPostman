@@ -1,22 +1,23 @@
 meta {
-  name: House Role creation
+  name: House Mapping Lisitng
   type: http
-  seq: 3
+  seq: 2
 }
 
-post {
-  url: {{baseURL}}/v1/house/1/roles
-  body: json
+get {
+  url: {{baseURL}}/v1/company/1/staff
+  body: none
   auth: bearer
 }
 
 auth:bearer {
-  token: {{token}}
+  token: 
 }
 
 body:json {
   {
-    "name": "    saad error ",
+    "client_id": 1,
+    "global_role_id": 4,
     "description": "This is a test house role",
     "is_custom": true
   }
