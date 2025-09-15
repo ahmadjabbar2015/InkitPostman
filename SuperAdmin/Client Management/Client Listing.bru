@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/clients/
+  url: {{baseURL}}/v1/clients/?search=search
   body: none
   auth: inherit
+}
+
+params:query {
+  search: search
 }
 
 body:json {
