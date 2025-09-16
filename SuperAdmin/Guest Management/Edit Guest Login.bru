@@ -5,22 +5,20 @@ meta {
 }
 
 put {
-  url: {{baseURL}}/v1/houses/:house/guest-users/4
+  url: {{baseURL}}/v1/houses/:house/guest-users/5
   body: json
   auth: inherit
 }
 
 params:path {
-  house: 3
+  house: 2
 }
 
 body:json {
   {
     "username": "guestuser3_updateddd",
-    "first_name": "Janet",
-    "last_name": "Smith",
     "password": "newpass123",
-    "role_id": 2
+    "roleId": 1
   }
   
 }
