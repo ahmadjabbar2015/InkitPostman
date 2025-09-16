@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/1/roles
+  url: {{baseURL}}/v1/house/:houseId/roles-external
   body: none
   auth: bearer
+}
+
+params:path {
+  houseId: 11
 }
 
 auth:bearer {
