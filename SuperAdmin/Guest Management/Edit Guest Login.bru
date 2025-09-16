@@ -1,0 +1,28 @@
+meta {
+  name: Edit Guest Login
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/houses/:house/guest-users/5
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 2
+}
+
+body:json {
+  {
+    "username": "guestuser3_updateddd",
+    "password": "newpass123",
+    "roleId": 1
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

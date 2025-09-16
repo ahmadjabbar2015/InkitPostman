@@ -1,0 +1,29 @@
+meta {
+  name: Create Guest
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/houses/:house/guest-users
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 2
+}
+
+body:json {
+  {
+    "username": "guestuser3d",
+    "password": "secret123",
+    "roleId": 1,
+    "status": "active"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
