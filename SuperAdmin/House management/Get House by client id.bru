@@ -1,0 +1,11 @@
+meta {
+  name: Get House by client id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/houses/1
+  body: json
+  auth: inherit
+}
