@@ -5,12 +5,19 @@ meta {
 }
 
 get {
+<<<<<<< HEAD
+  url: {{baseURL}}/v1/clients
+=======
   url: {{baseURL}}/v1/clients?perPage=5&page=2
+>>>>>>> 1e1438a6e1b793f66ffe2125ef2a283b053607f6
   body: none
   auth: bearer
 }
 
 params:query {
+<<<<<<< HEAD
+  ~search: 
+=======
   perPage: 5
   page: 2
   ~search: hello
@@ -18,6 +25,7 @@ params:query {
 
 auth:bearer {
   token: {{token}}
+>>>>>>> 1e1438a6e1b793f66ffe2125ef2a283b053607f6
 }
 
 body:json {
