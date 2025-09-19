@@ -5,13 +5,18 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/house/2/roles/1
+  url: {{baseURL}}/v1/house/:house/role/:role
   body: json
   auth: bearer
 }
 
+params:path {
+  role: 17
+  house: 1
+}
+
 auth:bearer {
-  token: 
+  token: {{token}}
 }
 
 body:json {

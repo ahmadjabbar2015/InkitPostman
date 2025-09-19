@@ -5,9 +5,17 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house-role/1/permissions
+  url: {{baseURL}}/v1/house-role/:role/permissions
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+params:path {
+  role: 17
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {

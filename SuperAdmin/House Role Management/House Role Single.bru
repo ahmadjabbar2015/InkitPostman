@@ -1,17 +1,22 @@
 meta {
-  name: House Role Single lisiting
+  name: House Role Single
   type: http
   seq: 1
 }
 
 get {
-  url: {{baseURL}}/v1/house/2/roles/1
+  url: {{baseURL}}/v1/house/:house/roles/:role
   body: none
   auth: bearer
 }
 
+params:path {
+  role: 2
+  house: 1
+}
+
 auth:bearer {
-  token: 
+  token: {{token}}
 }
 
 body:json {

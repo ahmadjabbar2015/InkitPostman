@@ -5,13 +5,17 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/1/roles
+  url: {{baseURL}}/v1/house/:house/roles
   body: none
   auth: bearer
 }
 
+params:path {
+  house: 2
+}
+
 auth:bearer {
-  token: 
+  token: {{token}}
 }
 
 body:json {
