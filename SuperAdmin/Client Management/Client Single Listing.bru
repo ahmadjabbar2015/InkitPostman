@@ -5,9 +5,17 @@ meta {
 }
 
 get {
+<<<<<<< HEAD
   url: {{baseURL}}/v1/clients/9
+=======
+  url: {{baseURL}}/v1/clients/1
+>>>>>>> 1e1438a6e1b793f66ffe2125ef2a283b053607f6
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
