@@ -1,0 +1,15 @@
+meta {
+  name: SuperAdmin Menu
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/menu
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

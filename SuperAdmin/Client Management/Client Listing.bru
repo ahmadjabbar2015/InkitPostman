@@ -5,14 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/clients?perPage=1&search=hello
+  url: {{baseURL}}/v1/clients
   body: none
   auth: inherit
 }
 
 params:query {
-  perPage: 1
-  search: hello
+  ~search: 
 }
 
 body:json {
