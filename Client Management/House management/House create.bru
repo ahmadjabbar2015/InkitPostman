@@ -1,0 +1,36 @@
+meta {
+  name: House create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/houses
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "houseName": "Saad house Villa",
+    "houseContactNumber": "+45645654",
+    "countryId": 1,
+    "cityId": 5,
+    "houseAddress": "123 Green Street, London",
+    "postcode": "NW1 5DB",
+    "clientId": 9,
+    "houseStaticIp": "192.168.1.101",
+    "housePrefix": "1UHO",
+    "letterheadFormat": "standard",
+    "workingStartTime": "09:00",
+    "workingEndTime": "18:00",
+    "createOfstedLogin": true,
+    "createReg44Login": false,
+    "isHeadoffice": false
+  }
+  
+}

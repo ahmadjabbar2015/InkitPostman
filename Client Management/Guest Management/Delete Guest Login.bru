@@ -1,0 +1,30 @@
+meta {
+  name: Delete Guest Login
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseURL}}/v1/houses/:house/guest-users/1
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 3
+}
+
+body:json {
+  {
+    "username": "guestuser3_updated",
+    "first_name": "Janet",
+    "last_name": "Smith",
+    "password": "newpass123",
+    "role_id": 2
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

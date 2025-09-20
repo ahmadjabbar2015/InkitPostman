@@ -1,0 +1,24 @@
+meta {
+  name: House Role creation
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/1/roles
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "    saad error ",
+    "description": "This is a test house role",
+    "is_custom": true
+  }
+  
+}

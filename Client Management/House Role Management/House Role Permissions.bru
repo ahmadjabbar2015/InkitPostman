@@ -1,0 +1,35 @@
+meta {
+  name: House Role Permissions
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house-role/:role/permissions
+  body: none
+  auth: bearer
+}
+
+params:path {
+  role: 17
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "success": true,
+    "message": "Global role onboarded successfully",
+    "data": {
+      "id": 2,
+      "name": "Manager",
+      "slug": "manager",
+      "code": "r_02",
+      "description": "Manages users",
+      "is_default": false
+    }
+  }
+  
+}

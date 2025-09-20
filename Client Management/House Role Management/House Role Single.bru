@@ -1,0 +1,30 @@
+meta {
+  name: House Role Single
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/roles/:role
+  body: none
+  auth: bearer
+}
+
+params:path {
+  role: 2
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "client_id": 1,
+    "global_role_id": 4,
+    "description": "This is a test house role",
+    "is_custom": true
+  }
+  
+}

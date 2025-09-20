@@ -1,0 +1,19 @@
+meta {
+  name: Guest User List
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/houses/:house/guest-users/
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 2
+}
+
+settings {
+  encodeUrl: true
+}

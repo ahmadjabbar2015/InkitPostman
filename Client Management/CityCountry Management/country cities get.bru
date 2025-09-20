@@ -1,0 +1,27 @@
+meta {
+  name: country cities get
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/country-cities/
+  body: none
+  auth: inherit
+}
+
+body:json {
+  {
+    "success": true,
+    "message": "Global role onboarded successfully",
+    "data": {
+      "id": 2,
+      "name": "Manager",
+      "slug": "manager",
+      "code": "r_02",
+      "description": "Manages users",
+      "is_default": false
+    }
+  }
+  
+}

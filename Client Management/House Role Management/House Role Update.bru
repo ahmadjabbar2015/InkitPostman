@@ -1,0 +1,27 @@
+meta {
+  name: House Role Update
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseURL}}/v1/house/:house/role/:role
+  body: json
+  auth: bearer
+}
+
+params:path {
+  role: 17
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "manager updated"
+  }
+  
+}

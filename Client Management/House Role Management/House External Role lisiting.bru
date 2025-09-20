@@ -1,0 +1,29 @@
+meta {
+  name: House External Role lisiting
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:houseId/roles-external
+  body: none
+  auth: bearer
+}
+
+params:path {
+  houseId: 11
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "client_id": 1,
+    "global_role_id": 4,
+    "description": "This is a test house role",
+    "is_custom": true
+  }
+  
+}

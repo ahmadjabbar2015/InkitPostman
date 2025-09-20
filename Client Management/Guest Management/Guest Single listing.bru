@@ -1,0 +1,19 @@
+meta {
+  name: Guest Single listing
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/houses/:house/guest-users/2
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 2
+}
+
+settings {
+  encodeUrl: true
+}

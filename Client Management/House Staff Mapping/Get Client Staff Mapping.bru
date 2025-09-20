@@ -1,0 +1,25 @@
+meta {
+  name: Client Staff Mapping
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/client/1/staff-house-mappings
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "client_id": 1,
+    "global_role_id": 4,
+    "description": "This is a test house role",
+    "is_custom": true
+  }
+  
+}
