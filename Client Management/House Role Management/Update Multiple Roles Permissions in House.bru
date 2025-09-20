@@ -5,16 +5,24 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/house-permissions/3/multi
+  url: {{baseURL}}/v1/house/:house/multi-permissions
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+params:path {
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
   {
     "roles": [
       {
-        "roleId": 41,
+        "roleId": 17,
         "permissions": [
                                                                                                                                             {
                                                                                                                                               "id": 6,

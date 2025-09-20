@@ -5,9 +5,17 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house-permissions/3/multi
+  url: {{baseURL}}/v1/house/:house/multi-permissions
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+params:path {
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
