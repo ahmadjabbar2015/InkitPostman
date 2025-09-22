@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/houses/:house/guest-users/
+  url: {{baseURL}}/v1/client/:client/guest-users/
   body: none
   auth: inherit
 }
 
 params:path {
-  house: 2
+  client: 1
 }
 
 settings {
