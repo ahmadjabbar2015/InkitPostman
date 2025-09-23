@@ -5,11 +5,15 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/houses/:houseId
+  url: {{baseURL}}/v1/house/:houseId
   body: none
-  auth: inherit
+  auth: bearer
 }
 
 params:path {
-  houseId: 9
+  houseId: 1
+}
+
+auth:bearer {
+  token: {{token}}
 }
