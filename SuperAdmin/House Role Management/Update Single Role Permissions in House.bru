@@ -5,9 +5,13 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/house-role/1/permissions
+  url: {{baseURL}}/v1/house-role/:house-role/permissions
   body: json
   auth: inherit
+}
+
+params:path {
+  house-role: 1
 }
 
 body:json {
