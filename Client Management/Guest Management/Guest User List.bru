@@ -7,11 +7,15 @@ meta {
 get {
   url: {{baseURL}}/v1/client/:client/guest-users/
   body: none
-  auth: inherit
+  auth: bearer
 }
 
 params:path {
   client: 1
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 settings {

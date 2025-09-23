@@ -5,13 +5,17 @@ meta {
 }
 
 delete {
-  url: {{baseURL}}/v1/houses/:house/guest-users/1
+  url: {{baseURL}}/v1/house/:house/guest-users/1
   body: json
-  auth: inherit
+  auth: bearer
 }
 
 params:path {
   house: 3
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
