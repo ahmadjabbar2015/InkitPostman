@@ -5,9 +5,15 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/
+  url: {{baseURL}}/v1/house/?perPage=2&perPage=1
   body: json
   auth: bearer
+}
+
+params:query {
+  perPage: 2
+  perPage: 1
+  ~search: Ahmed
 }
 
 auth:bearer {

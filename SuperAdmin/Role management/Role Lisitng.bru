@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/global-roles/
+  url: {{baseURL}}/v1/global-roles/?perPage=1&perPage=2
   body: none
   auth: inherit
+}
+
+params:query {
+  perPage: 1
+  perPage: 2
 }
 
 body:json {

@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/guest-users/
+  url: {{baseURL}}/v1/house/:house/guest-users/?perPage=1&perPage=2
   body: none
   auth: inherit
 }
 
+params:query {
+  perPage: 1
+  perPage: 2
+}
+
 params:path {
-  house: 2
+  house: 1
 }
 
 settings {

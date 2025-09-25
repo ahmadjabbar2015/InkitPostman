@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client/1/staff
+  url: {{baseURL}}/v1/client/staff?perPage=1&perPage=4
   body: none
   auth: bearer
+}
+
+params:query {
+  perPage: 1
+  perPage: 4
 }
 
 auth:bearer {

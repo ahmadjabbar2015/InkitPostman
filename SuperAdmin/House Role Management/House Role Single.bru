@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/roles/:role
+  url: {{baseURL}}/v1/house/:house/roles/:role?perPage=1&perPage=5
   body: none
   auth: bearer
 }
 
+params:query {
+  perPage: 1
+  perPage: 5
+}
+
 params:path {
-  role: 2
+  role: 
   house: 1
 }
 
