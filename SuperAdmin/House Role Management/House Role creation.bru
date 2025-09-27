@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/1/roles
+  url: {{baseURL}}/v1/house/:house/roles
   body: json
   auth: bearer
+}
+
+params:path {
+  house: 8
 }
 
 auth:bearer {
@@ -16,9 +20,10 @@ auth:bearer {
 
 body:json {
   {
-    "name": "    saad error ",
+    "name": "HOD ROLE",
     "description": "This is a test house role",
-    "is_custom": true
+    "isCustom": true,
+    "forAllHouses": true
   }
   
 }

@@ -5,9 +5,13 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/global-roles/1/permissions
+  url: {{baseURL}}/v1/global-roles/:roleId/permissions
   body: json
   auth: inherit
+}
+
+params:path {
+  roleId: 14
 }
 
 body:json {
@@ -72,16 +76,78 @@ body:json {
             ]
           }
         ]
+      },
+      {
+        "id": 1,
+        "checked": false,
+        "children": [
+          {
+            "id": 21,
+            "checked": false,
+            "children": [
+              {
+                "id": 22,
+                "checked": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "checked": false,
+        "children": [
+          {
+            "id": 23,
+            "checked": false
+          },
+          {
+            "id": 24,
+            "checked": false
+          },
+          {
+            "id": 25,
+            "checked": false
+          },
+          {
+            "id": 26,
+            "checked": false
+          },
+          {
+            "id": 27,
+            "checked": false
+          },
+          {
+            "id": 28,
+            "checked": false
+          },
+          {
+            "id": 29,
+            "checked": false
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "checked": false
+      },
+      {
+        "id": 4,
+        "checked": false
+      },
+      {
+        "id": 5,
+        "checked": false
+      },
+      {
+        "id": 7,
+        "checked": false
+      },
+      {
+        "id": 8,
+        "checked": false
       }
-      ,
-  //     Other top-level permissions (assumed false)
-      { "id": 1, "checked": false, "children": [ {"id": 21, "checked": false, "children": [{"id": 22, "checked": false}]} ] },
-      { "id": 2, "checked": false, "children": [ {"id": 23, "checked": false, "children": [{"id": 24, "checked": false}]} ] },
-      { "id": 3, "checked": false },
-      { "id": 4, "checked": false },
-      { "id": 5, "checked": false },
-      { "id": 7, "checked": false },
-      { "id": 8, "checked": false }
     ]
   }
+  
 }

@@ -1,0 +1,97 @@
+meta {
+  name: Employee Single
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/clients/1/houses/:house/employees/:employee
+  body: none
+  auth: bearer
+}
+
+params:path {
+  employee: 32
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Mr",
+    "firstName": "Ali",
+    "middleName": "Hassan",
+    "lastName": "Khan",
+    "previousName": "Ahmed",
+    "knownAs": "AK",
+    "emailAddress": "ali.khaxn@example.com",
+    "mobileNo": "+923001234567",
+    "phoneNo": "+92511234567",
+    "otpAuth": true,
+    "loginAccess": true,
+  
+    "personalDetail": {
+      "dateOfBirth": "1990-05-15",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "nationality": "Pakistani",
+      "ethnicity": "Asian",
+      "niNumber": "AB123456C"
+    },
+  
+    "addresses": [
+      {
+        "type": "permanent",
+        "addressLine1": "123 Street",
+        "addressLine2": "Block A",
+        "cityTown": "Lahore",
+        "state": "Punjab",
+        "postcode": "54000",
+        "country": "Pakistan"
+      },
+      {
+        "type": "current",
+        "addressLine1": "Flat 10",
+        "addressLine2": "Garden Town",
+        "cityTown": "Lahore",
+        "state": "Punjab",
+        "postcode": "54000",
+        "country": "Pakistan"
+      }
+    ],
+  
+    "jobDetail": {
+      "house": "Main Branch",
+      "accessRole": "Developer",
+      "jobTitle": "Software Engineer",
+      "interviewDate": "2021-12-15",
+      "employmentStartDate": "2022-01-01",
+      "employmentType": "Full-time",
+      "probationPeriod": "3 months",
+      "probationEndDate": "2022-04-01"
+    },
+  
+    "nextOfKinDetail": {
+      "firstName": "Ahmed",
+      "lastName": "Khan",
+      "relationship": "Brother",
+      "email": "ahmed.khan@example.com",
+      "contactNo": "+923009876543",
+      "addressLine1": "456 Street",
+      "addressLine2": "Model Town",
+      "postcode": "54000",
+      "cityTown": "Lahore",
+      "country": "Pakistan"
+    },
+  
+    "salary": {
+      "salaryType": "Monthly",
+      "salary": 80000,
+      "increment": 5000
+    }
+  }
+  
+}

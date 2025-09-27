@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client/1
+  url: {{baseURL}}/v1/client/:client
   body: none
   auth: bearer
+}
+
+params:path {
+  client: 9
 }
 
 auth:bearer {

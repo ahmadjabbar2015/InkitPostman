@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/global-roles/1/permissions
+  url: {{baseURL}}/v1/global-roles/:roleId/permissions
   body: none
   auth: inherit
+}
+
+params:path {
+  roleId: 1
 }
 
 body:json {
