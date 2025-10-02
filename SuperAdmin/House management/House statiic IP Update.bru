@@ -5,9 +5,13 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/houses/7/static-ip
+  url: {{baseURL}}/v1/house/:Id/static-ip
   body: json
   auth: inherit
+}
+
+params:path {
+  Id: 36
 }
 
 body:json {

@@ -1,0 +1,15 @@
+meta {
+  name: file test
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://56.228.28.96/api/test-minio
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
