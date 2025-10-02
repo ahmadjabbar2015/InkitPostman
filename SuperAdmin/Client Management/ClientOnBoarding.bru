@@ -6,7 +6,7 @@ meta {
 
 post {
   url: {{baseURL}}/v1/client/
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -14,49 +14,37 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "businessLegalName": "saad  company",
-    "countryId": 2,
-    "cityId": 5,
-    "businessAddress": "22 Business Park",
-    "postcode": "44556",
-    "directorAsAdmin": false,
-    "directorAsContactPerson": false,
-    "director": {
-      "firstName": "Michael",
-      "lastName": "Brown",
-      "email": "jb2015.19s8r91@gmail.com",
-      "mobile": "5551112222"
-    },
-    "admin": {
-      "firstName": "thomas",
-      "lastName": "White",
-      "email": "jb2s015.1s989r1+1@gmail.com",
-      "mobile": "9998887777"
-    },
-    "contactPersons": {
-      "name": "Imran Khan",
-      "email": "jb2015.198r91+3@gmail.com",
-      "mobile": "7776665555",
-      "address": "12 City Center"
-    },
-    "houseDetails": {
-      "houseName": "Red Villa",
-      "houseContactNumber": "333222111",
-      "countryId": 2,
-      "cityId": 5,
-      "houseAddress": "221 Residency Road",
-      "postcode": "11223",
-      "houseStaticIp": "192.168.3.10",
-      "housePrefix": "XKOE1",
-      "letterheadFormat": "PDF",
-      "createOfstedLogin": true,
-      "createReg44Login": false,
-      "workingStartTime": "16:00:00",
-      "workingEndTime": "23:00:00"
-  
-    }
-  }
-  
+body:multipart-form {
+  businessLegalName: saad company
+  countryId: 2
+  cityId: 2
+  businessAddress: 22 Business Park
+  postcode: 445566
+  directorAsAdmin: 0
+  directorAsContactPerson: 0
+  director[firstName]: saad
+  director[lastName]: brown
+  director[email]: saaww47242d3321@fmail.com
+  director[mobile]: 39887283
+  admin[firstName]: thomas
+  admin[lastName]: gpt
+  admin[email]: saa12w73442322d@1fmail.com
+  admin[mobile]: 839287387
+  contactPersons[name]: contactperson
+  contactPersons[email]: saawd37442322221@fmail.com
+  contactPersons[mobile]: 7776665555
+  contactPersons[address]: 12 City Center
+  houseDetails[houseContactNumber]: 333222111
+  houseDetails[countryId]: 2
+  houseDetails[cityId]: 3
+  houseDetails[houseAddress]: 221 Residency Road
+  houseDetails[postcode]: 224455
+  houseDetails[houseStaticIp]: 192.168.3.10
+  houseDetails[housePrefix]: OS17
+  houseDetails[letterheadFormat]: @file(C:\Users\Forrun\Downloads\WhatsApp Image 2025-09-08 at 17.47.31_f244df6c.jpg)
+  houseDetails[createOfstedLogin]: 1
+  houseDetails[createReg44Login]: 0
+  houseDetails[workingStartTime]: 16:00:00
+  houseDetails[workingEndTime]: 23:00:00
+  houseDetails[houseName]: Red Villa
 }
