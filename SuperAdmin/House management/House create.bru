@@ -5,8 +5,8 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/houses
-  body: json
+  url: {{baseURL}}/v1/house
+  body: multipart-form
   auth: bearer
 }
 
@@ -14,23 +14,21 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "houseName": "Saad house Villa",
-    "houseContactNumber": "+45645654",
-    "countryId": 1,
-    "cityId": 5,
-    "houseAddress": "123 Green Street, London",
-    "postcode": "NW1 5DB",
-    "clientId": 9,
-    "houseStaticIp": "192.168.1.101",
-    "housePrefix": "1UHO",
-    "letterheadFormat": "standard",
-    "workingStartTime": "09:00",
-    "workingEndTime": "18:00",
-    "createOfstedLogin": true,
-    "createReg44Login": false,
-    "isHeadoffice": false
-  }
-  
+body:multipart-form {
+  houseName: Saad house Villa
+  houseContactNumber: +45645654
+  countryId: 1
+  cityId: 5
+  houseAddress: 123 Green Street, London
+  postcode: NW1 5DB
+  clientId: 1
+  houseStaticIp: 192.168.1.101
+  housePrefix: 134O2
+  workingStartTime: 09:00
+  workingEndTime: 18:00
+  createOfstedLogin: 1
+  createReg44Login: 0
+  isHeadoffice: 0
+  image: @file(C:\Users\Forrun\Downloads\test-house.jpg)
+  letterheadFormat: @file(C:\Users\Forrun\Downloads\test-letterhead.pdf)
 }

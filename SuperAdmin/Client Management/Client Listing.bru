@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client?perPage=1&perPage=1
+  url: {{baseURL}}/v1/client
   body: none
   auth: bearer
 }
 
 params:query {
-  perPage: 1
-  perPage: 1
+  ~perPage: 1
+  ~perPage: 1
   ~search: Anas
 }
 
