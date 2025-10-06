@@ -1,18 +1,18 @@
 meta {
-  name: Employee create
+  name: Single Employee 
   type: http
-  seq: 3
+  seq: 2
 }
 
-post {
-  url: {{baseURL}}/v1/clients/:client/houses/:house/employees
-  body: json
+get {
+  url: {{baseURL}}/v1/clients/1/houses/:house/employees/:employee
+  body: none
   auth: bearer
 }
 
 params:path {
+  employee: 32
   house: 1
-  client: 1
 }
 
 auth:bearer {
@@ -22,12 +22,12 @@ auth:bearer {
 body:json {
   {
     "title": "Mr",
-    "firstName": "saadu",
-    "middleName": "saadu",
+    "firstName": "Ali",
+    "middleName": "Hassan",
     "lastName": "Khan",
     "previousName": "Ahmed",
     "knownAs": "AK",
-    "emailAddress": "alddix.kD1xcx2hxxsdaxn@example.com",
+    "emailAddress": "ali.khaxn@example.com",
     "mobileNo": "+923001234567",
     "phoneNo": "+92511234567",
     "otpAuth": true,
@@ -64,7 +64,7 @@ body:json {
     ],
   
     "jobDetail": {
-      "house": 1,
+      "house": "Main Branch",
       "accessRole": "Developer",
       "jobTitle": "Software Engineer",
       "interviewDate": "2021-12-15",
@@ -90,7 +90,7 @@ body:json {
     "salary": {
       "salaryType": "Monthly",
       "salary": 80000,
-   "incrementDate": "2025-09-26 15:45:00"
+      "increment": 5000
     }
   }
   
