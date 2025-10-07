@@ -1,0 +1,38 @@
+meta {
+  name: Edit Job detials
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseURL}}/v1/clients/1/houses/1/employees/24/job-details
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "basicDetails": {
+      "house": 1,
+      "accessRole": "1",
+      "jobTitle": "Registered Manager",
+      "interviewDate": "2025-10-01",
+      "employeeType": "Full Time"
+    },
+    "duration": {
+      "employmentStartDate": "2025-10-10",
+      "probationPeriod": "3 Months",
+      "probationEndDate": "2026-01-10"
+    },
+    "salary": {
+      "salaryType": "Per Annum",
+      "salaryPerAnnum": 35000,
+      "incrementDate": "2026-10-10"
+    }
+  }
+  
+}
