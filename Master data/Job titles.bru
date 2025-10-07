@@ -1,0 +1,19 @@
+meta {
+  name: Job titles
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/job-titles
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
