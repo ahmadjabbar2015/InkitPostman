@@ -1,13 +1,18 @@
 meta {
-  name: Employee lisiting
+  name: Single Employee 
   type: http
-  seq: 1
+  seq: 2
 }
 
 get {
-  url: {{baseURL}}/v1/clients/1/houses/1/employees
+  url: {{baseURL}}/v1/clients/1/houses/:house/employees/:employee
   body: none
   auth: bearer
+}
+
+params:path {
+  employee: 40
+  house: 1
 }
 
 auth:bearer {
