@@ -5,16 +5,13 @@ meta {
 }
 
 patch {
-  url: {{baseURL}}/v1/clients/:client/houses/:house/employees?employee=1
+  url: {{baseURL}}/v1/clients/:client/houses/:house/employees/:employee/reset-password
   body: json
   auth: bearer
 }
 
-params:query {
-  employee: 1
-}
-
 params:path {
+  employee: 24
   house: 1
   client: 1
 }
