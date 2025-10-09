@@ -1,0 +1,30 @@
+meta {
+  name: Send Reminder
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/reminder
+  body: none
+  auth: inherit
+}
+
+params:path {
+  reference: 37
+  house: 9
+}
+
+body:json {
+  {
+    "refereeName": "Ahmad Jabbar",
+    "refereeEmail": "ahmad@gmail.com",
+    "refereeContactNo": "123456766",
+    "refereeType": "Most Recent Employer",
+    "jobDetailId": 3
+  }
+}
+
+settings {
+  encodeUrl: true
+}
