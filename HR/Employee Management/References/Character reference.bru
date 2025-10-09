@@ -1,0 +1,31 @@
+meta {
+  name: Character reference
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/character-reference
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 9
+  employee: 29
+}
+
+body:json {
+  {
+    "refereeName": "Ahmad Jabbar",
+    "refereeEmail": "ahmad@gmail.com",
+    "refereeContactNo": "123456766",
+    "refereeType": "Most Recent Employer",
+    "refereeCompany": "logicode",
+    "jobDetailId": 3
+  }
+}
+
+settings {
+  encodeUrl: true
+}

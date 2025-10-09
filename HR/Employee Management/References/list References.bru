@@ -1,0 +1,20 @@
+meta {
+  name: list References
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/employer-reference/list
+  body: none
+  auth: inherit
+}
+
+params:path {
+  employee: 28
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+}

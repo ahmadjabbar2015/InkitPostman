@@ -1,0 +1,36 @@
+meta {
+  name: Verification
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/verification
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  reference: 37
+  house: 9
+}
+
+body:multipart-form {
+  capacity_known: Colleague
+  known_duration: 5 years
+  illness_awareness: false
+  grievance_history: None
+  character_description: Reliable and hardworking
+  criminal_activity: None
+  vulnerable_concerns: false
+  safeguarding_issues: false
+  attitude_towards_others: Positive and collaborative
+  time_keeping_reliability: Excellent
+  knowledge_understanding: Strong understanding of youth issues
+  additional_comments: Highly recommended
+  would_employ_again: true
+}
+
+settings {
+  encodeUrl: true
+}
