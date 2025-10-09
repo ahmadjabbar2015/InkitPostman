@@ -1,0 +1,21 @@
+meta {
+  name: Get Job detials
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/clients/:client/houses/:house/employees/:employee/job-details
+  body: none
+  auth: bearer
+}
+
+params:path {
+  client: 1
+  house: 8
+  employee: 26
+}
+
+auth:bearer {
+  token: {{token}}
+}
