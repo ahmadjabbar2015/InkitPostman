@@ -1,0 +1,23 @@
+meta {
+  name: Edit Profile image
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/auth/profile-picture
+  body: multipartForm
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  image: @file(C:\Users\Forrun\Pictures\9b1a4b83-d7e5-441b-808e-16abea0e97bd.jpg)
+}
