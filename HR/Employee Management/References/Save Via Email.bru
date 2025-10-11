@@ -1,0 +1,25 @@
+meta {
+  name: Save Via Email
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/save-via-email
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  reference: 37
+  house: 9
+}
+
+body:multipart-form {
+  referenceReceivedDate: 2025-02-12
+  referenceAttachment: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+}
+
+settings {
+  encodeUrl: true
+}

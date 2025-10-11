@@ -1,0 +1,36 @@
+meta {
+  name: Outgoing Reference
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/outgoing-reference
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 9
+  employee: 37
+}
+
+body:json {
+  {
+    "refereeName": "Ahmad Jabbar",
+    "refereeEmail": "ahmad@gmail.com",
+    "refereeContactNo": "123456766",
+    "refereeCompany": "logicode",
+    "currentlyWorking": true,
+    "leavingDate": null,
+    "hoursWorked": "40 hours per week",
+    "safeguardingConcerns": "No concerns",
+    "reasonForLeaving": "Pursuing new opportunities",
+    "description": "The employee performed exceptionally well during their tenure.",
+    "jobDetailId": 3
+  }
+}
+
+settings {
+  encodeUrl: true
+}

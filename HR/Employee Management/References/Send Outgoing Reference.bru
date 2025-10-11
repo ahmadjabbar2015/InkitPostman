@@ -1,0 +1,20 @@
+meta {
+  name: Send Outgoing Reference
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/outgoing/send
+  body: none
+  auth: inherit
+}
+
+params:path {
+  reference: 45
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+}
