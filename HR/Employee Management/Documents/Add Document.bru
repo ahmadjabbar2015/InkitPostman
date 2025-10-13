@@ -1,0 +1,28 @@
+meta {
+  name: Add Document
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/:JobId/documents
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  JobId: 3
+  house: 9
+  employee: 29
+}
+
+body:multipart-form {
+  type: application_form
+  file: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+  description: Lorem Ipsum
+  : 
+}
+
+settings {
+  encodeUrl: true
+}

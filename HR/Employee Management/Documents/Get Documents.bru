@@ -1,0 +1,33 @@
+meta {
+  name: Get Documents
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/:JobId/documents?category=onboarding
+  body: multipartForm
+  auth: inherit
+}
+
+params:query {
+  category: onboarding
+  ~type: application_form
+}
+
+params:path {
+  JobId: 3
+  house: 9
+  employee: 29
+}
+
+body:multipart-form {
+  type: application_form
+  file: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+  description: Lorem Ipsum
+  : 
+}
+
+settings {
+  encodeUrl: true
+}
