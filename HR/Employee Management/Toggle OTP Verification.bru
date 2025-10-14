@@ -1,0 +1,21 @@
+meta {
+  name: Toggle OTP Verification
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/toggle-otp-verification
+  body: none
+  auth: inherit
+}
+
+params:path {
+  JobId: 3
+  house: 9
+  employee: 29
+}
+
+settings {
+  encodeUrl: true
+}
