@@ -1,16 +1,17 @@
 meta {
-  name: Add Document
+  name: Delete Document
   type: http
-  seq: 4
+  seq: 2
 }
 
-post {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/documents
+delete {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/documents/:document
   body: multipartForm
   auth: inherit
 }
 
 params:path {
+  document: 2
   JobId: 3
   house: 9
   employee: 29

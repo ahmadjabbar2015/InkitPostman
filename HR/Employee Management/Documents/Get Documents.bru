@@ -1,11 +1,11 @@
 meta {
   name: Get Documents
   type: http
-  seq: 2
+  seq: 1
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/:JobId/documents?category=onboarding
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/documents?category=onboarding
   body: multipartForm
   auth: inherit
 }

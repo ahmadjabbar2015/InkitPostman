@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/clients/:client/house/:house/employees
+  url: {{baseURL}}/v1/client/:client/house/:house/employees
   body: multipartForm
   auth: bearer
 }
 
 params:path {
-  house: 9
-  client: 9
+  house: 1
+  client: 1
 }
 
 auth:bearer {
@@ -26,26 +26,23 @@ body:multipart-form {
   lastName: Khan
   previousName: Ahmed
   knownAs: AK
-  emailAddress: aasdfggg@example.coemw
+  emailAddress: reewww@example.coemw
   mobileNo: +923001234567
   phoneNo: +92511234567
-  otpAuth: 1
-  loginAccess: 1
+  otpAuth: 0
+  loginAccess: 0
   profilePicture: @file(/home/pirate-king/Downloads/WhatsApp Image 2025-09-02 at 17.48.49.jpeg)
   personalDetail[dateOfBirth]: 1990-05-15
   personalDetail[gender]: Male
-  personalDetail[maritalStatus]: Single
   personalDetail[nationality]: Pakistani
   personalDetail[ethnicity]: Asian
   personalDetail[niNumber]: AB123456C
-  addresses[0][type]: permanent
   addresses[0][addressLine1]: 123 Street
   addresses[0][addressLine2]: Block A
   addresses[0][cityTown]: Lahore
   addresses[0][state]: Punjab
   addresses[0][postcode]: 54000
   addresses[0][country]: Pakistan
-  addresses[1][type]: current
   addresses[1][addressLine1]: Flat 10
   addresses[1][addressLine2]: Garden Town
   addresses[1][cityTown]: Lahore
@@ -70,7 +67,10 @@ body:multipart-form {
   nextOfKinDetail[postcode]: 54000
   nextOfKinDetail[cityTown]: Lahore
   nextOfKinDetail[country]: Pakistan
-  salary[salaryType]: Monthly
+  salary[salaryType]: Per Annum
   salary[salary]: 80000
-  salary[incrementDate]: 2025-09-26 15:45:00
+  salary[incrementDate]: 2025-09-26
+  ~personalDetail[maritalStatus]: Single
+  ~addresses[0][type]: permanent
+  ~addresses[1][type]: current
 }
