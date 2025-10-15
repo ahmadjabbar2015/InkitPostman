@@ -1,0 +1,46 @@
+meta {
+  name: Add DBS
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/dbs
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  JobId: 6
+  house: 8
+  employee: 29
+}
+
+body:multipart-form {
+  employeeJobId: 6
+  dbsInformation: NEW_DBS_APPLIED
+  applicationDate: 2023-01-15
+  issuedBy: Disclosure & Barring Service
+  issuanceDate: 2023-02-01
+  dbsNumber: DBS123456789
+  dbsLevel: ENHANCED
+  dbsWorkforce: CHILD_AND_ADULT_WORKFORCE
+  dbsStatus: MARKED
+  convictionDetails: Candidate had a minor offense in 2010, cleared after legal review.
+  riskAssessment: true
+  dbsOnUpdateService: Yes
+  checkedBy: HR Manager
+  mostRecentCheckDate: 2024-12-01
+  upcomingCheckDate: 2025-12-01
+  nextCheckDate: 2026-12-01
+  dbsCertificateAttachment: @file(C:\Users\Forrun\Downloads\Report.pdf)
+  riskAssessmentAttachment: @file(C:\Users\Forrun\Downloads\Internship Offer Letter - Saad (1).pdf)
+  documentForDbsUpdateServiceAttachment: @file(C:\Users\Forrun\Downloads\saadghghghgh (1).pdf)
+  files[]: @file(C:\Users\Forrun\Downloads\12.pdf)
+  files[]: @file(C:\Users\Forrun\Downloads\13.pdf)
+  description: Lorem Ipsum
+}
+
+settings {
+  encodeUrl: true
+}
