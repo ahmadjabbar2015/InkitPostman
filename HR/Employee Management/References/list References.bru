@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/employer-reference/list?referenceType=Employer Reference
+  url: {{baseURL}}/v1/house/:house/employees/:employee/references/?referenceType=Outgoing Reference
   body: none
   auth: inherit
 }
 
 params:query {
-  referenceType: Employer Reference
+  referenceType: Outgoing Reference
 }
 
 params:path {

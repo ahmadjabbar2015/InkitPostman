@@ -1,12 +1,12 @@
 meta {
-  name: Add DBS
+  name: Get DBS Listings
   type: http
   seq: 5
 }
 
-post {
+get {
   url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/dbs
-  body: multipartForm
+  body: none
   auth: inherit
 }
 
