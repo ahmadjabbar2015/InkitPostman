@@ -1,0 +1,30 @@
+meta {
+  name: Get ID Documents
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/id-documents
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  JobId: 6
+  house: 8
+  employee: 29
+}
+
+body:multipart-form {
+  type: passport
+  documentNumber: Disclosure & Barring Service
+  countryId: 4
+  expiryDate: 2026-12-01
+  verifiedBy: Saad Husain
+  document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+}
+
+settings {
+  encodeUrl: true
+}
