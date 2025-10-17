@@ -1,0 +1,29 @@
+meta {
+  name: Show Proof of Address
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/proof-of-address/:proof
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  proof: 
+  JobId: 6
+  house: 8
+  employee: 29
+}
+
+body:multipart-form {
+  documents[0][type]: utility_bill
+  documents[0][document]: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+  documents[1][type]: benefit_statement
+  documents[1][document]: @file(/home/pirate-king/Downloads/outgoing-reference-73a4ee31-a44b-4563-89c5-0c5309e277a4.pdf)
+}
+
+settings {
+  encodeUrl: true
+}
