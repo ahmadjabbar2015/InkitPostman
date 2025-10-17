@@ -1,0 +1,24 @@
+meta {
+  name: show Reference for guest User
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/guest?accessToken=0199f0ee-176d-7009-90c0-f898168ada60
+  body: multipartForm
+  auth: inherit
+}
+
+params:query {
+  accessToken: 0199f0ee-176d-7009-90c0-f898168ada60
+}
+
+params:path {
+  reference: 50
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+}

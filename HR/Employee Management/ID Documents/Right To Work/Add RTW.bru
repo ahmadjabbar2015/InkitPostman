@@ -1,11 +1,11 @@
 meta {
-  name: Add ID Document
+  name: Add RTW
   type: http
-  seq: 1
+  seq: 3
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/id-documents
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/rtw
   body: multipartForm
   auth: inherit
 }
@@ -17,11 +17,12 @@ params:path {
 }
 
 body:multipart-form {
-  type: passport
-  documentNumber: Disclosure & Barring Service
-  countryId: 4
-  expiryDate: 2026-12-01
-  verifiedBy: Saad Husain
+  shareCode: XY123Z456
+  dateOfCheck: 2026-10-16
+  workAllowedUntil: 2026-10-16
+  workPermission: visa
+  otherPermissionDetails: 
+  workAllowed: full_time
   document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
 }
 

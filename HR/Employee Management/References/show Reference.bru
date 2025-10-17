@@ -1,17 +1,17 @@
 meta {
   name: show Reference
   type: http
-  seq: 4
+  seq: 12
 }
 
 get {
   url: {{baseURL}}/v1/house/:house/employee-reference/:reference/
-  body: none
+  body: multipartForm
   auth: inherit
 }
 
 params:path {
-  reference: 49
+  reference: 50
   house: 9
 }
 
