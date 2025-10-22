@@ -1,0 +1,34 @@
+meta {
+  name: Edit RTW
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/rtw/:rtw
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  rtw: 2
+  JobId: 2
+  house: 1
+  employee: 25
+}
+
+body:multipart-form {
+  shareCode: XY123Z456
+  dateOfCheck: 2026-10-16
+  workAllowedUntil: 2026-10-16
+  workPermission: health_and_care_worker_visa
+  otherPermissionDetails: limited_permission
+  workAllowed: full_time_no_restrictions
+  document: @file(C:\Users\Forrun\Downloads\12.pdf)
+  _method: PUT
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
