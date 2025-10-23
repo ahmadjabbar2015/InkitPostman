@@ -1,0 +1,30 @@
+meta {
+  name: Assign Training
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/trainings/assign
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 9
+}
+
+body:json {
+  {
+    "employeeJobIds": [3],  // Replace with actual employee_job_details IDs
+    "trainingId": 5,               // Replace with actual trainings ID
+    "mode": "Online",              // Must match TrainingMode enum
+    "type": "Mandatory",           // Must match TrainingType enum
+    "allocationDate": "2025-10-22" // Optional - ISO 8601 date format
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

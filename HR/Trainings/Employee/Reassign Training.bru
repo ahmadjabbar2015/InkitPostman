@@ -1,0 +1,38 @@
+meta {
+  name: Reassign Training
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/trainings/:trainingId/reassign
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  employee: 29
+  JobId: 3
+  trainingId: 5
+  house: 9
+}
+
+body:json {
+  {
+    "employeeTrainingId":9,
+    "completionDate": "One Piece1",
+    "expiryDate":"123",
+    "mode": "Online",
+    "type": "Mandatory",
+    "durationDays": 7
+  }
+}
+
+body:multipart-form {
+  allocationDate: 2025-12-01
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

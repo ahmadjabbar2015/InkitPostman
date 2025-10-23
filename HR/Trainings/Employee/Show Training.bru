@@ -1,0 +1,23 @@
+meta {
+  name: Show Training
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/trainings/:trainingId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  trainingId: 5
+  employee: 29
+  JobId: 3
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Refresh
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseURL}}/v1/auth/refresh
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  let body = res.getBody();
+  
+  let token = body.data.token;
+  
+  bru.setEnvVar('token',token);
+  
+  
+}

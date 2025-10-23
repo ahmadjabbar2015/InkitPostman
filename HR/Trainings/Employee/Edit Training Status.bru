@@ -1,0 +1,42 @@
+meta {
+  name: Edit Training Status
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/trainings/:trainingId
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  employee: 29
+  JobId: 3
+  trainingId: 5
+  house: 9
+}
+
+body:json {
+  {
+    "employeeTrainingId":9,
+    "completionDate": "One Piece1",
+    "expiryDate":"123",
+    "mode": "Online",
+    "type": "Mandatory",
+    "durationDays": 7
+  }
+}
+
+body:multipart-form {
+  assignmentCycle: 2
+  completionDate: 2025-12-01
+  expiryDate: 2025-12-10
+  certificateFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-21 18-30-40.png)
+  _method: PATCH
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

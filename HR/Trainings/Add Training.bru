@@ -1,0 +1,31 @@
+meta {
+  name: Add Training
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/trainings
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 9
+}
+
+body:json {
+  {
+    "clientId":9,
+    "title": "One Piece1",
+    "description":"123",
+    "mode": "Online",
+    "type": "Mandatory",
+    "durationDays": 7
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

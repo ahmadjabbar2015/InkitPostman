@@ -1,0 +1,21 @@
+meta {
+  name: get Configured Training details
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/trainings/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 3
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

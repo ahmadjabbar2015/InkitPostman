@@ -5,12 +5,13 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/dbs
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/dbs/:dbs
   body: multipartForm
   auth: inherit
 }
 
 params:path {
+  dbs: 16
   JobId: 3
   house: 8
   employee: 29
@@ -29,6 +30,7 @@ body:multipart-form {
   convictionDetails: Candidate had a minor offense in 2010, cleared after legal review.
   riskAssessment: 1
   riskAssessmentAttachment: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
+  _method: PUT
   ~dbsOnUpdateService: Yes
   ~checkedBy: HR Manager
   ~mostRecentCheckDate: 2024-12-01
@@ -42,4 +44,5 @@ body:multipart-form {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
