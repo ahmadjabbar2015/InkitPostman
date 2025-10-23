@@ -1,0 +1,20 @@
+meta {
+  name: Training Counts
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/trainings/count
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 9
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
