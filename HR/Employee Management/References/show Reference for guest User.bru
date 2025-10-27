@@ -7,7 +7,7 @@ meta {
 get {
   url: {{baseURL}}/v1/house/:house/employee-reference/:reference/guest?accessToken=0199f0ee-176d-7009-90c0-f898168ada60
   body: multipartForm
-  auth: inherit
+  auth: none
 }
 
 params:query {
@@ -21,4 +21,5 @@ params:path {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

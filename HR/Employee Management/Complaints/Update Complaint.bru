@@ -1,0 +1,49 @@
+meta {
+  name: Update Complaint
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/complaints/:complaint
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 9
+  employee: 28
+  JobId: 9
+  complaint: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  nature: abused
+  details: Employee used inappropriate language towards a colleague.
+  suspensionRequired: 0
+  suspensionDate: 2025-10-22
+  startTime: 09:00
+  endTime: 17:00
+  alternateWorkLocation: Temporary Office
+  interviewDate: 2025-10-22
+  investigationDetails: Interview conducted to verify complaint.
+  investigationLetterFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-29-05.png)
+  investigationNotesFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-21 17-25-40.png)
+  ladoAdviceApplicable: 0
+  ladoAdviceDate: 2025-10-23
+  ladoOutcome: Advice sought from LADO
+  ladoAdviceEmailFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-06 16-59-44.png)
+  ladoReferralApplicable: 0
+  disciplinaryResult: written_warning
+  suspensionLetterFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-06 18-07-02.png)
+  ladoReferralDate: 2025-10-24
+  ladoReferralOutcome: LADO referral made
+  ladoReferralDocumentFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-13 15-19-54.png)
+  finalOutcomeAttachmentFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-17 12-33-46.png)
+  _method: PATCH
+  ~otherNatureType: 
+}

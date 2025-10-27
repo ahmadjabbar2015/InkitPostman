@@ -1,0 +1,55 @@
+
+meta {
+  name: Add Complaint
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/complaints
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 9
+  employee: 28
+  JobId: 9
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  employeeJobId: 123
+  nature: abused
+  otherNatureType: 
+  complaintDate: 2025-10-20
+  violationDate: 2025-10-21
+  details: Employee used inappropriate language towards a colleague.
+
+  suspensionRequired: 0
+  ~suspensionDate: 2025-10-22
+  ~startTime: 09:00
+  ~endTime: 17:00
+  ~suspensionLetterFile: @file(/path/to/suspension-letter.pdf)
+  ~alternateWorkLocation: Temporary Office
+
+  interviewDate: 2025-10-22
+  investigationDetails: Interview conducted to verify complaint.
+  ~investigationLetterFile: @file(/path/to/investigation-letter.pdf)
+  ~investigationNotesFile: @file(/path/to/investigation-notes.docx)
+
+  ladoAdviceApplicable: 0
+  ~ladoAdviceDate: 2025-10-23
+  ~ladoOutcome: Advice sought from LADO
+  ~ladoAdviceEmailFile: @file(/path/to/lado-email.pdf)
+  ladoReferralApplicable: 0
+  ~ladoReferralDate: 2025-10-24
+  ~ladoReferralOutcome: LADO referral made
+  ~ladoReferralDocumentFile: @file(/path/to/lado-referral.pdf)
+
+  disciplinaryResult: written_warning
+  ~finalOutcomeAttachmentFile: @file(/path/to/final-outcome.pdf)
+}

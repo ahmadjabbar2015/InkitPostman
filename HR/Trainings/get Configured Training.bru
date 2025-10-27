@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/trainings
+  url: {{baseURL}}/v1/house/:house/trainings?type=Mandatory
   body: none
   auth: inherit
+}
+
+params:query {
+  type: Mandatory
+  ~mode: On-site
 }
 
 params:path {
