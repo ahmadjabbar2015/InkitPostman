@@ -1,0 +1,22 @@
+meta {
+  name: Show Complaints
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/complaints/:complaint
+  body: none
+  auth: bearer
+}
+
+params:path {
+  complaint: 6
+  house: 9
+  employee: 28
+  JobId: 9
+}
+
+auth:bearer {
+  token: {{token}}
+}
