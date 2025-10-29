@@ -1,0 +1,38 @@
+meta {
+  name: Update Staff Meeting
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/staff-meetings/:meeting
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 9
+  meeting: 22
+}
+
+body:json {
+  {
+    "id": 22,
+    "title": "Weekly Staff Meeting",
+    "mode": "Onsite",
+    "date": "2025-11-05",
+    "startTime": "10:00",
+    "endTime": "11:00",
+  //   "meetingLink": "https://meet.google.com/abc-defg-hij",
+    "agenda": "Discuss weekly performance and updates",
+    "attendeeEmployeeJobIds": [
+  //     2,
+      3
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
