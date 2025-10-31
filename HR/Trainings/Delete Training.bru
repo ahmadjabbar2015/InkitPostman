@@ -1,0 +1,31 @@
+meta {
+  name: Delete Training
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/trainings/:training
+  body: json
+  auth: inherit
+}
+
+params:path {
+  training: 
+  house: 24
+}
+
+body:json {
+  {
+    "employeeJobIds": [3],  // Replace with actual employee_job_details IDs
+    "trainingIds": [5],               // Replace with actual trainings ID
+    "mode": "Online",              // Must match TrainingMode enum
+    "type": "Optional",           // Must match TrainingType enum
+    "allocationDate": "2025-10-22" // Optional - ISO 8601 date format
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
