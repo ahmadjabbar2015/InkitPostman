@@ -5,13 +5,17 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client/:clientId/house/:houseId/employees
+  url: {{baseURL}}/v1/client/:clientId/house/:houseId/employees?search=Incomplete
   body: none
   auth: bearer
 }
 
+params:query {
+  search: Incomplete
+}
+
 params:path {
-  houseId: 9
+  houseId: 8
   clientId: 9
 }
 
