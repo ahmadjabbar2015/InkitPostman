@@ -11,8 +11,8 @@ post {
 }
 
 params:path {
-  house: 9
-  client: 9
+  house: 38
+  client: 19
 }
 
 auth:bearer {
@@ -21,12 +21,11 @@ auth:bearer {
 
 body:multipart-form {
   title: Mr
-  firstName: saadu
-  middleName: saadu
+  firstName: HO Emp 2
   lastName: Khan
-  previousName: Ahmed
+  previousName: Emp 2
   knownAs: AK
-  emailAddress: ahmed+1@gmail.com
+  emailAddress: ho.emp2@gmail.com
   mobileNo: +923001234567
   phoneNo: +92511234567
   otpAuth: 0
@@ -70,6 +69,7 @@ body:multipart-form {
   salary[salaryType]: Per Annum
   salary[salary]: 80000
   salary[incrementDate]: 2025-09-26
+  ~middleName: 
   ~personalDetail[maritalStatus]: Single
   ~addresses[0][type]: permanent
   ~addresses[1][type]: current

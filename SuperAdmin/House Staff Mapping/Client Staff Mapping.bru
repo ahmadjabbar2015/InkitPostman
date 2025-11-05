@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/client/9/staff-house-mappings
+  url: {{baseURL}}/v1/client/:clientID/staff-house-mappings
   body: json
   auth: bearer
+}
+
+params:path {
+  clientID: 19
 }
 
 auth:bearer {

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client/1/staff-house-mappings
+  url: {{baseURL}}/v1/client/:cientId/staff-house-mappings
   body: none
   auth: bearer
+}
+
+params:path {
+  cientId: 19
 }
 
 auth:bearer {
