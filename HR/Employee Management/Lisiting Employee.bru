@@ -5,18 +5,20 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/client/:clientId/house/:houseId/employees?search=Incomplete
+  url: {{baseURL}}/v1/client/:clientId/house/:houseId/employees?search_basic=arham&search_job=Operations Manager&search_hrstatus=House ROLE
   body: none
   auth: bearer
 }
 
 params:query {
-  search: Incomplete
+  search_basic: arham
+  search_job: Operations Manager
+  search_hrstatus: House ROLE
 }
 
 params:path {
-  houseId: 8
   clientId: 9
+  houseId: 8
 }
 
 auth:bearer {
