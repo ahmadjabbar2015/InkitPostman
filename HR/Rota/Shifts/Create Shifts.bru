@@ -1,0 +1,32 @@
+meta {
+  name: Create Shifts
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/shifts
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 42
+}
+
+body:json {
+  {
+    "houseId": 42,
+    "shiftName": "Afternoon Shift",
+    "startTime": "23:00",
+    "endTime": "09:00",
+  //   "weekStartDate": "2025-11-10",
+    "comment": "First week schedule",
+    "isRecurring": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

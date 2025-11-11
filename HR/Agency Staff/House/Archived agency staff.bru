@@ -1,26 +1,26 @@
 meta {
-  name: Add Agency Staff
+  name: Archived agency staff
   type: http
-  seq: 4
+  seq: 2
 }
 
-post {
-  url: {{baseURL}}/v1/house/:house/agency-staff
-  body: multipartForm
+get {
+  url: {{baseURL}}/v1/house/:house/agency-staff/archived
+  body: none
   auth: inherit
 }
 
 params:path {
-  house: 40
+  house: 42
 }
 
 body:multipart-form {
   title: Mr
-  firstName: Agency
-  lastName: Staff 3
-  gender: Male
+  firstName: John
+  lastName: Doe
+  gender: male
   contactNo: +447911123456
-  email: agency.employee4@gmail.com
+  email: ahmad.tawana@gmail.com
   agencyName: CarePlus Agency Ltd
   inductionDate: 2025-11-15
   profileAttachmentFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-15 11-59-46.png)

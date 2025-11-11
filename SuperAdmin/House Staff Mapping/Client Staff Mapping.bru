@@ -7,36 +7,23 @@ meta {
 post {
   url: {{baseURL}}/v1/client/:clientID/staff-house-mappings
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   clientID: 19
 }
 
-auth:bearer {
-  token: 
-}
-
 body:json {
   {
     "staff_mappings": [
       {
-        "staff_id": 10,
+        "employee_job_id": 40,
         "roles": {
-          "10": 9,
-          "13": 10,
-          "14": 25
+          "42": 239,
+          "39": 192
         }
       }
-  //     ,
-  //     {
-  //       "staff_id": 10,
-  //       "roles": {
-  //         "10": 11,
-  //         "13": 12
-  //       }
-  //     }
     ]
   }
 }

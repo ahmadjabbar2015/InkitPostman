@@ -1,12 +1,12 @@
 meta {
   name: Get Agency Staff
   type: http
-  seq: 2
+  seq: 1
 }
 
 get {
   url: {{baseURL}}/v1/house/:house/agency-staff
-  body: multipartForm
+  body: none
   auth: inherit
 }
 

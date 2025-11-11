@@ -1,0 +1,27 @@
+meta {
+  name: Delete Shift
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/shifts/:shift
+  body: json
+  auth: inherit
+}
+
+params:path {
+  shift: 38
+  house: 42
+}
+
+body:json {
+  {
+    "propagateToFuture": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

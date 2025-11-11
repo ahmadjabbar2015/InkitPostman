@@ -1,0 +1,29 @@
+meta {
+  name: Edit Assignment Shift
+  type: http
+  seq: 11
+}
+
+patch {
+  url: {{baseURL}}/v1/house/:house/shifts/assignments/:assignment
+  body: json
+  auth: inherit
+}
+
+params:path {
+  assignment: 27
+  house: 42
+}
+
+body:json {
+  {
+    "newShiftId": 45,
+    "reason": "Reason for Edit",
+    "teamLead" : false
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

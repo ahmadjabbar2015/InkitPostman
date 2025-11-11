@@ -1,0 +1,29 @@
+meta {
+  name: Assign shift
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/shifts/assign
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 42
+}
+
+body:json {
+  {
+    "shiftId": 50,
+    "employeeJobId": 44,
+    "teamLead": true,
+    "shiftDate": "2025-11-24"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
