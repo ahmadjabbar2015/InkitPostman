@@ -1,18 +1,18 @@
 meta {
-  name: Update Outgoing Reference
+  name: Outgoing Reference
   type: http
-  seq: 10
+  seq: 9
 }
 
-put {
-  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/outgoing/edit
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/outgoing-reference
   body: json
   auth: inherit
 }
 
 params:path {
-  reference: 42
-  house: 9
+  house: 8
+  employee: 27
 }
 
 body:json {
@@ -22,13 +22,12 @@ body:json {
     "refereeContactNo": "123456766",
     "refereeCompany": "logicode",
     "currentlyWorking": false,
-    "leavingDate": "2024-12-13",
-    "hoursWorked": "30 hours per week",
+    "leavingDate": "",
+    "hoursWorked": "40 hours per week",
     "safeguardingConcerns": "No concerns",
     "reasonForLeaving": "Pursuing new opportunities",
-    "description": "The employee performed exceptionally well during their tenure."
-  //   ,
-  //   "jobDetailId": 3
+    "description": "The employee performed exceptionally well during their tenure.",
+    "jobDetailId": 3
   }
 }
 

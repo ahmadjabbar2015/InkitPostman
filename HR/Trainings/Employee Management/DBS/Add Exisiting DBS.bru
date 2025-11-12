@@ -1,0 +1,45 @@
+meta {
+  name: Add Exisiting DBS
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/dbs
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  JobId: 1
+  house: 8
+  employee: 26
+}
+
+body:multipart-form {
+  dbsInformation: Existing DBS Certificate
+  applicationDate: 2023-01-15
+  issuedBy: Disclosure & Barring Service
+  dbsLevel: Enhanced
+  dbsWorkforce: Child Workforce
+  issuanceDate: 2023-02-01
+  dbsCertificateAttachment: @file(C:\Users\Forrun\Downloads\Late sitting  oct claim form - Sheet2 (6).pdf .pdf)
+  dbsNumber: DBS123456789
+  convictionDetails: Candidate haede e3wdd a minor offense in 2010, cleared after legal review.
+  riskAssessment: 1
+  riskAssessmentAttachment: @file(C:\Users\Forrun\Downloads\Internship Extension - Saad.pdf)
+  ~dbsOnUpdateService: Yes
+  ~checkedBy: HR Manager
+  ~mostRecentCheckDate: 2024-12-01
+  ~upcomingCheckDate: 2025-12-01
+  ~nextCheckDate: 2026-12-01
+  ~documentForDbsUpdateServiceAttachment: @file(C:\Users\Forrun\Downloads\Dawn of Modern Physics.pdf)
+  ~files[]: @file(C:\Users\Forrun\Downloads\13.pdf)
+  ~files[]: @file(C:\Users\Forrun\Downloads\saadcv.pdf)
+  ~description: Lorem Ipsum
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

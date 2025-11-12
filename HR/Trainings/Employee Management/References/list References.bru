@@ -1,22 +1,21 @@
 meta {
-  name: Assign Training List
+  name: list References
   type: http
   seq: 5
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/trainings/assign/list
+  url: {{baseURL}}/v1/house/:house/employees/:employee/references/
   body: none
   auth: inherit
 }
 
 params:query {
-  ~trainingAllocated: 1
-  ~status: pending
-  ~mode: online
+  ~referenceType: Outgoing Reference
 }
 
 params:path {
+  employee: 26
   house: 8
 }
 

@@ -5,18 +5,19 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/trainings
+  url: {{baseURL}}/v1/house/:house/trainings?title=JOJO
   body: none
   auth: inherit
 }
 
 params:query {
+  title: JOJO
   ~type: Mandatory
-  ~mode: On-site
+  ~mode: Online
 }
 
 params:path {
-  house: 9
+  house: 8
 }
 
 settings {
