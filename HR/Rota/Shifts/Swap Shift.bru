@@ -1,0 +1,28 @@
+meta {
+  name: Swap Shift
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/shifts/swap
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 42
+}
+
+body:json {
+  {
+    "oldAssignmentId": 38,
+    "newAssignmentId": 8,
+    "notes": "New Changes"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

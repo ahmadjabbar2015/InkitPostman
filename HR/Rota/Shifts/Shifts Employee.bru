@@ -1,0 +1,26 @@
+meta {
+  name: Shifts Employee
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/shifts/employees
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 42
+}
+
+body:json {
+  {
+    "weekStartDate": "2025-11-10"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

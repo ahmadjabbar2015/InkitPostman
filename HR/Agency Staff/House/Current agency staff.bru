@@ -1,0 +1,34 @@
+meta {
+  name: Current agency staff
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/agency-staff/current
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 39
+}
+
+body:multipart-form {
+  title: Mr
+  firstName: John
+  lastName: Doe
+  gender: male
+  contactNo: +447911123456
+  email: ahmad.tawana@gmail.com
+  agencyName: CarePlus Agency Ltd
+  inductionDate: 2025-11-15
+  profileAttachmentFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-15 11-59-46.png)
+  documentAttachmentFile: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-15 11-59-46.png)
+  loginAccess: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

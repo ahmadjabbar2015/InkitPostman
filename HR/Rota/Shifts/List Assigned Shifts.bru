@@ -1,0 +1,28 @@
+meta {
+  name: List Assigned Shifts
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/shifts/assign
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 42
+}
+
+body:json {
+  {
+    "weekStartDate": "2025-11-10"
+  //   ,
+  //   "shiftDate" : "2025-11-14"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

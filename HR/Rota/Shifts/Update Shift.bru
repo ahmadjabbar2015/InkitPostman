@@ -1,0 +1,33 @@
+meta {
+  name: Update Shift
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/shifts/:shift
+  body: json
+  auth: inherit
+}
+
+params:path {
+  shift: 38
+  house: 42
+}
+
+body:json {
+  {
+  //   "houseId": 42,
+    "shiftName": "Night Shift",
+    "startTime": "23:00",
+    "endTime": "09:00",
+  //   "weekStartDate": "2025-11-10",
+    "comment": "First week schedule",
+    "propagateToFuture": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
