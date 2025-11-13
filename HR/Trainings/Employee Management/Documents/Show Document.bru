@@ -6,15 +6,15 @@ meta {
 
 get {
   url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/documents/:document
-  body: multipartForm
+  body: file
   auth: inherit
 }
 
 params:path {
-  document: 3
-  JobId: 3
-  house: 9
-  employee: 29
+  document: 8
+  JobId: 1
+  house: 8
+  employee: 26
 }
 
 body:multipart-form {
@@ -26,4 +26,5 @@ body:multipart-form {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
