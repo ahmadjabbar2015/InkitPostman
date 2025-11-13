@@ -11,18 +11,18 @@ post {
 }
 
 params:path {
-  house: 42
+  house: 11
 }
 
 body:json {
   {
-    "houseId": 42,
-    "shiftName": "Afternoon Shift",
-    "startTime": "23:00",
-    "endTime": "09:00",
+    "houseId": 11,
+    "shiftName": "Special Shift",
+    "startTime": "09:00",
+    "endTime": "05:00",
   //   "weekStartDate": "2025-11-10",
     "comment": "First week schedule",
-    "isRecurring": true
+    "isRecurring": false // true For adding the shifts that will go in every week
   }
 }
 
