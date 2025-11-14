@@ -1,17 +1,22 @@
 meta {
-  name: Client Staff Mapping
+  name: Get Form
   type: http
-  seq: 2
+  seq: 4
 }
 
 get {
-  url: {{baseURL}}/v1/client/:cientId/staff-house-mappings
+  url: {{baseURL}}/v1/house/:house/form-templates?type=supervision&job_title_id=1
   body: none
   auth: bearer
 }
 
+params:query {
+  type: supervision
+  job_title_id: 1
+}
+
 params:path {
-  cientId: 9
+  house: 11
 }
 
 auth:bearer {

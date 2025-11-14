@@ -1,17 +1,18 @@
 meta {
-  name: Client Staff Mapping
+  name: Get Form Structure
   type: http
   seq: 2
 }
 
 get {
-  url: {{baseURL}}/v1/client/:cientId/staff-house-mappings
+  url: {{baseURL}}/v1/house/:house/form-templates/:tempateId/structure
   body: none
   auth: bearer
 }
 
 params:path {
-  cientId: 9
+  tempateId: 3
+  house: 11
 }
 
 auth:bearer {

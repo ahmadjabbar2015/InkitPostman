@@ -1,17 +1,17 @@
 meta {
-  name: Client Staff Mapping
+  name: Get by house
   type: http
-  seq: 2
+  seq: 4
 }
 
 get {
-  url: {{baseURL}}/v1/client/:cientId/staff-house-mappings
+  url: {{baseURL}}/v1/house/:house/form-templates/get-by-house
   body: none
   auth: bearer
 }
 
 params:path {
-  cientId: 9
+  house: 11
 }
 
 auth:bearer {
