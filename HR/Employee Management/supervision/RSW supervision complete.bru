@@ -1,0 +1,29 @@
+meta {
+  name: RSW supervision complete
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/complete
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "completed_at": "2025-11-14 15:30:00",
+    "supervisor_signature": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: get RSW supervision as Template
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/template-simple
+  body: none
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}

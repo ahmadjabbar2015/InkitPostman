@@ -1,0 +1,76 @@
+meta {
+  name: RSW supervision section 1
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  
+  
+  {
+    "section_id": 43,
+    "field_responses": [
+      {
+        "template_field_id": 153,
+        "response_text": "John Doe"
+      },
+      {
+        "template_field_id": 154,
+        "response_text": "456"
+      },
+      {
+        "template_field_id": 155,
+        "response_date": "2024-01-15"
+      },
+      {
+        "template_field_id": 156,
+        "response_date": "2024-02-15"
+      },
+      {
+        "template_field_id": 157,
+        "response_time": "14:00"
+      },
+      {
+        "template_field_id": 158,
+        "response_boolean": true
+      }
+    ],
+    "agenda_items": [21, 22, 23],
+    "custom_agenda_items": [
+      {
+        "text": "Custom topic 1",
+        "is_checked": true
+      },
+      {
+        "text": "Custom topic 2",
+        "is_checked": false
+      }
+    ],
+    "professional_discussions": [
+      {
+        "topic": "Workload management",
+        "summary": "Discussed current workload and strategies for better time management",
+        "follow_up": "Review in next supervision",
+        "timescale": "2024-02-01",
+        "action": "Implement time blocking technique"
+      }
+    ]
+  }
+}

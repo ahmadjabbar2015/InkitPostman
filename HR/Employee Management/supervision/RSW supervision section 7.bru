@@ -1,0 +1,78 @@
+meta {
+  name: RSW supervision section 7
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 49,
+    "field_responses": [
+      {
+        "template_field_id": 187,
+        "response_text": "Good working relationships with all team members"
+      },
+      {
+        "template_field_id": 188,
+        "response_text": "Positive team player, well respected by colleagues"
+      },
+      {
+        "template_field_id": 189,
+        "response_number": 5
+      },
+      {
+        "template_field_id": 190,
+        "response_text": "Shift handovers are comprehensive and timely"
+      },
+      {
+        "template_field_id": 191,
+        "response_text": "Excellent communication during transitions"
+      },
+      {
+        "template_field_id": 192,
+        "response_number": 4
+      },
+      {
+        "template_field_id": 193,
+        "response_text": "Handles disagreements professionally and constructively"
+      },
+      {
+        "template_field_id": 194,
+        "response_text": "Good conflict resolution skills demonstrated"
+      },
+      {
+        "template_field_id": 195,
+        "response_number": 4
+      },
+      {
+        "template_field_id": 196,
+        "response_text": "Actively contributes to positive team environment"
+      },
+      {
+        "template_field_id": 197,
+        "response_text": "Often goes above and beyond to support colleagues"
+      },
+      {
+        "template_field_id": 198,
+        "response_number": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+meta {
+  name: RSW supervision section 6
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 48,
+    "field_responses": [
+      {
+        "template_field_id": 178,
+        "response_text": "Daily logs are completed accurately and on time"
+      },
+      {
+        "template_field_id": 179,
+        "response_text": "Good attention to detail in documentation"
+      },
+      {
+        "template_field_id": 180,
+        "response_number": 4
+      },
+      {
+        "template_field_id": 181,
+        "response_text": "Working on improving consistency across all records"
+      },
+      {
+        "template_field_id": 182,
+        "response_text": "Suggested using templates for better consistency"
+      },
+      {
+        "template_field_id": 183,
+        "response_number": 3
+      },
+      {
+        "template_field_id": 184,
+        "response_text": "Clear understanding of data protection requirements"
+      },
+      {
+        "template_field_id": 185,
+        "response_text": "Demonstrates good confidentiality practices"
+      },
+      {
+        "template_field_id": 186,
+        "response_number": 5
+      }
+    ]
+  }
+}

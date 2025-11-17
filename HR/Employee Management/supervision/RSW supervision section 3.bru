@@ -1,0 +1,44 @@
+meta {
+  name: RSW supervision section 3
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 45,
+    "review_previous_actions": [
+      {
+        "topic": "Complete mandatory training",
+        "staff_comment": "All mandatory training completed on time",
+        "supervisor_notes": "Good progress, all certificates uploaded",
+        "supervisor_rating": 5,
+        "status": "completed"
+      },
+      {
+        "topic": "Improve documentation quality",
+        "staff_comment": "Working on being more detailed in daily logs",
+        "supervisor_notes": "Noticeable improvement in record keeping",
+        "supervisor_rating": 4,
+        "status": "pending"
+      }
+    ]
+  }
+}

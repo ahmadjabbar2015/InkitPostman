@@ -1,0 +1,42 @@
+meta {
+  name: RSW supervision section 10
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 52,
+    "field_responses": [
+      {
+        "template_field_id": 222,
+        "response_text": "Seeing positive progress in young people's independence skills"
+      },
+      {
+        "template_field_id": 223,
+        "response_text": "Good evidence of positive impact on residents' development"
+      },
+      {
+        "template_field_id": 224,
+        "response_number": 4
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+meta {
+  name: RSW supervision section 8
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 50,
+    "field_responses": [
+      {
+        "template_field_id": 199,
+        "response_text": "Clear understanding of role requirements"
+      },
+      {
+        "template_field_id": 200,
+        "response_text": "Good grasp of regulatory framework"
+      },
+      {
+        "template_field_id": 201,
+        "response_number": 4
+      }
+      // ... other field responses for this section
+    ],
+    "supervisor_assessments": [
+      {
+        "conduct": "Professional and respectful at all times",
+        "reliability": "Always punctual and dependable",
+        "safeguarding": "Excellent understanding and application",
+        "staff_comment": "Committed to professional development",
+        "supervisor_notes": "Strong team player with good initiative",
+        "supervisor_rating": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+meta {
+  name: RSW supervision section 5
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 47,
+    "field_responses": [
+      {
+        "template_field_id": 169,
+        "response_text": "No new safeguarding concerns this period"
+      },
+      {
+        "template_field_id": 170,
+        "response_text": "Good awareness and reporting"
+      },
+      {
+        "template_field_id": 171,
+        "response_number": 5
+      },
+      {
+        "template_field_id": 172,
+        "response_text": "All incidents reported correctly via system"
+      },
+      {
+        "template_field_id": 173,
+        "response_text": "Procedures followed accurately"
+      },
+      {
+        "template_field_id": 174,
+        "response_number": 5
+      },
+      {
+        "template_field_id": 175,
+        "response_text": "Confident in escalation process"
+      },
+      {
+        "template_field_id": 176,
+        "response_text": "Demonstrates good understanding of protocols"
+      },
+      {
+        "template_field_id": 177,
+        "response_number": 4
+      }
+    ]
+  }
+}

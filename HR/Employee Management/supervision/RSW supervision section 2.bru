@@ -1,0 +1,66 @@
+meta {
+  name: RSW supervision section 2
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 44,
+    "field_responses": [
+      {
+        "template_field_id": 160,
+        "response_text": "Feeling good overall, some stress with current caseload"
+      },
+      {
+        "template_field_id": 161,
+        "response_text": "Suggested stress management techniques and regular breaks"
+      },
+      {
+        "template_field_id": 162,
+        "response_number": 4
+      },
+      {
+        "template_field_id": 163,
+        "response_text": "Family commitments affecting some evening shifts"
+      },
+      {
+        "template_field_id": 164,
+        "response_text": "Will review shift patterns if needed"
+      },
+      {
+        "template_field_id": 165,
+        "response_number": 3
+      },
+      {
+        "template_field_id": 166,
+        "response_text": "Need more training on complex cases"
+      },
+      {
+        "template_field_id": 167,
+        "response_text": "Arranged advanced training session"
+      },
+      {
+        "template_field_id": 168,
+        "response_number": 4
+      }
+    ]
+  }
+}
