@@ -1,0 +1,46 @@
+meta {
+  name: RSW supervision section 4
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 46,
+    "childrens_discussions": [
+      {
+        "young_person_id": 2,
+        "young_person_name": "Sarah Johnson",
+        "area_of_discussion": "Educational progress",
+        "staff_comment": "Making good progress in school, attending regularly",
+        "supervisor_notes": "Continue monitoring school attendance",
+        "supervisor_rating": 4
+      },
+      {
+        "young_person_id": 3,
+        "young_person_name": "Michael Brown",
+        "area_of_discussion": "Behavior management",
+        "staff_comment": "Responding well to positive reinforcement strategies",
+        "supervisor_notes": "Good use of de-escalation techniques",
+        "supervisor_rating": 3
+      }
+    ]
+  }
+}

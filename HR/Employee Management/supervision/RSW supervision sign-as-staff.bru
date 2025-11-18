@@ -1,0 +1,29 @@
+meta {
+  name: RSW supervision sign-as-staff
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/sign-as-staff
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "staff_comments": "Hello Its me",
+    "signature": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+  }
+}

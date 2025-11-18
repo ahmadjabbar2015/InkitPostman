@@ -1,0 +1,46 @@
+meta {
+  name: RSW supervision section 11
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/:supervision/save-sections-responses
+  body: json
+  auth: bearer
+}
+
+params:path {
+  supervision: 5
+  jobId: 1
+  userID: 34
+  house: 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "section_id": 53,
+    "smart_action_plans": [
+      {
+        "action_item": "Complete advanced safeguarding training",
+        "summary": "Enroll in and complete Level 3 safeguarding course",
+        "follow_up": "Submit certificate to supervisor",
+        "timescale": "2024-03-01",
+        "action_owner": "John Doe",
+        "status": "pending"
+      },
+      {
+        "action_item": "Improve case note documentation",
+        "summary": "Implement new template for more detailed case notes",
+        "follow_up": "Review with supervisor",
+        "timescale": "2024-02-01",
+        "action_owner": "John Doe",
+        "status": "in_progress"
+      }
+    ]
+  }
+}

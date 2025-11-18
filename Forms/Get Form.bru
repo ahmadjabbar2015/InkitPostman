@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/form-templates?type=supervision&job_title_id=1
+  url: {{baseURL}}/v1/house/:house/form-templates?type=supervision
   body: none
   auth: bearer
 }
 
 params:query {
   type: supervision
-  job_title_id: 1
+  ~job_title_id: 1
 }
 
 params:path {
