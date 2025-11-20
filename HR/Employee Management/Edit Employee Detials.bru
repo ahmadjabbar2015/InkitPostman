@@ -1,0 +1,92 @@
+meta {
+  name: Edit Employee Detials
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/client/:client/house/:house/employees/:employee/details
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  client: 9
+  house: 9
+  employee: 32
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "personalDetail": {
+      "title": "Mr",
+      "firstName": "John",
+      "middleName": "Alan",
+      "lastName": "Doe",
+      "previousName": "Johnson",
+      "emailAddress": "john@example.com",
+      "contactNo": "+4412345678",
+      "dateOfBirth": "1990-06-15",
+      "gender": "Male",
+      "nationality": 1,
+      "ethnicity": "Asian",
+      "niNumber": "AB123456C",
+      "addressLine1": "12 Street Name",
+      "addressLine2": "Block C",
+      "postcode": "AB12CD",
+      "cityTown": 22,
+      "country": 1,
+      "industry": "Healthcare"
+    },
+    "nextOfKinDetail": {
+      "firstName": "Ali",
+      "lastName": "Khan",
+      "relationship": "Brother",
+      "email": "ali@example.com",
+      "contactNo": "+447700900123",
+      "addressLine1": "45 Avenue Road",
+      "addressLine2": "Flat 6",
+      "postcode": "XY55ZT",
+      "cityTown": 39,
+      "country": 1
+    }
+  }
+  
+}
+
+body:multipart-form {
+  personalDetail[title]: Mr
+  personalDetail[firstName]: John
+  personalDetail[middleName]: Alan
+  personalDetail[lastName]: Doe
+  personalDetail[previousName]: Johnson
+  personalDetail[emailAddress]: john@example.com
+  personalDetail[contactNo]: +4412345678
+  "  personalDetail[dateOfBirth]": 1990-06-15
+  personalDetail[gender]: Male
+  personalDetail[nationality]: 1
+  personalDetail[ethnicity]: Asian
+  personalDetail[niNumber]: AB123456C
+  personalDetail[addressLine1]: 12 Street Name
+  personalDetail[addressLine2]: Block C
+  personalDetail[postcode]: AB12CD
+  personalDetail[cityTown]: 22
+  personalDetail[country]: 1
+  personalDetail[industry]: Healthcare
+  personalDetail[documentAttachmentFile]: @file(C:\Users\Forrun\Downloads\13.pdf)
+  nextOfKinDetail[firstName]: Ali
+  nextOfKinDetail[lastName]: Khan
+  nextOfKinDetail[relationship]: Brother
+  nextOfKinDetail[email]: ali@example.com
+  nextOfKinDetail[contactNo]: +447700900123
+  nextOfKinDetail[addressLine1]: 45 Avenue Road
+  nextOfKinDetail[addressLine2]: Flat 6
+  nextOfKinDetail[postcode]: XY55ZT
+  nextOfKinDetail[cityTown]: 39
+  nextOfKinDetail[country]: 1
+  _method: patch
+}
