@@ -1,0 +1,29 @@
+meta {
+  name: Get Form Structure by HouseJobId
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/form-templates/:HouseJobtitle/employee-job-title-id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  HouseJobtitle: 89
+  house: 23
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "client_id": 1,
+    "global_role_id": 4,
+    "description": "This is a test house role",
+    "is_custom": true
+  }
+}

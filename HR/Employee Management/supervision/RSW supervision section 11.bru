@@ -11,10 +11,10 @@ post {
 }
 
 params:path {
-  supervision: 5
-  jobId: 1
-  userID: 34
-  house: 11
+  supervision: 1
+  jobId: 2
+  userID: 30
+  house: 23
 }
 
 auth:bearer {
@@ -26,19 +26,27 @@ body:json {
     "section_id": 53,
     "smart_action_plans": [
       {
-        "action_item": "Complete advanced safeguarding training",
-        "summary": "Enroll in and complete Level 3 safeguarding course",
-        "follow_up": "Submit certificate to supervisor",
-        "timescale": "2024-03-01",
+        "specific_action": "Complete advanced safeguarding training",
+        "target_goal": "Achieve Level 3 safeguarding certification",
         "action_owner": "John Doe",
+        "action_owner_id": "123",
+        "due_date": "2024-03-01",
+        "review_date": "2024-02-15",
+        "status_comments": "Enrollment in progress, course starts next week",
+        "link": "https://trainingportal.com/safeguarding-level3",
+        "document_attachment": "safeguarding_course_outline.pdf",
         "status": "pending"
       },
       {
-        "action_item": "Improve case note documentation",
-        "summary": "Implement new template for more detailed case notes",
-        "follow_up": "Review with supervisor",
-        "timescale": "2024-02-01",
+        "specific_action": "Improve case note documentation",
+        "target_goal": "Implement and standardize new case note template across all cases",
         "action_owner": "John Doe",
+        "action_owner_id": "123",
+        "due_date": "2024-02-01",
+        "review_date": "2024-01-25",
+        "status_comments": "Template drafted, awaiting supervisor feedback",
+        "link": "https://docs.google.com/template-case-notes",
+        "document_attachment": "case_note_template_v2.docx",
         "status": "in_progress"
       }
     ]
