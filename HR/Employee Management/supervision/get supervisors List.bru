@@ -1,11 +1,11 @@
 meta {
-  name: get supervision list
+  name: get supervisors List
   type: http
-  seq: 17
+  seq: 18
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobId/supervisions/
+  url: {{baseURL}}/v1/house/:house/employees/:userID/job/:jobDetailsId/supervisions/supervisors
   body: none
   auth: bearer
 }
@@ -15,9 +15,9 @@ params:query {
 }
 
 params:path {
+  jobDetailsId: 1
   house: 10
   userID: 25
-  jobId: 1
 }
 
 auth:bearer {
