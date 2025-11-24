@@ -1,0 +1,33 @@
+meta {
+  name: show list
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/rtw/:rtw
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  rtw: 3
+  JobId: 6
+  house: 8
+  employee: 29
+}
+
+body:multipart-form {
+  shareCode: XY123Z456
+  dateOfCheck: 2026-10-16
+  workAllowedUntil: 2026-10-16
+  workPermission: visa
+  otherPermissionDetails: 
+  workAllowed: full_time
+  document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
