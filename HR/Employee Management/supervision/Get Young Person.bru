@@ -1,17 +1,18 @@
 meta {
-  name: Job titles
+  name: Get Young Person
   type: http
-  seq: 2
+  seq: 19
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/job-titles
+  url: {{baseURL}}/v1/client/:client/house/:house/young-persons
   body: none
   auth: bearer
 }
 
 params:path {
   house: 10
+  client: 9
 }
 
 auth:bearer {
