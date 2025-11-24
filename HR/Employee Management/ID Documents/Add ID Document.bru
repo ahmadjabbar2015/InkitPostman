@@ -11,20 +11,21 @@ post {
 }
 
 params:path {
-  JobId: 6
-  house: 8
-  employee: 29
+  JobId: 1
+  house: 10
+  employee: 23
 }
 
 body:multipart-form {
-  type: passport
+  type: 
   documentNumber: Disclosure & Barring Service
   countryId: 4
   expiryDate: 2026-12-01
   verifiedBy: Saad Husain
-  document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+  document: @file(C:\Users\Forrun\Downloads\Nuclear Physics.pdf)
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

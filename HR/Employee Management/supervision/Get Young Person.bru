@@ -1,0 +1,20 @@
+meta {
+  name: Get Young Person
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{baseURL}}/v1/client/:client/house/:house/young-persons
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 10
+  client: 9
+}
+
+auth:bearer {
+  token: {{token}}
+}
