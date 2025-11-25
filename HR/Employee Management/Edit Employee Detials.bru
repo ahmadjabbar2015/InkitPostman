@@ -12,8 +12,8 @@ post {
 
 params:path {
   client: 9
-  house: 9
-  employee: 32
+  house: 12
+  employee: 42
 }
 
 auth:bearer {
@@ -59,11 +59,11 @@ body:json {
 }
 
 body:multipart-form {
-  personalDetail[title]: Mr
-  personalDetail[firstName]: John
-  personalDetail[middleName]: Alan
-  personalDetail[lastName]: Doe
-  personalDetail[previousName]: Johnson
+  personalDetail[firstName]: gujjar
+  personalDetail[middleName]: soya
+  personalDetail[previousName]: Alan
+  personalDetail[knownAs]: AK
+  personalDetail[title]: Johnson
   personalDetail[emailAddress]: john@example.com
   personalDetail[contactNo]: +4412345678
   "  personalDetail[dateOfBirth]": 1990-06-15
@@ -77,7 +77,7 @@ body:multipart-form {
   personalDetail[cityTown]: 22
   personalDetail[country]: 1
   personalDetail[industry]: Healthcare
-  personalDetail[documentAttachmentFile]: @file(C:\Users\Forrun\Downloads\13.pdf)
+  personalDetail[profilePicture]: @file(C:\Users\Forrun\Downloads\images (2).jpg)
   nextOfKinDetail[firstName]: Ali
   nextOfKinDetail[lastName]: Khan
   nextOfKinDetail[relationship]: Brother
@@ -89,4 +89,5 @@ body:multipart-form {
   nextOfKinDetail[cityTown]: 39
   nextOfKinDetail[country]: 1
   _method: patch
+  personalDetail[lastName]: saad
 }
