@@ -1,0 +1,35 @@
+meta {
+  name: Offboard Employee
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:jobId/offboarding/offboarding
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  jobId: 4
+  employee: 28
+  house: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  leavingDate: 2025-12-04
+  leavingInterviewConducted: true
+  interviewDate: 2025-12-05
+  reasonForLeaving: Moving to another job
+  remarks: Great employee
+  employeeStatus: OffBoarded
+  reasonForResignation: Personal reasons
+  p45DocumentStatus: applied
+  ~resignationDocument: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-11-22 13-40-13.png)
+  ~interviewNotes: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
+  ~p45Document: @file()
+}
