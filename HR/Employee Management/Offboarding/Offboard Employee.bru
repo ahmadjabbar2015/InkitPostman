@@ -11,9 +11,9 @@ post {
 }
 
 params:path {
-  jobId: 4
-  employee: 28
-  house: 10
+  jobId: 12
+  employee: 40
+  house: 13
 }
 
 auth:bearer {
@@ -22,14 +22,14 @@ auth:bearer {
 
 body:multipart-form {
   leavingDate: 2025-12-04
-  leavingInterviewConducted: true
+  leavingInterviewConducted: 1
   interviewDate: 2025-12-05
   reasonForLeaving: Moving to another job
   remarks: Great employee
-  employeeStatus: OffBoarded
+  employeeStatus: Inactive
   reasonForResignation: Personal reasons
-  p45DocumentStatus: applied
-  ~resignationDocument: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-11-22 13-40-13.png)
-  ~interviewNotes: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
-  ~p45Document: @file()
+  p45DocumentStatus: issued
+  resignationDocument: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
+  interviewNotes: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
+  p45Document: @file(/home/pirate-king/Downloads/Atif%20Rizwan%20Resume%20updated..pdf)
 }
