@@ -1,0 +1,22 @@
+meta {
+  name: Show Offboard Employee
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:jobId/offboarding/:ID
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  ID: 11
+  jobId: 5
+  employee: 29
+  house: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
