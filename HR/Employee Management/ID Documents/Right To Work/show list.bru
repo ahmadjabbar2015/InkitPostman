@@ -1,12 +1,12 @@
 meta {
-  name: Add RTW
+  name: show list
   type: http
-  seq: 3
+  seq: 4
 }
 
-post {
+get {
   url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/rtw
-  body: multipartForm
+  body: none
   auth: inherit
 }
 
@@ -20,10 +20,10 @@ body:multipart-form {
   shareCode: XY123Z456
   dateOfCheck: 2026-10-16
   workAllowedUntil: 2026-10-16
-  workPermission: skilled_worker_visa
+  workPermission: visa
   otherPermissionDetails: 
   workAllowed: full_time
-  document: @file(C:\Users\Forrun\Downloads\Internship Extension - Saad.pdf)
+  document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
 }
 
 settings {
