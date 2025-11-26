@@ -1,0 +1,35 @@
+meta {
+  name: Offboard Employee
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:jobId/offboarding/offboarding
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  jobId: 12
+  employee: 40
+  house: 13
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  leavingDate: 2025-12-04
+  leavingInterviewConducted: 1
+  interviewDate: 2025-12-05
+  reasonForLeaving: Moving to another job
+  remarks: Great employee
+  employeeStatus: Inactive
+  reasonForResignation: Personal reasons
+  p45DocumentStatus: issued
+  resignationDocument: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
+  interviewNotes: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
+  p45Document: @file(/home/pirate-king/Downloads/Atif%20Rizwan%20Resume%20updated..pdf)
+}

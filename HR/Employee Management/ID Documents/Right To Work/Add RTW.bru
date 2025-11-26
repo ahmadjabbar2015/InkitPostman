@@ -11,21 +11,22 @@ post {
 }
 
 params:path {
-  JobId: 6
-  house: 8
-  employee: 29
+  JobId: 2
+  house: 13
+  employee: 27
 }
 
 body:multipart-form {
   shareCode: XY123Z456
   dateOfCheck: 2026-10-16
   workAllowedUntil: 2026-10-16
-  workPermission: visa
+  workPermission: skilled_worker_visa
   otherPermissionDetails: 
-  workAllowed: full_time
-  document: @file(/home/pirate-king/Downloads/Late sitting claim form - Sheet2 (5).pdf)
+  workAllowed: part_time_up_to_20_hours_per_week
+  document: @file(/home/pirate-king/Downloads/Farhan_Butt%5B1%5D.pdf)
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
