@@ -11,8 +11,8 @@ post {
 }
 
 params:path {
-  jobId: 12
-  employee: 40
+  jobId: 20
+  employee: 48
   house: 13
 }
 
@@ -28,8 +28,8 @@ body:multipart-form {
   remarks: Great employee
   employeeStatus: Inactive
   reasonForResignation: Personal reasons
-  p45DocumentStatus: issued
+  p45DocumentStatus: applied
   resignationDocument: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
   interviewNotes: @file(/home/pirate-king/Downloads/Developer%20Resume.pdf)
-  p45Document: @file(/home/pirate-king/Downloads/Atif%20Rizwan%20Resume%20updated..pdf)
+  ~p45Document: @file(/home/pirate-king/Downloads/Atif%20Rizwan%20Resume%20updated..pdf)
 }
