@@ -1,24 +1,22 @@
 meta {
-  name: Lisiting Employee
+  name: check active employee
   type: http
-  seq: 1
+  seq: 9
 }
 
 get {
-  url: {{baseURL}}/v1/client/:clientId/house/:houseId/employees
+  url: {{baseURL}}/v1/client/:client/house/:house/check-active?email=yuuuu@gmail.com
   body: none
   auth: bearer
 }
 
 params:query {
-  ~search_basic: arham
-  ~search_job: Operations Manager
-  ~search_hrstatus: House ROLE
+  email: yuuuu@gmail.com
 }
 
 params:path {
-  clientId: 10
-  houseId: 13
+  client: 11
+  house: 18
 }
 
 auth:bearer {

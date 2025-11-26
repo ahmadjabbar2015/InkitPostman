@@ -1,0 +1,28 @@
+meta {
+  name: update P45
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:jobId/offboarding/:offboarding/update-p45
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  offboarding: 10
+  jobId: 20
+  employee: 48
+  house: 13
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  p45DocumentStatus: issued
+  p45Document: @file(/home/pirate-king/Downloads/Atif%20Rizwan%20Resume%20updated..pdf)
+  _method: PATCH
+}
