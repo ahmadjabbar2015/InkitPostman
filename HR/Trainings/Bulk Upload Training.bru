@@ -1,0 +1,24 @@
+meta {
+  name: Bulk Upload Training
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/trainings/bulk-upload
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 19
+}
+
+body:multipart-form {
+  file: @file(/home/pirate-king/Downloads/Trainings(Sheet1).csv)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
