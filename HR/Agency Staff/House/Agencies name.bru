@@ -1,0 +1,27 @@
+meta {
+  name: Agencies name
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/agency-staff/agencies
+  body: json
+  auth: inherit
+}
+
+params:path {
+  house: 11
+}
+
+body:json {
+  // {
+  //   "agency_name": "CarePlus Agency Ltd"
+  // }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
