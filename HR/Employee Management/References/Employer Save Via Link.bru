@@ -1,0 +1,92 @@
+meta {
+  name: Employer Save Via Link
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/employee-reference/:reference/save-via-link
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  reference: 2
+  house: 12
+}
+
+body:json {
+  // {
+  //   "access_token": "019aa586-f890-7140-90a5-ece76e4a2248",
+  //   "reference_received_date": "2025-10-15",
+  //   "reference_form_submission": {
+  //     "capacity_known_applicant": "Colleague",
+  //     "known_duration": "5 years",
+  //     "illness_awareness": "false",
+  //     "grievance_history": "None",
+  //     "character_description": "Reliable and hardworking",
+  //     "criminal_activity": "None",
+  //     "vulnerable_concerns": "false",
+  //     "safeguarding_issues": "false",
+  //     "attitude_towards_others": "Positive and collaborative",
+  //     "time_keeping_and_reliability": "Excellent",
+  //     "youth_issues_understanding": "Strong understanding of youth issues",
+  //     "additional_comments": "Highly recommended",
+  //     "referee_designation": "N/A",
+  //     "roles_and_responsibilities": "0",
+  // //     "employment_end_date": "",
+  //     "reason_for_leaving_job": "N/A",
+  //     "disciplinary_actions": "N/A",
+  //     "ability_to_perform_role": "good",
+  //     "professional_approach": "Basic",
+  //     "report_writing_skills": "Average",
+  //     "child_protection_issues": "Yes",
+  //     "any_other_comments": "N/A",
+  //     "would_rehire_applicant": "Yes",
+  //     "time_keeping_reliability": "Very reliable",
+  //     "total_number_of_sickness_days": "0",
+  //     "administration_record_keeping": "Adequate",
+  //     "position_held": "Senior Developer",
+  //     "legislation_knowledge": "Good knowledge of legislation",
+  //     "is_currently_employed": false,
+  //     "relationship_to_applicant": "Brother in law",
+  //     "employment_start_date": "2022-01-10"
+  //   },
+  //   "verified_by": "Manager"
+  // }
+}
+
+body:multipart-form {
+  access_token: 019ac44d-a3da-7310-bcbf-9d2c4302dc31
+  reference_form_submission[capacity_known_applicant]: Colleague
+  reference_form_submission[vulnerable_concerns]: false
+  reference_form_submission[attitude_towards_others]: Positive and collaborative
+  reference_form_submission[youth_issues_understanding]: Strong understanding of youth issues
+  reference_form_submission[any_other_comments]: Highly recommended
+  reference_form_submission[referee_designation]: N/A
+  reference_form_submission[roles_and_responsibilities]: 0
+  reference_form_submission[employment_end_date]: null
+  reference_form_submission[reason_for_leaving_job]: N/A
+  reference_form_submission[disciplinary_actions]: N/A
+  reference_form_submission[ability_to_perform_role]: good
+  reference_form_submission[professional_approach]: Professional
+  reference_form_submission[report_writing_skills]: Average
+  reference_form_submission[child_protection_issues]: Yes
+  reference_form_submission[would_rehire_applicant]: Yes
+  reference_form_submission[time_keeping_reliability]: Very reliable
+  reference_form_submission[capacity_known_applicant]: Strong
+  reference_form_submission[total_number_of_sickness_days]: 0
+  reference_form_submission[administration_record_keeping]: Adequate
+  reference_form_submission[position_held]: Senior Developer
+  reference_form_submission[legislation_knowledge]: Good knowledge of legislation
+  reference_form_submission[is_currently_employed]: 1
+  reference_form_submission[employment_start_date]: 2022-01-10
+  verified_by: Manager
+  reference_received_date: 2022-01-10
+  reference_form_submission[time_keeping_and_reliability]: Cute
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
