@@ -11,16 +11,16 @@ post {
 }
 
 params:path {
-  JobId: 6
-  house: 8
-  employee: 29
+  JobId: 1
+  house: 12
+  employee: 25
 }
 
 body:multipart-form {
-  type: application_form
+  type: offer_letter
   files[]: @file(C:\Users\Forrun\Downloads\Report.pdf)
   files[]: @file(C:\Users\Forrun\Downloads\Internship Offer Letter - Saad (1).pdf)
-  files[]: @file(C:\Users\Forrun\Downloads\saadghghghgh (1).pdf)
+  files[]: @file(C:\Users\Forrun\Downloads\Nuclear Physics.pdf)
   files[]: @file(C:\Users\Forrun\Downloads\12.pdf)
   files[]: @file(C:\Users\Forrun\Downloads\13.pdf)
   description: Lorem Ipsum
@@ -28,4 +28,5 @@ body:multipart-form {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
