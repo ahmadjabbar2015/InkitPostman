@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/user/permissions?houseId&clientId
+  url: {{baseURL}}/v1/user/permissions?houseId=10&clientId=9
   body: none
   auth: bearer
 }
 
 params:query {
-  houseId: 
-  clientId: 
+  houseId: 10
+  clientId: 9
 }
 
 auth:bearer {
