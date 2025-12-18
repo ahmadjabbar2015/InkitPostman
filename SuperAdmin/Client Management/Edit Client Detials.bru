@@ -1,0 +1,53 @@
+meta {
+  name: Edit Client Detials
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/client/:client
+  body: json
+  auth: bearer
+}
+
+params:path {
+  client: 19
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "businessLegalName": "Alpha saad Pvt Ltd",
+    "countryId": 2,
+    "cityId": 5,
+    "businessAddress": "22 Business Park",
+    "postcode": "44556",
+    "directorAsAdmin": false,
+    "directorAsContactPerson": false,
+    "director": {
+      "firstName": "Michael sexy Brown",
+      "lastName": "saad",
+      "email": "saadawed3@lh.com",
+      "mobile": "5551112222333"
+    }
+    
+  //   "admin": {
+  //     "firstName": "williams",
+  //     "lastName": "saad",
+  //     "email": "43wew2@gmail.com",
+  //     "mobile": "9998887777"
+  //   },
+  //   "contactPersons": {
+  //     "firstName": "Imran Khan",
+  //     "lastName": "Last Khan",
+  //     "name": "Imran Khan",
+  //     "email": "4e3ww3ee@example.com",
+  //     "mobile": "7776665555",
+  //     "address": "12 City Center"
+  //   }
+     
+  }
+}
