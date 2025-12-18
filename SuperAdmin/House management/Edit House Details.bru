@@ -1,0 +1,54 @@
+meta {
+  name: Edit House Details
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:houseId
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  houseId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "clientId": 1,
+    "houseName": "New House Name",
+    "houseContactNumber": "03007654321",
+    "countryId": 1,
+    "cityId": 3,
+    "houseAddress": "Flat 5B, Example Street, London",
+    "postcode": "SW1A 1AA",
+    "image": null,
+    "letterheadFormat": null,
+    "workingStartTime": "09:00",
+    "workingEndTime": "18:00",
+    "houseStaticIp": "192.185.1.100"
+  }
+  
+}
+
+body:multipart-form {
+  clientId: 1
+  houseName: Diamond House
+  houseContactNumber: 2345678765
+  countryId: 5
+  cityId: 1
+  postcode: NW1 5DB
+  houseStaticIp: 192.168.1.101
+  postcode: MYO
+  workingStartTime: 09:00
+  workingEndTime: 18:00
+  image: @file(C:\Users\Forrun\Downloads\download.jpg)
+  letterheadFormat: @file(C:\Users\Forrun\Downloads\download (4) (1).pdf)
+  houseAddress: 123 Street City
+  _method: put
+}
