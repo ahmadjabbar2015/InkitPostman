@@ -1,11 +1,11 @@
 meta {
   name: "4 - Young Person Admission - Education",
-  type: http,
+  type: http
   seq: 4
 }
 
 post {
-  url: {{baseURL}}/api/v1/house/:house/young-persons/admission/:youngPersonId/education
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/education
   body: multipartForm
   auth: bearer
 }

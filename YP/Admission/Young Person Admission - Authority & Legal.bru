@@ -1,0 +1,53 @@
+meta {
+  name: "5 - Young Person Admission - Authority & Legal",
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/authority-legal
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 10
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  local_authorities[0][local_authority_name]: London Borough of Camden
+  local_authorities[0][responsible_department]: Children's Services
+  local_authorities[0][local_authority_address]: Judd Street
+  local_authorities[0][local_authority_phone]: 020 7974 4444
+  local_authorities[0][local_authority_email]: childrenservices@camden.gov.uk
+  local_authorities[0][is_primary]: 1
+  key_contacts[0][role]: Social Worker
+  key_contacts[0][name]: Jane Smith
+  key_contacts[0][phone]: 020 7974 1234
+  key_contacts[0][email]: jane.smith@camden.gov.uk
+  key_contacts[0][is_current]: 1
+  key_contacts[1][role]: Independent Reviewing Officer
+  key_contacts[1][name]: Robert Lee
+  key_contacts[1][phone]: 020 7974 5678
+  key_contacts[1][email]: robert.lee@camden.gov.uk
+  key_contacts[1][is_current]: 1
+  legal_contacts[0][role]: Solicitor
+  legal_contacts[0][name]: David Brown
+  legal_contacts[0][practice_name]: Brown & Associates
+  legal_contacts[0][phone]: 020 8888 9999
+  legal_contacts[0][email]: david@brownlaw.co.uk
+  legal_contacts[0][address]: 101 Legal Street
+  legal_contacts[0][postcode]: WC1A 1AA
+  legal_contacts[0][letter_of_authority]: @file(/home/pirate-king/Downloads/Your AWS Abuse Report [18499176101] [AWS ID 177953779413].pdf)
+  legal_contacts[0][appointment_start_date]: 2024-01-10
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

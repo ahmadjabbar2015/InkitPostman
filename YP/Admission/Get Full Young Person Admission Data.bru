@@ -1,0 +1,25 @@
+meta {
+  name: "Get Full Young Person Admission Data",
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 10
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
