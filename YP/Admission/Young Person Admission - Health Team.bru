@@ -1,11 +1,11 @@
-meta{
+meta {
   name: "3 - Young Person Admission - Health Team",
-  type: "http",
+  type: http
   seq: 3
 }
 
 post {
-  url: {{baseURL}}/api/v1/house/:house/young-persons/admission/:youngPersonId/health-team
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/health-team
   body: json
   auth: bearer
 }
