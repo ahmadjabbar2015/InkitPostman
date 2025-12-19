@@ -1,0 +1,56 @@
+meta {
+  name: "2 - Young Person Admission - Family & Friends",
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/family-friends
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 10
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  family_members[0][name]: Fatima Khan
+  family_members[0][relationship]: Mother
+  family_members[0][phone]: 07700123456
+  family_members[0][email]: fatima.khan@example.com
+  family_members[0][address]: 123 Family Road
+  family_members[0][address_line_1]: London
+  family_members[0][postcode]: SW1A 1AA
+  family_members[0][member_status]: Allowed
+  family_members[0][reason]: 
+  family_members[0][frequency_of_contact]: Weekly
+  family_members[0][court_order_attachment]: @file(/home/pirate-king/Downloads/staff-profile-esuUY9O2tUsT5dd0di265TByyDJ3PnZTUrtYCjMq.pdf)
+  family_members[1][name]: Mohammed Khan
+  family_members[1][relationship]: Father
+  family_members[1][phone]: 07700987654
+  family_members[1][email]: mohammed@example.com
+  family_members[1][member_status]: Restricted
+  family_members[1][reason]: Court order in place
+  friends[0][name]: Ali Ahmed
+  friends[0][contact_allowed]: true
+  friends[0][relationship]: School Friend
+  friends[0][phone]: 07890123456
+  friends[0][email]: ali@example.com
+  friends[0][address]: 456 School Lane
+  friends[0][address_line_1]: Manchester
+  friends[0][postcode]: M1 1AA
+  friends[0][frequency_of_contact]: Monthly
+  friends[0][risk_or_concern_identified]: false
+  friends[0][staff_oversight_required]: false
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

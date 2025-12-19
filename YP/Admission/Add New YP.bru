@@ -1,0 +1,51 @@
+meta{
+  name: "1 - Young Person Admission - Personal Details",
+  type: "http",
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/api/v1/house/:house/young-persons/admission/personal-details
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  first_name: Ahmad
+  middle_name: Jabba
+  last_name: Khan
+  preferred_name: Ahmad
+  date_of_birth: 2010-05-15
+  gender: Male
+  pronouns: He/Him
+  nationality: British
+  nationality_1: Pakistani
+  nationality_2: 
+  ethnicity: Asian - Pakistani
+  religion: Islam
+  culture: Pakistani
+  cultural_customs: Observes Ramadan, requires prayer space
+  dietary_requirements: Halal only, no pork
+  worship_need: Prayer mat and quiet space required
+  phone: 07123456789
+  email: ahmad.khan@example.com
+  profile_picture: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-12-18 17-25-49.png)
+  nhs_number: 123 456 7890
+  ni_number: YN123456A
+  child_id: YP-2025-00123
+  client_id: 5
+  house_id: 10
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
