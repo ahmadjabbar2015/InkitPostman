@@ -4,14 +4,14 @@ meta {
   seq: 4
 }
 
-put {
+post {
   url: {{baseURL}}/v1/client/:client
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
 params:path {
-  client: 19
+  client: 2
 }
 
 auth:bearer {
@@ -32,22 +32,47 @@ body:json {
       "lastName": "saad",
       "email": "saadawed3@lh.com",
       "mobile": "5551112222333"
-    }
+    },
     
-  //   "admin": {
-  //     "firstName": "williams",
-  //     "lastName": "saad",
-  //     "email": "43wew2@gmail.com",
-  //     "mobile": "9998887777"
-  //   },
-  //   "contactPersons": {
-  //     "firstName": "Imran Khan",
-  //     "lastName": "Last Khan",
-  //     "name": "Imran Khan",
-  //     "email": "4e3ww3ee@example.com",
-  //     "mobile": "7776665555",
-  //     "address": "12 City Center"
-  //   }
+    "admin": {
+      "firstName": "williams",
+      "lastName": "saad",
+      "email": "43wew2@gmail.com",
+      "mobile": "9998887777"
+    },
+    "contactPersons": {
+      "firstName": "Imran Khan",
+      "lastName": "Last Khan",
+      "name": "Imran Khan",
+      "email": "4e3ww3ee@example.com",
+      "mobile": "7776665555",
+      "address": "12 City Center"
+    }
      
   }
+}
+
+body:multipart-form {
+  businessLegalName: Alpha saad Pvt Ltd
+  countryId: 2
+  cityId: 5
+  businessAddress: 22 Business Park
+  postcode: 44556
+  directorAsAdmin: 0
+  directorAsContactPerson: 0
+  director[firstName]: Michael yummy Brown
+  director[lastName]: saad
+  director[email]: saadawed3@lh.com 
+  director[mobile]: 5551112222333
+  admin[firstName]: williams
+  admin[lastName]: saad
+  admin[email]: 43wew2@gmail.com  @contentType( )
+  admin[mobile]: 9998887777
+  contactPersons[firstName]: Imran Khan
+  contactPersons[lastName]: Last Khan
+  contactPersons[name]: Imran Khan
+  contactPersons[email]: 4e3w7w3ee@example.com
+  contactPersons[mobile]: 9998887777
+  contactPersons[address]: 12 City Center
+  _method: put
 }
