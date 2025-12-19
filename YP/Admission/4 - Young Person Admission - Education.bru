@@ -1,0 +1,46 @@
+meta {
+  name: "4 - Young Person Admission - Education",
+  type: http,
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/api/v1/house/:house/young-persons/admission/:youngPersonId/education
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 10
+  youngPersonId: {{young_person_id}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  educations[0][mode_of_education]: School
+  educations[0][organization_or_provider]: Green Valley Academy
+  educations[0][school_name]: Green Valley Secondary School
+  educations[0][school_type]: Mainstream
+  educations[0][key_contact_name]: Ms. Laura Green
+  educations[0][key_contact_phone]: 020 5555 1234
+  educations[0][key_contact_email]: laura.green@greenvalley.sch.uk
+  educations[0][key_contact_role]: Head of Year
+  educations[0][start_date]: 2024-09-01
+  educations[0][expected_end_date]: 2026-07-20
+  educations[0][subject_to_ehcp]: true
+  educations[0][pep]: true
+  educations[0][ehcp_in_place]: true
+  educations[0][ehcp_document]: @file(/path/to/ehcp-document.pdf)
+  educations[0][pep_document]: @file(/path/to/pep-document.pdf)
+  educations[0][engagement_notes]: Good engagement in English and Science
+  educations[0][progress_summary]: On track for GCSE targets
+  educations[0][strengths_and_needs]: Strength in creative subjects, needs support in Maths
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
