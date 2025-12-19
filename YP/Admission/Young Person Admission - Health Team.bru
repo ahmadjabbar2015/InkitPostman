@@ -12,7 +12,7 @@ post {
 
 params:path {
   house: 10
-  youngPersonId: {{young_person_id}}
+  youngPersonId: 1
 }
 
 auth:bearer {
@@ -20,33 +20,35 @@ auth:bearer {
 }
 
 body:json {
-  {"health_teams": [
-    {
-      "health_practitioner_type": "GP",
-      "name": "Dr. Sarah Johnson",
-      "phone": "020 1234 5678",
-      "email": "sarah@gppractice.nhs.uk",
-      "practice_name": "City Health Centre",
-      "address": "789 Health Street",
-      "address_line_1": "London",
-      "postcode": "W1A 1AA",
-      "remarks": "Registered GP - regular check-ups"
-    },
-    {
-      "health_practitioner_type": "Dentist",
-      "name": "Dr. Mike Brown",
-      "phone": "020 8765 4321",
-      "email": "mike@smiledental.co.uk",
-      "practice_name": "Smile Dental Clinic",
-      "remarks": "Last visit: June 2025"
-    },
-    {
-      "health_practitioner_type": "Optician",
-      "name": "Vision Express",
-      "practice_name": "High Street Opticians",
-      "remarks": "Wears glasses"
-    }
-  ]}
+  {
+    "health_teams": [
+      {
+        "health_practitioner_type": "GP",
+        "name": "Dr. Sarah Johnson",
+        "phone": "020 1234 5678",
+        "email": "sarah@gppractice.nhs.uk",
+        "practice_name": "City Health Centre",
+        "address": "789 Health Street",
+        "address_line_1": "London",
+        "postcode": "W1A 1AA",
+        "remarks": "Registered GP - regular check-ups"
+      },
+      {
+        "health_practitioner_type": "Dentist",
+        "name": "Dr. Mike Brown",
+        "phone": "020 8765 4321",
+        "email": "mike@smiledental.co.uk",
+        "practice_name": "Smile Dental Clinic",
+        "remarks": "Last visit: June 2025"
+      },
+      {
+        "health_practitioner_type": "Optician",
+        "name": "Vision Express",
+        "practice_name": "High Street Opticians",
+        "remarks": "Wears glasses"
+      }
+    ]
+  }
 }
 
 settings {
