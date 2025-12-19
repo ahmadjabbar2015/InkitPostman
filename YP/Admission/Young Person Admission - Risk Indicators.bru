@@ -1,18 +1,18 @@
 meta {
   name: "7 - Young Person Admission - Risk Indicators",
-  type: "http",
+  type: http
   seq: 7
 }
 
 post {
-  url: {{baseURL}}/api/v1/house/:house/young-persons/admission/:youngPersonId/risk-indicators
+  url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/risk-indicators
   body: json
   auth: bearer
 }
 
 params:path {
   house: 10
-  youngPersonId: {{young_person_id}}
+  youngPersonId: 1
 }
 
 auth:bearer {
@@ -20,31 +20,33 @@ auth:bearer {
 }
 
 body:json {
-  "risk_indicators": [
-    {
-      "risk_factor": "CSE",
-      "risk_level": "High",
-      "description": "History of online grooming concerns",
-      "triggers": "Unsupervised phone/internet use",
-      "protective_factors": "1:1 support, restricted device access",
-      "religion_cultural_info": "Muslim - respects faith boundaries",
-      "likes_dislikes_hobbies": "Football, gaming, drawing",
-      "distinguishing_marks_height_weight": "Scar on left forearm, 5'6\", 60kg"
-    },
-    {
-      "risk_factor": "Absconding",
-      "risk_level": "Medium",
-      "description": "Two missing episodes in past year"
-    }
-  ],
-  "historical_incidents": [
-    {
-      "incident_reference_number": "INC-2024-045",
-      "incident_type": "Missing Episode",
-      "incident_date": "2024-07-15",
-      "incident_details": "Missing for 6 hours - found safe at friend's house"
-    }
-  ]
+  {
+    "risk_indicators": [
+      {
+        "risk_factor": "CSE",
+        "risk_level": "High",
+        "description": "History of online grooming concerns",
+        "triggers": "Unsupervised phone/internet use",
+        "protective_factors": "1:1 support, restricted device access",
+        "religion_cultural_info": "Muslim - respects faith boundaries",
+        "likes_dislikes_hobbies": "Football, gaming, drawing",
+        "distinguishing_marks_height_weight": "Scar on left forearm, 5'6\", 60kg"
+      },
+      {
+        "risk_factor": "Absconding",
+        "risk_level": "Medium",
+        "description": "Two missing episodes in past year"
+      }
+    ],
+    "historical_incidents": [
+      {
+        "incident_reference_number": "INC-2024-045",
+        "incident_type": "Missing Episode",
+        "incident_date": "2024-07-15",
+        "incident_details": "Missing for 6 hours - found safe at friend's house"
+      }
+    ]
+  }
 }
 
 settings {
