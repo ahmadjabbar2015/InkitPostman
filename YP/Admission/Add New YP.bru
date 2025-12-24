@@ -1,5 +1,5 @@
 meta {
-  name: "1 - Young Person Admission - Personal Details",
+  name: "1 - Young Person Admission - Personal Details"
   type: http
   seq: 1
 }
@@ -20,16 +20,17 @@ auth:bearer {
 
 body:multipart-form {
   first_name: Ahmad
+  middle_name: Jabba
   last_name: Khan
+  preferred_name: Ahmad
+  name_initials: AJK
   date_of_birth: 2010-05-15
+  age: 15
   gender: male
   pronouns: He/Him
-  nationality: stateless
   nationality_1: Pakistani
   nationality_2: 
   ethnicity: Asian - Pakistani
-  religion: islam
-  culture: afro_caribbean
   cultural_customs: Observes Ramadan, requires prayer space
   dietary_requirements: Halal only, no pork
   worship_need: Prayer mat and quiet space required
@@ -38,20 +39,5 @@ body:multipart-form {
   profile_picture: @file(C:\Users\Forrun\Downloads\download.jpg)
   client_id: 5
   house_id: 10
-  ~nhs_number: 123 456 7890
-  ~ni_number: YN123456A
-  ~child_id: YP-2025-00123
-  ~middle_name: Jabba
-  ~preferred_name: Ahmad
-  ~name_initials: AJK
-  ~child_id: YP-2025-00123
-  ~ni_number: YN123456A
-  ~nhs_number: 123 456 7890
-  ~older_number: 
-  ~age: 15
-}
-
-settings {
-  encodeUrl: true
-  timeout: 0
+  nhs_number: 1234567890
 }
