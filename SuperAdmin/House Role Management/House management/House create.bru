@@ -1,0 +1,35 @@
+meta {
+  name: House create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  houseName: Yoyo House
+  houseContactNumber: 45645654
+  countryId: 1
+  cityId: 5
+  houseAddress: 123 Green Street, London
+  postcode: NW1 5DB
+  clientId: 10
+  houseStaticIp: 192.168.1.101
+  housePrefix: MYO
+  workingStartTime: 09:00
+  workingEndTime: 18:00
+  createOfstedLogin: 1
+  createReg44Login: 0
+  isHeadoffice: 0
+  isInternalAgencyHouse: 0
+  image: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-28 10-33-45.png)
+  letterheadFormat: @file(/home/pirate-king/Downloads/ABDUL_HASEEB_RESUME (1).pdf)
+}

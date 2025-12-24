@@ -1,0 +1,21 @@
+meta {
+  name: House statiic IP Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseURL}}/v1/house/:Id/static-ip
+  body: json
+  auth: inherit
+}
+
+params:path {
+  Id: 36
+}
+
+body:json {
+  {
+    "houseStaticIp": "10.10.10.10"
+  }
+}

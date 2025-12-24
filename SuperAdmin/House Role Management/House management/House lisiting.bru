@@ -1,0 +1,15 @@
+meta {
+  name: House lisiting
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

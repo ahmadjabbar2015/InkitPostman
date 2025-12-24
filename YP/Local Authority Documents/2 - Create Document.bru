@@ -11,8 +11,8 @@ post {
 }
 
 params:path {
-  house: 10
-  youngPersonId: 1
+  house: 4
+  youngPersonId: 9
 }
 
 auth:bearer {
@@ -21,14 +21,9 @@ auth:bearer {
 
 body:multipart-form {
   document_name: Care Plan 2024
-  document_type: Care Plan
+  type: referral_document
   document_category: Legal
-  issued_date: 2024-01-15
-  expiry_date: 2025-01-15
-  issuing_authority: Manchester City Council
-  document_reference: LA-CP-2024-001
-  notes: Annual care plan review document
-  document_file: @file(/path/to/document.pdf)
+  files[]: @file(C:\Users\Forrun\Downloads\download (4) (1).pdf)
 }
 
 settings {
