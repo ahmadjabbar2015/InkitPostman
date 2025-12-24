@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/local-authority-documents
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/local-authority-documents/add
   body: multipartForm
   auth: bearer
 }
@@ -20,10 +20,9 @@ auth:bearer {
 }
 
 body:multipart-form {
-  document_name: care_plan_document
-  type: referral_document
-  document_category: Legal
-  files[]: @file(C:\Users\Forrun\Downloads\download (2).pdf)
+  document_name: New document
+  attachments[0]: @file(C:\Users\Forrun\Downloads\download (3).pdf)
+  attachments[1]: @file(C:\Users\Forrun\Downloads\download (4).pdf)
 }
 
 settings {
