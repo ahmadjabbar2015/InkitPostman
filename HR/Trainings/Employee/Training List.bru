@@ -5,9 +5,15 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/trainings/
+  url: {{baseURL}}/v1/house/:house/employees/:employee/job/:JobId/trainings/?status=pending&mode=online&type=mandatory
   body: none
   auth: inherit
+}
+
+params:query {
+  status: pending
+  mode: online
+  type: mandatory
 }
 
 params:path {
