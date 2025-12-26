@@ -1,0 +1,24 @@
+meta {
+  name: Get Listing Young Person
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/admission
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
