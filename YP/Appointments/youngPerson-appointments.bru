@@ -1,0 +1,20 @@
+meta {
+  name: youngPerson/appointments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

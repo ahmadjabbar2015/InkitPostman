@@ -1,0 +1,105 @@
+meta {
+  name: youngPerson/appointments/1/update
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  // GP Appointment
+  // {
+  //   "appointment_type_id": 1,
+  //   "appointment_date": "2025-12-30T10:00:00",
+  //   "appointment_booking_date": "2025-12-24T09:00:00",
+  //   "surgery_name": "string (required, max 255)",
+  //   "surgery_address": "string (required)",
+  //   "appointment_reason": "string (optional)",
+  //   "appointment_location": "string (optional, max 500)",
+  //   "notes": "string (optional)",
+  //   "appointment_with": "Dr.GP"  
+  // }
+  
+  // 2. Dentist Appointment
+  // {
+  //   "appointment_type_id": 2,
+  //   "appointment_date": "2025-12-30T14:00:00",
+  //   "appointment_booking_date": "2025-12-24 09:00:00",
+  //   "dentist_name": "string (required, max 255)",
+  //   "dentist_address": "string (required)",
+  //   "appointment_reason": "string (optional)",
+  //   "appointment_location": "string (optional, max 500)",
+  //   "notes": "string (optional)",
+  //   "appointment_with": "Dr.Dentist"
+  // }
+  
+  // // 3. Optician Appointment
+  // {
+  //   "appointment_type_id": 3,
+  //   "appointment_date": "2025-12-30T11:00:00",
+  //   "appointment_booking_date": "2025-12-24T09:00:00",
+  //   "optician_name": "string (required, max 255)",
+  //   "optician_address": "string (required)",
+  //   "appointment_reason": "string (optional)",
+  //   "appointment_location": "string (optional, max 500)",
+  //   "notes": "string (optional)",
+  //   "appointment_with": "Dr.Optician"
+  // }
+  
+  // // 4. Education Appointment
+  // {
+  //   "appointment_type_id": 4,
+  //   "appointment_date": "2025-12-30T09:00:00",
+  //   "appointment_booking_date": "2025-12-24T09:00:00",
+  //   "tutor_name": "string (required, max 255)",
+  //   "tutor_address": "string (required)",
+  //   "appointment_reason": "string (optional)asdf",
+  //   "appointment_location": "string (optional, max 500)",
+  //   "notes": "string (optional)",
+  //   "appointment_with": "Prof Sergio Marquina"
+  // }
+  
+  // 5. Contact Appointment
+  {
+    "appointment_type_id": 5,
+    "appointment_date": "2025-12-30T15:00:00",
+    "appointment_booking_date": "2025-12-24T09:00:00",
+    "contact_type": "Friends",
+    "friend_name": "string (required, max 255)",
+    "friend_address": "string (required)",
+    "friend_mobile": "string (optional, max 30)",
+    "appointment_mode": "In-person",
+    "appointment_reason": "string (optional)",
+    "appointment_location": "string (optional, max 500)",
+    "notes": "string (optional)"
+  }
+  
+  // 6. Others Appointment
+  // {
+  //   "appointment_type_id": 6,
+  //   "appointment_date": "2025-12-30T16:00:00",
+  //   "appointment_booking_date": "2025-12-24T09:00:00",
+  //   "appointment_with": "string (required, max 255)",
+  //   "other_name": "string (required, max 255)",
+  //   "other_address": "string (optional)",
+  //   "other_email": "abc@mailinator.com",
+  //   "other_mobile": "string (optional, max 30)",
+  //   "appointment_reason": "string (optional)",
+  //   "appointment_location": "string (optional, max 500)",
+  //   "notes": "string (optional)"
+  // }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

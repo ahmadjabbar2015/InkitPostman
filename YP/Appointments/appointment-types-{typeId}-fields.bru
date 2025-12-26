@@ -1,0 +1,20 @@
+meta {
+  name: appointment-types/{typeId}/fields
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/appointment-types/1/fields
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
