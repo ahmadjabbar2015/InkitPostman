@@ -11,9 +11,9 @@ post {
 }
 
 params:path {
-  JobId: 2
-  house: 13
-  employee: 27
+  JobId: 1
+  house: 4
+  employee: 4
 }
 
 body:multipart-form {
@@ -22,23 +22,23 @@ body:multipart-form {
   issuedBy: Disclosure & Barring Service
   dbsLevel: Enhanced
   dbsWorkforce: Child Workforce
-  dbsStatus: New DBS Applied
-  ~employeeJobId: 6
-  ~issuanceDate: 2023-02-01
-  ~dbsNumber: DBS123456789
-  ~convictionDetails: Candidate had a minor offense in 2010, cleared after legal review.
-  ~riskAssessment: true
-  ~dbsOnUpdateService: Yes
-  ~checkedBy: HR Manager
-  ~mostRecentCheckDate: 2024-12-01
-  ~upcomingCheckDate: 2025-12-01
-  ~nextCheckDate: 2026-12-01
-  ~dbsCertificateAttachment: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-10-15 11-59-46.png)
-  ~riskAssessmentAttachment: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
-  ~documentForDbsUpdateServiceAttachment: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
+  dbsStatus: Marked
+  employeeJobId: 6
+  issuanceDate: 2023-02-01
+  dbsNumber: DBS123456789
+  convictionDetails: Candidate had a minor offense in 2010, cleared after legal review.
+  riskAssessment: 1
+  dbsOnUpdateService: Yes
+  checkedBy: HR Manager
+  mostRecentCheckDate: 2024-12-01
+  upcomingCheckDate: 2025-12-01
+  nextCheckDate: 2026-12-01
+  dbsCertificateAttachment: @file(C:\Users\Forrun\Downloads\download (4).pdf)
+  riskAssessmentAttachment: @file(C:\Users\Forrun\Downloads\download.pdf)
+  documentForDbsUpdateServiceAttachment: @file(C:\Users\Forrun\Downloads\download (1).pdf)
+  description: Lorem Ipsum
   ~files[]: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
   ~files[]: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-09-04 18-04-12.png)
-  ~description: Lorem Ipsum
 }
 
 settings {
