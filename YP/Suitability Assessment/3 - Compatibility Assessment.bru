@@ -1,0 +1,65 @@
+meta {
+  name: 3 - Compatibility Assessment
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/compatibility-assessment
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "current_residents_count": 5,
+    "diagnoses": true,
+    "diagnoses_description": "ADHD, Autism Spectrum",
+    "diagnoses_risk_level": "medium",
+    "communication": true,
+    "communication_description": "Good verbal skills, struggles with non-verbal cues",
+    "communication_risk_level": "low",
+    "social_skills": true,
+    "social_skills_description": "Working on peer relationships",
+    "social_skills_risk_level": "medium",
+    "behaviour": false,
+    "behaviour_description": "",
+    "behaviour_risk_level": "low",
+    "relationships": true,
+    "relationships_description": "Can form positive relationships with support",
+    "relationships_risk_level": "low",
+    "bullying": false,
+    "bullying_description": "",
+    "bullying_risk_level": "low",
+    "aggression": false,
+    "aggression_description": "",
+    "aggression_risk_level": "low",
+    "allegations": false,
+    "allegations_description": "",
+    "allegations_risk_level": "low",
+    "compatibility_assessment_completed": true,
+    "compatibility_assessment_date": "2025-12-15",
+    "peer_risks_identified": false,
+    "peer_risks_description": "",
+    "peer_risks_risk_level": "low",
+    "bedroom_allocation_feasible": true,
+    "reason_for_allocation": "Single room on ground floor available",
+    "impact_on_group_dynamics": "Positive addition to current group",
+    "impact_rating": "positive",
+    "manager_review_required_if_high": false,
+    "views_comments_feedback": "Current residents expressed openness to new placement",
+    "views_source": "House meeting on 10/12/2025",
+    "overall_compatibility_decision": "suitable",
+    "support_required_if_conditional": ""
+  }
+}

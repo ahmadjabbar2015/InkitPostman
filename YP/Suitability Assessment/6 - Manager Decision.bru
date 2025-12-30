@@ -1,0 +1,34 @@
+meta {
+  name: 6 - Manager Decision
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/manager-decision
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "outcome": "approved",
+    "support_safety_measures_required": "1:1 support during first week, online safety monitoring, therapy continuation",
+    "summary_of_strengths": "Good engagement, willing to participate, responds well to structure, building positive relationships",
+    "identified_risks": "History of self-harm, exploitation concerns, online safety",
+    "mitigation_actions_in_place": "Weekly therapy sessions, key worker check-ins, social media monitoring, safety plan in place",
+    "manager_name": "Jane Smith",
+    "signature": "J.Smith",
+    "signed_at": "2025-12-28"
+  }
+}

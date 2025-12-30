@@ -1,0 +1,42 @@
+meta {
+  name: 5 - Documentation Checklist
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/documentation-checklist
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "care_pathway_plan_received": true,
+    "children_guide_signed": true,
+    "statement_of_purpose_provided": true,
+    "complaints_procedure_explained": true,
+    "advocacy_rights_explained": true,
+    "advocate_contact_given": true,
+    "risk_assessments_received": true,
+    "behaviour_policy_explained": true,
+    "health_lac_medical_received": true,
+    "education_ehcp_received": true,
+    "referral_documentation_received": true,
+    "placement_plan_received": true,
+    "youth_justice_police_info_received": false,
+    "previous_placement_reports_received": true,
+    "consultation_with_carers_professionals": true,
+    "comments": "All essential documentation received. Youth justice info not applicable."
+  }
+}

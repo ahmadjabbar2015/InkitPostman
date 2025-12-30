@@ -1,0 +1,20 @@
+meta {
+  name: Get All Assessments
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}

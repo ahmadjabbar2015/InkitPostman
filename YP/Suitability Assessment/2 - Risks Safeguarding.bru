@@ -1,0 +1,65 @@
+meta {
+  name: 2 - Risks Safeguarding
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/risks-safeguarding
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "absconding_history": false,
+    "absconding_description": "",
+    "absconding_risk_level": "low",
+    "exploitation_risk": true,
+    "exploitation_description": "Previous CSE concerns, now receiving support",
+    "exploitation_risk_level": "medium",
+    "self_harm_suicide_risk": true,
+    "self_harm_description": "History of self-harm, currently stable with therapy",
+    "self_harm_risk_level": "medium",
+    "aggression_violence": false,
+    "aggression_description": "",
+    "aggression_risk_level": "low",
+    "fire_setting": false,
+    "fire_setting_description": "",
+    "fire_setting_risk_level": "low",
+    "substance_misuse": false,
+    "substance_description": "",
+    "substance_risk_level": "low",
+    "offending_behaviour": false,
+    "offending_description": "",
+    "offending_risk_level": "low",
+    "online_safety_concerns": true,
+    "online_description": "Needs monitoring on social media",
+    "online_risk_level": "medium",
+    "bullying": false,
+    "bullying_description": "",
+    "bullying_risk_level": "low",
+    "sexualised_behaviour": false,
+    "sexualised_description": "",
+    "sexualised_risk_level": "low",
+    "overall_current_risk_level": "medium",
+    "manager_review_date_if_high": null,
+    "other_risks": [
+      {
+        "risk_detail": "Anxiety in new situations",
+        "description": "Requires gradual introduction to new environments",
+        "individual_risk_level": "low"
+      }
+    ]
+  }
+}

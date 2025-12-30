@@ -1,0 +1,27 @@
+meta {
+  name: 8 - Upload Attachment
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/upload-attachment
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  section: risks_safeguarding
+  ~file: @file(/path/to/document.pdf)
+  ~description: Risk assessment supporting documentation
+}

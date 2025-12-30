@@ -1,0 +1,38 @@
+meta {
+  name: 7 - Post Decision Actions
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/post-decision-actions
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  assessmentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "placing_authority_notified": true,
+    "notification_sent_date": "2025-12-28",
+    "admission_planning_meeting_arranged": true,
+    "meeting_date": "2026-01-05",
+    "admission_meeting_attendee_ids": [1, 2, 3],
+    "staff_briefed_on_risks_plans": true,
+    "date_briefing_completed": "2025-12-29",
+    "child_yp_visit_completed": true,
+    "planned_visit_date": "2025-12-20",
+    "transition_plan_finalized": true,
+    "involved_professionals": "Social worker, therapist, education coordinator, key worker",
+    "date_of_decision": "2025-12-28"
+  }
+}
