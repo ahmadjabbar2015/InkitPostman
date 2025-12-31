@@ -4,7 +4,7 @@ meta {
   seq: 6
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/previous-placement
   body: multipartForm
   auth: bearer
@@ -22,12 +22,13 @@ auth:bearer {
 body:multipart-form {
   has_previous_placement: 1
   placement_name: Sunshine Children's Home
-  address: 456 Care Avenue, Manchester
+  address: 456 Care Avenue, Manchester, M1 2AB
   type: Residential Home
   start_date: 2023-01-10
   end_date: 2024-08-30
-  reason_for_leaving: Planned transition to current placement
-  report_attachment: @file(C:\Users\Forrun\Downloads\download (3).pdf)
+  reason_for_leaving: Planned transition to current placement for educational opportunities
+  report_attachment: @file(/home/pirate-king/Documents/sample.pdf)
+  sort_order: 1
 }
 
 settings {

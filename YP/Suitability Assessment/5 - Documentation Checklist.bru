@@ -1,11 +1,11 @@
 meta {
-  name: 5 - Documentation Checklist
+  name: 0 - Create Assessment & Documentation Checklist
   type: http
-  seq: 5
+  seq: 0
 }
 
-post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/documentation-checklist
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/documentation-checklist
   body: json
   auth: bearer
 }
@@ -13,7 +13,6 @@ post {
 params:path {
   house: 4
   youngPersonId: 1
-  assessmentId: 1
 }
 
 auth:bearer {

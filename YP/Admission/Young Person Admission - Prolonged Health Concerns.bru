@@ -4,7 +4,7 @@ meta {
   seq: 8
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/prolonged-health-concerns
   body: multipartForm
   auth: bearer
@@ -24,19 +24,23 @@ body:multipart-form {
   disability_type: ADHD
   disability_description: Attention Deficit Hyperactivity Disorder - combined type
   disability_severity: Moderate
-  ehcp_upload: @file(C:\Users\Forrun\Downloads\download (6).pdf)
+  ~ehcp_upload: @file(/home/pirate-king/Documents/sample.pdf)
   support_strategies: Movement breaks, visual timetable, quiet space access
   has_non_verbal_communication_need: 0
+  ~preferred_method: Makaton
+  ~describe_other_preferred_method:
+  ~communication_profile_upload: @file(/home/pirate-king/Documents/sample.pdf)
   key_staff_trained: 1
-  training_date: 2025-06-20
+  key_staff_trained_id: 5
+  training_date: 2024-06-20
   has_allergies: 1
   allergies_list: Peanuts, tree nuts
   reaction_type: Anaphylaxis
   emergency_procedure: Administer EpiPen immediately, call 999
   has_distinguishing_marks: 1
   distinguishing_marks_description: Large birthmark on left forearm, small scar on right knee
-  marks_observed_date: 2025-12-01
-  ~body_map_upload: @file(/path/to/body-map.png)
+  marks_observed_date: 2024-12-01
+  ~body_map_upload: @file(/home/pirate-king/Documents/body-map.png)
 }
 
 settings {

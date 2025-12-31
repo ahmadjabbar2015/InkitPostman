@@ -4,7 +4,7 @@ meta {
   seq: 3
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/health-team
   body: json
   auth: bearer
@@ -23,7 +23,8 @@ body:json {
   {
     "health_teams": [
       {
-        "health_practitioner_type": "therapist",
+        "id": null,
+        "health_practitioner_type": "gp",
         "name": "Dr. Sarah Johnson",
         "phone": "020 1234 5678",
         "email": "sarah@gppractice.nhs.uk",
@@ -31,21 +32,26 @@ body:json {
         "address": "789 Health Street",
         "address_line_1": "London",
         "postcode": "W1A 1AA",
-        "remarks": "Registered GP - regular check-ups"
+        "remarks": "Registered GP - regular check-ups",
+        "sort_order": 1
       },
       {
-        "health_practitioner_type": "therapist",
+        "id": null,
+        "health_practitioner_type": "dentist",
         "name": "Dr. Mike Brown",
         "phone": "020 8765 4321",
         "email": "mike@mailinator.com",
         "practice_name": "Smile Dental Clinic",
-        "remarks": "Last visit: June 2025"
+        "remarks": "Last visit: June 2025",
+        "sort_order": 2
       },
       {
-        "health_practitioner_type": "therapist",
+        "id": null,
+        "health_practitioner_type": "optician",
         "name": "Vision Express",
         "practice_name": "High Street Opticians",
-        "remarks": "Wears glasses"
+        "remarks": "Wears glasses",
+        "sort_order": 3
       }
     ]
   }

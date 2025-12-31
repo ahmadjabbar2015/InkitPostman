@@ -4,7 +4,7 @@ meta {
   seq: 1
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/personal-details
   body: multipartForm
   auth: bearer
@@ -20,24 +20,38 @@ auth:bearer {
 
 body:multipart-form {
   first_name: Ahmad
-  middle_name: Jabba
+  ~middle_name: Jabba
   last_name: Khan
-  preferred_name: Ahmad
-  name_initials: AJK
   date_of_birth: 2010-05-15
-  age: 15
   gender: male
-  pronouns: He/Him
-  nationality_1: Pakistani
-  nationality_2: 
-  ethnicity: Asian - Pakistani
-  cultural_customs: Observes Ramadan, requires prayer space
-  dietary_requirements: Halal only, no pork
-  worship_need: Prayer mat and quiet space required
-  phone: 07123456789
-  email: ahmad.khan@mailinator.com
-  profile_picture: @file(C:\Users\Forrun\Downloads\download.jpg)
-  client_id: 5
-  house_id: 10
-  nhs_number: 1234567890
+  ~preferred_name: Ahmad
+  ~name_initials: AJK
+  ~child_id: YP-2025-00123
+  ~ni_number: YN123456A
+  ~nhs_number: 1234567890
+  ~older_number:
+  ~age: 15
+  ~pronouns: He/Him
+  ~country_id: 1
+  ~nationality: british
+  ~nationality_1: Pakistani
+  ~nationality_2:
+  ~ethnicity: Asian - Pakistani
+  ~religion: islam
+  ~culture: south_asian
+  ~dietary_requirements: Halal only, no pork
+  ~worship_need: Prayer mat and quiet space required
+  ~phone: 07123456789
+  ~email: ahmad.khan@mailinator.com
+  ~profile_picture: @file(/home/pirate-king/Pictures/Screenshots/Screenshot from 2025-12-18 17-25-49.png)
+  ~parental_consent_form:
+  ~dols_order_attachment:
+  ~legal_status: section_20
+  ~other_legal_status:
+  ~dols_required: 0
+  ~dols_order_number:
+  ~advocate_appointed: 1
+  ~consent_date: 2024-12-01
+  ~start_date: 2024-12-15
+  ~review_date: 2025-03-15
 }
