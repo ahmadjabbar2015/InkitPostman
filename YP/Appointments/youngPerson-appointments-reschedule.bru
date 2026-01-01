@@ -1,0 +1,57 @@
+meta {
+  name: Reschedule Appointment
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments
+  body: json
+  auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "parent_appointment_id": 123,
+    "appointment_type_id": 1,
+    "appointment_date": "2026-02-15 14:00:00",
+    "appointment_booking_date": "2026-01-01 10:00:00",
+    "surgery_name": "City Medical Center",
+    "surgery_address": "123 Main Street, London",
+    "appointment_reason": "Follow-up checkup",
+    "appointment_location": "Main Clinic",
+    "notes": "Rescheduled from original appointment"
+  }
+}
+
+docs {
+  Reschedule an existing appointment by creating a new one linked to the parent.
+  
+  How it works:
+  1. Provide the parent_appointment_id of the appointment you want to reschedule
+  2. The original appointment will automatically be marked as "Canceled" with a note
+  3. A new appointment is created with all the same details (you can override any field)
+  4. The new appointment is linked to the original via parent_appointment_id
+  
+  Required Fields:
+  - parent_appointment_id: ID of the original appointment to reschedule
+  - appointment_type_id: Must match the original appointment type
+  - appointment_date: New date/time for the rescheduled appointment
+  - All type-specific required fields (e.g., surgery_name, surgery_address for GP)
+  
+  Response:
+  - Returns success message: "Appointment rescheduled successfully"
+  - Returns the newly created appointment with parent_appointment_id set
+  
+  Note: This uses the same endpoint as creating a new appointment.
+  The parent_appointment_id field differentiates between create and reschedule.
+}

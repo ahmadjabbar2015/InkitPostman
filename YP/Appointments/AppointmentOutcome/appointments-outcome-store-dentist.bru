@@ -5,9 +5,15 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/32/outcome
+  url: {{baseURL}}/v1/house/:house/young-persons/:yountperson/appointments/:appointment/outcome
   body: multipartForm
   auth: bearer
+}
+
+params:path {
+  yountperson: 1
+  house: 1
+  appointment: 34
 }
 
 auth:bearer {
