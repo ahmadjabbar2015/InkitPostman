@@ -1,17 +1,13 @@
 meta {
-  name: appointment-types/{typeId}/fields
+  name: youngPerson/appointments/outcome/delete
   type: http
   seq: 4
 }
 
-get {
-  url: {{baseURL}}/v1/appointment-types/:type_id/fields
+delete {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/1/outcome
   body: none
   auth: bearer
-}
-
-params:path {
-  type_id: 1
 }
 
 auth:bearer {

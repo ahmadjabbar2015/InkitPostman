@@ -5,9 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/1/young-persons/1/appointments
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments
   body: json
   auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
 }
 
 auth:bearer {
@@ -16,30 +21,30 @@ auth:bearer {
 
 body:json {
   // GP Appointment
-  {
-    "appointment_type_id": 1,
-    "appointment_date": "2025-12-30T10:00:00",
-    "appointment_booking_date": "2025-12-24T09:00:00",
-    "surgery_name": "string (required, max 255)",
-    "surgery_address": "string (required)",
-    "appointment_reason": "string (optional)",
-    "appointment_location": "string (optional, max 500)",
-    "notes": "string (optional)",
-    "appointment_with": "Dr.GP"  
-  }
-  
-  // 2. Dentist Appointment
   // {
-  //   "appointment_type_id": 2,
-  //   "appointment_date": "2025-12-30T14:00:00",
-  //   "appointment_booking_date": "2025-12-24 09:00:00",
-  //   "dentist_name": "string (required, max 255)",
-  //   "dentist_address": "string (required)",
+  //   "appointment_type_id": 1,
+  //   "appointment_date": "2025-12-30 10:00:00",
+  //   "appointment_booking_date": "2025-12-24T09:00:00",
+  //   "surgery_name": "string (required, max 255)",
+  //   "surgery_address": "string (required)",
   //   "appointment_reason": "string (optional)",
   //   "appointment_location": "string (optional, max 500)",
   //   "notes": "string (optional)",
-  //   "appointment_with": "Dr.Dentist"
+  //   "appointment_with": "Dr.GP"  
   // }
+  
+  // 2. Dentist Appointment
+  {
+    "appointment_type_id": 2,
+    "appointment_date": "2025-12-30T14:00:00",
+    "appointment_booking_date": "2025-12-24 09:00:00",
+    "dentist_name": "string (required, max 255)",
+    "dentist_address": "string (required)",
+    "appointment_reason": "string (optional)",
+    "appointment_location": "string (optional, max 500)",
+    "notes": "string (optional)",
+    "appointment_with": "Dr.Dentist"
+  }
   
   // // 3. Optician Appointment
   // {
