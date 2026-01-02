@@ -1,0 +1,20 @@
+meta {
+  name: Master Data - All Options
+  type: http
+  seq: 100
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/master-data
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
