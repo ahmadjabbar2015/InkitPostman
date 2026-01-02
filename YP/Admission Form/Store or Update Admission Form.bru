@@ -1,0 +1,82 @@
+meta {
+  name: Store or Update Admission Form
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/admission-form
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  up_to_date_care_pathway_plan_received: yes
+  admission_date: 2025-01-15
+  room_allocated: room_1
+  keyworker_id: 5
+  ~co_keyworker_id: 6
+  placement_type: long_term
+  ~placement_type_reason: Planned long-term care placement
+  ~placement_type_la_approval: @file(/home/pirate-king/Documents/sample.pdf)
+  legal_status_confirmed: yes
+  ~care_order: @file(/home/pirate-king/Documents/sample.pdf)
+  placement_plan_signed: yes
+  ~signed_document: @file(/home/pirate-king/Documents/sample.pdf)
+  ~fire_safety_induction: yes
+  ~fire_safety_staff_name: John Smith
+  ~fire_safety_completion_date: 2025-01-14
+  ~medication_induction: yes
+  ~staff_trained_in_medication: yes
+  ~staff_trained_date: 2025-01-10
+  ~peep_required: no
+  ~peep_plan: @file(/home/pirate-king/Documents/sample.pdf)
+  ~communication_aid_provided: yes
+  ~communication_aid_type: device
+  ~communication_aid_description: Speech generating device for AAC
+  ~staff_trained_in_communication_aid: yes
+  ~communication_aid_staff_name: Sarah Jones
+  ~communication_aid_date_trained: 2025-01-12
+  ~medications[0][id]:
+  ~medications[0][known_medical_conditions]: yes
+  ~medications[0][condition_name]: ADHD
+  ~medications[0][severity]: moderate
+  ~medications[0][medication_required]: yes
+  ~medications[0][medication_name]: Methylphenidate
+  ~medications[0][form_of_medication]: tablet
+  ~medications[0][strength_dosage]: 10
+  ~medications[0][strength_dosage_unit]: mg
+  ~medications[0][route]: oral
+  ~medications[0][frequency]: twice_a_day
+  ~medications[0][duration_course_length]: on_going
+  ~medications[0][start_date]: 2024-06-01
+  ~medications[0][stop_date]:
+  ~medications[0][schedule]: Morning 8am, Afternoon 2pm
+  ~medications[0][prescribed_by]: Dr. Smith
+  ~medications[0][upload_prescription]: @file(/home/pirate-king/Documents/sample.pdf)
+  ~medications[0][last_review]: 2024-12-01
+  ~medications[0][sort_order]: 1
+  ~timetables[0][id]:
+  ~timetables[0][time_due]: 08:00
+  ~timetables[0][intake_routine]: twice_a_day
+  ~timetables[0][with_food]: With breakfast
+  ~timetables[0][specific_instructions]: after_meals
+  ~timetables[0][sort_order]: 1
+  ~timetables[1][id]:
+  ~timetables[1][time_due]: 14:00
+  ~timetables[1][intake_routine]: twice_a_day
+  ~timetables[1][with_food]: With lunch
+  ~timetables[1][specific_instructions]: after_meals
+  ~timetables[1][sort_order]: 2
+  ~completed_by: 5
+  ~completion_date: 2025-01-15
+}

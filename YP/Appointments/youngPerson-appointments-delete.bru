@@ -1,0 +1,26 @@
+meta {
+  name: youngPerson/appointments/delete
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/appointments/:appointment
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
+  appointment: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
