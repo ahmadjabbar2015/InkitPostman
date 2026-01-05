@@ -1,0 +1,113 @@
+meta {
+  name: Create Daily Log - Education
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 7
+  activity_action: Attended school - full day. Completed English and Maths assignments. Teacher reported good engagement in Science practical. Homework: Complete reading chapter 5 for tomorrow.
+  mood[0]: Engaged
+  mood[1]: Content
+  breakfast: Cereal and fruit
+  lunch: School lunch - pizza and salad
+  dinner: Chicken curry with rice
+  ~attachments[0]: @file(/path/to/homework_assignment.pdf)
+  ~attachments[1]: @file(/path/to/teacher_report.pdf)
+}
+
+docs {
+  # Create Daily Log - Education
+  
+  Document education-related activities and academic progress.
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 7 (Education)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `activity_action` (string): Educational activities and observations
+  
+  ## What to Document
+  
+  ### School Attendance
+  - Full day / Half day / Absent
+  - Reasons for absence if applicable
+  - Punctuality
+  
+  ### Academic Activities
+  - Subjects studied
+  - Assignments completed
+  - Homework given
+  - Tests or assessments
+  - Projects worked on
+  
+  ### Engagement & Progress
+  - Participation level
+  - Understanding of material
+  - Challenges faced
+  - Achievements and strengths
+  - Areas needing support
+  
+  ### Teacher Feedback
+  - Reports from teachers
+  - Behaviour in class
+  - Social interactions
+  - Areas of concern or praise
+  
+  ### Support Provided
+  - Additional tutoring
+  - Study sessions at home
+  - Educational resources used
+  - Assistance with homework
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected
+  - `mood` (array): Attitude towards learning
+  - `breakfast`, `lunch`, `dinner`: Meals (especially school lunch)
+  - `attachments` (files): Homework, reports, certificates
+  
+  ## Example Entries
+  
+  ### Full School Day
+  ```
+  Attended school 9am-3pm. All lessons attended. Maths: working on 
+  fractions, needed extra support. English: presented book review, 
+  received positive feedback. PE: participated fully in football.
+  Homework: Maths worksheet pages 12-14.
+  ```
+  
+  ### Home Education
+  ```
+  Home tutoring session 10am-12pm. Covered English comprehension and 
+  creative writing. YP wrote a short story about their recent visit 
+  to the zoo. Showed improvement in spelling and grammar. Afternoon: 
+  Science video lesson on ecosystems, completed quiz with 85% score.
+  ```
+  
+  ### Remote Learning
+  ```
+  Online lessons via video conference. Joined English and History 
+  classes. Technical issues at start but resolved. Submitted coursework 
+  on time. Teacher praised essay on World War II.
+  ```
+  
+  ### Educational Trips
+  ```
+  School trip to Science Museum. YP very engaged, asked many questions. 
+  Particularly interested in space exhibition. Completed worksheet 
+  during visit. Good behaviour throughout.
+  ```
+  
+  ## Response (201 Created)
+  Returns the created education log entry.
+}

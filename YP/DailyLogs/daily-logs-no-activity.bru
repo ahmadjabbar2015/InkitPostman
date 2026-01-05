@@ -1,0 +1,81 @@
+meta {
+  name: Create Daily Log - No Activity
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 1
+  activity_action: Young person chose to have quiet time in their room during afternoon. Reading and listening to music. No significant activities or concerns to report.
+  mood[0]: Calm
+  breakfast: Toast and tea
+  lunch: Sandwich and crisps
+  dinner: Pizza and salad
+}
+
+docs {
+  # Create Daily Log - No Activity
+  
+  Record periods when no significant activities or events occurred.
+  
+  ## When to Use
+  - Quiet periods with no specific activities
+  - Rest time or downtime
+  - Days when YP chooses not to participate in activities
+  - Uneventful shifts where nothing notable happened
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 1 (No Activity)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `activity_action` (string): Brief note explaining the quiet period
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected from log_date_time
+  - `mood` (array): YP's general mood during the period
+  - `breakfast`, `lunch`, `dinner`, `snacks`: Meal information
+  - `clothing`: What YP was wearing
+  
+  ## Purpose
+  - Maintain complete daily records
+  - Show continuity in care documentation
+  - Distinguish between nothing happened vs. nothing recorded
+  - Demonstrate respect for YP's choice of quiet time
+  
+  ## Example Entries
+  
+  ### Quiet Afternoon
+  ```
+  Afternoon shift 12:00-18:00. YP chose to spend time in room.
+  Engaged in personal hobbies (drawing, reading). Staff checked 
+  regularly - YP content and settled. No concerns. Came down for 
+  dinner at usual time.
+  ```
+  
+  ### Unwell Rest Day
+  ```
+  YP unwell with cold. Spent day resting in room. Minimal activity.
+  Regular welfare checks. Fluids and light meals provided. Sleeping 
+  intermittently. No medical concerns - monitoring.
+  ```
+  
+  ### Personal Time
+  ```
+  After breakfast, YP requested personal time. Remained in room 
+  listening to music and using phone. Appropriate for age and 
+  development. Joined for lunch. No concerns noted.
+  ```
+  
+  ## Response (201 Created)
+  Returns the created log documenting the quiet period.
+}

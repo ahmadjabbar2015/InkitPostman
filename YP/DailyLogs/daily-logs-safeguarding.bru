@@ -1,0 +1,74 @@
+meta {
+  name: Create Daily Log - Protection & Safeguarding
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 6
+  safeguarding_category: Emotional
+  concern_raised: Young person expressed feelings of anxiety about upcoming school exam. Appeared distressed during conversation.
+  disclosure_made: YP disclosed feeling overwhelmed with schoolwork and worried about disappointing family.
+  action_outcome: Reassured YP and arranged meeting with educational support coordinator. Notified social worker.
+  review_date: 2026-01-12
+  follow_up: Schedule follow-up meeting with school and review support plan
+  mood[0]: Anxious
+  mood[1]: Sad
+  ~attachments[0]: @file(/path/to/incident_notes.pdf)
+}
+
+docs {
+  # Create Daily Log - Protection, Behaviour and Safeguarding
+  
+  Create a daily log for safeguarding concerns and protective measures.
+  
+  ## Required Fields (Safeguarding)
+  - `chronology_id` (integer): Must be 6 (Protection, Behaviour and Safeguarding)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `safeguarding_category` (string, required): Type of safeguarding concern
+  - `concern_raised` (string, required): Description of the concern
+  
+  ## Optional But Recommended Fields
+  - `disclosure_made` (string): Details of any disclosure by the young person
+  - `action_outcome` (string): Actions taken and outcomes
+  - `review_date` (date): Date scheduled for review (YYYY-MM-DD)
+  - `follow_up` (string): Required follow-up actions
+  - `day_part` (string): Auto-detected if not provided
+  - `mood` (array): Young person's emotional state
+  - `attachments` (files): Incident reports, documentation
+  
+  ## Safeguarding Categories
+  - Physical: Physical harm, injury concerns
+  - Emotional: Emotional abuse, distress
+  - Sexual: Sexual abuse or exploitation concerns
+  - Neglect: Neglect or lack of care
+  - Bullying: Bullying incidents
+  - Online Safety: Internet safety concerns
+  - Exploitation: Exploitation risks
+  - Other: Other safeguarding concerns
+  
+  ## Important Notes
+  - All safeguarding logs are treated with high priority
+  - Ensure appropriate staff are notified
+  - Review dates should be set for follow-up
+  - Maintain detailed documentation
+  
+  ## Response (201 Created)
+  Returns the created safeguarding log with all details recorded.
+}

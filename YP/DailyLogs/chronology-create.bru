@@ -1,0 +1,134 @@
+meta {
+  name: Create Chronology
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseURL}}/v1/house/:houseId/chronologies
+  body: json
+  auth: bearer
+}
+
+params:path {
+  houseId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "chronology1"
+  }
+}
+
+docs {
+  # Create House-Specific Chronology
+  
+  Creates a custom chronology type for a specific house. This allows houses to define chronology types beyond the global (system-wide) ones.
+  
+  ## Endpoint
+  `POST /v1/house/{houseId}/chronologies`
+  
+  ## Authentication
+  - **Required**: Bearer token
+  - **Permission**: `create_chronology`
+  
+  ## Path Parameters
+  - `houseId` (integer, required): The house ID where the chronology will be created
+  
+  ## Request Body
+  ```json
+  {
+    "name": "Custom Incident Report"
+  }
+  ```
+  
+  ### Fields
+  - `name` (string, required, max: 255): Name of the chronology type
+  
+  ## Success Response (201 Created)
+  ```json
+  {
+    "success": true,
+    "message": "Chronology created successfully",
+    "data": {
+      "id": 15,
+      "name": "Custom Incident Report",
+      "house_id": 1,
+      "client_id": 1,
+      "created_by": 42,
+      "updated_by": 42,
+      "created_at": "2026-01-05T14:30:00.000000Z",
+      "updated_at": "2026-01-05T14:30:00.000000Z"
+    }
+  }
+  ```
+  
+  ## Error Responses
+  
+  ### 400 Bad Request - Duplicate Name
+  ```json
+  {
+    "success": false,
+    "message": "Chronology with this name already exists"
+  }
+  ```
+  Occurs when:
+  - A global chronology with this name exists
+  - A house-specific chronology with this name already exists for this house
+  
+  ### 401 Unauthorized
+  ```json
+  {
+    "message": "Unauthenticated."
+  }
+  ```
+  
+  ### 403 Forbidden
+  ```json
+  {
+    "success": false,
+    "message": "You do not have permission to create chronologies"
+  }
+  ```
+  
+  ### 422 Validation Error
+  ```json
+  {
+    "message": "The name field is required.",
+    "errors": {
+      "name": [
+        "The name field is required."
+      ]
+    }
+  }
+  ```
+  
+  ## Business Rules
+  1. **Only house-specific chronologies** can be created via API
+  2. **Global chronologies** are system-defined and seeded from config
+  3. **Name uniqueness** is enforced across:
+     - All global chronologies
+     - All chronologies within the same house
+  4. **Audit tracking**: `created_by` and `updated_by` are automatically set to the authenticated user
+  5. **Client association**: `client_id` is automatically set from authenticated user's client
+  
+  ## Use Cases
+  
+  ### ✅ Valid Use Cases
+  - Creating custom chronology types specific to a house's needs
+  - Examples: "Weekend Activities", "Therapy Sessions", "Incident Reports"
+  
+  ### ❌ Invalid Use Cases
+  - Creating a chronology with a name that matches a global chronology (e.g., "Health & Well-being")
+  - Creating duplicate chronologies within the same house
+  - Attempting to create global chronologies (use database seeders instead)
+  
+  ## Integration Notes
+  - After creation, the new chronology will appear in the configurations endpoint
+  - The chronology can be used in daily logs immediately
+  - Frontend should refresh chronology list after successful creation
+}

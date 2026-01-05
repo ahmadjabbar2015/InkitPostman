@@ -1,0 +1,51 @@
+meta {
+  name: Get Daily Log Field Configuration
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/daily-log/fields?chronology_type=Health & Well-being
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+docs {
+  # Get Daily Log Field Configuration
+  
+  Returns field configuration for a specific chronology type including:
+  - Required fields
+  - Optional fields
+  - Field types
+  - Dropdown options
+  
+  ## Query Parameters
+  - `chronology_type` (optional): Specific chronology type to get configuration for
+  
+  ## Response Structure
+  ```json
+  {
+    "success": true,
+    "data": {
+      "chronology_type": "Health & Well-being",
+      "fields": {
+        "required": ["chronology_type", "wellbeing_category", "action_observation"],
+        "optional": []
+      },
+      "day_parts": ["Morning", "Afternoon", "Evening", "Night"],
+      "mood_options": ["Happy", "Sad", "Angry", "Calm"],
+      "wellbeing_categories": ["Physical wellbeing", "Emotional wellbeing", "Mental wellbeing"],
+      "entry_types": ["View", "Wish", "Feeling"],
+      "safeguarding_categories": ["Physical", "Emotional", "Sexual", "Neglect"]
+    }
+  }
+  ```
+  
+  ## Notes
+  - If no chronology_type is provided, returns all configuration
+  - Use this to dynamically render form fields based on selected chronology type
+}

@@ -1,0 +1,145 @@
+meta {
+  name: Create Daily Log - Sleep Pattern
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 12
+  activity_action: YP went to bed at 22:00. Settled quickly after bedtime routine. No disturbances during night. Woke naturally at 07:00. Total sleep: 9 hours. Sleep quality: Good. YP reports feeling refreshed.
+  wake_up_time: 07:00
+  wake_up_notes: Woke naturally without alarm. In good mood. Ready for breakfast.
+  mood[0]: Refreshed
+  mood[1]: Happy
+  breakfast: Pancakes and fruit
+  ~attachments[0]: @file(/path/to/sleep_chart.pdf)
+}
+
+docs {
+  # Create Daily Log - Sleep Pattern
+  
+  Monitor and record young person's sleep patterns and quality.
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 12 (Sleep Pattern)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `activity_action` (string): Detailed sleep information
+  
+  ## Essential Sleep Information
+  
+  ### Bedtime Routine
+  - Time went to bed
+  - Bedtime routine activities
+  - How quickly settled
+  - Any resistance or issues
+  
+  ### Sleep Duration
+  - Time fell asleep (approximate)
+  - Time woke up
+  - Total hours of sleep
+  - Naps during day
+  
+  ### Sleep Quality
+  - Disturbances during night
+  - Number of wake-ups
+  - Reasons for waking
+  - How easily went back to sleep
+  
+  ### Morning Wake-Up
+  - How woke up (naturally/alarm/staff)
+  - Mood upon waking
+  - Energy level
+  - Readiness for day
+  
+  ## Recommended Fields
+  - `wake_up_time` (time): Exact wake-up time (HH:MM)
+  - `wake_up_notes` (string): Morning observations
+  - `day_part` (string): Auto-detected (usually "Morning")
+  - `mood` (array): Mood upon waking
+  - `breakfast` (string): First meal
+  - `attachments` (files): Sleep charts, tracking sheets
+  
+  ## Example Entries
+  
+  ### Good Sleep Pattern
+  ```
+  Bedtime: 21:30 - Followed normal routine (shower, reading, lights out)
+  Settled: Within 15 minutes
+  Night: Uninterrupted sleep, no wake-ups
+  Wake time: 07:00 (natural, no alarm needed)
+  Duration: 9.5 hours
+  Quality: Excellent
+  Morning mood: Energetic and positive
+  Breakfast: Full breakfast eaten
+  ```
+  
+  ### Disturbed Sleep
+  ```
+  Bedtime: 21:00 - YP appeared anxious
+  Settled: Took 45 minutes, needed reassurance
+  Night: Woke at 01:30 (bad dream), staff provided comfort
+  Returned to sleep: 02:00
+  Wake time: 07:30 (appeared tired)
+  Duration: 8 hours (interrupted)
+  Quality: Fair - disrupted by nightmare
+  Morning mood: Tired, slightly withdrawn
+  Actions: Extra support during day, relaxation before next bedtime
+  ```
+  
+  ### Late Night / Difficulty Settling
+  ```
+  Bedtime routine started: 21:00
+  In bed: 21:30
+  Settled: After multiple check-ins, finally asleep ~23:00
+  Issues: YP restless, worried about school test
+  Interventions: Calm conversation, breathing exercises, 
+  reassurance about test preparation
+  Wake time: 08:00 (required waking)
+  Duration: ~9 hours but delayed onset
+  Quality: Good once asleep
+  Morning: Sluggish but improved after breakfast
+  Follow-up: Review stress management strategies
+  ```
+  
+  ### Daytime Sleep
+  ```
+  Afternoon nap: 14:00-15:30 (90 minutes)
+  Reason: YP appeared very tired after lunch
+  Quality: Deep sleep, peaceful
+  Impact: More alert and engaged in afternoon activities
+  Night sleep: As usual, 22:00-07:00
+  Note: May need to monitor if daytime naps become pattern
+  ```
+  
+  ## Sleep Issues to Monitor
+  - Difficulty falling asleep (>30 mins)
+  - Frequent night waking (>2 times)
+  - Early morning waking
+  - Excessive daytime sleepiness
+  - Irregular sleep schedule
+  - Sleep less than 8-10 hours (age-dependent)
+  - Nightmares or night terrors
+  - Sleep walking or talking
+  
+  ## Best Practices
+  - Document consistently every morning
+  - Note patterns over time
+  - Include environmental factors (noise, temperature)
+  - Record any sleep aids used (medication, white noise, etc.)
+  - Link to mood and behaviour patterns
+  - Share concerns with healthcare team
+  
+  ## Response (201 Created)
+  Returns the created sleep pattern log for monitoring and analysis.
+}

@@ -1,0 +1,166 @@
+meta {
+  name: Update Chronology
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseURL}}/v1/house/{{houseId}}/chronologies/{{chronologyId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerToken}}
+}
+
+body:json {
+  {
+    "name": "Updated Chronology Name"
+  }
+}
+
+docs {
+  # Update House-Specific Chronology
+  
+  Updates the name of a house-specific chronology. **Global chronologies cannot be edited.**
+  
+  ## Endpoint
+  `PUT /v1/house/{houseId}/chronologies/{chronologyId}`
+  
+  ## Authentication
+  - **Required**: Bearer token
+  - **Permission**: `update_chronology`
+  
+  ## Path Parameters
+  - `houseId` (integer, required): The house ID
+  - `chronologyId` (integer, required): The chronology ID to update
+  
+  ## Request Body
+  ```json
+  {
+    "name": "Updated Custom Report"
+  }
+  ```
+  
+  ### Fields
+  - `name` (string, required, max: 255): New name for the chronology type
+  
+  ## Success Response (200 OK)
+  ```json
+  {
+    "success": true,
+    "message": "Chronology updated successfully",
+    "data": {
+      "id": 15,
+      "name": "Updated Custom Report",
+      "house_id": 1,
+      "client_id": 1,
+      "created_by": 42,
+      "updated_by": 56,
+      "created_at": "2026-01-05T14:30:00.000000Z",
+      "updated_at": "2026-01-05T15:45:00.000000Z"
+    }
+  }
+  ```
+  
+  ## Error Responses
+  
+  ### 400 Bad Request - Global Chronology
+  ```json
+  {
+    "success": false,
+    "message": "Global chronologies cannot be edited"
+  }
+  ```
+  Occurs when attempting to edit a global (system) chronology.
+  
+  ### 400 Bad Request - Duplicate Name
+  ```json
+  {
+    "success": false,
+    "message": "Chronology with this name already exists"
+  }
+  ```
+  Occurs when:
+  - A global chronology with this name exists
+  - Another house chronology with this name exists for this house
+  
+  ### 401 Unauthorized
+  ```json
+  {
+    "message": "Unauthenticated."
+  }
+  ```
+  
+  ### 403 Forbidden
+  ```json
+  {
+    "success": false,
+    "message": "You do not have permission to update chronologies"
+  }
+  ```
+  
+  ### 404 Not Found
+  ```json
+  {
+    "success": false,
+    "message": "Chronology not found"
+  }
+  ```
+  Occurs when:
+  - Chronology ID doesn't exist
+  - Chronology doesn't belong to the specified house
+  - Trying to update a chronology from a different house
+  
+  ### 422 Validation Error
+  ```json
+  {
+    "message": "The name field is required.",
+    "errors": {
+      "name": [
+        "The name field is required."
+      ]
+    }
+  }
+  ```
+  
+  ## Business Rules
+  1. **Only house-specific chronologies** can be updated
+  2. **Global chronologies are read-only** and cannot be modified via API
+  3. **Name uniqueness** is enforced (excluding current chronology)
+  4. **Audit tracking**: `updated_by` is automatically set to the authenticated user
+  5. **House ownership**: Can only update chronologies belonging to the specified house
+  
+  ## Use Cases
+  
+  ### ✅ Valid Use Cases
+  - Renaming a custom house chronology to better reflect its purpose
+  - Fixing typos in custom chronology names
+  - Updating custom chronology naming conventions
+  
+  ### ❌ Invalid Use Cases
+  - Editing global chronologies (e.g., "Health & Well-being", "Education")
+  - Renaming to a name that conflicts with existing chronologies
+  - Updating chronologies from other houses
+  
+  ## How to Identify Editable Chronologies
+  When fetching chronologies from the configurations endpoint, check:
+  ```json
+  {
+    "id": 15,
+    "name": "Custom Report",
+    "is_global": false,
+    "is_editable": true,
+    "house_id": 1
+  }
+  ```
+  - `is_global: false` = House-specific chronology
+  - `is_editable: true` = Can be edited/deleted
+  - `house_id: null` = Global chronology (read-only)
+  
+  ## Integration Notes
+  - Frontend should disable edit button for chronologies where `is_editable: false`
+  - After update, refresh chronology list to show changes
+  - Show who last updated the chronology using `updated_by` field
+}
