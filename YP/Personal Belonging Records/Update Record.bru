@@ -1,0 +1,67 @@
+meta {
+  name: Update Record
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/personal-belonging-records/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "record_title": "January 2025 Clothing Purchase - Updated",
+    "purchase_date": "2025-01-10",
+    "notes": "Winter clothing purchased for new season - Added extra items",
+    "items": [
+      {
+        "id": 1,
+        "category": "clothing",
+        "article": "Winter Jacket",
+        "description": "Navy blue puffer jacket with hood - Size M",
+        "article_2": "Hoodies",
+        "description_2": "2 hoodies - black and grey",
+        "sort_order": 1
+      },
+      {
+        "id": 2,
+        "category": "clothing",
+        "article": "Trainers",
+        "description": "Nike trainers - Size 9 - Black/White",
+        "article_2": "Socks",
+        "description_2": "Pack of 5 cotton socks",
+        "sort_order": 2
+      },
+      {
+        "id": 3,
+        "category": "toiletries",
+        "article": "Deodorant",
+        "description": "Lynx Africa spray - 150ml",
+        "article_2": "Shower gel",
+        "description_2": "Original Source mint shower gel - 250ml",
+        "sort_order": 3
+      },
+      {
+        "id": null,
+        "category": "linen",
+        "article": "Bedding set",
+        "description": "Blue duvet cover and pillowcase - Single",
+        "article_2": "Towels",
+        "description_2": "2 bath towels - blue",
+        "sort_order": 4
+      }
+    ]
+  }
+}
