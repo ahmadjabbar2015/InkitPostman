@@ -1,0 +1,41 @@
+meta {
+  name: "Fire Safety Induction - Update Indection Details"
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/fireindection/indection-details/:induction
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  induction: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  employee_id: 4
+  employee_job_detail_id: 1
+  date_of_induction: 2026-01-05
+  start_time: 10:00
+  end_time: 11:00
+  lead_employee_id_one: 2
+  lead_employee_id_second: 3
+  consent_form_received: 1
+  consent_form: @file(C:\Users\Growup Labs\Pictures\download (2).jpg)
+  fire_alarm_signal_demonstrated: 0
+  actions_on_alarm_explained: 1
+  escape_routes_and_assembly_point: 0
+  fire_doors_usage_explained: 0
+  manual_call_points_explained: 0
+  actions_on_discovering_fire: 0
+  extinguishers_identified: 0
+  clear_route_management: 0
+  ~_method: put
+}
