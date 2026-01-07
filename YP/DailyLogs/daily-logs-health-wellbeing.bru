@@ -1,0 +1,66 @@
+meta {
+  name: Create Daily Log - Health & Wellbeing
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 4
+  wellbeing_category: Physical Wellbeing
+  action_observation: Young person participated in sports activities. Showed good physical stamina and coordination. No health concerns noted.
+  mood[0]: Happy
+  mood[1]: Content
+  clothing: Tracksuit and running shoes
+  breakfast: Porridge with banana
+  lunch: Chicken salad sandwich
+  dinner: Grilled fish with vegetables
+  wake_up_time: 07:00
+  wake_up_notes: Woke up refreshed
+  ~attachments[0]: @file(/path/to/health_report.pdf)
+}
+
+docs {
+  # Create Daily Log - Health & Wellbeing
+  
+  Create a daily log for health and wellbeing activities.
+  
+  ## Required Fields (Health & Wellbeing)
+  - `chronology_id` (integer): Must be 4 (Health & Wellbeing)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `wellbeing_category` (string, required): Physical Wellbeing, Emotional wellbeing, Mental wellbeing, Sleep and Rest
+  - `action_observation` (string, required): Detailed observation or action taken
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected if not provided (Morning/Afternoon/Evening/Night)
+  - `mood` (array): Young person's mood
+  - `clothing` (string): What the young person is wearing
+  - `breakfast`, `lunch`, `dinner`, `snacks` (string): Meal details
+  - `wake_up_time` (time): Wake up time (HH:MM)
+  - `wake_up_notes` (string): Notes about waking up
+  - `attachments` (files): Health reports, photos, etc.
+  
+  ## Example Wellbeing Categories
+  - Physical Wellbeing: Exercise, medical checkups, physical activities
+  - Emotional wellbeing: Counseling sessions, emotional support
+  - Mental wellbeing: Therapy, mindfulness activities
+  - Sleep and Rest: Sleep patterns, rest periods
+  
+  ## Response (201 Created)
+  Returns the created daily log activity with auto-detected day_part based on log_date_time.
+}

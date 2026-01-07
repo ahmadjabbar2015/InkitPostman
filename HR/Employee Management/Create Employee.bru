@@ -11,8 +11,8 @@ post {
 }
 
 params:path {
-  house: 10
-  client: 9
+  house: 49
+  client: 11
 }
 
 auth:bearer {
@@ -48,9 +48,9 @@ body:multipart-form {
   addresses[1][state]: Punjab
   addresses[1][postcode]: 54000
   addresses[1][country]: 2
-  jobDetail[house]: 1
+  jobDetail[house]: 49
   jobDetail[accessRole]: 155
-  jobDetail[houseJobTitleId]: 16
+  jobDetail[houseJobTitleId]: 308
   jobDetail[interviewDate]: 2021-12-15
   jobDetail[employmentStartDate]: 2022-01-01
   jobDetail[employmentType]: Full-time
@@ -73,4 +73,9 @@ body:multipart-form {
   ~personalDetail[maritalStatus]: Single
   ~addresses[0][type]: permanent
   ~addresses[1][type]: current
+}
+
+vars:pre-request {
+  client: 11
+  house: 49
 }

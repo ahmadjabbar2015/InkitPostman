@@ -1,0 +1,27 @@
+meta {
+  name: Appointment Outcome Configurations
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseURL}}/v1/appointment-outcome/configurations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Get all appointment outcome field configurations for all appointment types and statuses.
+  
+  Returns:
+  - Common fields applicable to all outcomes
+  - Type-specific fields for each appointment type (GP, Dentist, Optician, Education, Contact, Others)
+  - Status-based fields (Attended, Cancel, Refused)
+  - Field types, labels, required status, and options for select fields
+  
+  Used by frontend to dynamically build outcome recording forms.
+}

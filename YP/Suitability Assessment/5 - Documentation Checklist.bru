@@ -1,11 +1,11 @@
 meta {
-  name: 5 - Documentation Checklist
+  name: 0 - Create Assessment & Documentation Checklist
   type: http
-  seq: 5
+  seq: 0
 }
 
-post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/documentation-checklist
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/documentation-checklist
   body: json
   auth: bearer
 }
@@ -13,7 +13,6 @@ post {
 params:path {
   house: 4
   youngPersonId: 1
-  assessmentId: 1
 }
 
 auth:bearer {
@@ -23,20 +22,34 @@ auth:bearer {
 body:json {
   {
     "care_pathway_plan_received": true,
+    "care_pathway_plan_received_comment": "Received on 15/12/2025",
     "children_guide_signed": true,
+    "children_guide_signed_comment": "Signed during initial visit",
     "statement_of_purpose_provided": true,
+    "statement_of_purpose_provided_comment": "Provided and explained",
     "complaints_procedure_explained": true,
+    "complaints_procedure_explained_comment": "Fully explained to YP and family",
     "advocacy_rights_explained": true,
+    "advocacy_rights_explained_comment": "Rights explained, advocate details provided",
     "advocate_contact_given": true,
+    "advocate_contact_given_comment": "Contact card provided",
     "risk_assessments_received": true,
+    "risk_assessments_received_comment": "All risk assessments received from LA",
     "behaviour_policy_explained": true,
+    "behaviour_policy_explained_comment": "Policy explained in age-appropriate manner",
     "health_lac_medical_received": true,
+    "health_lac_medical_received_comment": "LAC medical report received",
     "education_ehcp_received": true,
+    "education_ehcp_received_comment": "EHCP received, review scheduled",
     "referral_documentation_received": true,
+    "referral_documentation_received_comment": "Complete referral pack received",
     "placement_plan_received": true,
+    "placement_plan_received_comment": "Initial placement plan received",
     "youth_justice_police_info_received": false,
+    "youth_justice_police_info_received_comment": "Not applicable - no YJ involvement",
     "previous_placement_reports_received": true,
+    "previous_placement_reports_received_comment": "Reports from previous 2 placements received",
     "consultation_with_carers_professionals": true,
-    "comments": "All essential documentation received. Youth justice info not applicable."
+    "consultation_with_carers_professionals_comment": "Consultation completed with SW and previous foster carer"
   }
 }

@@ -1,0 +1,78 @@
+meta {
+  name: Create Daily Log - Views, Wishes & Feelings
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 5
+  entry_type: Wish
+  action_observation: Young person expressed wish to visit their grandmother during half-term break. Spoke enthusiastically about spending time with family. Wants to help grandmother with gardening.
+  mood[0]: Hopeful
+  mood[1]: Excited
+  breakfast: Toast and jam
+  lunch: Soup and bread
+  ~attachments[0]: @file(/path/to/conversation_notes.pdf)
+}
+
+docs {
+  # Create Daily Log - Views, Wishes & Feelings
+  
+  Document young person's views, wishes, and feelings.
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 5 (Views, Wishes and Feelings)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `entry_type` (string, required): Type of entry
+  - `action_observation` (string, required): Details of what was expressed
+  
+  ## Entry Types
+  - **View**: Young person's opinion or perspective on a matter
+  - **Wish**: Something the young person wants or hopes for
+  - **Feeling**: Emotional expression or how they feel
+  - **Concern**: Worry or concern expressed by young person
+  - **Complaint**: Formal or informal complaint
+  - **Compliment**: Positive feedback or appreciation expressed
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected from log_date_time
+  - `mood` (array): Emotional state during conversation
+  - `clothing`, `breakfast`, `lunch`, `dinner`, `snacks`: Daily details
+  - `wake_up_time`, `wake_up_notes`: Morning routine
+  - `attachments` (files): Notes, drawings, written expressions
+  
+  ## Best Practices
+  - Record verbatim quotes when possible
+  - Document context of the conversation
+  - Note who was present during discussion
+  - Follow up on wishes and concerns appropriately
+  - Ensure young person knows their voice is heard
+  
+  ## Examples
+  
+  ### View
+  "YP shared view that house rules about bedtime are fair but would like earlier weekend breakfast."
+  
+  ### Wish
+  "YP expressed wish to learn guitar and join music lessons at school."
+  
+  ### Feeling
+  "YP shared feeling happy about making new friends at youth club."
+  
+  ### Concern
+  "YP raised concern about upcoming court hearing and asked questions about process."
+  
+  ## Response (201 Created)
+  Returns the created log documenting the young person's expression.
+}

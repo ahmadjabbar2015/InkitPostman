@@ -5,9 +5,15 @@ meta {
 }
 
 put {
-  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/1
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments/:appointment
   body: json
   auth: bearer
+}
+
+params:path {
+  appointment: 10
+  youngperson: 1
+  house: 1
 }
 
 auth:bearer {

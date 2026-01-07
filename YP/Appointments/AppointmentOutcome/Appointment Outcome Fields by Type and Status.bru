@@ -1,0 +1,39 @@
+meta {
+  name: Appointment Outcome Fields by Type and Status
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseURL}}/v1/appointment-outcome/GP/Attended/fields
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+params:path {
+  appointmentType: GP
+  status: Attended
+}
+
+docs {
+  Get outcome field configuration for a specific appointment type and status.
+  
+  Path Parameters:
+  - appointmentType: GP | Dentist | Optician | Education | Contact | Others
+  - status: Attended | Cancel | Refused
+  
+  Returns:
+  - List of fields specific to the appointment type and outcome status
+  - Field labels, types, required status
+  - Options for select/dropdown fields
+  - Conditions for conditional fields
+  
+  Example URLs:
+  - /v1/appointment-outcome/GP/Attended/fields
+  - /v1/appointment-outcome/Dentist/Cancel/fields
+  - /v1/appointment-outcome/Education/Attended/fields
+}

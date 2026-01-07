@@ -1,0 +1,98 @@
+meta {
+  name: Get Daily Log Details
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs/5
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Daily Log Details
+  
+  Retrieve detailed information about a specific daily log entry.
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  - `youngPerson` (required): Young Person ID
+  - `log` (required): Daily Log ID
+  
+  ## Response Structure
+  ```json
+  {
+    "success": true,
+    "data": {
+      "id": 1,
+      "young_person_id": 1,
+      "house_id": 1,
+      "date": "2026-01-05",
+      "shift_time": "Morning",
+      "staff_on_duty": ["John Doe", "Jane Smith"],
+      "activities": [
+        {
+          "id": 1,
+          "activity_type": "Sport",
+          "description": "Football practice",
+          "duration_minutes": 60,
+          "engagement_level": "High",
+          "created_at": "2026-01-05T08:30:00Z"
+        }
+      ],
+      "meals": [
+        {
+          "id": 1,
+          "meal_type": "Breakfast",
+          "food_consumed": "Cereal, toast, orange juice",
+          "appetite_level": "Good",
+          "notes": "Ate well, no issues"
+        }
+      ],
+      "mood": "Happy",
+      "behavior_level": "Good",
+      "behavior_incidents": [],
+      "sleep_quality": "Good",
+      "sleep_hours": 8,
+      "medication_administered": [
+        {
+          "medication_name": "Vitamin D",
+          "dosage": "1000 IU",
+          "time_administered": "08:00",
+          "administered_by": "John Doe"
+        }
+      ],
+      "health_concerns": null,
+      "visitors": [],
+      "communication_with_family": {
+        "contact_made": true,
+        "contact_type": "Phone Call",
+        "duration_minutes": 15,
+        "with_whom": "Mother",
+        "notes": "Positive conversation"
+      },
+      "general_notes": "Overall a good day.",
+      "concerns_or_follow_up": null,
+      "status": "Approved",
+      "created_by": {
+        "id": 5,
+        "name": "John Doe",
+        "email": "john.doe@example.com"
+      },
+      "approved_by": {
+        "id": 3,
+        "name": "Manager Name",
+        "approved_at": "2026-01-05T10:00:00Z"
+      },
+      "rejected_by": null,
+      "created_at": "2026-01-05T08:30:00Z",
+      "updated_at": "2026-01-05T10:00:00Z"
+    }
+  }
+  ```
+}

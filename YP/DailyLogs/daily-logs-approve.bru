@@ -1,0 +1,84 @@
+meta {
+  name: Update Daily Log Status (Approve/Reject)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs/5/status
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  // {
+  //   "status": "Approved",
+  //   "remarks": "Log reviewed and approved. All entries are accurate."
+  // }
+  
+  {
+    "status": "Rejected",
+    "reason": "Log reviewed and approved. All entries are accurate."
+  }
+}
+
+docs {
+  # Update Daily Log Status
+  
+  Approve or reject a pending daily log entry.
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  - `youngPerson` (required): Young Person ID
+  - `log` (required): Daily Log ID
+  
+  ## Request Body
+  - `status` (required): "Approved" or "Rejected"
+  - `remarks` (optional): Approval notes (used when approving)
+  - `reason` (optional): Rejection reason (used when rejecting)
+  
+  ## Response for Approval
+  ```json
+  {
+    "success": true,
+    "message": "Daily log approved successfully",
+    "data": {
+      "id": 1,
+      "status": "Approved",
+      "remarks": "Log reviewed and approved.",
+      "performed_by": 3,
+      "performer": {
+        "id": 3,
+        "first_name": "Manager",
+        "last_name": "Name"
+      }
+    }
+  }
+  ```
+  
+  ## Response for Rejection
+  ```json
+  {
+    "success": true,
+    "message": "Daily log rejected successfully",
+    "data": {
+      "id": 1,
+      "status": "Rejected",
+      "reason": "Incomplete information.",
+      "performed_by": 3,
+      "performer": {
+        "id": 3,
+        "first_name": "Manager",
+        "last_name": "Name"
+      }
+    }
+  }
+  ```
+  
+  ## Permissions
+  Requires `approve_daily_log` or `reject_daily_log` permission.
+}

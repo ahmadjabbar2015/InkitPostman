@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/appointment-types/1/fields
+  url: {{baseURL}}/v1/appointment-types/:type_id/fields
   body: none
   auth: bearer
+}
+
+params:path {
+  type_id: 1
 }
 
 auth:bearer {

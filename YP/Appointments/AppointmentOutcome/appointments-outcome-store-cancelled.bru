@@ -1,0 +1,37 @@
+meta {
+  name: youngPerson/appointments/outcome/store - Cancelled Appointment
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments/:appointment/outcome
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  appointment: 31
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  appointment_status: Cancel
+  reason_for_rejection: The young sdsdperson was feeling unwell and unable to attend. Experiencing high fever and body aches.
+  outcome_description: <p>Appointment was cancelled due to illness. Young person called in advance to inform staff.</p>
+  remarks: Rescheduling required. Will monitor young person's health condition.
+  next_visit_date: 2026-01-10
+  action_taken: Appointment cancelled and documented. Staff notified GP surgery.
+  action_recommended: Reschedule appointment once young person has recovered. Monitor health status daily.
+  young_person_feedback: The young person apologized for the cancellation and expressed willingness to reschedule.
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,53 @@
+meta {
+  name: youngPerson/appointments/outcome/store - Dentist Appointment
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:yountperson/appointments/:appointment/outcome
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  yountperson: 1
+  house: 1
+  appointment: 34
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  appointment_status: Attended
+  outcome_description: <p>Young person attended dentist appointment for routine check-up and cleaning. One small cavity identified in lower right molar.</p>
+  doctor_advice: Cavity requires filling. Maintain good oral hygiene with twice-daily brushing and daily flossing. Reduce sugar intake.
+  remarks: Overall dental health is good. Patient was cooperative during examination.
+  encouragement_level: A Lot
+  enthusiasm_level: Quite interested
+  young_person_feedback: The young person was nervous initially but relaxed during the appointment. Receptive to oral hygiene advice.
+  follow_up_actions[0][action_type]: Lab Test
+  follow_up_actions[0][notes]: Schedule filling appointment within 2 weeks
+  medication_name: Fluoride Mouthwash
+  form_of_medication: Liquid
+  strength_dosage: 0.05% sodium fluoride
+  route: Topical
+  frequency: Once a day
+  medication_start_date: 2025-12-31
+  medication_stop_date: 2026-03-31
+  hospital_clinic_name: Smile Dental Clinic
+  confirmation_appointment_date: 2026-01-15
+  next_visit_date: 2026-01-15
+  action_taken: Dental examination completed, cleaning performed, oral hygiene instruction provided, filling appointment scheduled.
+  action_recommended: Complete cavity filling, use fluoride mouthwash daily, schedule 6-month check-up.
+  documents[0][document_type]: Other
+  documents[0][description]: Dental examination report and x-ray
+  documents[0][file]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 12-40-31.png)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

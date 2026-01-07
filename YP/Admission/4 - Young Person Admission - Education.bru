@@ -4,7 +4,7 @@ meta {
   seq: 4
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/education
   body: multipartForm
   auth: bearer
@@ -20,24 +20,47 @@ auth:bearer {
 }
 
 body:multipart-form {
-  educations[0][mode_of_education]: college
-  educations[0][organization_or_provider]: Green Valley Academy
+  educations[0][id]:
+  educations[0][mode_of_education]: school
   educations[0][school_name]: Green Valley Secondary School
-  educations[0][school_type]: residential
-  educations[0][key_contact_name]: Ms. Laura Green
-  educations[0][key_contact_phone]: 020 5555 1234
-  educations[0][key_contact_email]: laura.green@greenvalley.sch.uk
-  educations[0][key_contact_role]: Head of Year
+  educations[0][school_type]: mainstream
+  educations[0][school_address]: 123 Education Road, Manchester
+  educations[0][key_education_contact]: Ms. Laura Green
+  educations[0][contact_number_email]: 020 5555 1234 / laura.green@greenvalley.sch.uk
+  educations[0][organization_or_agency]: Manchester City Council
   educations[0][start_date]: 2024-09-01
   educations[0][expected_end_date]: 2026-07-20
+  educations[0][last_review_date]: 2024-12-01
+  educations[0][next_review_date]: 2025-03-01
+  educations[0][last_pep_review_date]: 2024-11-15
+  educations[0][last_update]: 2024-12-15
   educations[0][subject_to_ehcp]: 1
-  educations[0][pep]: 1
   educations[0][ehcp_in_place]: 1
-  educations[0][ehcp_document]: @file(C:\Users\Forrun\Downloads\download (3).pdf)
-  educations[0][pep_document]: @file(C:\Users\Forrun\Downloads\download (4).pdf)
-  educations[0][engagement_notes]: Good engagement in English and Science
-  educations[0][progress_summary]: On track for GCSE targets
-  educations[0][strengths_and_needs]: Strength in creative subjects, needs support in Maths
+  educations[0][ehcp_document]: @file(/home/pirate-king/Documents/sample.pdf)
+  educations[0][pep]: 1
+  educations[0][pep_document]: @file(/home/pirate-king/Documents/sample.pdf)
+  educations[0][ehcp_pep_summary_last_review]: Making good progress with support in place
+  educations[0][attendance_exclusion_history_available]: 1
+  educations[0][upload_attendance_report]: @file(/home/pirate-king/Documents/sample.pdf)
+  educations[0][summary]: Good overall progress
+  educations[0][progress_notes]: On track for GCSE targets
+  educations[0][verification_method]: direct_contact
+  educations[0][education_contact_name]: Ms. Laura Green
+  educations[0][education_contact_role]: Head of Year
+  educations[0][education_contact_phone]: 020 5555 1234
+  educations[0][education_contact_email]: laura.green@greenvalley.sch.uk
+  educations[0][education_remarks]: Good engagement in English and Science
+  educations[0][school_attendance_percentage]: 95
+  educations[0][attendance_records_attached]: 1
+  educations[0][ofsted_evidence_upload_report]: @file(/home/pirate-king/Documents/sample.pdf)
+  educations[0][behaviour_exclusion_history]: 0
+  educations[0][progress_level]: on_track
+  educations[0][yp_educational_strengths]: Strength in creative subjects and English
+  educations[0][yp_learning_needs]: Needs support in Maths
+  educations[0][educational_targets_set]: 1
+  educations[0][add_targets]: Complete GCSE Maths with grade 5, Continue progress in Art
+  educations[0][education_review_date]: 2025-06-01
+  educations[0][sort_order]: 1
 }
 
 settings {

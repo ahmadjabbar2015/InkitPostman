@@ -4,7 +4,7 @@ meta {
   seq: 7
 }
 
-post {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/admission/:youngPersonId/risk-indicators
   body: json
   auth: bearer
@@ -23,6 +23,7 @@ body:json {
   {
     "risk_indicators": [
       {
+        "id": null,
         "risk_factor": "CSE",
         "risk_level": "High",
         "description": "History of online grooming concerns",
@@ -30,20 +31,27 @@ body:json {
         "protective_factors": "1:1 support, restricted device access",
         "religion_cultural_info": "Muslim - respects faith boundaries",
         "likes_dislikes_hobbies": "Football, gaming, drawing",
-        "distinguishing_marks_height_weight": "Scar on left forearm, 5'6\", 60kg"
+        "distinguishing_marks_height_weight": "Scar on left forearm, 5'6\", 60kg",
+        "sort_order": 1
       },
       {
+        "id": null,
         "risk_factor": "Absconding",
         "risk_level": "Medium",
-        "description": "Two missing episodes in past year"
+        "description": "Two missing episodes in past year",
+        "triggers": "After contact with peers from previous area",
+        "protective_factors": "Regular activities, positive relationships with staff",
+        "sort_order": 2
       }
     ],
     "historical_incidents": [
       {
+        "id": null,
         "incident_reference_number": "INC-2024-045",
         "incident_type": "Missing Episode",
         "incident_date": "2024-07-15",
-        "incident_details": "Missing for 6 hours - found safe at friend's house"
+        "incident_details": "Missing for 6 hours - found safe at friend's house",
+        "sort_order": 1
       }
     ]
   }

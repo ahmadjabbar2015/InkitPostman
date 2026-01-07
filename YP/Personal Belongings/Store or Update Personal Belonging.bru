@@ -1,0 +1,75 @@
+meta {
+  name: Store or Update Personal Belonging
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/personal-belongings
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "inventory_completed": "yes",
+    "completion_date": "2025-01-15",
+    "uploaded_belonging_sheet": "belongings_sheet_001.pdf",
+    "total_items_recorded": 25,
+    "valuables_recorded": "yes",
+    "custody": "Kept in secure storage, manager has key",
+    "storage_location": "safe",
+    "missing_damaged_items_exist": "no",
+    "items": [
+      {
+        "id": null,
+        "category": "clothing",
+        "article": "T-shirts",
+        "description": "5 cotton t-shirts - various colors",
+        "article_2": "Jeans",
+        "description_2": "2 pairs of blue jeans - size 32",
+        "sort_order": 1
+      },
+      {
+        "id": null,
+        "category": "toiletries",
+        "article": "Shampoo",
+        "description": "Head & Shoulders 500ml",
+        "article_2": "Toothbrush",
+        "description_2": "Electric toothbrush with charger",
+        "sort_order": 2
+      },
+      {
+        "id": null,
+        "category": "jewellery",
+        "article": "Watch",
+        "description": "Digital watch - black strap",
+        "article_2": "",
+        "description_2": "",
+        "sort_order": 3
+      }
+    ],
+    "missing_items": [
+      {
+        "id": null,
+        "item_name": "Winter jacket",
+        "description": "Blue puffer jacket with hood",
+        "action_taken": "replaced",
+        "upload_attachment": "incident_report_001.pdf",
+        "sort_order": 1
+      }
+    ],
+    "young_person_signature": "Ahmad Khan",
+    "staff_signature": "John Smith",
+    "sign_off_completion_date": "2025-01-15"
+  }
+}

@@ -1,0 +1,61 @@
+meta {
+  name: Create Record
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/room-inductions
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "room_allocated": "Room 1",
+    "room_type": "single",
+    "room_cleanliness_status": "clean",
+    "safety_features_working": "yes",
+    "record_issue": "",
+    "smoke_detector_working": "yes",
+    "smoke_detector_details": "Tested and functioning properly",
+    "emergency_call_bell_functional": "yes",
+    "emergency_call_bell_details": "Located by bed, tested successfully",
+    "windows_secure": "yes",
+    "windows_secure_details": "All window locks checked and working",
+    "heater_safe_working": "yes",
+    "heater_details": "Thermostat set to 20°C, safety guard in place",
+    "electrical_sockets_safe": "yes",
+    "electrical_sockets_details": "All 4 sockets tested and safe",
+    "fire_exit_visibility": "visible",
+    "fire_exit_details": "Fire exit signs clearly visible, route unobstructed",
+    "room_risk_assessment_completed": "yes",
+    "room_condition_evidence": "photos_room_001.jpg",
+    "bathroom_condition": "Clean and fully functional, all fixtures working",
+    "mattress_condition": "New mattress with protective cover, excellent condition",
+    "wardrobe_storage": "Large wardrobe with shelves and hanging rail, drawer unit provided",
+    "notes_on_room_condition": "Room in excellent condition, freshly painted, ready for occupancy",
+    "staff_report_damages": "No damages to report",
+    "bed": "yes",
+    "mattress": "yes",
+    "wardrobe": "yes",
+    "bedside_table": "yes",
+    "chair": "yes",
+    "curtains_blinds": "yes",
+    "bedding_set_provided": "yes",
+    "towels": "yes",
+    "toiletries_starter_pack": "yes",
+    "setup_completed_by": "John Smith - Senior Support Worker",
+    "datetime_of_room_setup": "2025-01-14T10:30:00",
+    "manager_approval_signature": "Jane Doe"
+  }
+}

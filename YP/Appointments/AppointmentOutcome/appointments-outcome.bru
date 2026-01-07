@@ -1,0 +1,20 @@
+meta {
+  name: youngPerson/appointments/outcome/show
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/1/outcome
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

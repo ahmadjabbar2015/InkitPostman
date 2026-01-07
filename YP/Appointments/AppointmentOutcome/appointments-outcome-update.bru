@@ -1,0 +1,57 @@
+meta {
+  name: youngPerson/appointments/outcome/update
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/1/outcome
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  appointment_status: Attended
+  outcome_description: <p>Updated: The young person attended the follow-up appointment. Headaches have improved significantly with medication. Patient reports better sleep and reduced fatigue.</p>
+  doctor_advice: Updated: Medication is working well. Continue current dosage for another week, then reduce to once daily. Return if symptoms recur.
+  remarks: Updated: Patient showing excellent improvement. Vital signs normal. Blood pressure: 118/78. Lab results reviewed and within normal ranges.
+  encouragement_level: Some
+  enthusiasm_level: Quite interested
+  young_person_feedback: Updated: The young person is pleased with the progress. Reports feeling much better and more energetic.
+  follow_up_actions[0][action_type]: Medication Change
+  follow_up_actions[0][notes]: Reduce paracetamol to once daily after one week
+  follow_up_actions[1][action_type]: Follow-up Appointment
+  follow_up_actions[1][notes]: Final check-up in 2 weeks to ensure full recovery
+  lab_tests[0][test_type]: Blood Test
+  lab_tests[0][test_notes]: Follow-up blood work to confirm improvement
+  lab_tests[0][test_date]: 2026-01-20
+  lab_tests[0][test_status]: Completed
+  lab_tests[0][test_results]: All values within normal range. Iron levels improved.
+  reason_for_lab_test: Updated: Follow-up tests to confirm treatment effectiveness and iron level improvement.
+  medication_name: Ibuprofen
+  form_of_medication: Tablet
+  strength_dosage: 400mg
+  route: Oral
+  frequency: Once a day
+  medication_start_date: 2026-01-10
+  medication_stop_date: 2026-01-24
+  hospital_clinic_name: City General Hospital
+  confirmation_appointment_date: 2026-01-27
+  onward_referral: Updated: No specialist referral needed as symptoms have resolved with current treatment.
+  pregnancy_result: Negative
+  next_visit_date: 2026-01-27
+  action_taken: Updated: Adjusted medication dosage, reviewed lab results with patient, provided positive reinforcement.
+  action_recommended: Updated: Taper medication gradually, maintain healthy lifestyle, schedule final follow-up in 2 weeks.
+  documents[0][document_type]: Lab Report
+  documents[0][description]: Updated blood test results showing improvement
+  documents[0][file]: @file(/path/to/updated-lab-results.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

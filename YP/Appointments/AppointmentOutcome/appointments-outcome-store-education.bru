@@ -1,0 +1,37 @@
+meta {
+  name: youngPerson/appointments/outcome/store - Non-Medical Education
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/v1/house/1/young-persons/1/appointments/4/outcome
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  appointment_status: Attended
+  outcome_description: <p>Educational counseling session focused on academic progress and future career planning. Discussed study habits, time management, and college preparation.</p>
+  remarks: Young person is making good academic progress. Shows strong interest in science subjects and considering healthcare career path.
+  encouragement_level: A Lot
+  enthusiasm_level: Very interested
+  young_person_feedback: The young person expressed excitement about educational opportunities and asked thoughtful questions about college programs.
+  follow_up_actions[0][action_type]: Follow-up Appointment
+  follow_up_actions[0][notes]: Schedule meeting with college advisor to discuss healthcare programs
+  next_visit_date: 2026-01-20
+  action_taken: Reviewed current grades and study schedule, discussed career interests, provided information about local colleges and scholarship opportunities.
+  action_recommended: Research healthcare career paths, maintain current study schedule, arrange college campus visits, apply for tutoring program in math and science.
+  documents[0][document_type]: Other
+  documents[0][description]: Educational progress report and career planning notes
+  documents[0][file]: @file(/path/to/education-report.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -7,7 +7,7 @@ meta {
 post {
   url: {{baseURL}}/v1/auth/login
   body: json
-  auth: inherit
+  auth: none
 }
 
 body:json {
@@ -24,15 +24,15 @@ body:json {
   // }
   
   
-  // {
-  //   "username": "SPR-123456",
-  //   "password": "LCiGUmH&tVnDuGiAw@y-TY2SavMeFrTears-iGiv2SomeSpec!25"
-  // }
-  
   {
-    "username":"INK-000001",
-    "passcode": "0000"  
+    "username": "SPR-123456",
+    "password": "LCiGUmH&tVnDuGiAw@y-TY2SavMeFrTears-iGiv2SomeSpec!25"
   }
+  
+  // {
+  //   "username":"INK-000001",
+  //   "passcode": "0000"  
+  // }
 }
 
 script:post-response {

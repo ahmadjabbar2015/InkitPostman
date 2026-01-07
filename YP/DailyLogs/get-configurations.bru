@@ -1,0 +1,119 @@
+meta {
+  name: Get Daily Log Configurations
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/1/configurations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+docs {
+  # Get Daily Log Configurations
+  
+  Returns all configuration options for daily logs including:
+  - Chronology types (from database: global + house-specific)
+  - Statuses
+  - Day parts
+  - Mood options
+  - Wellbeing categories
+  - Entry types
+  - Safeguarding categories
+  
+  **Important:** This endpoint automatically syncs global chronologies from config to database.
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  
+  ## Response Structure
+  ```json
+  {
+    "success": true,
+    "message": "All chronology configurations retrieved successfully",
+    "data": {
+      "configurations": {
+        "statuses": ["Pending", "Approved", "Rejected"],
+        "day_parts": ["Morning", "Afternoon", "Evening", "Night"],
+        "mood_options": ["Happy", "Sad", "Angry", "Calm"],
+        "wellbeing_categories": ["Physical wellbeing", "Emotional wellbeing"],
+        "entry_types": ["View", "Wish", "Feeling"],
+        "safeguarding_categories": ["Physical", "Emotional", "Sexual"]
+      },
+      "chronology_types": [
+        {
+          "id": 1,
+          "name": "No Activity",
+          "house_id": null,
+          "client_id": null,
+          "is_global": true,
+          "is_editable": false,
+          "created_by": null,
+          "updated_by": null,
+          "created_at": "2026-01-01T00:00:00.000000Z",
+          "updated_at": "2026-01-01T00:00:00.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "Health & Well-being",
+          "house_id": null,
+          "client_id": null,
+          "is_global": true,
+          "is_editable": false,
+          "created_by": null,
+          "updated_by": null,
+          "created_at": "2026-01-01T00:00:00.000000Z",
+          "updated_at": "2026-01-01T00:00:00.000000Z"
+        },
+        {
+          "id": 15,
+          "name": "Custom Incident Report",
+          "house_id": 1,
+          "client_id": 1,
+          "is_global": false,
+          "is_editable": true,
+          "created_by": {
+            "id": 42,
+            "name": "John Doe"
+          },
+          "updated_by": {
+            "id": 56,
+            "name": "Jane Smith"
+          },
+          "created_at": "2026-01-05T14:30:00.000000Z",
+          "updated_at": "2026-01-05T15:45:00.000000Z"
+        }
+      ]
+    }
+  }
+  ```
+  
+  ## Chronology Types Fields
+  Each chronology object includes:
+  - `id` (integer): Unique chronology identifier
+  - `name` (string): Chronology type name
+  - `house_id` (integer|null): House ID (null for global chronologies)
+  - `client_id` (integer|null): Client ID (null for global chronologies)
+  - `is_global` (boolean): True if system-wide chronology, false if house-specific
+  - `is_editable` (boolean): True if can be edited/deleted (false for global)
+  - `created_by` (object|null): User who created the chronology
+    - `id` (integer): User ID
+    - `name` (string): User full name
+  - `updated_by` (object|null): User who last updated the chronology
+    - `id` (integer): User ID
+    - `name` (string): User full name
+  - `created_at` (timestamp): Creation timestamp
+  - `updated_at` (timestamp): Last update timestamp
+  
+  ## Notes
+  - **Global chronologies** (`is_global: true`): System-defined, cannot be edited or deleted
+  - **House-specific chronologies** (`is_global: false`): Custom chronologies for the house
+  - **Auto-sync**: Global chronologies are automatically synced from config file on each request
+  - **Audit trail**: `created_by` and `updated_by` track who made changes (null for global chronologies)
+  - **UI guidance**: Use `is_editable` flag to show/hide edit/delete buttons
+}

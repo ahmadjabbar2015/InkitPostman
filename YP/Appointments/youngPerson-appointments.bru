@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/1/young-persons/1/appointments
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments
   body: none
   auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
 }
 
 auth:bearer {

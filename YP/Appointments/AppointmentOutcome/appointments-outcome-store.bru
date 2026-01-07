@@ -1,0 +1,69 @@
+meta {
+  name: youngPerson/appointments/outcome/store
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/appointments/:appointment/outcome
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  appointment: 32
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  appointment_status: Attended
+  outcome_description: <p>The young person attended the GP appointment and was examined by Dr. Smith. Patient presented with persistent headaches and mild fatigue.</p>
+  doctor_advice: Continue with current treatment plan. Monitor symptoms closely and return if headaches worsen or new symptoms appear.
+  remarks: Patient is responding well to treatment. Vital signs are stable. Blood pressure: 120/80.
+  encouragement_level: A Lot
+  enthusiasm_level: Very interested
+  young_person_feedback: The young person was cooperative and engaged during the appointment. Asked relevant questions about their health.
+  follow_up_actions[0][action_type]: Lab Test
+  follow_up_actions[0][notes]: Blood work required to check iron levels and vitamin deficiencies
+  follow_up_actions[1][action_type]: Follow-up Appointment
+  follow_up_actions[1][notes]: Review lab results and reassess treatment plan in 2 weeks
+  lab_tests[0][test_type]: Blood Test
+  lab_tests[0][test_notes]: Complete blood count (CBC) and iron panel
+  lab_tests[0][test_date]: 2026-01-05
+  lab_tests[0][test_status]: Pending
+  lab_tests[1][test_type]: Urine Test
+  lab_tests[1][test_notes]: Routine urinalysis
+  lab_tests[1][test_date]: 2026-01-05
+  lab_tests[1][test_status]: Pending
+  reason_for_lab_test: To check for anemia, vitamin deficiencies, and rule out kidney issues related to headaches.
+  medication_name: Paracetamol
+  form_of_medication: Tablet
+  strength_dosage: 500mg
+  route: Oral
+  frequency: Twice a day
+  medication_start_date: 2025-12-30
+  medication_stop_date: 2026-01-13
+  hospital_clinic_name: City General Hospital
+  confirmation_appointment_date: 2026-01-15
+  onward_referral: Referred to neurologist for persistent headaches if symptoms continue after 2 weeks.
+  pregnancy_result: N/A
+  next_visit_date: 2026-01-13
+  action_taken: Prescribed paracetamol for headaches, ordered blood and urine tests, provided health education.
+  action_recommended: Complete lab tests, continue medication, maintain hydration, follow up in 2 weeks for results review.
+  documents[0][document_type]: Prescription
+  documents[0][description]: Paracetamol prescription - 500mg twice daily for 2 weeks
+  documents[0][file]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 12-40-31.png)
+  documents[1][document_type]: Lab Reportds
+  documents[1][description]: Lab test requisition sds
+  documents[1][file]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 12-50-20.png)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
