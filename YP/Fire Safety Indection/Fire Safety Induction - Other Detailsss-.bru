@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/4/young-persons/fire-induction/other-details/2
+  url: {{baseURL}}/v1/house/4/young-persons/1/fire-induction/other-details/1
   body: json
   auth: bearer
 }
@@ -17,12 +17,7 @@ auth:bearer {
 body:json {
   {
     "peep_required": 1,
-    "mobility_issues": 1,
-    "hearing": 0,
-    "visual_impairment": 1,
-    "autism": 0,
-    "anxiety": 1,
-    "other_mobility_medical": 0,
+    "mobility_medical_factor": "hearing",
     "speech": 1,
     "non_verbal": 0,
     "aac": 1,

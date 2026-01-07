@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/fire-induction/details
+  url: {{baseURL}}/v1/house/:house/young-persons/1/fire-induction/details
   body: multipartForm
   auth: bearer
 }
@@ -37,5 +37,6 @@ body:multipart-form {
   actions_on_discovering_fire: 1
   extinguishers_identified: 0
   clear_route_management: 0
+  young_persons_id: 1
   ~consent_form: @file(C:\Users\Growup Labs\Pictures\cute-cat-wearing-sunglasses-and-relaxing-on-orange-chair-generative-ai-illustration-free-photo.jpg)
 }

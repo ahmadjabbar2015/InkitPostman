@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/4/young-persons/fire-induction/evacuation-arrangement/2
+  url: {{baseURL}}/v1/house/4/young-persons/1/fire-induction/evacuation-arrangement/1
   body: multipartForm
   auth: bearer
 }
@@ -15,10 +15,10 @@ auth:bearer {
 }
 
 body:multipart-form {
-  fire_safety_induction_id: 20
-  evacuation_strategy: Simultaneous Evacuation
+  evacuation_strategy: simultaneous
   primary_assembly_point: Front Garden
   primary_assembly_map: @file(C:\Users\Growup Labs\Pictures\download.jpg)
   backup_assembly_point: Parking Area
   backup_assembly_map: @file(C:\Users\Growup Labs\Pictures\download (3).jpg)
+  ~fire_safety_induction_id: 20
 }
