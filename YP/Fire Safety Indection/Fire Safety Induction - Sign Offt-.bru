@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/4/young-persons/fire-indection/sign-off/1
+  url: {{baseURL}}/v1/house/4/young-persons/fire-induction/sign-off/1
   body: multipartForm
   auth: bearer
 }
@@ -15,15 +15,11 @@ auth:bearer {
 }
 
 body:multipart-form {
-   sign_off_datetime: 2026-01-06
+  sign_off_datetime: 2026-01-06
   induction_finish_time: 14:30
-
   induction_lead_signature: @file(C:\Users\Growup Labs\Pictures\lead-sign.png)
-
   second_staff_name: Sarah Khan
   second_staff_signature: @file(C:\Users\Growup Labs\Pictures\staff-sign.png)
-
   manager_comments: All induction steps completed successfully
   next_refresher_due_date: 2027-01-06
 }
-
