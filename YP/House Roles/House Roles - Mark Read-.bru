@@ -1,0 +1,15 @@
+meta {
+  name: "House Roles - Mark Read"
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/4/young-persons/1/house-roles/rules/5/read
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

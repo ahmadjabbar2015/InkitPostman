@@ -1,0 +1,23 @@
+meta {
+  name: "House Roles - House Rules"
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/4/young-persons/1/house-roles/rules
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~: 4
+}
+
+vars:pre-request {
+  house: 4
+}
