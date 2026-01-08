@@ -1,0 +1,34 @@
+meta {
+  name: Store Health Consent
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/health-consents
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 3
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  parental_consent_required: 1
+  consent_to_emergency_treatment: 1
+  consent_for_medication: 1
+  consent_for_notification: 0
+  signed_by_consent_form: @file(/path/to/consent_form.pdf)
+  instructions: Requires parental notification before any medication changes. Contact mother first.
+  restrictions: No aspirin due to allergy. Must use EpiPen for severe allergic reactions.
+  upload_documents[0]: @file(/path/to/medical_history.pdf)
+  upload_documents[1]: @file(/path/to/parental_consent.pdf)
+  document_types[0]: health_records
+  document_types[1]: consent_forms
+}
