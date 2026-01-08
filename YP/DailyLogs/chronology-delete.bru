@@ -1,0 +1,130 @@
+meta {
+  name: Delete Chronology
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{baseURL}}/v1/house/{{houseId}}/chronologies/{{chronologyId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerToken}}
+}
+
+docs {
+  # Delete House-Specific Chronology
+  
+  Permanently deletes a house-specific chronology. **Global chronologies cannot be deleted.**
+  
+  ## Endpoint
+  `DELETE /v1/house/{houseId}/chronologies/{chronologyId}`
+  
+  ## Authentication
+  - **Required**: Bearer token
+  - **Permission**: `delete_chronology`
+  
+  ## Path Parameters
+  - `houseId` (integer, required): The house ID
+  - `chronologyId` (integer, required): The chronology ID to delete
+  
+  ## Success Response (200 OK)
+  ```json
+  {
+    "success": true,
+    "message": "Chronology deleted successfully",
+    "data": null
+  }
+  ```
+  
+  ## Error Responses
+  
+  ### 400 Bad Request - Global Chronology
+  ```json
+  {
+    "success": false,
+    "message": "Global chronologies cannot be deleted"
+  }
+  ```
+  Occurs when attempting to delete a global (system) chronology.
+  
+  ### 401 Unauthorized
+  ```json
+  {
+    "message": "Unauthenticated."
+  }
+  ```
+  
+  ### 403 Forbidden
+  ```json
+  {
+    "success": false,
+    "message": "You do not have permission to delete chronologies"
+  }
+  ```
+  
+  ### 404 Not Found
+  ```json
+  {
+    "success": false,
+    "message": "Chronology not found"
+  }
+  ```
+  Occurs when:
+  - Chronology ID doesn't exist
+  - Chronology doesn't belong to the specified house
+  - Trying to delete a chronology from a different house
+  
+  ## Business Rules
+  1. **Only house-specific chronologies** can be deleted
+  2. **Global chronologies are permanent** and cannot be removed
+  3. **House ownership**: Can only delete chronologies belonging to the specified house
+  4. **Data integrity**: Ensure chronology is not referenced in existing daily logs before deletion
+  
+  ## Use Cases
+  
+  ### ✅ Valid Use Cases
+  - Removing obsolete custom chronology types
+  - Cleaning up duplicate or mistakenly created chronologies
+  - Removing house-specific chronologies that are no longer needed
+  
+  ### ❌ Invalid Use Cases
+  - Deleting global chronologies (e.g., "Health & Well-being", "Education")
+  - Deleting chronologies that are actively used in daily logs (check usage first)
+  - Deleting chronologies from other houses
+  
+  ## Pre-Deletion Checklist
+  Before deleting a chronology, consider:
+  1. ✅ Check if any daily logs reference this chronology
+  2. ✅ Verify it's a house-specific chronology (`is_editable: true`)
+  3. ✅ Confirm with users that it's no longer needed
+  4. ✅ Consider renaming instead of deleting if data exists
+  
+  ## How to Identify Deletable Chronologies
+  When fetching chronologies from the configurations endpoint:
+  ```json
+  {
+    "id": 15,
+    "name": "Custom Report",
+    "is_global": false,
+    "is_editable": true,
+    "house_id": 1
+  }
+  ```
+  - `is_global: false` = House-specific chronology
+  - `is_editable: true` = Can be deleted
+  - `house_id: null` = Global chronology (cannot delete)
+  
+  ## Integration Notes
+  - Frontend should hide/disable delete button for chronologies where `is_editable: false`
+  - Show confirmation dialog before deletion
+  - After deletion, refresh chronology list
+  - Consider showing warning if chronology is in use
+  
+  ## Future Considerations
+  - May add soft delete functionality
+  - May add usage count to prevent deletion of chronologies in use
+  - May add archive feature instead of permanent deletion
+}

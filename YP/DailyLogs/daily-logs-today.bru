@@ -1,0 +1,58 @@
+meta {
+  name: Get Today's Daily Log
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/daily-logs/today
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPerson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Today's Daily Log
+  
+  Retrieves today's daily log for a specific young person with all activities.
+  
+  ## Path Parameters
+  - `houseId` (integer, required): The house ID
+  - `youngPersonId` (integer, required): The young person ID
+  
+  ## Response
+  Returns today's daily log with:
+  - `id`: Daily log ID
+  - `date`: Log date (today's date)
+  - `status`: Status (Pending, Approved, Rejected)
+  - `chronology_id`: Chronology type ID reference
+  - `chronology`: Chronology details (id, name)
+  - `young_person`: Young person details (id, first_name, middle_name, last_name)
+  - `house`: House details (id, house_name)
+  - `performer`: User who performed approval/rejection (if applicable)
+  - `creator`: User who created the log
+  - `updater`: User who last updated the log
+  - `remarks`: Approval remarks (if approved)
+  - `reason`: Rejection reason (if rejected)
+  - `activities`: Array of daily log activities with:
+    - Activity details (day_part, log_date_time, chronology_id, etc.)
+    - Chronology details (id, name)
+    - Creator and updater user details
+    - Attachments (if any)
+  - `created_at`: Creation timestamp
+  - `updated_at`: Last update timestamp
+  
+  ## Notes
+  - Returns `null` if no daily log exists for today
+  - Includes all activities sorted by log_date_time (ascending)
+  - Only returns logs for the authenticated user's client
+  - Requires `view_daily_logs` permission
+}

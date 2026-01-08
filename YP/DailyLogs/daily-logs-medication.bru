@@ -1,0 +1,129 @@
+meta {
+  name: Create Daily Log - Medication
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 8
+  activity_action: Administered morning medication as prescribed. Medication: Fluoxetine 20mg (1 capsule). Taken with breakfast. YP cooperative, no issues with administration. No adverse reactions noted. Next dose due tomorrow.
+  mood[0]: Calm
+  breakfast: Toast and orange juice (taken with medication)
+  ~attachments[0]: @file(/path/to/medication_record.pdf)
+}
+
+docs {
+  # Create Daily Log - Medication
+  
+  Record medication administration and related observations.
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 8 (Medication)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `activity_action` (string, required): Detailed medication record
+  
+  ## Critical Information to Include
+  
+  ### Medication Details
+  - **Medication name** (generic and brand if applicable)
+  - **Dosage** (exact amount)
+  - **Route** (oral, topical, inhaler, etc.)
+  - **Time administered** (exact time)
+  - **Administered by** (staff member name)
+  
+  ### Administration
+  - Whether taken as prescribed
+  - Any difficulties in administration
+  - Taken with food/water
+  - YP cooperation level
+  
+  ### Observations
+  - Any immediate reactions
+  - Effectiveness of medication
+  - Side effects noted
+  - YP's mood/behaviour after taking
+  
+  ### Next Steps
+  - Next dose due date/time
+  - Any follow-up required
+  - Medication reviews scheduled
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected (usually Morning/Evening for regular meds)
+  - `mood` (array): YP's mood at time of administration
+  - `breakfast`, `lunch`, `dinner`: Meal taken with medication
+  - `attachments` (files): Medication charts, prescription copies
+  
+  ## Example Entries
+  
+  ### Regular Medication
+  ```
+  Morning dose administered at 08:00.
+  Medication: Methylphenidate 18mg (1 tablet)
+  Route: Oral
+  Taken with: Breakfast and water
+  YP cooperation: Fully cooperative
+  Observations: No adverse reactions. YP reports feeling focused.
+  Administered by: Sarah Johnson (Staff)
+  Next dose: 08:00 tomorrow
+  ```
+  
+  ### PRN (As Needed) Medication
+  ```
+  PRN medication given at 14:30.
+  Medication: Paracetamol 500mg (2 tablets)
+  Reason: YP complained of headache (pain level 6/10)
+  Route: Oral with water
+  Parent permission: Obtained via phone
+  Observations: Pain reduced to 3/10 after 30 minutes. 
+  YP rested quietly. No adverse reactions.
+  Can repeat in 4 hours if needed.
+  Administered by: Mark Thompson (Staff)
+  ```
+  
+  ### Refused Medication
+  ```
+  Medication offered at 20:00 as prescribed.
+  Medication: Melatonin 2mg
+  Status: REFUSED
+  Reason given: YP stated "not tired, want to finish game"
+  Actions: Explained importance of sleep routine. Offered again 
+  20 minutes later - YP accepted second offer.
+  Time taken: 20:20
+  Observations: YP settled for bed by 21:00. Normal sleep pattern.
+  Administered by: Emma Davies (Staff)
+  ```
+  
+  ### Medication Error
+  ```
+  Medication error identified at 12:30.
+  Issue: Morning dose (08:00) was not administered due to staff 
+  handover miscommunication.
+  Action taken: Senior staff notified immediately. Parent/guardian 
+  contacted. Dose administered at 12:45 with medical approval.
+  Incident report: Completed (Ref: IR-2026-001)
+  Follow-up: Review handover procedures. No adverse effects on YP.
+  ```
+  
+  ## Safety Guidelines
+  - Double-check medication against prescription
+  - Verify young person identity
+  - Document immediately after administration
+  - Never leave medication unattended
+  - Report any concerns to medical staff
+  - Maintain secure medication storage
+  
+  ## Response (201 Created)
+  Returns the created medication log with all safety checks documented.
+}

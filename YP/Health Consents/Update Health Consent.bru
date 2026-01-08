@@ -1,0 +1,32 @@
+meta {
+  name: Update Health Consent
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/health-consents
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  parental_consent_required: 1
+  consent_to_emergency_treatment: 1
+  consent_for_medication: 0
+  consent_for_notification: 1
+  signed_by_consent_form: @file(/path/to/consent_form_updated.pdf)
+  instructions: Updated instructions: Parent requested to be notified of all medical appointments.
+  restrictions: Updated restrictions: No aspirin, no ibuprofen. Allergic to penicillin.
+  upload_documents[0]: @file(/path/to/updated_medical_report.pdf)
+  document_types[0]: health_records
+}

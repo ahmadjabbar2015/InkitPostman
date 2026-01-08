@@ -1,0 +1,61 @@
+meta {
+  name: Update Activity in Daily Log
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs/1/activities/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+body:json {
+  {
+    "activity_type": "Sport",
+    "description": "Updated description: Attended football training session with great enthusiasm",
+    "duration_minutes": 90,
+    "engagement_level": "High"
+  }
+}
+
+docs {
+  # Update Activity in Daily Log
+  
+  Update a specific activity within a daily log entry.
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  - `youngPerson` (required): Young Person ID
+  - `log` (required): Daily Log ID
+  - `activity` (required): Activity ID
+  
+  ## Request Body
+  - `activity_type` (required): Type of activity
+  - `description` (required): Description of the activity
+  - `duration_minutes` (optional): Duration in minutes
+  - `engagement_level` (optional): High/Medium/Low
+  
+  ## Response
+  ```json
+  {
+    "success": true,
+    "message": "Activity updated successfully",
+    "data": {
+      "id": 1,
+      "activity_type": "Sport",
+      "description": "Updated description...",
+      "duration_minutes": 90,
+      "engagement_level": "High",
+      "updated_at": "2026-01-05T11:00:00Z"
+    }
+  }
+  ```
+  
+  ## Permissions
+  Requires `update_daily_log` permission.
+}

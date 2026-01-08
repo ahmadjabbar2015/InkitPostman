@@ -1,0 +1,29 @@
+meta {
+  name: "House Roles - Marked Explained"
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/4/young-persons/1/house-roles/mark-explained
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~hosue: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  explained: 1
+  comment: House rules have been explained to the Young Person
+  conducted_by: umair
+}
+
+vars:pre-request {
+  house: 4
+}

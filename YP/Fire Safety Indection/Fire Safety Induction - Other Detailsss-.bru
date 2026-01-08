@@ -1,0 +1,69 @@
+meta {
+  name: "Fire Safety Induction - Other Details"
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/4/young-persons/1/fire-induction/other-details/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "peep_required": 1,
+    "mobility_medical_factor": "hearing",
+    "speech": 1,
+    "non_verbal": 0,
+    "aac": 1,
+    "makaton": 0,
+    "other_communication": 0,
+    "sounder": 1,
+    "visual_beacon": 1,
+    "staff_prompt": 1,
+    "tactile_prompt": 0,
+    "low_arousal_approach": 1,
+    "safe_space_step_out": 1,
+    "practice_outcome": 1,
+    "route_practiced": 1,
+    "doors_checked_on_route": 1,
+    "action_clear": 1,
+    "action_partial": 0,
+    "action_not_yet": 0,
+    "evidence_uploaded": 1,
+    "yp_understanding_clear": 1,
+    "yp_understanding_partial": 0,
+    "yp_understanding_not_yet": 0,
+    "kitchen_no_water_on_oil": 1,
+    "kitchen_fire_blanket_location": 1,
+    "pan_grill_safety": 1,
+    "smoking_under18_guidelines": 1,
+    "smoking_disposal_points": 1,
+    "smoking_lighter_match_box": 1,
+    "electrical_charges_adaptors": 1,
+    "electrical_damaged_cable": 1,
+    "electrical_pat_status": 1,
+    "candles_prohibited_guidelines": 1,
+    "candles_safer_alternatives": 1,
+    "bedroom_overnight_charging": 1,
+    "bedroom_multi_adapter": 0,
+    "bedroom_timetable_explained": 1,
+    "oxygen_special_precautions": 0,
+    "oxygen_placement_ventilation": 0,
+    "oxygen_incompatibilities": 0,
+    "alarm_action": "Exit the building immediately via nearest safe exit",
+    "assembly_point_action": "Gather at the front garden assembly point",
+    "fire_seen_action": "Raise the alarm and evacuate",
+    "route_blocked_contact": "Contact emergency services and use alternative route",
+    "overall_clear": 1,
+    "overall_partial": 0,
+    "overall_not_yet": 0,
+    "yp_concerns_yes": 0,
+    "yp_concerns_no": 1
+  }
+}

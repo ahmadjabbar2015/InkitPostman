@@ -1,0 +1,154 @@
+meta {
+  name: Create Daily Log
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngperson/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  youngperson: 1
+  house: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 11
+  activity_action: Attended football practice at local sports center
+  mood[0]: Happy
+  mood[1]: Excited
+  clothing: Sports kit and trainers
+  breakfast: Cereal, toast, orange juice
+  lunch: Pasta, salad, water
+  dinner: Chicken, vegetables, rice
+  snacks: Apple, biscuits
+  wake_up_time: 07:30
+  wake_up_notes: Woke up naturally, in good mood
+  ~attachments[0]: @file(/path/to/photo1.jpg)
+  ~attachments[1]: @file(/path/to/document.pdf)
+}
+
+docs {
+  # Create Daily Log Activity
+  
+  Create a new daily log activity for a young person. The system automatically detects the shift time (day_part) based on the log_date_time provided.
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  - `youngPerson` (required): Young Person ID
+  
+  ## Request Body
+  
+  ### Required Fields
+  - `chronology_id` (integer, required): ID of the chronology (must be global or belong to the house)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are ALL automatically set by the server based on current timestamp.
+  
+  ### Optional Fields (Auto-Detection)
+  - `day_part` (string, optional): Shift time - **Auto-detected** if not provided
+    - If provided, must be one of: Morning, Afternoon, Evening, Night
+    - If not provided, automatically determined from `log_date_time`:
+      - **Morning**: 06:00 - 11:59
+      - **Afternoon**: 12:00 - 17:59
+      - **Evening**: 18:00 - 21:59
+      - **Night**: 22:00 - 05:59
+  
+  ### Other Optional Fields
+  - `activity_action` (string): Description of activity or action
+  - `mood` (array): Young person's mood (can select multiple)
+    - Options: Happy, Sad, Angry, Confused, Excited, Anxious, Calm, Frustrated, Content, Tired
+  - `clothing` (string): What the young person is wearing
+  - `breakfast` (string): Breakfast details
+  - `lunch` (string): Lunch details
+  - `dinner` (string): Dinner details
+  - `snacks` (string): Snacks consumed
+  - `wake_up_time` (time): Wake up time (HH:MM format)
+  - `wake_up_notes` (string): Notes about waking up
+  - `attachments` (array): File attachments (PDF, JPG, JPEG, PNG, DOC, DOCX, max 10MB each)
+  
+  ### Chronology-Specific Fields
+  
+  **For "Health & Well-being":**
+  - `wellbeing_category` (required): Physical Wellbeing, Emotional wellbeing, Mental wellbeing, Sleep and Rest
+  - `action_observation` (required): Observation or action taken
+  
+  **For "Views, Wishes & Feelings":**
+  - `entry_type` (required): View, Wish, Feeling, Concern, Complaint, Compliment
+  - `action_observation` (required): Details of the view/wish/feeling
+  
+  **For "Protection, Behaviour and Safeguarding":**
+  - `safeguarding_category` (required): Physical, Emotional, Sexual, Neglect, Bullying, Online Safety, Exploitation, Other
+  - `concern_raised` (required): Description of the concern
+  - `disclosure_made` (optional): Details of any disclosure
+  - `action_outcome` (optional): Outcome of actions taken
+  - `review_date` (optional): Date for review
+  - `follow_up` (optional): Follow-up actions needed
+  
+  **For "Behaviour Monitor Chart" or "Injury & Achieve":**
+  - `action_observation` (required): Observation or action details
+  
+  ## Success Response (201 Created)
+  ```json
+  {
+    "success": true,
+    "message": "Daily log activity created successfully",
+    "data": {
+      "id": 123,
+      "yp_daily_log_id": 45,
+      "day_part": "Morning",
+      "log_date_time": "2026-01-05 09:30:00",
+      "chronology_id": 10,
+      "activity_action": "Attended football practice",
+      "mood": ["Happy", "Excited"],
+      "created_by": 42,
+      "created_at": "2026-01-05T09:35:00.000000Z"
+    }
+  }
+  ```
+  
+  ## Auto-Detection Examples
+  
+  ### Example 1: Morning Activity
+  ```json
+  {
+    "date": "2026-01-05",
+    "log_date_time": "2026-01-05 09:30:00",
+    "chronology_type": "Activities"
+  }
+  ```
+  Result: `day_part` will be set to **"Morning"**
+  
+  ### Example 2: Night Activity
+  ```json
+  {
+    "date": "2026-01-05",
+    "log_date_time": "2026-01-05 23:45:00",
+    "chronology_type": "Sleep Pattern"
+  }
+  ```
+  Result: `day_part` will be set to **"Night"**
+  
+  ### Example 3: Manual Override
+  ```json
+  {
+    "date": "2026-01-05",
+    "log_date_time": "2026-01-05 09:30:00",
+    "day_part": "Afternoon",
+    "chronology_type": "Activities"
+  }
+  ```
+  Result: Manual `day_part` will be used: **"Afternoon"**
+  
+  ## Notes
+  - If both `day_part` and `log_date_time` are provided, the manual `day_part` takes precedence
+  - If only `log_date_time` is provided, `day_part` is automatically calculated
+  - The parent daily log is created automatically if it doesn't exist for the date
+  - Multiple activities can be added to the same daily log (same date)
+}

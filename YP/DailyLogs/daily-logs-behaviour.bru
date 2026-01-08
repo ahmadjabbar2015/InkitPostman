@@ -1,0 +1,95 @@
+meta {
+  name: Create Daily Log - Behaviour Monitor Chart
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{houseId}}/young-persons/{{youngPersonId}}/daily-logs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  chronology_id: 2
+  action_observation: YP responded well to redirection when asked to help with dinner preparation. Showed patience and cooperation. Later became frustrated during homework but used breathing techniques effectively to calm down.
+  positive_behaviour: 1
+  cause_for_concern: 0
+  behaviour_of_concern: 0
+  mood[0]: Frustrated
+  mood[1]: Calm
+  dinner: Spaghetti bolognese
+  ~attachments[0]: @file(/path/to/behaviour_chart.pdf)
+}
+
+docs {
+  # Create Daily Log - Behaviour Monitor Chart
+  
+  Track and monitor young person's behaviour patterns.
+  
+  ## Required Fields
+  - `chronology_id` (integer): Must be 2 (Behaviour Monitor Chart)
+  
+  **Note:** `date`, `log_date_time`, and `day_part` are automatically set by the server.
+  - `action_observation` (string, required): Detailed behaviour observation
+  
+  ## Behaviour Indicators (Optional Checkboxes)
+  - `positive_behaviour` (boolean): 1 for yes, 0 for no
+  - `cause_for_concern` (boolean): 1 for yes, 0 for no
+  - `behaviour_of_concern` (boolean): 1 for yes, 0 for no
+  
+  ## Optional Fields
+  - `day_part` (string): Auto-detected from log_date_time
+  - `mood` (array): Emotional state observed
+  - `activity_action` (string): Activities engaged in
+  - `breakfast`, `lunch`, `dinner`, `snacks`: Meal participation
+  - `attachments` (files): Behaviour charts, incident reports
+  
+  ## Documentation Guidelines
+  
+  ### Positive Behaviour Examples
+  - Following house rules
+  - Helping with chores
+  - Using coping strategies
+  - Showing empathy to others
+  - Completing tasks independently
+  
+  ### Cause for Concern Examples
+  - Minor rule violations
+  - Low mood or withdrawal
+  - Avoiding usual activities
+  - Changes in eating/sleeping patterns
+  
+  ### Behaviour of Concern Examples
+  - Aggression towards self/others
+  - Significant rule violations
+  - Risk-taking behaviour
+  - Absconding attempts
+  
+  ## Best Practices
+  - Be objective and factual
+  - Describe what was observed, not assumptions
+  - Note triggers and de-escalation strategies used
+  - Document positive behaviours as well as concerns
+  - Include context (what happened before/after)
+  - Note interventions and their effectiveness
+  
+  ## Example Entry
+  ```
+  Morning: YP woke up in good mood. Completed morning routine independently. 
+  Positive interaction with peers at breakfast.
+  
+  Afternoon: Became agitated when asked to do homework. Raised voice but 
+  responded to redirection. Took space and returned calm after 10 minutes.
+  
+  Interventions: Offered choice of tasks, provided quiet space, praised 
+  use of coping strategies.
+  ```
+  
+  ## Response (201 Created)
+  Returns the created behaviour monitoring log.
+}

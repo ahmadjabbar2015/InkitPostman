@@ -1,0 +1,79 @@
+meta {
+  name: List Daily Logs
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs?page=1&per_page=20&date_from=2026-01-01&date_to=2026-01-31
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  per_page: 20
+  date_from: 2026-01-01
+  date_to: 2026-01-31
+  ~shift_time: Morning
+  ~status: Approved
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # List Daily Logs
+  
+  Retrieve a paginated list of daily logs for a specific young person.
+  Returns minimal data for listing view (Date, Status, Actions).
+  
+  ## URL Parameters
+  - `house` (required): House ID
+  - `youngPerson` (required): Young Person ID
+  
+  ## Query Parameters
+  - `page` (optional): Page number (default: 1)
+  - `per_page` (optional): Items per page (default: 15)
+  - `from_date` (optional): Filter logs from this date (YYYY-MM-DD)
+  - `to_date` (optional): Filter logs until this date (YYYY-MM-DD)
+  - `status` (optional): Filter by status (Pending/Approved/Rejected)
+  
+  ## Response Structure
+  ```json
+  {
+    "success": true,
+    "data": {
+      "current_page": 1,
+      "data": [
+        {
+          "id": 1,
+          "date": "2025-12-27",
+          "status": "Approved",
+          "created_at": "2025-12-27T08:30:00Z"
+        },
+        {
+          "id": 2,
+          "date": "2025-12-26",
+          "status": "Pending Approval",
+          "created_at": "2025-12-26T18:00:00Z"
+        },
+        {
+          "id": 3,
+          "date": "2025-12-25",
+          "status": "Pending Approval",
+          "created_at": "2025-12-25T14:00:00Z"
+        }
+      ],
+      "total": 45,
+      "per_page": 15,
+      "last_page": 3
+    }
+  }
+  ```
+  
+  ## Note
+  This endpoint returns minimal data for the listing view.
+  Use the show endpoint to get full details of a specific daily log.
+}

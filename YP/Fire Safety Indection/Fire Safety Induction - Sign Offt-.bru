@@ -1,0 +1,25 @@
+meta {
+  name: "Fire Safety Induction - Sign Offt"
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/4/young-persons/1/fire-induction/sign-off/1
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  sign_off_datetime: 2026-01-06
+  induction_finish_time: 14:30
+  induction_lead_signature: @file(C:\Users\Growup Labs\Pictures\download (2).jpg)
+  second_staff_name: Sarah Khan
+  second_staff_signature: @file(C:\Users\Growup Labs\Pictures\download (3).jpg)
+  manager_comments: All induction steps completed successfully
+  next_refresher_due_date: 2027-01-06
+}
