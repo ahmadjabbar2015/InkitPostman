@@ -1,0 +1,15 @@
+meta {
+  name: house rules list
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/19/young-persons/1/house-rules
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
