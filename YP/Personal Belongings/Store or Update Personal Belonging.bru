@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/personal-belongings
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -19,57 +19,40 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "inventory_completed": "yes",
-    "completion_date": "2025-01-15",
-    "uploaded_belonging_sheet": "belongings_sheet_001.pdf",
-    "total_items_recorded": 25,
-    "valuables_recorded": "yes",
-    "custody": "Kept in secure storage, manager has key",
-    "storage_location": "safe",
-    "missing_damaged_items_exist": "no",
-    "items": [
-      {
-        "id": null,
-        "category": "clothing",
-        "article": "T-shirts",
-        "description": "5 cotton t-shirts - various colors",
-        "article_2": "Jeans",
-        "description_2": "2 pairs of blue jeans - size 32",
-        "sort_order": 1
-      },
-      {
-        "id": null,
-        "category": "toiletries",
-        "article": "Shampoo",
-        "description": "Head & Shoulders 500ml",
-        "article_2": "Toothbrush",
-        "description_2": "Electric toothbrush with charger",
-        "sort_order": 2
-      },
-      {
-        "id": null,
-        "category": "jewellery",
-        "article": "Watch",
-        "description": "Digital watch - black strap",
-        "article_2": "",
-        "description_2": "",
-        "sort_order": 3
-      }
-    ],
-    "missing_items": [
-      {
-        "id": null,
-        "item_name": "Winter jacket",
-        "description": "Blue puffer jacket with hood",
-        "action_taken": "replaced",
-        "upload_attachment": "incident_report_001.pdf",
-        "sort_order": 1
-      }
-    ],
-    "young_person_signature": "Ahmad Khan",
-    "staff_signature": "John Smith",
-    "sign_off_completion_date": "2025-01-15"
-  }
+body:multipart-form {
+  inventory_completed: yes
+  completion_date: 2025-01-15
+  ~uploaded_belonging_sheet: @file(/home/pirate-king/Documents/sample.pdf)
+  total_items_recorded: 25
+  valuables_recorded: yes
+  custody: Kept in secure storage, manager has key
+  storage_location: safe
+  missing_damaged_items_exist: yes
+  items[0][id]:
+  items[0][category]: clothing
+  items[0][article]: T-shirts
+  items[0][description]: 5 cotton t-shirts - various colors
+  items[0][sort_order]: 1
+  items[1][id]:
+  items[1][category]: toiletries
+  items[1][article]: Shampoo
+  items[1][description]: Head & Shoulders 500ml
+  items[1][sort_order]: 2
+  items[2][id]:
+  items[2][category]: jewellery
+  items[2][article]: Watch
+  items[2][description]: Digital watch - black strap
+  items[2][sort_order]: 3
+  missing_items[0][id]:
+  missing_items[0][item_name]: Winter jacket
+  missing_items[0][description]: Blue puffer jacket with hood
+  missing_items[0][action_taken]: replaced
+  ~missing_items[0][upload_attachment]: @file(/home/pirate-king/Documents/incident_report.pdf)
+  missing_items[0][sort_order]: 1
+  ~record_title: Initial Inventory - January 2025
+  ~purchase_date: 2025-01-15
+  ~notes: Complete inventory taken on admission
+  young_person_signature: Ahmad Khan
+  staff_signature: John Smith
+  sign_off_completion_date: 2025-01-15
 }
