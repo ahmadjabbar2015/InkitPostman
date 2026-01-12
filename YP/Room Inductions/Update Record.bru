@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/room-inductions/:id
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,43 +20,41 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "room_allocated": "Room 1",
-    "room_type": "single",
-    "room_cleanliness_status": "clean",
-    "safety_features_working": "yes",
-    "record_issue": "",
-    "smoke_detector_working": "yes",
-    "smoke_detector_details": "Tested and functioning properly - Re-checked on 15/01",
-    "emergency_call_bell_functional": "yes",
-    "emergency_call_bell_details": "Located by bed, tested successfully",
-    "windows_secure": "yes",
-    "windows_secure_details": "All window locks checked and working",
-    "heater_safe_working": "yes",
-    "heater_details": "Thermostat set to 20°C, safety guard in place",
-    "electrical_sockets_safe": "yes",
-    "electrical_sockets_details": "All 4 sockets tested and safe",
-    "fire_exit_visibility": "visible",
-    "fire_exit_details": "Fire exit signs clearly visible, route unobstructed",
-    "room_risk_assessment_completed": "yes",
-    "room_condition_evidence": "photos_room_001_updated.jpg",
-    "bathroom_condition": "Clean and fully functional, all fixtures working",
-    "mattress_condition": "New mattress with protective cover, excellent condition",
-    "wardrobe_storage": "Large wardrobe with shelves and hanging rail, drawer unit provided - Additional storage bin added",
-    "notes_on_room_condition": "Room in excellent condition, freshly painted, ready for occupancy. YP has settled in well.",
-    "staff_report_damages": "No damages to report",
-    "bed": "yes",
-    "mattress": "yes",
-    "wardrobe": "yes",
-    "bedside_table": "yes",
-    "chair": "yes",
-    "curtains_blinds": "yes",
-    "bedding_set_provided": "yes",
-    "towels": "yes",
-    "toiletries_starter_pack": "yes",
-    "setup_completed_by": "John Smith - Senior Support Worker",
-    "datetime_of_room_setup": "2025-01-14T10:30:00",
-    "manager_approval_signature": "Jane Doe"
-  }
+body:multipart-form {
+  room_allocated: Room 1
+  room_type: single
+  room_cleanliness_status: clean
+  safety_features_working: yes
+  record_issue: 
+  smoke_detector_working: yes
+  smoke_detector_details: Tested and functioning properly - Re-checked on 15/01
+  emergency_call_bell_functional: yes
+  emergency_call_bell_details: Located by bed, tested successfully
+  windows_secure: yes
+  windows_secure_details: All window locks checked and working
+  heater_safe_working: yes
+  heater_details: Thermostat set to 20°C, safety guard in place
+  electrical_sockets_safe: yes
+  electrical_sockets_details: All 4 sockets tested and safe
+  fire_exit_visibility: visible
+  fire_exit_details: Fire exit signs clearly visible, route unobstructed
+  room_risk_assessment_completed: yes
+  ~room_condition_evidence: @file(/path/to/room_evidence_updated.jpg)
+  ~bathroom_condition: @file(/path/to/bathroom_photo_updated.jpg)
+  ~mattress_condition: @file(/path/to/mattress_photo_updated.jpg)
+  ~wardrobe_storage: @file(/path/to/wardrobe_photo_updated.jpg)
+  notes_on_room_condition: Room in excellent condition, freshly painted, ready for occupancy. YP has settled in well.
+  staff_report_damages: No damages to report
+  bed: yes
+  mattress: yes
+  wardrobe: yes
+  bedside_table: yes
+  chair: yes
+  curtains_blinds: yes
+  bedding_set_provided: yes
+  towels: yes
+  toiletries_starter_pack: yes
+  setup_completed_by: John Smith - Senior Support Worker
+  datetime_of_room_setup: 2025-01-14T10:30:00
+  manager_approval_signature: Jane Doe
 }
