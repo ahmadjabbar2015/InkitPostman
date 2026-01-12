@@ -6,7 +6,7 @@ meta {
 
 post {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/needs-assessments
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -19,122 +19,124 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "young_person_id": 1,
-    "house_id": 4,
-    "client_id": 5,
-    "assessment_date": "2025-01-15",
-    "type_of_placement": "long_term",
-    "summary_of_presenting_needs": "Young person with ADHD and previous history of self-harm requires structured environment with therapeutic support",
-    "linking_needs_risk": "Mental health needs linked to family breakdown and previous trauma",
-    "compatibility_group_impact": "Positive peer relationships, benefits from structured routines",
-    "desired_placement_outcomes_goals": "Stabilize mental health, improve school attendance, develop coping strategies",
-    "la_outcomes": "Return to mainstream education, reduce missing episodes",
-    "initial_level_of_need": "Medium-High",
-    "any_diagnosed_medical_conditions": "yes",
-    "diagnosis_name": "ADHD",
-    "diagnosed_by": "Dr. Smith - CAMHS",
-    "diagnosed_date": "2023-06-15",
-    "severity": "moderate",
-    "impact_on_daily_living": "Difficulty concentrating, impulsivity affects social interactions",
-    "reasonable_adjustments_needed": "yes",
-    "list_of_adjustments": "Movement breaks, visual timetables, quiet study space",
-    "gp_name": "Dr. Johnson",
-    "gp_practice": "City Health Centre",
-    "gp_contact_number": "020 1234 5678",
-    "diagnosed_mental_health_condition": "yes",
-    "mental_health_condition_name": "Anxiety Disorder",
-    "mental_health_diagnosed_by": "Dr. Brown - CAMHS",
-    "mental_health_diagnosis_date": "2024-03-10",
-    "mental_health_severity": "moderate",
-    "camhs_involvement": "yes",
-    "camhs_contact_name": "Sarah Williams",
-    "camhs_contact_number": "020 8765 4321",
-    "therapy_type": "CBT",
-    "current_interventions": "Weekly therapy sessions, mindfulness exercises",
-    "triggers_warning_signs": "Stress, social conflicts, family contact issues",
-    "coping_strategies": "Deep breathing, time-out space, talking to key worker",
-    "risk_to_self": "yes",
-    "risk_to_others": "no",
-    "mental_health_current_support_controls": "1:1 key worker sessions, CAMHS involvement, safety plan",
-    "mental_health_further_actions": "Continue therapy, review medication with GP",
-    "mental_health_scale": 6,
-    "mental_health_scale_level": "medium",
-    "mental_health_review_date": "2025-04-15",
-    "history_of_self_harm_suicidal_thoughts": "yes",
-    "self_harm_description_of_incidents": "Previous cutting behavior, last incident 3 months ago",
-    "self_harm_triggers": "Family contact, peer conflicts, academic stress",
-    "medical_or_camhs_involvement": "camhs",
-    "self_harm_safety_plan_in_place": "yes",
-    "self_harm_safety_plan_date_created": "2024-12-01",
-    "self_harm_safety_plan_reviewed_by": "John Smith - Key Worker",
-    "immediate_risk_level": "medium",
-    "self_harm_current_support_controls": "Safety plan in place, regular check-ins, sharp objects secure",
-    "self_harm_scale": 5,
-    "self_harm_scale_level": "medium",
-    "self_harm_review_date": "2025-02-15",
-    "history_of_going_missing": "yes",
-    "missing_frequency": "monthly",
-    "missing_last_episode_date": "2024-11-20",
-    "missing_duration": "6 hours",
-    "missing_push_pull_factors": "Peer pressure, desire to see friends from previous area",
-    "return_home_interview_completed": "yes",
-    "ongoing_risk_reduction_plan_in_place": "yes",
-    "missing_current_support_controls": "Regular activities, positive peer group, family contact schedule",
-    "missing_episodes_scale": 4,
-    "missing_episodes_scale_level": "medium",
-    "is_yp_currently_on_roll": "yes",
-    "school_college_name": "Manchester Academy",
-    "education_type_of_placement": "mainstream",
-    "education_start_date": "2024-09-01",
-    "year_group": "Year 10",
-    "sen_ehcp_status": "yes_ehcp",
-    "sen_primary_need": "adhd",
-    "describe_learning_support_needed": "LSA support for core subjects, movement breaks",
-    "how_much_support": "part_time",
-    "attendance_issues": "yes",
-    "attendance_percentage": "82%",
-    "describe_attendance_barriers": "Anxiety about school, peer relationships",
-    "behaviour_issues_in_school": "no",
-    "exclusions": "no",
-    "education_current_support_controls": "EHCP in place, PEP reviews, LSA support",
-    "education_scale": 5,
-    "education_scale_level": "medium",
-    "education_review_date": "2025-03-15",
-    "does_yp_build_trusting_relationships_with_staff": "yes",
-    "key_difficulties": "Takes time to trust new people",
-    "relationships_with_peers": "yes",
-    "describe_peer_relationships": "Good relationships within placement, some difficulties at school",
-    "positive_role_models": "yes",
-    "who_are_role_models": "Key worker, football coach",
-    "contact_with_family": "yes",
-    "describe_family_contact": "Weekly supervised contact with mother",
-    "social_worker_details": "yes",
-    "social_worker_name": "Jane Doe",
-    "social_worker_contact": "jane.doe@manchester.gov.uk",
-    "lac_review_due_date": "2025-03-01",
-    "relationships_scale": 3,
-    "relationships_scale_level": "low",
-    "is_yp_able_to_manage_personal_hygiene": "yes",
-    "can_yp_prepare_basic_meals": "with_support",
-    "describe_meal_prep_support": "Learning basic cooking skills, requires supervision for safety",
-    "does_yp_manage_money": "with_support",
-    "describe_money_management_support": "Weekly pocket money, learning budgeting",
-    "does_yp_understand_public_transport": "yes",
-    "preparation_for_adulthood": "pending",
-    "independence_scale": 4,
-    "independence_scale_level": "medium",
-    "yp_happy_with": "My room, my key worker, playing football",
-    "yp_would_like_to_change": "More contact with family, fewer rules",
-    "yp_goals_next_few_months": "Improve school attendance, make more friends",
-    "yp_how_can_we_help": "Help me with homework, take me to football",
-    "yp_feel_safe_and_supported": "yes",
-    "staff_sign_off_name": "John Smith",
-    "staff_sign_off_datetime": "2025-01-15T14:30:00",
-    "manager_name": "Jane Williams",
-    "manager_sign_off_datetime": "2025-01-15T16:00:00",
-    "review_due_date": "2025-04-15",
-    "assessment_completed_by": "John Smith - Key Worker"
-  }
+body:multipart-form {
+  young_person_id: 1
+  house_id: 4
+  client_id: 5
+  assessment_date: 2025-01-15
+  type_of_placement: long_term
+  summary_of_presenting_needs: Young person with ADHD and previous history of self-harm requires structured environment with therapeutic support
+  linking_needs_risk: Mental health needs linked to family breakdown and previous trauma
+  compatibility_group_impact: Positive peer relationships, benefits from structured routines
+  desired_placement_outcomes_goals: Stabilize mental health, improve school attendance, develop coping strategies
+  la_outcomes: Return to mainstream education, reduce missing episodes
+  initial_level_of_need: Medium-High
+  any_diagnosed_medical_conditions: yes
+  diagnosis_name: ADHD
+  diagnosed_by: Dr. Smith - CAMHS
+  diagnosed_date: 2023-06-15
+  severity: moderate
+  impact_on_daily_living: Difficulty concentrating, impulsivity affects social interactions
+  reasonable_adjustments_needed: yes
+  list_of_adjustments: Movement breaks, visual timetables, quiet study space
+  ~evidence_upload: @file(/path/to/medical_evidence.pdf)
+  gp_name: Dr. Johnson
+  gp_practice: City Health Centre
+  gp_contact_number: 020 1234 5678
+  diagnosed_mental_health_condition: yes
+  mental_health_condition_name: Anxiety Disorder
+  mental_health_diagnosed_by: Dr. Brown - CAMHS
+  mental_health_diagnosis_date: 2024-03-10
+  mental_health_severity: moderate
+  camhs_involvement: yes
+  camhs_contact_name: Sarah Williams
+  camhs_contact_number: 020 8765 4321
+  therapy_type: CBT
+  current_interventions: Weekly therapy sessions, mindfulness exercises
+  ~upload_care_plan: @file(/path/to/care_plan.pdf)
+  triggers_warning_signs: Stress, social conflicts, family contact issues
+  coping_strategies: Deep breathing, time-out space, talking to key worker
+  risk_to_self: yes
+  risk_to_others: no
+  mental_health_current_support_controls: 1:1 key worker sessions, CAMHS involvement, safety plan
+  mental_health_further_actions: Continue therapy, review medication with GP
+  mental_health_scale: 6
+  mental_health_scale_level: medium
+  mental_health_review_date: 2025-04-15
+  history_of_self_harm_suicidal_thoughts: yes
+  self_harm_description_of_incidents: Previous cutting behavior, last incident 3 months ago
+  self_harm_triggers: Family contact, peer conflicts, academic stress
+  medical_or_camhs_involvement: camhs
+  self_harm_safety_plan_in_place: yes
+  self_harm_safety_plan_date_created: 2024-12-01
+  self_harm_safety_plan_reviewed_by: John Smith - Key Worker
+  immediate_risk_level: medium
+  self_harm_current_support_controls: Safety plan in place, regular check-ins, sharp objects secure
+  self_harm_scale: 5
+  self_harm_scale_level: medium
+  self_harm_review_date: 2025-02-15
+  history_of_going_missing: yes
+  missing_frequency: monthly
+  missing_last_episode_date: 2024-11-20
+  missing_duration: 6 hours
+  missing_push_pull_factors: Peer pressure, desire to see friends from previous area
+  return_home_interview_completed: yes
+  ongoing_risk_reduction_plan_in_place: yes
+  ~cse_upload_planning_notes: @file(/path/to/cse_planning_notes.pdf)
+  missing_current_support_controls: Regular activities, positive peer group, family contact schedule
+  missing_episodes_scale: 4
+  missing_episodes_scale_level: medium
+  is_yp_currently_on_roll: yes
+  school_college_name: Manchester Academy
+  education_type_of_placement: mainstream
+  education_start_date: 2024-09-01
+  year_group: Year 10
+  sen_ehcp_status: yes_ehcp
+  sen_primary_need: adhd
+  ~sen_upload_ehcp: @file(/path/to/ehcp_document.pdf)
+  describe_learning_support_needed: LSA support for core subjects, movement breaks
+  how_much_support: part_time
+  attendance_issues: yes
+  attendance_percentage: 82%
+  describe_attendance_barriers: Anxiety about school, peer relationships
+  behaviour_issues_in_school: no
+  exclusions: no
+  education_current_support_controls: EHCP in place, PEP reviews, LSA support
+  education_scale: 5
+  education_scale_level: medium
+  education_review_date: 2025-03-15
+  does_yp_build_trusting_relationships_with_staff: yes
+  key_difficulties: Takes time to trust new people
+  relationships_with_peers: yes
+  describe_peer_relationships: Good relationships within placement, some difficulties at school
+  positive_role_models: yes
+  who_are_role_models: Key worker, football coach
+  contact_with_family: yes
+  describe_family_contact: Weekly supervised contact with mother
+  social_worker_details: yes
+  social_worker_name: Jane Doe
+  social_worker_contact: jane.doe@manchester.gov.uk
+  lac_review_due_date: 2025-03-01
+  relationships_scale: 3
+  relationships_scale_level: low
+  is_yp_able_to_manage_personal_hygiene: yes
+  can_yp_prepare_basic_meals: with_support
+  describe_meal_prep_support: Learning basic cooking skills, requires supervision for safety
+  does_yp_manage_money: with_support
+  describe_money_management_support: Weekly pocket money, learning budgeting
+  does_yp_understand_public_transport: yes
+  preparation_for_adulthood: pending
+  independence_scale: 4
+  independence_scale_level: medium
+  yp_happy_with: My room, my key worker, playing football
+  yp_would_like_to_change: More contact with family, fewer rules
+  yp_goals_next_few_months: Improve school attendance, make more friends
+  yp_how_can_we_help: Help me with homework, take me to football
+  yp_feel_safe_and_supported: yes
+  staff_sign_off_name: John Smith
+  staff_sign_off_datetime: 2025-01-15T14:30:00
+  manager_name: Jane Williams
+  manager_sign_off_datetime: 2025-01-15T16:00:00
+  review_due_date: 2025-04-15
+  assessment_completed_by: John Smith - Key Worker
 }

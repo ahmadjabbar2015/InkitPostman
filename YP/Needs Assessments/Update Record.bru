@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/needs-assessments/:id
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,47 +20,46 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "young_person_id": 1,
-    "house_id": 4,
-    "client_id": 5,
-    "assessment_date": "2025-01-15",
-    "mental_health_condition_name": "Anxiety Disorder - Improved",
-    "mental_health_severity": "mild",
-    "current_interventions": "Weekly therapy sessions showing good progress, mindfulness exercises daily",
-    "mental_health_current_support_controls": "1:1 key worker sessions, CAMHS involvement, safety plan - YP engaging well",
-    "mental_health_further_actions": "Continue therapy, reduce frequency to fortnightly if progress continues",
-    "mental_health_scale": 4,
-    "mental_health_scale_level": "low",
-    "mental_health_review_date": "2025-04-15",
-    "self_harm_description_of_incidents": "Previous cutting behavior, last incident 3 months ago - no recent incidents",
-    "immediate_risk_level": "low",
-    "self_harm_current_support_controls": "Safety plan in place, regular check-ins, sharp objects secure - YP using coping strategies well",
-    "self_harm_scale": 3,
-    "self_harm_scale_level": "low",
-    "missing_frequency": "rare",
-    "missing_current_support_controls": "Regular activities, positive peer group, family contact schedule - No missing episodes for 2 months",
-    "missing_episodes_scale": 2,
-    "missing_episodes_scale_level": "low",
-    "attendance_percentage": "89%",
-    "describe_attendance_barriers": "Anxiety about school reduced, better peer relationships",
-    "education_current_support_controls": "EHCP in place, PEP reviews, LSA support - Good progress in core subjects",
-    "education_scale": 3,
-    "education_scale_level": "low",
-    "yp_happy_with": "My room, my key worker, playing football, new friends at school",
-    "yp_would_like_to_change": "More independence with pocket money",
-    "yp_goals_next_few_months": "Get 90% attendance, join school football team",
-    "yp_how_can_we_help": "Support with football club membership, help practicing for school team tryouts",
-    "ongoing_review_date": "2025-02-15",
-    "ongoing_reviewed_by": "keyworker",
-    "progress_new_needs": "Significant improvement in mental health and school engagement. New goal: joining school football team",
-    "actions_updated": "Reduce therapy frequency, support football club membership application",
-    "staff_sign_off_name": "John Smith",
-    "staff_sign_off_datetime": "2025-02-15T14:30:00",
-    "manager_name": "Jane Williams",
-    "manager_sign_off_datetime": "2025-02-15T16:00:00",
-    "review_due_date": "2025-05-15",
-    "assessment_completed_by": "John Smith - Key Worker"
-  }
+body:multipart-form {
+  young_person_id: 1
+  house_id: 4
+  client_id: 5
+  assessment_date: 2025-01-15
+  mental_health_condition_name: Anxiety Disorder - Improved
+  mental_health_severity: mild
+  current_interventions: Weekly therapy sessions showing good progress, mindfulness exercises daily
+  ~upload_care_plan: @file(/path/to/updated_care_plan.pdf)
+  mental_health_current_support_controls: 1:1 key worker sessions, CAMHS involvement, safety plan - YP engaging well
+  mental_health_further_actions: Continue therapy, reduce frequency to fortnightly if progress continues
+  mental_health_scale: 4
+  mental_health_scale_level: low
+  mental_health_review_date: 2025-04-15
+  self_harm_description_of_incidents: Previous cutting behavior, last incident 3 months ago - no recent incidents
+  immediate_risk_level: low
+  self_harm_current_support_controls: Safety plan in place, regular check-ins, sharp objects secure - YP using coping strategies well
+  self_harm_scale: 3
+  self_harm_scale_level: low
+  missing_frequency: rare
+  missing_current_support_controls: Regular activities, positive peer group, family contact schedule - No missing episodes for 2 months
+  missing_episodes_scale: 2
+  missing_episodes_scale_level: low
+  attendance_percentage: 89%
+  describe_attendance_barriers: Anxiety about school reduced, better peer relationships
+  education_current_support_controls: EHCP in place, PEP reviews, LSA support - Good progress in core subjects
+  education_scale: 3
+  education_scale_level: low
+  yp_happy_with: My room, my key worker, playing football, new friends at school
+  yp_would_like_to_change: More independence with pocket money
+  yp_goals_next_few_months: Get 90% attendance, join school football team
+  yp_how_can_we_help: Support with football club membership, help practicing for school team tryouts
+  ongoing_review_date: 2025-02-15
+  ongoing_reviewed_by: keyworker
+  progress_new_needs: Significant improvement in mental health and school engagement. New goal: joining school football team
+  actions_updated: Reduce therapy frequency, support football club membership application
+  staff_sign_off_name: John Smith
+  staff_sign_off_datetime: 2025-02-15T14:30:00
+  manager_name: Jane Williams
+  manager_sign_off_datetime: 2025-02-15T16:00:00
+  review_due_date: 2025-05-15
+  assessment_completed_by: John Smith - Key Worker
 }
