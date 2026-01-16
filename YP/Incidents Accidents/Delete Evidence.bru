@@ -1,0 +1,35 @@
+meta {
+  name: Delete Evidence
+  type: http
+  seq: 20
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/evidences/:evidenceId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+  evidenceId: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Delete Evidence File
+  
+  This endpoint deletes an evidence file from an incident.
+  
+  **Warning:** This action is permanent and will:
+  - Remove the file from storage
+  - Delete the evidence record from database
+  
+  ## Response:
+  Returns success message on successful deletion.
+}

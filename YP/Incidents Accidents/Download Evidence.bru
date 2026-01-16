@@ -1,0 +1,39 @@
+meta {
+  name: Download Evidence
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/evidences/:evidenceId/download
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+  evidenceId: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Download Evidence File
+  
+  This endpoint downloads an evidence file.
+  
+  ## Response:
+  Returns the actual file with appropriate headers:
+  - Content-Disposition: attachment
+  - Original filename preserved
+  - Proper MIME type set
+  
+  ## Usage:
+  - Can be used in browser (will trigger download)
+  - Can be used in API calls to retrieve file content
+  - Preserves original filename from upload
+}

@@ -1,0 +1,58 @@
+meta {
+  name: Update Step - Incident Type
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/incident-type
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "incident_types": [
+      "physical_assault",
+      "verbal_threats_abuse",
+      "damage_to_property"
+    ],
+    "other_incident_type": null
+  }
+}
+
+docs {
+  # Update Step: Type of Incident
+  
+  This endpoint updates the second step - selecting incident types from checkboxes.
+  
+  ## Available Incident Types:
+  - physical_assault
+  - sexualised_behaviour_activity
+  - disclosure_safeguarding_concern
+  - theft
+  - verbal_threats_abuse
+  - drugs_alcohol_substances
+  - arrest_police_involvement
+  - cce_cse_risk
+  - damage_to_property
+  - injury_to_self_others
+  - missing_from_care
+  - fire_emergency
+  - self_harm_suicide_attempt
+  - bullying
+  - accident_illness
+  - other
+  
+  If "other" is selected, provide description in `other_incident_type` field.
+}

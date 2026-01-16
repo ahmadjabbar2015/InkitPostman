@@ -1,0 +1,45 @@
+meta {
+  name: Update Step - Reflection Learning
+  type: http
+  seq: 16
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/reflection-learning
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "reflection_learning": "What went well: Staff maintained calm approach throughout. YP responded positively to offer of quiet space. Communication between staff members was effective.\n\nAreas for improvement: Could have intervened earlier when YP first showed signs of agitation. TV schedule should have been displayed more prominently.\n\nKey learning: YP struggles with transitions and changes to routine. Benefits from advance warning and choices.",
+    "preventive_measures": "1. Implement and display clear TV schedule in common room\n2. Add visual cues/timer for TV time transitions\n3. Staff to be more proactive in identifying early warning signs of agitation\n4. Review YP's behavior support plan - add specific strategies for managing frustration\n5. Consider additional sensory break options in common room area\n6. Team meeting to discuss de-escalation strategies that worked well"
+  }
+}
+
+docs {
+  # Update Step: Reflection & Learning
+  
+  This endpoint updates reflections on the incident and preventive measures.
+  
+  ## Fields:
+  - `reflection_learning` - What can be learned? What went well? What could be improved?
+  - `preventive_measures` - Steps to prevent similar incidents in the future
+  
+  This section helps with:
+  - Continuous improvement
+  - Staff training
+  - Policy updates
+  - Individual support planning
+  - Risk assessment updates
+}

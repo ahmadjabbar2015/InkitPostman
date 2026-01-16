@@ -24,11 +24,15 @@ body:multipart-form {
   consent_to_emergency_treatment: 1
   consent_for_medication: 1
   consent_for_notification: 0
-  signed_by_consent_form: @file(/path/to/consent_form.pdf)
+  signed_by_consent_form: @file(/home/umer/Desktop/staff-profile-7jQIihJRjBoOAAnQphrZYTc5laMSmVWh8SzBz4kO 00(2).pdf)
   instructions: Requires parental notification before any medication changes. Contact mother first.
   restrictions: No aspirin due to allergy. Must use EpiPen for severe allergic reactions.
-  upload_documents[0]: @file(/path/to/medical_history.pdf)
-  upload_documents[1]: @file(/path/to/parental_consent.pdf)
+  upload_documents[0]: @file(/home/umer/Desktop/staff-profile-7jQIihJRjBoOAAnQphrZYTc5laMSmVWh8SzBz4kO 00(2).pdf)
+  upload_documents[1]: @file(/home/umer/Desktop/staff-profile-7jQIihJRjBoOAAnQphrZYTc5laMSmVWh8SzBz4kO (5).pdf)
   document_types[0]: health_records
   document_types[1]: consent_forms
+}
+
+vars:pre-request {
+  house: 1
 }
