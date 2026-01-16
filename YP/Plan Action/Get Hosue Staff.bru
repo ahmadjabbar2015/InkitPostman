@@ -1,0 +1,24 @@
+meta {
+  name: Get Hosue Staff
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/4/eligible-staff
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

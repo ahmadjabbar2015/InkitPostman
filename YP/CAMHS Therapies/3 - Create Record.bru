@@ -1,0 +1,40 @@
+meta {
+  name: Create Record
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/camhs-therapies
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~is_yp_open_to_camhs: 1
+  ~clinician_name: Dr. Sarah Williams
+  ~type_of_support: CBT and counselling
+  ~frequency: Weekly sessions
+  ~risk_factors: Anxiety, low mood, previous self-harm history
+  ~therapies[0][is_receiving_speech_language_therapy]: 1
+  ~therapies[0][therapy_name]: Speech and Language Therapy
+  ~therapies[0][focus_areas]: Communication skills, social interaction
+  ~therapies[0][communication_plan]: Visual aids, simplified language
+  ~therapies[0][therapy_tools]: Picture cards, communication board
+  ~therapies[0][therapy_goals_in_place]: Improve verbal communication
+  ~therapies[0][outcome_measure]: Monthly progress review
+  ~therapies[0][review_cycle]: 2025-05-15
+  ~therapies[0][has_yp_refused_therapy_sessions]: 0
+  ~therapies[0][refusal_reason]:
+  ~therapies[0][alternative_offered]:
+  ~therapies[0][upload_attachments][]: @file(/path/to/therapy_document.pdf)
+}

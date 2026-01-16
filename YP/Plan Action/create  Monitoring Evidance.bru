@@ -1,0 +1,40 @@
+meta {
+  name: create  Monitoring Evidance
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/action-plan/monitoring-evidence/store
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPerson: 1
+}
+
+body:multipart-form {
+  yp_action_plan_id: 1
+  progress_reviewed: 1
+  review_date: 2026-01-15
+  staff_reviewer_id: 2
+  progress_summary: Review progress and update care plan.
+  evidence_file: @file(C:\Users\Growup Labs\Pictures\sound-and-fury.pdf)
+  lead_person_id: 2
+  evidence_reference_ids[]: 1
+  evidence_reference_ids[]: 3
+  evidence_type: Visit Record
+  evidence_required: 0
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
