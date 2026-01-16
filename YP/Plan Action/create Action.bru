@@ -1,0 +1,41 @@
+meta {
+  name: create Action
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/action-plan/store
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
+}
+
+body:multipart-form {
+  action_title: Review Care Plan
+  action_type: education
+  start_date: 2026-01-15
+  end_date: 2026-01-25
+  detailed_description: Review progress and update care plan.
+  why_is_this_needed: whyyyy  progress and update care plan.
+  attachment: @file(C:\Users\Growup Labs\Pictures\sound-and-fury.pdf)
+  lead_person_id: 4
+  additional_people[]: 4
+  priority: High
+  linked_plan: Other
+  ~additional_people[]: 1
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
