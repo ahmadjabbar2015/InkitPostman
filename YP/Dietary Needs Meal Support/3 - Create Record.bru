@@ -1,0 +1,37 @@
+meta {
+  name: Create Record
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dietary-needs-meal-support
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~has_eating_drinking_risks: 1
+  ~choking_risk: 1
+  ~choking_history: Previous choking incident in 2024
+  ~feeding_plan_in_place: 1
+  ~foods_to_avoid: Hard candies, whole grapes, nuts
+  ~requirements: Food must be cut into small pieces
+  ~requires_supervision_during_meals: 1
+  ~staff_instructions: Staff must be present during all meals, encourage slow eating
+  ~sensory_eating_issues: Sensitive to certain textures
+  ~smells: Strong food smells can cause distress
+  ~restrictive_eating_patterns: Limited food preferences
+  ~restrictive_eating_type: ARFID
+  ~triggers: New or unfamiliar foods, crowded dining areas
+  ~support_strategies: Introduce new foods gradually, calm eating environment
+}

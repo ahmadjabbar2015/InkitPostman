@@ -1,0 +1,42 @@
+meta {
+  name: Update Record
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/camhs-therapies/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~is_yp_open_to_camhs: 1
+  ~clinician_name: Dr. Sarah Williams - Updated
+  ~type_of_support: CBT, counselling, and art therapy
+  ~frequency: Fortnightly sessions (reduced from weekly)
+  ~risk_factors: Anxiety improving, mood stabilised
+  ~therapies[0][id]: 1
+  ~therapies[0][is_receiving_speech_language_therapy]: 1
+  ~therapies[0][therapy_name]: Speech and Language Therapy
+  ~therapies[0][focus_areas]: Communication skills - progressing well
+  ~therapies[0][communication_plan]: Visual aids still in use
+  ~therapies[0][therapy_tools]: Picture cards, communication board
+  ~therapies[0][therapy_goals_in_place]: Goals being met
+  ~therapies[0][outcome_measure]: Monthly progress review - positive
+  ~therapies[0][review_cycle]: 2025-08-15
+  ~therapies[0][has_yp_refused_therapy_sessions]: 0
+  ~therapies[0][refusal_reason]:
+  ~therapies[0][alternative_offered]:
+  ~therapies[0][upload_attachments][]: @file(/path/to/therapy_document.pdf)
+}

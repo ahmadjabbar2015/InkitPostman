@@ -1,0 +1,37 @@
+meta {
+  name: Create Plan
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lac-health-plans
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~has_health_assessment_completed: 1
+  ~health_assessment_date: 2025-02-15
+  ~doctor: Dr. Smith
+  ~summary: Young person is in good health overall
+  ~outstanding_health_actions: 1
+  ~action: Schedule dental check-up
+  ~person_responsible: 1
+  ~deadline: 2025-03-15
+  ~health_recommendations_actioned: 1
+  ~immunisation_review_completed: 1
+  ~appointment_date: 2025-02-10
+  ~missing_vaccines: MMR booster required
+  ~upload_attachments[]: @file(/path/to/attachment.pdf)
+  ~upload_evidence[]: @file(/path/to/evidence.pdf)
+}

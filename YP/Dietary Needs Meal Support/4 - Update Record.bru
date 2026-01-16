@@ -1,0 +1,37 @@
+meta {
+  name: Update Record
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dietary-needs-meal-support
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~has_eating_drinking_risks: 1
+  ~choking_risk: 0
+  ~choking_history: Previous choking incident resolved - no recent concerns
+  ~feeding_plan_in_place: 1
+  ~foods_to_avoid: Nuts only (reduced restrictions)
+  ~requirements: Standard food preparation acceptable
+  ~requires_supervision_during_meals: 0
+  ~staff_instructions: Light supervision only
+  ~sensory_eating_issues: Improving with support
+  ~smells: Less sensitive than before
+  ~restrictive_eating_patterns: Expanded food preferences
+  ~restrictive_eating_type: Mild preferences
+  ~triggers: Minimal triggers remaining
+  ~support_strategies: Continue gradual exposure to new foods
+}
