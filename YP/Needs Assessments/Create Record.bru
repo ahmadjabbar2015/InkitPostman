@@ -6,7 +6,7 @@ meta {
 
 post {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/needs-assessments
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -19,122 +19,386 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "young_person_id": 1,
-    "house_id": 4,
-    "client_id": 5,
-    "assessment_date": "2025-01-15",
-    "type_of_placement": "long_term",
-    "summary_of_presenting_needs": "Young person with ADHD and previous history of self-harm requires structured environment with therapeutic support",
-    "linking_needs_risk": "Mental health needs linked to family breakdown and previous trauma",
-    "compatibility_group_impact": "Positive peer relationships, benefits from structured routines",
-    "desired_placement_outcomes_goals": "Stabilize mental health, improve school attendance, develop coping strategies",
-    "la_outcomes": "Return to mainstream education, reduce missing episodes",
-    "initial_level_of_need": "Medium-High",
-    "any_diagnosed_medical_conditions": "yes",
-    "diagnosis_name": "ADHD",
-    "diagnosed_by": "Dr. Smith - CAMHS",
-    "diagnosed_date": "2023-06-15",
-    "severity": "moderate",
-    "impact_on_daily_living": "Difficulty concentrating, impulsivity affects social interactions",
-    "reasonable_adjustments_needed": "yes",
-    "list_of_adjustments": "Movement breaks, visual timetables, quiet study space",
-    "gp_name": "Dr. Johnson",
-    "gp_practice": "City Health Centre",
-    "gp_contact_number": "020 1234 5678",
-    "diagnosed_mental_health_condition": "yes",
-    "mental_health_condition_name": "Anxiety Disorder",
-    "mental_health_diagnosed_by": "Dr. Brown - CAMHS",
-    "mental_health_diagnosis_date": "2024-03-10",
-    "mental_health_severity": "moderate",
-    "camhs_involvement": "yes",
-    "camhs_contact_name": "Sarah Williams",
-    "camhs_contact_number": "020 8765 4321",
-    "therapy_type": "CBT",
-    "current_interventions": "Weekly therapy sessions, mindfulness exercises",
-    "triggers_warning_signs": "Stress, social conflicts, family contact issues",
-    "coping_strategies": "Deep breathing, time-out space, talking to key worker",
-    "risk_to_self": "yes",
-    "risk_to_others": "no",
-    "mental_health_current_support_controls": "1:1 key worker sessions, CAMHS involvement, safety plan",
-    "mental_health_further_actions": "Continue therapy, review medication with GP",
-    "mental_health_scale": 6,
-    "mental_health_scale_level": "medium",
-    "mental_health_review_date": "2025-04-15",
-    "history_of_self_harm_suicidal_thoughts": "yes",
-    "self_harm_description_of_incidents": "Previous cutting behavior, last incident 3 months ago",
-    "self_harm_triggers": "Family contact, peer conflicts, academic stress",
-    "medical_or_camhs_involvement": "camhs",
-    "self_harm_safety_plan_in_place": "yes",
-    "self_harm_safety_plan_date_created": "2024-12-01",
-    "self_harm_safety_plan_reviewed_by": "John Smith - Key Worker",
-    "immediate_risk_level": "medium",
-    "self_harm_current_support_controls": "Safety plan in place, regular check-ins, sharp objects secure",
-    "self_harm_scale": 5,
-    "self_harm_scale_level": "medium",
-    "self_harm_review_date": "2025-02-15",
-    "history_of_going_missing": "yes",
-    "missing_frequency": "monthly",
-    "missing_last_episode_date": "2024-11-20",
-    "missing_duration": "6 hours",
-    "missing_push_pull_factors": "Peer pressure, desire to see friends from previous area",
-    "return_home_interview_completed": "yes",
-    "ongoing_risk_reduction_plan_in_place": "yes",
-    "missing_current_support_controls": "Regular activities, positive peer group, family contact schedule",
-    "missing_episodes_scale": 4,
-    "missing_episodes_scale_level": "medium",
-    "is_yp_currently_on_roll": "yes",
-    "school_college_name": "Manchester Academy",
-    "education_type_of_placement": "mainstream",
-    "education_start_date": "2024-09-01",
-    "year_group": "Year 10",
-    "sen_ehcp_status": "yes_ehcp",
-    "sen_primary_need": "adhd",
-    "describe_learning_support_needed": "LSA support for core subjects, movement breaks",
-    "how_much_support": "part_time",
-    "attendance_issues": "yes",
-    "attendance_percentage": "82%",
-    "describe_attendance_barriers": "Anxiety about school, peer relationships",
-    "behaviour_issues_in_school": "no",
-    "exclusions": "no",
-    "education_current_support_controls": "EHCP in place, PEP reviews, LSA support",
-    "education_scale": 5,
-    "education_scale_level": "medium",
-    "education_review_date": "2025-03-15",
-    "does_yp_build_trusting_relationships_with_staff": "yes",
-    "key_difficulties": "Takes time to trust new people",
-    "relationships_with_peers": "yes",
-    "describe_peer_relationships": "Good relationships within placement, some difficulties at school",
-    "positive_role_models": "yes",
-    "who_are_role_models": "Key worker, football coach",
-    "contact_with_family": "yes",
-    "describe_family_contact": "Weekly supervised contact with mother",
-    "social_worker_details": "yes",
-    "social_worker_name": "Jane Doe",
-    "social_worker_contact": "jane.doe@manchester.gov.uk",
-    "lac_review_due_date": "2025-03-01",
-    "relationships_scale": 3,
-    "relationships_scale_level": "low",
-    "is_yp_able_to_manage_personal_hygiene": "yes",
-    "can_yp_prepare_basic_meals": "with_support",
-    "describe_meal_prep_support": "Learning basic cooking skills, requires supervision for safety",
-    "does_yp_manage_money": "with_support",
-    "describe_money_management_support": "Weekly pocket money, learning budgeting",
-    "does_yp_understand_public_transport": "yes",
-    "preparation_for_adulthood": "pending",
-    "independence_scale": 4,
-    "independence_scale_level": "medium",
-    "yp_happy_with": "My room, my key worker, playing football",
-    "yp_would_like_to_change": "More contact with family, fewer rules",
-    "yp_goals_next_few_months": "Improve school attendance, make more friends",
-    "yp_how_can_we_help": "Help me with homework, take me to football",
-    "yp_feel_safe_and_supported": "yes",
-    "staff_sign_off_name": "John Smith",
-    "staff_sign_off_datetime": "2025-01-15T14:30:00",
-    "manager_name": "Jane Williams",
-    "manager_sign_off_datetime": "2025-01-15T16:00:00",
-    "review_due_date": "2025-04-15",
-    "assessment_completed_by": "John Smith - Key Worker"
-  }
+body:multipart-form {
+  young_person_id: 1
+  house_id: 4
+  client_id: 5
+  assessment_date: 2025-01-15
+  type_of_placement: long_term
+  summary_of_presenting_needs: Young person with ADHD and previous history of self-harm requires structured environment with therapeutic support
+  linking_needs_risk: Mental health needs linked to family breakdown and previous trauma
+  compatibility_group_impact: Positive peer relationships, benefits from structured routines
+  desired_placement_outcomes_goals: Stabilize mental health, improve school attendance, develop coping strategies
+  la_outcomes: Return to mainstream education, reduce missing episodes
+  initial_level_of_need: Medium-High
+  any_diagnosed_medical_conditions: yes
+  diagnosis_name: ADHD
+  diagnosed_by: Dr. Smith - CAMHS
+  diagnosed_date: 2023-06-15
+  severity: moderate
+  impact_on_daily_living: Difficulty concentrating, impulsivity affects social interactions
+  reasonable_adjustments_needed: yes
+  list_of_adjustments: Movement breaks, visual timetables, quiet study space
+  ~evidence_upload: @file(/path/to/medical_evidence.pdf)
+  health_current_support_controls: Regular GP check-ups, ADHD medication, school support in place
+  health_further_actions: Schedule 6-month ADHD review with CAMHS
+  are_health_appointments_up_to_date: yes
+  what_is_overdue: None currently
+  actions_to_arrange: Schedule dental check-up
+  target_date: 2025-02-28
+  responsible_person: Key Worker - John Smith
+  does_yp_understand_their_conditions: yes
+  what_support_do_they_need: Visual resources about ADHD, regular conversations about managing symptoms
+  who_will_deliver_it: Key Worker and CAMHS practitioner
+  review_date: 2025-03-15
+  mental_health_diagnosis: yes
+  diagnosis_concern: Anxiety Disorder - diagnosed 2024, moderate severity
+  who_is_involved: Dr. Brown - CAMHS, CBT therapist Sarah Williams
+  next_appointment_date: 2025-02-10
+  risk_indicators: Social conflicts, family contact issues, academic pressure
+  safety_plan_in_place: yes
+  safety_plan_location: In young person's care file and bedroom folder
+  safety_plan_review_date: 2025-04-15
+  mental_health_current_support_controls: 1:1 key worker sessions, CAMHS involvement, weekly CBT therapy, safety plan
+  mental_health_further_actions: Continue therapy, review medication with GP if symptoms worsen
+  self_harm_suicidal_thoughts_past_6_months: yes
+  details_and_dates: Cutting behavior - last incident 3 months ago (October 2024), superficial wounds to forearm
+  triggers_warning_signs: Stress from family contact, peer conflicts, academic stress, feeling overwhelmed
+  agreed_response: Use coping strategies first (breathing exercises), speak to key worker, access time-out space, call CAMHS crisis line if needed
+  agencies_informed: yes
+  family_informed: yes
+  emotional_regulation_in_daily_life: sometimes_dysregulated
+  common_triggers: Family contact disappointments, peer disagreements, homework pressure
+  helpful_strategies: Deep breathing, time-out space, talking to key worker, listening to music, playing football
+  is_yp_prescribed_medication: yes
+  medication_and_dosage: Methylphenidate 20mg twice daily for ADHD, Fluoxetine 20mg once daily for anxiety
+  administration: staff_admin
+  compliance_last_month: good
+  side_effects_concerns: Occasional loss of appetite, monitor weight monthly
+  storage_mar_process_confirmed: yes
+  action: Continue current regime, GP review scheduled March 2025
+  medication_review_date: 2025-03-20
+  medication_current_support_controls: MAR chart in place, staff trained in administration, locked storage
+  medication_further_actions: Monitor appetite and weight, ensure regular meals
+  any_overdose_misuse_risk: no
+  details_and_controls: No history of overdose or medication misuse. Medication stored securely.
+  any_known_or_suspected_use: no
+  substance_and_frequency: No known substance use
+  impact_on_health_behaviour_education: N/A
+  professionals_involved: N/A
+  harm_reduction_work_started: no
+  referral_actions: Education sessions planned on risks of substance use
+  substance_review_date: 2025-06-15
+  substance_current_support_controls: Awareness education, positive peer group, structured activities
+  substance_further_actions: Deliver substance awareness session in next key worker meeting
+  eats_regular_meals: yes
+  patterns: Good appetite, prefers structured meal times
+  weight_change_noted: stable
+  allergies_intolerances: no
+  list_of_allergies_intolerances: None known
+  diet_current_support_controls: Regular meal times, variety of food choices, involvement in meal planning
+  diet_further_actions: Continue monitoring weight due to ADHD medication effects
+  can_yp_plan_prepare_simple_balanced_meals_safely: with_support
+  skills_to_build: Knife skills, understanding balanced nutrition, safe use of kitchen equipment
+  learning_plan_and_frequency: Weekly cooking session with key worker, monthly meal planning activity
+  consistent_sleep_routine: sometimes
+  average_hours: 7 hours
+  issues: Difficulty falling asleep some nights, occasional nightmares
+  describe_impact: Tiredness affects concentration at school, irritability some mornings
+  sleep_current_support_controls: Regular bedtime routine, no screens 1 hour before bed, calming activities
+  sleep_further_actions: Consider sleep hygiene education, monitor pattern for 4 weeks
+  personal_hygiene_managed_independently: needs_prompts
+  specific_gaps: Requires daily prompts for showering, occasional reminders to brush teeth
+  agreed_routine_and_prompts: Morning checklist on bedroom wall, staff check-in at 8am, positive reinforcement
+  hygiene_current_support_controls: Visual prompts, daily check-ins, praise for independence
+  hygiene_further_actions: Work towards independent routine over next 3 months
+  health_wellbeing_scale: 6
+  health_wellbeing_scale_level: medium
+  health_wellbeing_review_date: 2025-04-15
+  history_of_self_harm_suicidal_thoughts: yes
+  self_harm_description_of_incidents: Previous cutting behavior, last incident 3 months ago (October 2024)
+  self_harm_triggers: Family contact, peer conflicts, academic stress
+  medical_or_camhs_involvement: camhs
+  self_harm_safety_plan_in_place: yes
+  self_harm_safety_plan_date_created: 2024-12-01
+  self_harm_safety_plan_reviewed_by: John Smith - Key Worker
+  self_harm_family_informed: yes
+  immediate_risk_level: medium
+  self_harm_current_support_controls: Safety plan in place, regular check-ins, sharp objects secure, CAMHS crisis line available
+  self_harm_further_actions: Continue CBT, practice coping strategies, review safety plan monthly
+  self_harm_scale: 5
+  self_harm_scale_level: medium
+  self_harm_review_date: 2025-02-15
+  incidents_of_physical_verbal_aggression: historic
+  aggression_type: verbal
+  aggression_frequency: rare
+  aggression_triggers: Feeling misunderstood, peer provocation, frustration with rules
+  aggression_staff: no
+  aggression_agency_staff: no
+  de_escalation_strategies_known: yes
+  de_escalation_describe_plan: Time-out space, calm conversation, distraction techniques, acknowledgment of feelings
+  aggression_agency_involvement: none
+  aggression_current_support_controls: Positive behaviour support plan, staff trained in de-escalation, clear boundaries
+  aggression_further_actions: Continue positive reinforcement, review triggers monthly
+  aggression_scale: 3
+  aggression_scale_level: low
+  aggression_review_date: 2025-03-15
+  history_of_going_missing: yes
+  missing_frequency: rare
+  missing_last_episode_date: 2024-11-20
+  missing_duration: 6 hours
+  missing_push_pull_factors: Peer pressure, desire to see friends from previous area
+  missing_police_involvement_details: Police notified, found safe at friend's house
+  return_home_interview_completed: yes
+  missing_ongoing_risk_reduction_plan: Regular activities, positive peer group in placement, family contact schedule, mobile phone with staff numbers
+  ongoing_risk_reduction_plan_in_place: yes
+  missing_current_support_controls: Regular activities, positive peer group, family contact schedule, trusted adult relationships
+  missing_further_actions: Continue building placement relationships, review risk factors monthly
+  missing_episodes_scale: 4
+  missing_episodes_scale_level: medium
+  missing_episodes_review_date: 2025-03-15
+  concerns_or_evidence_of_exploitation: no
+  ~exploitation_type:
+  indicators_present: None identified
+  known_perpetrators_peer_groups: None known
+  strategy_meeting_held: no
+  ~cse_upload_planning_notes: @file(/path/to/cse_planning_notes.pdf)
+  ~multi_agency_plan_reference:
+  cse_current_support_controls: Healthy relationship education, online safety awareness, trusted adult access
+  cse_further_actions: Continue preventative education, monitor peer relationships
+  cse_cce_scale: 2
+  cse_cce_scale_level: low
+  cse_cce_review_date: 2025-06-15
+  has_yp_been_arrested_or_convicted: no
+  ~offence_types:
+  ~offence_date:
+  yos_involvement: no
+  ~court_order_license_conditions:
+  current_risk_to_community: low
+  offending_current_support_controls: Positive activities, role models, structured routines
+  offending_further_actions: Continue preventative support
+  offending_behaviour_scale: 2
+  offending_behaviour_scale_level: low
+  offending_behaviour_review_date: 2025-06-15
+  risky_online_activity: no
+  platforms_used: TikTok, Instagram, WhatsApp - monitored by staff
+  ~behaviour_type:
+  devices_monitored: yes
+  online_safety_education_completed: yes
+  online_safety_current_support_controls: Device monitoring, privacy settings reviewed, online safety education completed
+  online_safety_further_actions: Ongoing monitoring, regular check-ins about online activity
+  online_safety_scale: 3
+  online_safety_scale_level: low
+  online_safety_review_date: 2025-04-15
+  has_yp_been_bullied_or_bullied_others: no
+  ~bullying_nature:
+  bullying_frequency: none_recent
+  ~bullying_duration:
+  ~victims_or_perpetrators_named:
+  ~actions_taken_support_offered:
+  restorative_work_done: no
+  bullying_current_support_controls: Positive peer relationships, staff observation, open communication
+  bullying_further_actions: Continue monitoring peer interactions
+  bullying_scale: 2
+  bullying_scale_level: low
+  bullying_review_date: 2025-06-15
+  deliberate_damage_or_fire_setting: no
+  ~fire_setting_recent_incident_date:
+  ~fire_setting_context:
+  police_fire_service_involvement: no
+  ~fire_setting_triggers:
+  preventive_actions_in_place: Fire safety education completed, supervision in place
+  fire_setting_current_support_controls: Fire safety awareness, staff supervision, safe environment
+  fire_setting_further_actions: Continue fire safety awareness
+  fire_setting_scale: 1
+  fire_setting_scale_level: low
+  fire_setting_review_date: 2025-06-15
+  ~other_safety_description:
+  ~other_safety_triggers:
+  other_safety_current_support_controls: Comprehensive risk assessment in place, regular reviews
+  other_safety_further_actions: Continue monitoring and review
+  safety_manager_summary: Overall medium level of need, good progress since admission, effective support plans in place
+  safety_reviewed_by: manager
+  safety_next_review_date: 2025-03-15
+  is_yp_currently_on_roll: yes
+  school_college_name: Manchester Academy
+  education_type_of_placement: Mainstream secondary with EHCP support
+  education_start_date: 2024-09-01
+  year_group_and_key_stage: Year 10, Key Stage 4
+  educational_contact_person_name: Mrs. Sarah Thompson
+  educational_contact_person_role: SENCO
+  ~reason_not_in_education:
+  ~actions_underway_for_placement:
+  ~education_target_date:
+  education_current_support_controls: EHCP in place, PEP reviews termly, LSA support, reasonable adjustments, home-school communication book
+  education_further_actions: Work on attendance, continue anxiety support, prepare for mock exams
+  is_attendance_above_90_percent: no
+  current_attendance_percentage: 82%
+  barriers_to_attendance: Anxiety about school, peer relationship difficulties, occasional school refusal linked to anxiety
+  support_in_place: Daily check-in with pastoral team, safe space available, transport support, CAMHS liaison
+  reintegration_plan_status: Partial timetable being phased back to full-time attendance
+  level_of_engagement_when_attending: Good engagement in small group settings, less confident in large classes
+  triggers_for_disengagement: Overwhelming classroom environments, unstructured time, peer conflicts
+  positive_motivation_strategies: One-to-one support, achievement recognition, football as reward, structured breaks
+  attendance_current_support_controls: Attendance monitoring daily, pastoral support, positive reinforcement, graduated return plan
+  attendance_further_actions: Target 90% attendance by end of term, continue building confidence in classroom
+  does_yp_have_ehcp_or_sen: yes
+  type_of_need: ADHD, Anxiety, SEMH needs
+  date_of_last_review: 2024-11-15
+  named_senco_contact_name: Mrs. Sarah Thompson
+  named_senco_school: Manchester Academy
+  support_provision: LSA support 15 hours per week in core subjects, movement breaks, visual timetables, quiet space for assessments
+  progress_since_review: Good progress in managing ADHD with medication, anxiety remains barrier to full engagement
+  sen_current_support_controls: EHCP provision delivered, regular review meetings, LSA trained in ADHD and anxiety support
+  sen_further_actions: Annual review scheduled May 2025, consider increasing LSA hours for exam preparation
+  any_fixed_term_or_permanent_exclusions: no
+  exclusion_reason: N/A
+  restorative_work_completed: no
+  ongoing_behaviour_plan: yes
+  how_does_yp_respond_to_school_rules: Generally complies well, responds positively to clear boundaries and expectations
+  triggers_and_effective_strategies: Triggers: peer provocation, sensory overload. Strategies: time-out card, movement breaks, praise
+  behaviour_education_current_support_controls: Positive behaviour support plan, clear routines, staff trained in ADHD management
+  behaviour_education_further_actions: Continue current strategies, review behaviour plan termly
+  can_yp_describe_future_goals: yes
+  stated_aspiration: Wants to work in sports coaching or PE teaching
+  steps_identified_to_achieve_it: Get good GCSEs, attend college for sports qualifications, join local football academy
+  support_required: Help with career guidance, contact with college admissions, support joining football academy
+  barriers_to_goal_setting: Lack of confidence, anxiety about future, needs encouragement
+  action_plan_to_explore_aspirations: Arrange visit to local college sports department, link with football academy coaches
+  action_plan_to_explore_date: 2025-03-30
+  aspirations_current_support_controls: Career guidance from school, key worker supporting goal exploration
+  aspirations_further_actions: Arrange college visit, research football coaching qualifications, build confidence
+  education_learning_scale: 5
+  education_learning_scale_level: medium
+  education_learning_review_date: 2025-03-15
+  education_manager_comments: Good progress despite attendance challenges, strong aspirations, needs continued support
+  education_agreed_actions: Target 90% attendance, prepare for mock exams, arrange college visit, maintain LSA support
+  education_next_review_date: 2025-03-15
+  does_yp_build_trusting_relationships_with_staff: yes
+  key_difficulties: Takes time to trust new people, initial guardedness with new staff, needs consistency
+  positive_approaches_that_help_engagement: Clear communication, consistency, spending quality time, shared activities like football
+  staff_consistency_plan: Key worker John Smith primary contact, consistent staff rota, handover notes for new staff
+  relationship_staff_current_support_controls: Key worker sessions 3x weekly, positive staff relationships, consistent approach
+  relationship_staff_further_actions: Maintain consistency, introduce new staff gradually, continue building trust
+  does_yp_have_safe_relationships_with_peers: sometimes
+  issues_observed: Can be defensive with peers, occasional conflicts, struggles with social cues
+  positive_social_experiences: Good friendships with 2-3 peers in placement, enjoys group football activities
+  support_strategies: Social skills work in key worker sessions, mediation when conflicts arise, praise for positive interactions
+  relationship_peers_current_support_controls: Staff supervision during unstructured time, social skills support, positive peer mentoring
+  relationship_peers_further_actions: Continue social skills work, encourage positive friendships, monitor peer dynamics
+  is_there_contact_plan_with_family: yes
+  who_contact_is_with: Mother only
+  contact_type: Face-to-face supervised contact and phone calls
+  duration: 2 hours every Saturday, phone calls Tuesday and Thursday evenings
+  is_contact_positive_and_safe: yes
+  family_contact_details_and_actions: Contact going well, mother engaged and positive, relationship improving
+  professional_oversight: Social worker Jane Doe oversees contact plan, staff supervise face-to-face contact
+  family_contact_current_support_controls: Supervised contact in placement, clear contact schedule, positive relationship building
+  family_contact_further_actions: Consider reducing supervision level if continues positive, explore extended contact hours
+  does_yp_maintain_supportive_friendships: yes
+  friendship_barriers: Anxiety sometimes limits social confidence, past friendship breakdowns affect trust
+  known_associates_of_concern: None currently
+  has_known_associates_of_concern: no
+  names_of_group_reference: N/A
+  support_to_build_safe_friendships: Facilitate positive peer activities, football club membership, social skills support
+  friendships_current_support_controls: Positive peer group in placement, football club activities, staff support for social confidence
+  friendships_further_actions: Continue supporting positive friendships, encourage school-based friendships
+  can_yp_respect_appropriate_boundaries: yes
+  examples_of_boundary_crossing: None recent, understands personal space and appropriate behavior
+  risk_linked_to_cse_cce: no
+  agreed_behaviour_plan_in_place: yes
+  boundary_actions: Continue boundary education, reinforce understanding, monitor interactions
+  boundary_review_date: 2025-04-15
+  social_behaviour_current_support_controls: Clear boundaries explained, consistent approach, positive reinforcement
+  social_behaviour_further_actions: Continue monitoring, maintain boundary education
+  relationships_social_scale: 5
+  relationships_social_scale_level: medium
+  relationships_social_review_date: 2025-03-15
+  relationships_manager_summary: Good progress in building relationships with staff and peers, positive family contact, needs continued support for social confidence
+  relationships_improvement_actions: Continue key worker sessions, support peer friendships, maintain positive family contact
+  relationships_next_review_date: 2025-03-15
+  does_yp_understand_cultural_identity: yes
+  describe_goals_or_conflicts: Identifies as British Pakistani, comfortable with dual identity, enjoys both cultures, no conflicts
+  support_needed: Continued access to cultural and religious resources, connection with community
+  cultural_identity_current_support_controls: Cultural identity respected and celebrated, staff awareness of needs
+  cultural_identity_further_actions: Connect with local community groups, celebrate cultural festivals
+  does_yp_have_religious_belief_system: yes
+  faith_denomination: Islam (Muslim)
+  worship_arrangements_place: Prayer space in placement, local mosque when appropriate
+  worship_arrangements_time: Five daily prayers, Friday mosque when possible
+  any_unmet_needs: None currently, all religious needs being met
+  staff_awareness_confirmed: yes
+  religion_current_support_controls: Halal meals provided, prayer space available, religious festivals observed, staff trained in cultural sensitivity
+  religion_further_actions: Continue supporting religious practice, facilitate mosque attendance
+  is_english_yp_first_language: no
+  primary_language: Urdu
+  level_of_english_fluency: high
+  interpreter_required: no
+  communication_aids_used: no
+  specify_communication_aids: N/A
+  language_current_support_controls: English fluency excellent, maintains Urdu with family, bilingual skills valued
+  language_further_actions: Continue supporting bilingualism, celebrate language skills
+  does_yp_express_gender_sexual_identity: no
+  preferred_pronouns_name: He/Him, Ahmad Khan
+  any_risk_of_discrimination_bullying: no
+  record_actions: N/A - no concerns identified
+  gender_identity_current_support_controls: Identity respected, safe environment, anti-discrimination culture
+  gender_identity_further_actions: Continue monitoring, maintain safe environment
+  does_yp_feel_accepted_and_included: yes
+  reasons_for_not_belonging: N/A - YP reports feeling welcomed and included
+  actions_to_improve_belonging: Continue positive peer activities, celebrate achievements, maintain inclusive culture
+  belonging_current_support_controls: Inclusive placement culture, peer activities, positive staff relationships
+  belonging_further_actions: Continue current approach, monitor sense of belonging
+  identity_culture_scale: 2
+  identity_culture_scale_level: low
+  identity_culture_review_date: 2025-06-15
+  is_yp_able_to_manage_personal_hygiene: with_prompts
+  specific_support_required: Daily prompts for showering and teeth brushing, occasional reminders about clean clothes
+  training_plan: Visual checklist in bedroom, morning routine chart, praise for independence, gradual reduction of prompts
+  personal_hygiene_current_support_controls: Morning routine checklist, staff check-ins at 8am, positive reinforcement for independence
+  personal_hygiene_further_actions: Work towards full independence over next 3 months, reduce prompts gradually
+  can_yp_plan_and_prepare_meals: with_supervision
+  skill_gap: Needs supervision for safe knife use, limited understanding of balanced nutrition, requires support using oven
+  staff_teaching_plan: Weekly cooking sessions with key worker, focus on safety skills, meal planning education
+  cooking_sessions_frequency: Weekly 1-hour cooking sessions, participation in house meal preparation 3x weekly
+  cooking_current_support_controls: Supervised cooking sessions, safety equipment available, recipe cards provided
+  cooking_further_actions: Build repertoire of simple meals, increase independence with supervision, teach oven use
+  does_yp_understand_budgeting: partially
+  budgeting_support_plan: Weekly pocket money £10, learning to save for trainers, staff support with budgeting worksheet
+  risk_of_debt_exploitation: no
+  budgeting_current_support_controls: Staff oversee pocket money, budgeting education in key worker sessions, savings account set up
+  budgeting_further_actions: Increase pocket money gradually, continue budgeting education, work towards independent money management
+  does_yp_travel_independently: yes
+  travel_mode: Local buses, can walk to local shops
+  travel_concerns: None - confident using public transport in local area
+  travel_actions: Continue building confidence, support longer journeys for college visits
+  travel_current_support_controls: YP travels independently in local area, staff support for new routes
+  travel_further_actions: Build confidence for college travel, practice longer journeys
+  does_yp_manage_daily_routine: sometimes
+  routine_barriers: ADHD affects time management, requires prompts for morning routine, struggles with unstructured time
+  routine_support_strategies: Visual timetables, alarms/reminders, structured daily schedule, praise for following routine
+  routine_current_support_controls: Structured daily timetable, visual prompts, staff support during transitions
+  routine_further_actions: Continue structured approach, gradually increase independence, teach time management skills
+  independence_life_skills_scale: 5
+  independence_life_skills_scale_level: medium
+  independence_life_skills_review_date: 2025-04-15
+  yp_happy_with: My room, my key worker John, playing football, my friends in the house, having my own space
+  yp_would_like_to_change: More contact with family, fewer rules about bedtime, more pocket money
+  yp_goals_next_few_months: Improve school attendance to 90%, join school football team, save money for new trainers
+  yp_how_can_we_help: Help me with homework, take me to football practice, help me see my mum more often
+  yp_feel_safe_and_supported: yes
+  yp_comments: I like living here, staff are kind, I want to do better at school
+  ongoing_review_date: 2025-02-15
+  ongoing_reviewed_by: keyworker
+  progress_new_needs: Good initial progress settling into placement, engagement with education improving, positive relationships developing
+  actions_updated: Continue all support plans, increase focus on attendance, prepare for LAC review
+  staff_sign_off_name: John Smith
+  staff_signature: John Smith
+  staff_sign_off_datetime: 2025-01-15T14:30:00
+  manager_name: Jane Williams
+  manager_signature: Jane Williams
+  manager_sign_off_datetime: 2025-01-15T16:00:00
+  young_person_signature: Ahmad Khan
+  review_due_date: 2025-04-15
+  assessment_completed_by: John Smith - Key Worker
 }
