@@ -1,0 +1,56 @@
+meta {
+  name: Update Step - Incident Details
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/incident-details
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "incident_datetime": "2026-01-13 14:30:00",
+    "reported_by": 5,
+    "location_of_incident": "Common Room - Near TV Area",
+    "young_persons_involved": [1, 3],
+    "staff_involved": [5, 8],
+    "agency_staff_involved": [],
+    "any_witnesses": "John Doe (visitor), Sarah Smith (YP from Room 5)",
+    "transport_used": "None",
+    "clothing_jewellery_worn": "Blue hoodie, jeans, silver chain necklace",
+    "severity_of_incident": "major"
+  }
+}
+
+docs {
+  # Update Step: Incident Details
+  
+  This endpoint updates the first step of the incident form - core incident details.
+  
+  **Note:** When `severity_of_incident` is set to "major" or "critical", the manager will be automatically notified.
+  
+  ## Fields:
+  - `incident_datetime` - Date and time of incident (required)
+  - `reported_by` - Staff ID who reported (required)
+  - `location_of_incident` - Where incident occurred (required)
+  - `young_persons_involved` - Array of YP IDs
+  - `staff_involved` - Array of staff IDs
+  - `agency_staff_involved` - Array of agency staff IDs
+  - `any_witnesses` - Text description
+  - `transport_used` - Text description
+  - `clothing_jewellery_worn` - Text description
+  - `severity_of_incident` - One of: minor, moderate, major, critical (required)
+}

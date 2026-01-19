@@ -1,0 +1,173 @@
+meta {
+  name: Update Step - Persons Authorities Contacted
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/persons-authorities-contacted
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "persons_informed": [
+      {
+        "name": "Jane Smith",
+        "role": "House Manager",
+        "method_of_contact": "Phone",
+        "reference_number": null,
+        "contacted_datetime": "2026-01-16 14:00:00",
+        "notes": "Notified immediately after incident occurred"
+      },
+      {
+        "name": "David Brown",
+        "role": "Social Worker",
+        "method_of_contact": "Email",
+        "reference_number": null,
+        "contacted_datetime": "2026-01-16 15:00:00",
+        "notes": "Sent detailed incident report"
+      },
+      {
+        "name": "Parent - Mary Johnson",
+        "role": "Parent/Guardian",
+        "method_of_contact": "Phone",
+        "reference_number": null,
+        "contacted_datetime": "2026-01-16 15:30:00",
+        "notes": "Left voicemail, awaiting callback"
+      }
+    ],
+    "authorities_contacted": [
+      {
+        "authority_name": "Police",
+        "contact_person_name": "Officer Smith",
+        "method_of_contact": "Phone",
+        "reference_number": "REF-12345",
+        "contacted_datetime": "2026-01-16 14:30:00",
+        "advice_given": "File report within 24 hours",
+        "case_reference": "CASE-2026-001",
+        "notification_reference": null,
+        "notes": "Incident reported to local station",
+        "edt_reference": null
+      },
+      {
+        "authority_name": "Ofsted",
+        "contact_person_name": null,
+        "method_of_contact": "Email",
+        "reference_number": null,
+        "contacted_datetime": "2026-01-16 16:00:00",
+        "advice_given": null,
+        "case_reference": null,
+        "notification_reference": "NOT-2026-001",
+        "notes": "Notification sent as per regulations",
+        "edt_reference": null
+      },
+      {
+        "authority_name": "EDT (Emergency Duty Team)",
+        "contact_person_name": "On-call Worker",
+        "method_of_contact": "Phone",
+        "reference_number": "EDT-789",
+        "contacted_datetime": "2026-01-16 14:15:00",
+        "advice_given": "Monitor situation and provide update",
+        "case_reference": null,
+        "notification_reference": null,
+        "notes": "Evening emergency contact made",
+        "edt_reference": "EDT-2026-789"
+      }
+    ]
+  }
+}
+
+docs {
+  # Update Step: Persons Informed / Authorities Contacted
+  
+  This endpoint updates the structured list of people informed and authorities contacted about the incident.
+  
+  ## New Structure (Relational)
+  Uses two separate arrays for better analytics and reporting:
+  
+  ### Persons Informed (persons_informed[])
+  Array of individuals who were notified about the incident.
+  
+  **Fields per person:**
+  - `id` (optional) - Include when updating existing record
+  - `name` (required) - Full name of person informed
+  - `role` (required) - Their role/relationship (e.g., "House Manager", "Social Worker", "Parent")
+  - `method_of_contact` (required) - How they were contacted (e.g., "Phone", "Email", "In Person")
+  - `reference_number` (optional) - Any reference number for the contact
+  - `contacted_datetime` (optional) - When they were contacted (format: YYYY-MM-DD HH:MM:SS)
+  - `notes` (optional) - Additional notes about the contact
+  
+  ### Authorities Contacted (authorities_contacted[])
+  Array of official authorities/agencies contacted.
+  
+  **Fields per authority:**
+  - `id` (optional) - Include when updating existing record
+  - `authority_name` (required) - Name of authority (e.g., "Police", "Ofsted", "Social Services", "EDT")
+  - `contact_person_name` (optional) - Specific person contacted at the authority
+  - `method_of_contact` (required) - How they were contacted
+  - `reference_number` (optional) - Reference number provided by authority
+  - `contacted_datetime` (optional) - When contact was made
+  - `advice_given` (optional) - Advice or instructions received
+  - `case_reference` (optional) - Case reference number (e.g., for Police)
+  - `notification_reference` (optional) - Notification reference (e.g., for Ofsted)
+  - `notes` (optional) - Additional details
+  - `edt_reference` (optional) - Specific EDT reference number
+  
+  ## Update/Delete Operations
+  
+  **To update existing records:**
+  Include the `id` field in the object
+  
+  **To delete specific records:**
+  ```json
+  {
+    "delete_person_ids": [5, 8],
+    "delete_authority_ids": [12]
+  }
+  ```
+  
+  **To replace all records:**
+  ```json
+  {
+    "replace_all_persons": true,
+    "replace_all_authorities": true,
+    "persons_informed": [...new records...]
+  }
+  ```
+  
+  ## Response
+  Returns the updated incident with populated relationships:
+  - `person_informeds[]` - All persons informed records
+  - `authority_contacts[]` - All authority contact records
+  
+  ## Benefits Over Legacy Text Field
+  - Structured data for analytics
+  - Query by authority type
+  - Track notification timestamps
+  - Generate compliance reports
+  - Export to structured formats
+  - No parsing required for reporting
+  
+  ## Common Authority Types
+  - Police
+  - Ofsted
+  - Local Authority / Social Services
+  - NHS / Medical Services
+  - EDT (Emergency Duty Team)
+  - LADO (Local Authority Designated Officer)
+  - IRO (Independent Reviewing Officer)
+  - Safeguarding Team
+  - CAMHS (Child and Adolescent Mental Health Services)
+}

@@ -1,0 +1,31 @@
+meta {
+  name: Delete Incident
+  type: http
+  seq: 21
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Delete Incident
+  
+  Permanently deletes an incident record and all associated attachments.
+  
+  **Warning:** This action cannot be undone. All file attachments will be deleted from storage.
+  
+  Consider archiving or changing status to "closed" instead of deleting for audit trail purposes.
+}

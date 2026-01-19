@@ -1,0 +1,52 @@
+meta {
+  name: Update Step - Physical Intervention
+  type: http
+  seq: 15
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/physical-intervention
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "physical_intervention_used": "no",
+    "physical_intervention_details": null,
+    "restraint_type": null,
+    "restraint_duration": null
+  }
+}
+
+docs {
+  # Update Step: Physical Intervention / Restraint
+  
+  This endpoint updates information about physical intervention or restraint used.
+  
+  ## Fields:
+  - `physical_intervention_used` - Yes/No whether physical intervention was used
+  - `physical_intervention_details` - Description of intervention (shown when used = "yes")
+  - `restraint_type` - Type of restraint technique used
+  - `restraint_duration` - Duration in minutes
+  
+  ## Example with intervention:
+  ```json
+  {
+    "physical_intervention_used": "yes",
+    "physical_intervention_details": "Two-person Team Teach hold used to prevent YP from leaving room and potentially harming self. YP was attempting to run towards main road.",
+    "restraint_type": "Team Teach - Standing Wrap",
+    "restraint_duration": 8
+  }
+  ```
+}

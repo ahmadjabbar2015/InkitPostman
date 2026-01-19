@@ -1,0 +1,20 @@
+meta {
+  name: List All Incidents
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}

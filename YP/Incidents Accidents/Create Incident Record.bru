@@ -1,0 +1,89 @@
+meta {
+  name: Create Incident Record
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "incident_datetime": "2026-01-15 14:30:00",
+    "reported_by": 2,
+    "location_of_incident": "Common Room",
+    "severity_of_incident": "moderate",
+    "any_witnesses": "John Doe, Jane Smith observed the incident",
+    "transport_used": "House vehicle - Ford Transit",
+    "clothing_jewellery_worn": "Blue hoodie, jeans, white trainers, silver bracelet",
+    "young_persons_involved": [84, 91],
+  //   "staff_involved": [],
+    "agency_staff_involved": [10]
+  }
+}
+
+docs {
+  # Create Incident Record
+  
+  Creates a new incident/accident record. This is the first step - only basic incident details are required initially.
+  
+  ## Required Fields:
+  - `incident_datetime` (string) - Date and time of incident (format: YYYY-MM-DD HH:MM:SS)
+  - `reported_by` (integer) - User ID of person reporting (staff member)
+  - `location_of_incident` (string) - Location where incident occurred
+  - `severity_of_incident` (string) - Severity level: minor, moderate, major, critical
+  
+  ## Optional Fields:
+  - `any_witnesses` (string) - Text description of witnesses
+  - `transport_used` (string) - Transportation involved description
+  - `clothing_jewellery_worn` (string) - Description of clothing/jewellery worn
+  
+  ## Staff/YP Involved (Multi-select):
+  
+  - `young_persons_involved` (array of integers) - Array of Young Person IDs involved
+  - `staff_involved` (array of integers) - Array of Staff User IDs involved
+  - `agency_staff_involved` (array of integers) - Array of Agency Staff (EmployeeJob) IDs
+  
+  **Example:**
+  ```json
+  {
+    "young_persons_involved": [1, 2, 3],
+    "staff_involved": [5, 6, 8],
+    "agency_staff_involved": [10, 12]
+  }
+  ```
+  
+  ## Validation Rules:
+  - `staff_involved.*` must exist in `users` table
+  - `agency_staff_involved.*` must exist in `employee_jobs` table
+  - `young_persons_involved.*` must exist in `young_persons` table
+  
+  ## Severity Options:
+  - `minor` - Minor incident
+  - `moderate` - Moderate incident
+  - `major` - Major incident (triggers manager notification)
+  - `critical` - Critical incident (triggers manager notification)
+  
+  ## Response:
+  Returns the created incident with loaded relationships:
+  - `staff_involved[]` - Staff members involved
+  - `agency_staff_involved[]` - Agency staff involved
+  - `young_persons_involved[]` - Young persons involved
+  
+  ## Note:
+  The pivot tables have `role_in_incident` and `involvement_description` columns for future use,
+  but currently only IDs are stored. Roles/descriptions can be added later when UI supports it.
+  - Status & Sign-off
+}

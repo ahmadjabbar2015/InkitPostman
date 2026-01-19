@@ -1,0 +1,42 @@
+meta {
+  name: Update Step - Incident Narrative
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/incident-narrative
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "build_up_antecedent": "<p>YP had been in a positive mood during the morning. At approximately 14:15, YP became agitated when another YP changed the TV channel. YP expressed frustration verbally and began pacing around the room.</p>",
+    "actions_taken_by_staff": "<p>Staff member approached YP calmly and attempted verbal de-escalation. Offered YP the opportunity to move to a quieter space. Staff maintained safe distance and used calm, reassuring tone. Called for backup support from senior staff member.</p>",
+    "outcome_resolution": "<p>YP accepted invitation to move to quiet room after 10 minutes. YP calmed down within 30 minutes. Staff had 1:1 conversation with YP who expressed feeling overwhelmed. YP apologized to other YP involved. Both YPs agreed to use TV schedule going forward. No injuries occurred. Incident logged and YP's social worker notified.</p>"
+  }
+}
+
+docs {
+  # Update Step: Incident Narrative
+  
+  This endpoint updates the narrative section with three rich text fields describing the incident.
+  
+  ## Fields:
+  - `build_up_antecedent` - What led up to the event (triggers, context, behavior before)
+  - `actions_taken_by_staff` - How staff responded (de-escalation, interventions, communication)
+  - `outcome_resolution` - How the incident evolved (young person calmed, medical treatment, police called, etc.)
+  
+  All fields support HTML formatting from rich text editor.
+}
