@@ -23,9 +23,9 @@ auth:bearer {
 body:json {
   {
     "incident_types": [
-      "physical_assault",
-      "verbal_threats_abuse",
-      "damage_to_property"
+      1,
+      2,
+      3
     ],
     "other_incident_type": null
   }
@@ -36,23 +36,36 @@ docs {
   
   This endpoint updates the second step - selecting incident types from checkboxes.
   
-  ## Available Incident Types:
-  - physical_assault
-  - sexualised_behaviour_activity
-  - disclosure_safeguarding_concern
-  - theft
-  - verbal_threats_abuse
-  - drugs_alcohol_substances
-  - arrest_police_involvement
-  - cce_cse_risk
-  - damage_to_property
-  - injury_to_self_others
-  - missing_from_care
-  - fire_emergency
-  - self_harm_suicide_attempt
-  - bullying
-  - accident_illness
-  - other
+  ## Request Body:
+  - `incident_types`: Array of incident type IDs (from master data) or type names
+  - `other_incident_type`: Optional text description if "other" type is selected
   
-  If "other" is selected, provide description in `other_incident_type` field.
+  ## How it works:
+  1. Fetch available incident types from GET `/incidents/master-data/incident-types` endpoint
+  2. The master data returns incident type records with `id`, `incident_type`, `house_id`, `client_id`
+  3. Send an array of incident type IDs to associate with this incident
+  4. Alternatively, you can send type names (strings) and they will be created if they don't exist
+  5. Uses many-to-many relationship (pivot table) - old associations are replaced with new ones
+  
+  ## Example with IDs (recommended):
+  ```json
+  {
+    "incident_types": [1, 2, 3],
+    "other_incident_type": null
+  }
+  ```
+  
+  ## Example with names (creates if not exists):
+  ```json
+  {
+    "incident_types": [
+      "physical_assault",
+      "verbal_threats_abuse"
+    ],
+    "other_incident_type": "Custom incident type description"
+  }
+  ```
+  
+  ## Response:
+  Returns the updated incident record with the `types` relationship loaded showing all associated incident types.
 }
