@@ -1,0 +1,55 @@
+meta {
+  name: YP Safeguarding Possessions Finance
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/5/safeguarding-possessions-finance
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~yp_placement_overview_id: 1
+}
+
+params:path {
+  youngPerson: 1
+  house: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  yp_placement_overview_id: 5
+  outstanding_savings: 1
+  savings_amount: 250.00
+  savings_transfer_date: 2026-02-10
+  belongings_inventory_checked: 1
+  staff_signature: John Smith
+  manager_signature: Sarah Khan
+  damage_claims_pending: 1
+  damage_claims_list: Broken laptop screen
+  damage_claims_resolution_plan: Insurance claim raised
+  financial_handover_completed: 1
+  financial_handover_receipt: @file(C:\Users\Growup Labs\Pictures\ai-generated-stray-cat-in-danger-background-animal-background-photo.jpg)
+  safeguarding_pending: 1
+  safeguarding_date: 2026-02-10
+  safeguarding_actions_taken: Investigation initiated
+  safeguarding_summary_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  safeguarding_details: Open complaint with LA
+  savings_confirmation_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
