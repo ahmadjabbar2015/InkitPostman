@@ -1,0 +1,35 @@
+meta {
+  name: Update Visit
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medical-professional-visits/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~date_of_visit: 2025-02-15
+  ~type_of_visit: gp
+  ~reason_for_visit: Routine check-up - Updated
+  ~who_attended_with_yp: 1
+  ~outcome_of_appointment: Healthy, all clear
+  ~treatment_prescribed: Vitamins recommended
+  ~follow_up_required: 1
+  ~follow_up_date: 2025-05-15
+  ~follow_up_action: Schedule next routine check-up
+  ~upload_documents[]: @file(/path/to/document.pdf)
+  ~document_types[]: medical_report
+}

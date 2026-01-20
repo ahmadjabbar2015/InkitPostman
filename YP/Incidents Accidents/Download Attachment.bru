@@ -1,0 +1,32 @@
+meta {
+  name: Download Attachment
+  type: http
+  seq: 24
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/attachments/:attachmentId/download
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+  attachmentId: 67a1b2c3d4e5f6
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Download Attachment
+  
+  Download a specific attachment file from an incident record.
+  
+  The response will be the file itself with appropriate Content-Type and Content-Disposition headers.
+  
+  Get the `attachmentId` from the incident record's `attachments` array.
+}

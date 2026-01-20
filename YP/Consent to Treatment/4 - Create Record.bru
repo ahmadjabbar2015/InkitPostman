@@ -1,0 +1,32 @@
+meta {
+  name: Create Record
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/consent-to-treatment
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~signed_gp_consent_form_uploaded: 1
+  ~gp_consent_form: @file(/path/to/gp_consent_form.pdf)
+  ~parental_consent_required: 1
+  ~legal_basis: section_20
+  ~consent_for_emergency_treatment: 1
+  ~emergency_instructions: Contact social worker and parents immediately
+  ~emergency_restrictions: No blood transfusions without parental consent
+  ~consent_for_medication: 1
+  ~medication_consent_documents[]: @file(/path/to/medication_consent.pdf)
+}

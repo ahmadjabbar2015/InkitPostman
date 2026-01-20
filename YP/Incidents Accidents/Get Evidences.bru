@@ -1,0 +1,41 @@
+meta {
+  name: Get Evidences
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/evidences
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get All Evidence Files
+  
+  This endpoint retrieves all evidence files attached to a specific incident.
+  
+  ## Response:
+  Returns array of evidence records with:
+  - `id` - Evidence ID
+  - `evidence_type` - photo, video, document, audio, other
+  - `filename` - Generated filename
+  - `original_filename` - Original file name
+  - `file_path` - Storage path
+  - `mime_type` - File MIME type
+  - `file_size` - File size in bytes
+  - `description` - Optional description
+  - `uploaded_by` - User ID who uploaded
+  - `uploader` - User details (name, email)
+  - `created_at` - Upload timestamp
+}

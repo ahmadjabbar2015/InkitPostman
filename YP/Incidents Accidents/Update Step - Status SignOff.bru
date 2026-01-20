@@ -1,0 +1,62 @@
+meta {
+  name: Update Step - Status SignOff
+  type: http
+  seq: 18
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/status-signoff
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "reviewed_by": "manager",
+    "date_of_review": "2026-01-19 14:30:00",
+    "manager_comments": "Incident reviewed. Staff responded appropriately. No further action required at this time.",
+    "status": "reviewed",
+    "staff_sign_off_name": "John Williams",
+    "staff_sign_off_datetime": "2026-01-13 16:30:00",
+    "manager_sign_off_name": "Jane Smith",
+    "manager_sign_off_datetime": "2026-01-13 18:00:00"
+  }
+}
+
+docs {
+  # Update Step: Status & Sign-Off
+  
+  This endpoint updates the final step - status and sign-off information.
+  
+  ## Primary Fields:
+  - `reviewed_by` - Role of reviewer. One of: `manager`, `deputy_manager`
+  - `date_of_review` - Date and time when the incident was reviewed
+  - `manager_comments` - Manager's review comments, lessons learned, and action points
+  - `status` - One of: `draft`, `pending_review`, `reviewed`, `closed`
+  
+  ## Legacy Fields (Optional):
+  - `staff_sign_off_name` - Name of staff member signing off
+  - `staff_sign_off_datetime` - When staff signed off
+  - `manager_sign_off_name` - Name of manager signing off
+  - `manager_sign_off_datetime` - When manager signed off
+  
+  ## Reviewed By Options:
+  - `manager` - Manager
+  - `deputy_manager` - Deputy Manager
+  
+  ## Status Workflow:
+  1. **draft** - Initial entry, incomplete
+  2. **pending_review** - Complete, awaiting manager review
+  3. **reviewed** - Manager has reviewed and signed off
+  4. **closed** - Incident fully resolved and archived
+}

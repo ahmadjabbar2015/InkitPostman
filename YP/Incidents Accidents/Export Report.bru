@@ -1,0 +1,37 @@
+meta {
+  name: Export Report
+  type: http
+  seq: 26
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/export
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Export Incident Report
+  
+  Export a complete incident report in PDF or other format.
+  
+  **Status:** To be implemented
+  
+  Planned features:
+  - PDF generation with full incident details
+  - Include all sections and narrative
+  - Embedded attachments/photos
+  - Signatures and sign-offs
+  - Professional formatting for official reports
+  - Option to export multiple incidents
+}

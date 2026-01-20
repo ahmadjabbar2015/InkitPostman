@@ -1,0 +1,53 @@
+meta {
+  name: Upload Evidence
+  type: http
+  seq: 16
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/evidences
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(/path/to/evidence.jpg)
+  evidence_type: photo
+  description: Photo of injury showing bruising to left forearm
+}
+
+docs {
+  # Upload Evidence File
+  
+  This endpoint uploads a new evidence file to an incident.
+  
+  ## Request (multipart/form-data):
+  - `file` - **Required** - File to upload (max 10MB)
+  - `evidence_type` - **Required** - Type of evidence:
+    - photo
+    - video
+    - document
+    - audio
+    - other
+  - `description` - Optional - Description of the evidence (max 1000 chars)
+  
+  ## Response:
+  Returns the created evidence record with all metadata.
+  
+  ## File Types Accepted:
+  - Images: jpg, jpeg, png, gif, webp
+  - Videos: mp4, avi, mov, wmv
+  - Documents: pdf, doc, docx, txt
+  - Audio: mp3, wav, m4a
+  - Other: zip, etc.
+}

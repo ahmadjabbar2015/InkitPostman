@@ -1,0 +1,71 @@
+meta {
+  name: Update Step - Incident Type
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/incident-type
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "incident_types": [
+      1,
+      2,
+      3
+    ],
+    "other_incident_type": null
+  }
+}
+
+docs {
+  # Update Step: Type of Incident
+  
+  This endpoint updates the second step - selecting incident types from checkboxes.
+  
+  ## Request Body:
+  - `incident_types`: Array of incident type IDs (from master data) or type names
+  - `other_incident_type`: Optional text description if "other" type is selected
+  
+  ## How it works:
+  1. Fetch available incident types from GET `/incidents/master-data/incident-types` endpoint
+  2. The master data returns incident type records with `id`, `incident_type`, `house_id`, `client_id`
+  3. Send an array of incident type IDs to associate with this incident
+  4. Alternatively, you can send type names (strings) and they will be created if they don't exist
+  5. Uses many-to-many relationship (pivot table) - old associations are replaced with new ones
+  
+  ## Example with IDs (recommended):
+  ```json
+  {
+    "incident_types": [1, 2, 3],
+    "other_incident_type": null
+  }
+  ```
+  
+  ## Example with names (creates if not exists):
+  ```json
+  {
+    "incident_types": [
+      "physical_assault",
+      "verbal_threats_abuse"
+    ],
+    "other_incident_type": "Custom incident type description"
+  }
+  ```
+  
+  ## Response:
+  Returns the updated incident record with the `types` relationship loaded showing all associated incident types.
+}
