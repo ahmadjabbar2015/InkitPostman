@@ -1,18 +1,18 @@
 meta {
-  name: 1 - Get All Documents
+  name: Master Data
   type: http
-  seq: 2
+  seq: 7
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/record-plan
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/action-plan/master-data
   body: none
   auth: bearer
 }
 
 params:path {
   youngPerson: 1
-  house: 1
+  house: 3
 }
 
 auth:bearer {
