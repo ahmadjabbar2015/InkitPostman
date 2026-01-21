@@ -1,0 +1,30 @@
+meta {
+  name: Create Feedback (Professional)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/feedback-voice
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  feedback_type: professional
+  ~professional_involved_id: 1
+  ~feedback_about_yp_progress: Young person making excellent progress with therapy goals
+  ~concerns_raised: None currently
+  ~new_targets_added: yes
+  ~target_details: Work on social anxiety in group settings
+  ~professional_documents[]: @file(/path/to/professional_report.pdf)
+}
