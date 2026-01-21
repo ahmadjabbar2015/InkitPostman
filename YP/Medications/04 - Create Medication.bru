@@ -22,9 +22,9 @@ auth:bearer {
 body:multipart-form {
   medications[0][medication_name]: Paracetamol
   medications[0][form_of_medication]: tablet
-  medications[0][strength_dosage]: 500mg
+  medications[0][strength_dosage]: mg
   medications[0][route]: oral
-  medications[0][frequency]: twice_daily
+  medications[0][frequency]: 2_times_a_day
   medications[0][duration_type]: days
   medications[0][duration_days]: 7
   medications[0][quantity_acquired]: 14
@@ -37,11 +37,11 @@ body:multipart-form {
   ~medications[0][is_prn]: 0
   ~medications[0][side_effects_observed]: None observed
   ~medications[0][policy_procedure]: Standard medication administration policy
-  medications[0][schedules][0][intake_routine]: morning
+  medications[0][schedules][0][intake_routine]: twice_a_day
   medications[0][schedules][0][time_due]: 08:00
   ~medications[0][schedules][0][with_food]: After breakfast
   ~medications[0][schedules][0][specific_instructions]: take_with_water
-  medications[0][schedules][1][intake_routine]: evening
+  medications[0][schedules][1][intake_routine]: twice_a_day
   medications[0][schedules][1][time_due]: 20:00
   ~medications[0][schedules][1][with_food]: After dinner
   ~medications[0][schedules][1][specific_instructions]: take_with_water
