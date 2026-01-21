@@ -1,0 +1,55 @@
+meta {
+  name: YP Handover Next Placement Continuity
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/5/handover-next-placement-continuity
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  ~yp_placement_overview_id: 1
+}
+
+params:path {
+  house: 3
+  youngPerson: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  yp_placement_overview_id: 5
+  discharge_summary_sent_to: LA
+  date_summary_shared: 2026-03-01
+  receiving_placement_induction_meeting: 1
+  induction_meeting_date: 2026-03-02
+  induction_attendees: John Smith, Sarah Khan
+  induction_minutes_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  key_risk_information_shared: 1
+  risk_information_file: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
+  risk_acknowledged_by: Sarah Khan
+  emotional_transition_pack_created: 1
+  emotional_transition_pack_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  followup_contact_agreed: 1
+  followup_responsible_staff: John Smith
+  followup_date: 2026-03-05
+  followup_method: Phone
+  closure_confirmation_from_la: 1
+  closure_confirmation_file: @file(C:\Users\Growup Labs\Pictures\download (3).jpg)
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

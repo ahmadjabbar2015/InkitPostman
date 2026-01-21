@@ -1,0 +1,31 @@
+meta {
+  name: Update Feedback
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/feedback-voice/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~feedback_type: young_person
+  ~yp_wishes_feelings: Updated - I feel happy living here
+  ~yp_feelings_about_staff: Staff are really supportive
+  ~yp_feelings_about_home: The house feels like home now
+  ~yp_wants_changes: no
+  ~requested_changes:
+  ~attachments[]: @file(/path/to/updated_voice.mp3)
+}

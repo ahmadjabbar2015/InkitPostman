@@ -1,0 +1,47 @@
+meta {
+  name: Update Medication
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~medication_name: Paracetamol
+  ~form_of_medication: tablet
+  ~strength_dosage: mg
+  ~route: oral
+  ~frequency: 2_times_a_day
+  ~duration_type: days
+  ~duration_days: 14
+  ~quantity_acquired: 28
+  ~start_date: 2025-01-21
+  ~stop_date: 2025-02-04
+  ~reason_for_medication: Pain relief for headaches - extended course
+  ~prescribing_clinician: Dr. Smith
+  ~prescription_file: @file(/path/to/prescription.pdf)
+  ~review_date: 2025-02-21
+  ~is_prn: 0
+  ~side_effects_observed: Mild drowsiness
+  ~policy_procedure: Standard medication administration policy
+  ~schedules[0][id]: 1
+  ~schedules[0][intake_routine]: twice_a_day
+  ~schedules[0][time_due]: 08:00
+  ~schedules[0][with_food]: After breakfast
+  ~schedules[0][specific_instructions]: take_with_water
+  ~schedules[0][is_active]: 1
+}

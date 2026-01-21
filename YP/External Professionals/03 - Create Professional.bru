@@ -1,0 +1,46 @@
+meta {
+  name: Create Professional
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/external-professionals
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  is_external_professional_involved: yes
+  name: Dr. Sarah Thompson
+  role: Clinical Psychologist
+  service: CAMHS
+  contact_details: 0161 123 4567, sarah.thompson@nhs.net
+  ~ongoing_therapy: yes
+  ~therapy_type: Cognitive Behavioural Therapy
+  ~frequency: Fortnightly
+  ~goals: Reduce anxiety symptoms, develop coping strategies
+  ~has_professional_visited: yes
+  ~visit_date: 2025-01-15
+  ~visit_purpose: Initial assessment and treatment planning
+  ~visit_outcomes: Treatment plan agreed, CBT sessions to commence
+  ~staff_present_id: 1
+  ~was_report_provided: yes
+  ~report_documents[]: @file(/path/to/report.pdf)
+  ~impact_on_behaviour: Positive engagement noted, reduced anxiety in group settings
+  ~impact_on_education: Better concentration in classes
+  ~emotional_impact_on_yp: Feeling more supported and understood
+  ~safeguarding_concerns_raised: no
+  ~daily_staff_actions: Reinforce CBT techniques during daily interactions
+  ~additional_support_strategies: Provide quiet space when needed
+  ~followup_required: yes
+}

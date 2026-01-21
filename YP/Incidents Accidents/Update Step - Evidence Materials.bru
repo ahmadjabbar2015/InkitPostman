@@ -22,25 +22,90 @@ auth:bearer {
 
 body:json {
   {
-    "evidence_materials": "CCTV footage from common room (14:15-15:00) - saved to incident folder\nPhotographs of damaged TV remote control\nWritten statements from two staff members present\nYP's daily log entry from that day"
+    "evidence_materials": "CCTV footage from common room (14:15-15:00) - saved to incident folder\nPhotographs of damaged TV remote control\nWritten statements from two staff members present\nYP's daily log entry from that day",
+    "evidences": [
+      {
+        "id": 5,
+        "description": "Updated description for existing evidence",
+        "evidence_type": "photo"
+      }
+    ],
+    "delete_evidence_ids": [3, 4]
   }
 }
 
 docs {
   # Update Step: Evidence / Supporting Materials
   
-  This endpoint updates the list of evidence and supporting materials collected.
+  This endpoint updates evidence records and the general evidence materials text field.
   
-  ## Fields:
-  - `evidence_materials` - Textarea listing all evidence collected
+  ## Request Body Fields:
   
-  Common evidence types:
+  ### 1. `evidence_materials` (string, optional)
+  Text field for listing evidence collected. Common evidence types:
   - CCTV footage
-  - Photographs
+  - Photographs  
   - Written statements
   - Medical reports
   - Damaged items
   - Documents
   
-  Note: Actual files should be uploaded using the separate attachment endpoints.
+  ### 2. `evidences` (array, optional)
+  Update metadata for existing evidence records:
+  ```json
+  {
+    "evidences": [
+      {
+        "id": 5,
+        "description": "Updated description",
+        "evidence_type": "photo"
+      }
+    ]
+  }
+  ```
+  
+  ### 3. `delete_evidence_ids` (array of integers, optional)
+  Delete evidence records by ID. Files will also be removed from storage:
+  ```json
+  {
+    "delete_evidence_ids": [3, 4, 7]
+  }
+  ```
+  
+  ## Evidence Types:
+  - photo
+  - video
+  - document
+  - audio
+  - other
+  
+  ## Response:
+  Returns the updated incident with `evidences` relationship loaded, showing all evidence records with their metadata.
+  
+  ## HOW TO UPLOAD FILES:
+  
+  **DO NOT use this endpoint to upload files!**
+  
+  Use the dedicated evidence upload endpoint instead:
+  
+  ### Upload New Evidence File:
+  ```
+  POST /v1/house/{house}/young-persons/{youngPersonId}/incidents/{id}/evidences
+  Content-Type: multipart/form-data
+  
+  file: [your file]
+  evidence_type: photo
+  description: Photo of injury
+  ```
+  
+  ### Other Evidence Endpoints:
+  - `GET /incidents/{id}/evidences` - Get all evidence files
+  - `PUT /incidents/{id}/evidences/{evidenceId}` - Update evidence metadata
+  - `DELETE /incidents/{id}/evidences/{evidenceId}` - Delete evidence
+  - `GET /incidents/{id}/evidences/{evidenceId}/download` - Download evidence file
+  
+  ### Legacy Attachment Endpoints (Deprecated):
+  - `POST /incidents/{id}/attachments` - Upload attachment
+  - `DELETE /incidents/{id}/attachments/{attachmentId}` - Delete attachment
+  - `GET /incidents/{id}/attachments/{attachmentId}/download` - Download attachment
 }

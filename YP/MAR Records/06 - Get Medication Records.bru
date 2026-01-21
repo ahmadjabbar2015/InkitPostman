@@ -1,0 +1,28 @@
+meta {
+  name: Get Medication Records
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mar-records/medication/:medicationId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  medicationId: 1
+}
+
+params:query {
+  ~page: 1
+  ~per_page: 15
+  ~start_date: 2025-01-01
+  ~end_date: 2025-01-31
+}
+
+auth:bearer {
+  token: {{token}}
+}

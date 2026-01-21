@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/fire-induction/indection-details/:induction
+  url: {{baseURL}}/v1/house/:house/young-persons/fire-induction/induction-details/:induction
   body: multipartForm
   auth: bearer
 }
 
 params:path {
   house: 4
-  induction: 5
+  induction: 2
 }
 
 auth:bearer {
@@ -38,4 +38,8 @@ body:multipart-form {
   extinguishers_identified: 0
   clear_route_management: 0
   ~_method: put
+}
+
+vars:pre-request {
+  induction: 2
 }

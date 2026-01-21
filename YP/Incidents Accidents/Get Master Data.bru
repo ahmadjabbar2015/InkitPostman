@@ -18,3 +18,86 @@ params:path {
 auth:bearer {
   token: {{token}}
 }
+docs {
+  # Get Master Data
+
+  This endpoint retrieves all master data/dropdown options for incidents.
+
+  ## Response Structure:
+  ```json
+  {
+    "status": "success",
+    "data": {
+      "severity_levels": {
+        "minor": "Minor",
+        "moderate": "Moderate",
+        "major": "Major",
+        "critical": "Critical"
+      },
+      "incident_types": [
+        {
+          "id": 1,
+          "incident_type": "Physical Assault",
+          "house_id": null,
+          "client_id": null
+        }
+      ],
+      "body_parts": [
+        "No specific location",
+        "Head",
+        "Eye",
+        "Nose"
+      ],
+      "yes_no": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "evidence_types": {
+        "photo": "Photo",
+        "video": "Video",
+        "document": "Document",
+        "audio": "Audio",
+        "other": "Other"
+      },
+      "status": {
+        "draft": "Draft",
+        "pending_review": "Pending Review",
+        "reviewed": "Reviewed",
+        "closed": "Closed"
+      },
+      "reviewed_by_roles": {
+        "manager": "Manager",
+        "deputy_manager": "Deputy Manager"
+      },
+      "injury_levels": {
+        "minor": "Minor",
+        "moderate": "Moderate",
+        "severe": "Severe",
+        "critical": "Critical"
+      },
+      "restraint_types": {
+        "physical_hold": "Physical Hold",
+        "mechanical_restraint": "Mechanical Restraint",
+        "chemical_restraint": "Chemical Restraint",
+        "environmental_restraint": "Environmental Restraint",
+        "none": "None"
+      }
+    }
+  }
+  ```
+
+  ## Master Data Fields:
+
+  - **severity_levels** - Incident severity options (minor, moderate, major, critical)
+  - **incident_types** - Collection of incident type records (global + house-specific)
+  - **body_parts** - Body parts for injury reporting
+  - **yes_no** - Yes/No options
+  - **evidence_types** - Evidence file type categories (photo, video, document, audio, other)
+  - **status** - Incident status options (draft, pending_review, reviewed, closed)
+  - **reviewed_by_roles** - Reviewer role options (manager, deputy_manager)
+  - **injury_levels** - Injury severity levels (minor, moderate, severe, critical)
+  - **restraint_types** - Types of physical restraint (physical_hold, mechanical_restraint, chemical_restraint, environmental_restraint, none)
+
+  ## Usage:
+  Use this data to populate dropdowns and select fields in the incident form.
+}
