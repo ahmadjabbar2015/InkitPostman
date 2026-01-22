@@ -1,0 +1,36 @@
+meta {
+  name: create Lado Referrals
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/lado-referrals
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
+}
+
+body:multipart-form {
+  activity_time: 14:30
+  " reason_for_contact": Advice Sought
+  contact_person_name: John Doe
+  " contact_person_phone": 03001234567
+  contact_person_email: john.doe@gmail.com
+  attachment: @file(C:\Users\Growup Labs\Pictures\silver-tabby-cat-sitting-on-green-background-free-photo.jpg)
+  outcome: Guidance provided and referral logged
+}
+
+vars:pre-request {
+  house: 4
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

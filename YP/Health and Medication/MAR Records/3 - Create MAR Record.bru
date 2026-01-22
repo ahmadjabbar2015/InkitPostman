@@ -1,0 +1,36 @@
+meta {
+  name: 3 - Create MAR Record
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mar-records
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "yp_medication_id": 1,
+    "yp_medication_schedule_id": 1,
+    "date": "2024-01-15",
+    "time_given": "08:05",
+    "status": "taken",
+    "medication_administered": true,
+    "dose_given": 1,
+    "dose_unit": "tablet",
+    "administered_by": 1,
+    "witnessed_by": 2,
+    "notes": "Young person took medication without issue"
+  }
+}

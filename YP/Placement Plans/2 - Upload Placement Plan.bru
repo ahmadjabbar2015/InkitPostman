@@ -1,5 +1,5 @@
 meta {
-  name: Create Plan
+  name: 2 - Upload Placement Plan
   type: http
   seq: 2
 }
@@ -11,7 +11,7 @@ post {
 }
 
 params:path {
-  house: 4
+  house: 1
   youngPersonId: 1
 }
 
@@ -20,10 +20,7 @@ auth:bearer {
 }
 
 body:multipart-form {
-  ~title: Placement Plan Q1 2025
-  ~start_date: 2025-01-01
-  ~end_date: 2025-03-31
-  ~status: active
-  ~notes: Initial placement plan for the young person
-  ~upload_documents[]: @file(/path/to/document.pdf)
+  title: Initial Placement Plan - January 2024
+  attachments[0]: @file(/path/to/placement_plan.pdf)
+  ~attachments[1]: @file(/path/to/supporting_document.docx)
 }

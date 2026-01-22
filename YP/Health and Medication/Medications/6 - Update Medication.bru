@@ -1,0 +1,53 @@
+meta {
+  name: 6 - Update Medication
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~medication_name: Paracetamol Updated
+  ~form_of_medication: tablet
+  ~strength_dosage: mg
+  ~route: oral
+  ~frequency: 3_times_a_day
+  ~duration_type: ongoing
+  ~quantity_acquired: 60
+  ~start_date: 2024-01-15
+  ~stop_date: 2024-03-15
+  ~reason_for_medication: Pain relief - updated dosage
+  ~prescribing_clinician: Dr. Smith
+  ~is_prn: 0
+  ~side_effects_observed: Mild drowsiness observed
+  ~policy_procedure: Updated administration procedure
+  ~review_date: 2024-02-15
+  ~prescription_file: @file(/path/to/updated_prescription.pdf)
+  ~schedules[0][id]: 1
+  ~schedules[0][intake_routine]: 3_times_a_day
+  ~schedules[0][time_due]: 08:00
+  ~schedules[0][specific_instructions]: after_meals
+  ~schedules[0][is_active]: 1
+  ~schedules[1][id]: 2
+  ~schedules[1][intake_routine]: 3_times_a_day
+  ~schedules[1][time_due]: 14:00
+  ~schedules[1][specific_instructions]: with_food
+  ~schedules[1][is_active]: 1
+  ~schedules[2][intake_routine]: 3_times_a_day
+  ~schedules[2][time_due]: 20:00
+  ~schedules[2][specific_instructions]: after_meals
+}

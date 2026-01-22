@@ -1,19 +1,18 @@
 meta {
-  name: Get Single Plan
+  name: 3 - List All Medications
   type: http
   seq: 3
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/placement-plans/:id
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications
   body: none
   auth: bearer
 }
 
 params:path {
-  house: 4
+  house: 1
   youngPersonId: 1
-  id: 1
 }
 
 auth:bearer {
