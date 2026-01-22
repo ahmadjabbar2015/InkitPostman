@@ -1,0 +1,22 @@
+meta {
+  name: Delete Document
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/goals-outcomes/:id/documents/:documentId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+  documentId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}

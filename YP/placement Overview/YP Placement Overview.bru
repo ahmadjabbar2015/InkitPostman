@@ -1,0 +1,68 @@
+meta {
+  name: YP Placement Overview
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview
+  body: json
+  auth: bearer
+}
+
+params:query {
+  ~yp_admission_id: 4
+}
+
+params:path {
+  youngPerson: 1
+  house: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "yp_admission_id": 4,
+  
+    "placement_status": "planned",
+    "placement_type": "solo",
+  
+    "date_of_transition_end": "2026-03-15",
+  
+    "local_authority_name": "Birmingham City Council",
+    "local_authority_phone": "0121-555-8899",
+  
+    "reason_for_move_on": "developmental_progress",
+    "reason_for_move_on_notes": "Young person ready for supported independence.",
+  
+    "risk_level_at_exit": "low",
+    "risk_management_outcome_summary": "Risks reduced through structured support and monitoring."
+  }
+  
+}
+
+body:multipart-form {
+  yp_admission_id: 4
+  placement_status: planned
+  placement_type: solo
+  date_of_transition_end: 2026-01-25
+  local_authority_name: Review progress and update care plan.
+  local_authority_phone: whyyyy  progress and update care plan.
+  reason_for_move_on: 4
+  reason_for_move_on_notes: 4
+  risk_level_at_exit: High
+  risk_management_outcome_summary: Other
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

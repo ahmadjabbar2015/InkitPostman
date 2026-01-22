@@ -1,0 +1,62 @@
+meta {
+  name: create Discharge Pack
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-pack
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
+}
+
+body:multipart-form {
+  discharge_pack_prepared: 1
+  upload_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  birth_certificate: 1
+  passport: 1
+  id_document: 0
+  education_records: 1
+  health_records: 1
+  medication_summary: 1
+  risk_plan: 1
+  behaviour_plan: 0
+  contact_list: 1
+  life_story_book: 0
+  property_inventory: 1
+  photos: 1
+  custom_pack_item: Extra documents
+  data_sharing_method: Encrypted Email
+  recipient_la: 1
+  recipient_next_placement: 1
+  recipient_yp: 1
+  recipient_parent: 0
+  recipient_guardian: 0
+  recipient_health_service: 1
+  recipient_education_provider: 1
+  confirmation_received: 1
+  receipt_proof: my name is khan
+  follow_up_required: 1
+  support_type: Emotional Support
+  assigned_to: 4
+  start_date: 2026-01-21
+  end_date: 2026-02-21
+  date_created: 2026-01-20
+  prepared_by: 4
+  verified_by: 4
+}
+
+vars:pre-request {
+  house: 4
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

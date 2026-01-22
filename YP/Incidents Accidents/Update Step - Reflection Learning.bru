@@ -22,24 +22,55 @@ auth:bearer {
 
 body:json {
   {
-    "reflection_learning": "What went well: Staff maintained calm approach throughout. YP responded positively to offer of quiet space. Communication between staff members was effective.\n\nAreas for improvement: Could have intervened earlier when YP first showed signs of agitation. TV schedule should have been displayed more prominently.\n\nKey learning: YP struggles with transitions and changes to routine. Benefits from advance warning and choices.",
-    "preventive_measures": "1. Implement and display clear TV schedule in common room\n2. Add visual cues/timer for TV time transitions\n3. Staff to be more proactive in identifying early warning signs of agitation\n4. Review YP's behavior support plan - add specific strategies for managing frustration\n5. Consider additional sensory break options in common room area\n6. Team meeting to discuss de-escalation strategies that worked well"
+    "staff_debrief": "<p>The staff team handled the situation calmly and professionally. John maintained a non-confrontational stance while Sarah offered alternative activities. Communication between staff was clear and effective.</p><p><strong>What worked well:</strong></p><ul><li>De-escalation techniques were appropriately applied</li><li>YP was given space to calm down</li><li>Team worked cohesively</li></ul><p><strong>Emotional impact on staff:</strong> Both staff members felt confident in their response. No additional support needed at this time.</p>",
+    "young_person_debrief": "<p>Met with YP 2 hours after incident when calm. YP acknowledged getting frustrated when TV program changed unexpectedly.</p><p><strong>YP's understanding:</strong> Recognizes that throwing remote was wrong and could have hurt someone. Understands that breaking house property has consequences.</p><p><strong>YP's feelings:</strong> Felt angry in the moment but regrets actions now. Worried about being in trouble.</p><p><strong>Plan to avoid repeat:</strong></p><ul><li>YP will use calm corner when feeling frustrated</li><li>Will ask staff for help with feelings before they get too big</li><li>Agreed to apologize to other YPs who were watching TV</li></ul>",
+    "manager_review_learning_points": "<p><strong>Manager's Analysis:</strong></p><p>This incident reflects a pattern we've observed over the past 3 weeks where [YP Name] struggles with unexpected changes to routine, particularly around shared activities.</p><p><strong>Key Learning Points:</strong></p><ol><li>Need for better visual scheduling in common areas</li><li>Staff require additional training on recognizing early warning signs specific to this YP</li><li>Current behavior support plan needs updating to address frustration tolerance</li></ol><p><strong>Systemic Improvements:</strong></p><ul><li>Implement TV schedule board in common room</li><li>Update all YP behavior plans by end of month</li><li>Schedule additional de-escalation training for new staff</li><li>Review supervision levels during high-activity periods</li></ul><p><strong>Follow-up Actions:</strong> Scheduled team meeting for [date] to review updated protocols. Will monitor YP's progress over next 2 weeks.</p>"
   }
 }
 
 docs {
   # Update Step: Reflection & Learning
   
-  This endpoint updates reflections on the incident and preventive measures.
+  This endpoint updates the three reflection/debrief fields for the incident.
   
   ## Fields:
-  - `reflection_learning` - What can be learned? What went well? What could be improved?
-  - `preventive_measures` - Steps to prevent similar incidents in the future
   
-  This section helps with:
+  ### 1. `staff_debrief` (richtext, optional)
+  **Staff Debrief** - Reflection with involved staff covering:
+  - Emotional impact on staff
+  - What intervention strategies worked well
+  - Learning points from the incident
+  - Support needs for staff members
+  
+  ### 2. `young_person_debrief` (richtext, optional)
+  **Young Person Debrief** - Discussion with the child after the incident:
+  - YP's understanding of what happened
+  - How they were feeling during and after
+  - What they learned from the situation
+  - Their plan to avoid similar situations
+  - Any support they feel they need
+  
+  ### 3. `manager_review_learning_points` (richtext, optional)
+  **Manager Review / Learning Points** - Manager's analysis:
+  - Overall assessment and patterns noticed
+  - Lessons learned for the team/organization
+  - Systemic improvements needed
+  - Follow-up actions and timelines
+  - Policy or procedure updates required
+  
+  ## Legacy Fields (Backward Compatibility):
+  - `reflection_learning` - General reflection text
+  - `preventive_measures` - Preventive measures text
+  
+  ## Purpose:
+  This section enables:
+  - Multi-level reflection (staff, YP, management)
   - Continuous improvement
-  - Staff training
-  - Policy updates
-  - Individual support planning
+  - Pattern identification
+  - Staff and YP development
   - Risk assessment updates
+  - Policy improvements
+  
+  ## Response:
+  Returns the updated incident record with all reflection fields.
 }

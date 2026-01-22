@@ -1,0 +1,58 @@
+meta {
+  name: create Discharge Summary
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-summary
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 3
+  youngPerson: 1
+}
+
+body:multipart-form {
+  discharge_type: Planned
+  discharge_date: 2026-01-20
+  discharge_completed_by: RM
+  discharge_summary_completed: 1
+  upload_summary: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  narrative_summary: Young person successfully transitioned
+  progress_summary_last_3_months: Positive progress in behaviour and engagement
+  medication_health_transfer_completed: 1
+  upload_mar_sheet: @file(C:\Users\Growup Labs\Pictures\download (2).jpg)
+  upload_handover_form: @file(C:\Users\Growup Labs\Pictures\Screenshot 2025-12-29 122554.png)
+  upload_gp_notification_proof: @file(C:\Users\Growup Labs\Pictures\download (2).jpg)
+  incident_during_transition: 1
+  incident_description: Minor safeguarding concern
+  actions_taken: Reported and resolved
+  date_notified_to_la: 2026-01-20
+  upload_incident_record: @file(C:\Users\Growup Labs\Pictures\cute-cat-wearing-sunglasses-and-relaxing-on-orange-chair-generative-ai-illustration-free-photo.jpg)
+  exit_interview_conducted: 1
+  exit_interview_date: 2026-01-20
+  exit_interview_conducted_by: 1
+  yp_comments_feedback: Happy with support
+  upload_exit_interview_form: @file(C:\Users\Growup Labs\Pictures\download.jpg)
+  final_keyworker_summary: All goals achieved
+  la_notified_discharge: 1
+  la_notification_date: 2026-01-20
+  upload_la_confirmation: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
+  manager_sign_off: 1
+  rm_name: John Manager
+  rm_signature: @file(C:\Users\Growup Labs\Pictures\silver-tabby-cat-sitting-on-green-background-free-photo.jpg)
+  rm_sign_off_date: 2026-01-20
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

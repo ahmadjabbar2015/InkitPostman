@@ -1,0 +1,29 @@
+meta {
+  name: Show Discharge Summary
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-summary/1
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPerson: 1
+  house: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

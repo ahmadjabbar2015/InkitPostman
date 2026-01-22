@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/physical-intervention
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,33 +20,112 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "physical_intervention_used": "no",
-    "physical_intervention_details": null,
-    "restraint_type": null,
-    "restraint_duration": null
-  }
+body:multipart-form {
+  physical_interventions[0][was_intervention_used]: yes
+  physical_interventions[0][agency_staff_id]: 123
+  physical_interventions[0][location_of_intervention]: Living Room
+  physical_interventions[0][injury_level]: moderate
+  physical_interventions[0][body_areas_front][]: chest
+  physical_interventions[0][body_areas_front][]: left_arm
+  physical_interventions[0][body_areas_back][]: upper_back
+  physical_interventions[0][treatment_details]: Ice pack applied to left arm. No medical attention required.
+  physical_interventions[0][body_marks_front][]: bruise_chest
+  physical_interventions[0][restraint_type]: physical_hold
+  physical_interventions[0][restraint_start_time]: 2024-01-20 10:30:00
+  physical_interventions[0][restraint_end_time]: 2024-01-20 10:35:00
+  physical_interventions[0][intervention_details]: Two-person hold used to prevent YP from self-harm. YP calmed down after 5 minutes.
+  intervention_files[0]: @file(/path/to/intervention-photo.jpg)
 }
 
 docs {
   # Update Step: Physical Intervention / Restraint
-  
-  This endpoint updates information about physical intervention or restraint used.
-  
-  ## Fields:
-  - `physical_intervention_used` - Yes/No whether physical intervention was used
-  - `physical_intervention_details` - Description of intervention (shown when used = "yes")
-  - `restraint_type` - Type of restraint technique used
-  - `restraint_duration` - Duration in minutes
-  
-  ## Example with intervention:
+
+  **Important:** This endpoint uses `multipart/form-data` to support file uploads.
+
+  This endpoint supports repeatable physical intervention records with detailed body diagrams and file attachments.
+  Each intervention record can have multiple injury points marked on front and back body diagrams.
+
+  ## Request Format (multipart/form-data):
+  - `physical_interventions[index][field_name]` - Intervention record fields
+  - `physical_interventions[index][body_areas_front][]` - Array of body parts (front) - **supports multiple points**
+  - `physical_interventions[index][body_areas_back][]` - Array of body parts (back) - **supports multiple points**
+  - `physical_interventions[index][body_marks_front][]` - Array of injury marks (front) - **supports multiple points**
+  - `physical_interventions[index][body_marks_back][]` - Array of injury marks (back) - **supports multiple points**
+  - `intervention_files[index]` - File upload for specific intervention record
+  - `delete_intervention_ids[]` - Array of IDs to delete
+  - `replace_all` - Boolean (true/false)
+  - `intervention_files[index]` - File upload for specific intervention record
+  - `delete_intervention_ids[]` - Array of IDs to delete
+  - `replace_all` - Boolean (true/false)
+
+  ## Physical Intervention Record Fields:
+  - `id` - Record ID (for updates, omit for new records)
+  - `was_intervention_used` - "yes" or "no"
+  - `agency_staff_id` - ID of agency staff involved (from employee_jobs table)
+  - `location_of_intervention` - Where intervention occurred
+  - `injury_level` - Severity: "minor", "moderate", "severe", "critical"
+  - `body_areas_front[]` - **Array** of body parts affected (front view) - Can mark multiple points:
+    * Head, Eye, Nose, Mouth and teeth, Neck and throat
+    * Shoulder joint and upper arm, Elbow joint and forearm, Wrist, Palm and fingers
+    * Chest, Abdomen, Breast, Genitals
+    * Hip and thigh, Knee, Leg, Ankle, Foot and toes
+  - `body_areas_back[]` - **Array** of body parts (back view) - Can mark multiple points:
+    * Neck and shoulders, Back, Buttocks and anus
+    * Calf, Heel, Ear
+  - `body_marks_front[]` - **Array** of injury/mark descriptions (front) - Multiple injury points
+  - `body_marks_back[]` - **Array** of injury/mark descriptions (back) - Multiple injury points
+  - `treatment_details` - Treatment information
+  - `restraint_type` - Type: "physical_hold", "mechanical_restraint", "chemical_restraint", "environmental_restraint", "none"
+  - `restraint_start_time` - Start date/time (Y-m-d H:i:s format)
+  - `restraint_end_time` - End date/time (Y-m-d H:i:s format, must be after start_time)
+  - `intervention_details` - Additional notes
+  - `file_attachment` - Path to uploaded file (automatically set when file is uploaded)
+
+  ## Example - Multiple Interventions with Files:
+  ```
+  physical_interventions[0][was_intervention_used]=yes
+  physical_interventions[0][location_of_intervention]=Living Room
+  physical_interventions[0][body_areas_front][]=chest
+  physical_interventions[0][body_areas_front][]=left_arm
+  physical_interventions[0][body_areas_front][]=wrist
+  physical_interventions[0][body_marks_front][]=bruise_chest
+  physical_interventions[0][body_marks_front][]=scratch_left_arm
+  intervention_files[0]=@file(intervention1.jpg)
+
+  physical_interventions[1][was_intervention_used]=yes
+  physical_interventions[1][body_areas_back][]=upper_back
+  physical_interventions[1][body_areas_back][]=lower_back
+  intervention_files[1]=@file(intervention2.pdf)
+  ```
+
+  ## Example - Update Existing Record:
+  ```
+  physical_interventions[0][id]=1
+  physical_interventions[0][treatment_details]=Updated treatment
+  intervention_files[0]=@file(new-document.pdf)
+  ```
+
+  ## Example - Delete Records:
+  ```
+  delete_intervention_ids[]=2
+  delete_intervention_ids[]=3
+  ```
+
+  ## File Upload Specifications:
+  - Supported formats: jpg, jpeg, png, pdf, doc, docx
+  - Maximum size: 10MB per file
+  - Each intervention record can have one attached file
+  - Storage: Amazon S3
+  - Path structure: `yp/house_{house_id}/young_person_{yp_id}/incidents/{incident_id}/interventions/`
+
+  ## Legacy Fields (Backward Compatible - JSON format):
+  If not using repeatable format, you can still use:
   ```json
   {
     "physical_intervention_used": "yes",
-    "physical_intervention_details": "Two-person Team Teach hold used to prevent YP from leaving room and potentially harming self. YP was attempting to run towards main road.",
-    "restraint_type": "Team Teach - Standing Wrap",
-    "restraint_duration": 8
+    "physical_intervention_details": "Description",
+    "restraint_type": "physical_hold",
+    "restraint_duration": 5
   }
   ```
 }

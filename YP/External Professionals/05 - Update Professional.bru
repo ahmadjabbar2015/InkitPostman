@@ -1,0 +1,42 @@
+meta {
+  name: Update Professional
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/external-professionals/:id
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~is_external_professional_involved: yes
+  ~name: Dr. Sarah Thompson
+  ~role: Clinical Psychologist
+  ~service: CAMHS
+  ~contact_details: 0161 123 4567, sarah.thompson@nhs.net - updated
+  ~ongoing_therapy: yes
+  ~therapy_type: Cognitive Behavioural Therapy
+  ~frequency: Weekly
+  ~goals: Updated goals - continue anxiety management
+  ~has_professional_visited: yes
+  ~visit_date: 2025-01-21
+  ~visit_purpose: Follow-up session
+  ~visit_outcomes: Good progress noted
+  ~staff_present_id: 2
+  ~was_report_provided: no
+  ~report_documents[]: @file(/path/to/updated_report.pdf)
+  ~impact_on_behaviour: Continued positive progress
+  ~followup_required: yes
+}
