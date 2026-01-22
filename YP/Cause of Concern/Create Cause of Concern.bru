@@ -1,0 +1,43 @@
+meta {
+  name: Create Cause of Concern
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/{{house}}/young-persons/{{youngPerson}}/cause-concern
+  body: multipartForm
+  auth: inherit
+}
+
+body:json {
+  "concern_datetime": "2026-01-21 14:30:00",
+  "location": "Bedroom",
+  
+}
+
+body:multipart-form {
+  concern_datetime: 2026-01-21 14:30:00
+  location: Bedroom
+  type_of_concern: 2
+  self_harm_description: Observed scratches on left arm
+  presentation_emotional_state: Anxious and withdrawn
+  professional_opinion: Young person showing signs of distress
+  risk_category: 3
+  action_taken: Immediate supervision and medical check
+  informed_person: 7
+  other_informed_person: School Counsellor
+  follow_up_required: 1
+  action_owner: Key Worker
+  due_date: 2026-01-25
+  follow_up_notes: Daily monitoring and counselling referral
+  ofsted_notification_required: 1
+  manager_comments: Escalated appropriately
+  manager_signature: signed-by-manager-lado
+  new_concern_option: new fields add
+}
+
+vars:pre-request {
+  house: 4
+  youngPerson: 1
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Show Discharge Pack
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-pack/20
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPerson: 1
+  house: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
