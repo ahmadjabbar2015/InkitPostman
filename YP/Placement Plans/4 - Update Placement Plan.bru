@@ -1,21 +1,28 @@
 meta {
-  name: Delete Plan
+  name: 4 - Update Placement Plan
   type: http
-  seq: 5
+  seq: 4
 }
 
-delete {
+put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/placement-plans/:id
-  body: none
+  body: json
   auth: bearer
 }
 
 params:path {
-  house: 4
+  house: 1
   youngPersonId: 1
   id: 1
 }
 
 auth:bearer {
   token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Updated Placement Plan - Review February 2024",
+    "sort_order": 1
+  }
 }
