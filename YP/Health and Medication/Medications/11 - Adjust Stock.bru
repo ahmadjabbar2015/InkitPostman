@@ -1,0 +1,28 @@
+meta {
+  name: 11 - Adjust Stock
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications/:id/adjust-stock
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "new_balance": 25,
+    "notes": "Stock audit correction - found 5 damaged tablets during stock check"
+  }
+}

@@ -1,0 +1,47 @@
+meta {
+  name: 4 - Create Medication
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  medications[0][medication_name]: Paracetamol
+  medications[0][form_of_medication]: tablet
+  medications[0][strength_dosage]: mg
+  medications[0][route]: oral
+  medications[0][frequency]: 2_times_a_day
+  medications[0][duration_type]: ongoing
+  medications[0][quantity_acquired]: 30
+  medications[0][start_date]: 2024-01-15
+  medications[0][reason_for_medication]: Pain relief
+  medications[0][prescribing_clinician]: Dr. Smith
+  medications[0][is_prn]: 0
+  medications[0][schedules][0][intake_routine]: 2_times_a_day
+  medications[0][schedules][0][time_due]: 08:00
+  medications[0][schedules][0][specific_instructions]: after_meals
+  medications[0][schedules][1][intake_routine]: 2_times_a_day
+  medications[0][schedules][1][time_due]: 20:00
+  medications[0][schedules][1][specific_instructions]: after_meals
+  ~medications[0][stop_date]: 2024-02-15
+  ~medications[0][duration_days]: 30
+  ~medications[0][review_date]: 2024-02-01
+  ~medications[0][side_effects_observed]: None observed
+  ~medications[0][policy_procedure]: Standard administration procedure
+  ~medications[0][prescription_file]: @file(/path/to/prescription.pdf)
+  ~medications[0][schedules][0][with_food]: Take with meals
+}
