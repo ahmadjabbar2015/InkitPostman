@@ -1,0 +1,26 @@
+meta {
+  name: List All Feedback
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/feedback-voice
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+params:query {
+  ~page: 1
+  ~per_page: 15
+  ~feedback_type: young_person
+}
+
+auth:bearer {
+  token: {{token}}
+}

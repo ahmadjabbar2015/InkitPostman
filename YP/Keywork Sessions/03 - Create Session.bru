@@ -1,0 +1,50 @@
+meta {
+  name: Create Session
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/keywork-sessions
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  session_datetime: 2025-01-21
+  session_title: Weekly Check-in Session
+  keywork_topic: health
+  ~evidence_documents[]: @file(/path/to/document.pdf)
+  ~keywork_details: Discussed health goals and medication compliance
+  ~staff_feedback: Young person engaged well with session
+  ~session_objective_met: yes
+  ~objective_not_met_reason:
+  ~encouragement_needed: verbal_encouragement
+  ~yp_interest_level: high
+  ~yp_engaged_after_encouragement: yes
+  ~yp_refused: no
+  ~refused_reason:
+  ~yp_enthusiasm_during_session: enthusiastic
+  ~yp_agreed_and_engaged: yes
+  ~encouragement_action: positive_reinforcement
+  ~encouragement_action_text: Praised progress on health goals
+  ~skills_knowledge_gained: Better understanding of medication schedule
+  ~further_work_required: yes
+  ~next_steps: Continue monitoring medication compliance
+  ~concerns_raised: None identified
+  ~yp_liked_about_session: Felt listened to and supported
+  ~yp_conversation_feedback: Positive feedback received
+  ~visual_voice_documents[]: @file(/path/to/visual_voice.jpg)
+  ~manager_wants_followup: no
+  ~manager_comments:
+  ~next_review: 2025-01-28
+}

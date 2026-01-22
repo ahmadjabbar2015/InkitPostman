@@ -1,0 +1,27 @@
+meta {
+  name: Adjust Stock
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications/:id/adjust-stock
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  "adjustment_type": "correction",
+  "quantity": -2,
+  "reason": "Stock audit - 2 tablets unaccounted for"
+}

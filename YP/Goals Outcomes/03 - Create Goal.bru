@@ -1,0 +1,35 @@
+meta {
+  name: Create Goal
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/goals-outcomes
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  goal_category: education
+  smart_goal: Achieve 90% school attendance by end of term
+  ~why_goal_important: Education is key to future opportunities and building confidence
+  ~steps_to_achieve: 1. Morning routine established 2. Transport arranged 3. Check-ins with school
+  ~plan_start_date: 2025-01-21
+  ~review_date: 2025-03-31
+  ~progress_made: yes
+  ~evidence_documents[]: @file(/path/to/evidence.pdf)
+  ~staff_explanation: Young person showing consistent improvement in attendance
+  ~if_not_achieved: no
+  ~barrier_identified:
+  ~new_action_plan:
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Get MAR Sheet
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mar-records/mar-sheet
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
+}
+
+params:query {
+  ~start_date: 2025-01-01
+  ~end_date: 2025-01-31
+  ~medication_id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
