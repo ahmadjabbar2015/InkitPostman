@@ -1,0 +1,21 @@
+meta {
+  name: Delete Document
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/record-plan/48
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  youngPerson: 1
+  house: 4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
