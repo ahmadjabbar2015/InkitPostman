@@ -1,7 +1,7 @@
 meta {
   name: Get Master Data
   type: http
-  seq: 2
+  seq: 1
 }
 
 get {
@@ -11,18 +11,19 @@ get {
 }
 
 params:path {
-  house: 4
-  youngPersonId: 1
+  house: 2
+  youngPersonId: 4
 }
 
 auth:bearer {
   token: {{token}}
 }
+
 docs {
   # Get Master Data
-
+  
   This endpoint retrieves all master data/dropdown options for incidents.
-
+  
   ## Response Structure:
   ```json
   {
@@ -85,9 +86,9 @@ docs {
     }
   }
   ```
-
+  
   ## Master Data Fields:
-
+  
   - **severity_levels** - Incident severity options (minor, moderate, major, critical)
   - **incident_types** - Collection of incident type records (global + house-specific)
   - **body_parts** - Body parts for injury reporting
@@ -97,7 +98,7 @@ docs {
   - **reviewed_by_roles** - Reviewer role options (manager, deputy_manager)
   - **injury_levels** - Injury severity levels (minor, moderate, severe, critical)
   - **restraint_types** - Types of physical restraint (physical_hold, mechanical_restraint, chemical_restraint, environmental_restraint, none)
-
+  
   ## Usage:
   Use this data to populate dropdowns and select fields in the incident form.
 }

@@ -1,0 +1,82 @@
+meta {
+  name: Get Method Technique Options
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/incidents/method-technique-options
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Method/Technique Options for Physical Interventions
+
+  Returns available method/technique options for physical intervention restraints.
+  Includes both default options and custom techniques saved at house and client levels.
+
+  ## Response Format:
+  ```json
+  {
+    "success": true,
+    "message": "Method/technique options retrieved successfully",
+    "data": [
+      {"value": "Baskethold", "label": "Baskethold", "custom": false},
+      {"value": "Two-arm hold", "label": "Two-arm hold", "custom": false},
+      {"value": "Seated hold", "label": "Seated hold", "custom": false},
+      {"value": "Standing hold", "label": "Standing hold", "custom": false},
+      {"value": "Breakaway", "label": "Breakaway", "custom": false},
+      {"value": "Other", "label": "Other", "custom": false},
+      {
+        "id": 1,
+        "value": "Modified basket hold with verbal de-escalation",
+        "label": "Modified basket hold with verbal de-escalation",
+        "custom": true,
+        "level": "house"
+      },
+      {
+        "id": 2,
+        "value": "Gentle restraint for trauma-informed care",
+        "label": "Gentle restraint for trauma-informed care",
+        "custom": true,
+        "level": "client"
+      }
+    ]
+  }
+  ```
+
+  ## Default Options (Built-in):
+  - **Baskethold** - Standard basket hold restraint technique
+  - **Two-arm hold** - Two-arm restraint technique
+  - **Seated hold** - Seated restraint position
+  - **Standing hold** - Standing restraint position
+  - **Breakaway** - Breakaway/disengagement technique
+  - **Other** - Custom technique (requires additional input field)
+
+  ## Custom Techniques:
+  Custom techniques are stored in the database and can be:
+  - **House-level**: Available to all young persons in the house
+  - **Client-level**: Available to all houses under the same client
+
+  ## Usage:
+  1. Load options when displaying the method/technique dropdown
+  2. If user selects "Other", show additional text field: `other_method_of_technique_intervention`
+  3. Optionally, save the custom technique via POST /custom-technique endpoint
+  4. Saved techniques will appear in subsequent calls to this endpoint
+
+  ## Field in Response:
+  - `value` - The technique name (use this for form submission)
+  - `label` - Display text for dropdown
+  - `custom` - Boolean indicating if it's a custom technique
+  - `level` - "house" or "client" (only for custom techniques)
+  - `id` - Database ID (only for custom techniques, used for deletion)
+}

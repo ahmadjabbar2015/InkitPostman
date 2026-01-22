@@ -1,0 +1,59 @@
+meta {
+  name: Delete Custom Technique
+  type: http
+  seq: 17
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/incidents/custom-technique/:techniqueId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  techniqueId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Delete Custom Method/Technique
+
+  Soft-deletes a custom intervention technique. Only custom techniques can be deleted (not default ones).
+  Requires appropriate permissions (update_incident).
+
+  ## Path Parameters:
+  - `house` - House ID
+  - `youngPersonId` - Young person ID
+  - `techniqueId` - The ID of the custom technique to delete
+
+  ## Authorization:
+  Must have `update_incident` permission.
+
+  ## Response Success:
+  ```json
+  {
+    "success": true,
+    "message": "Custom technique deleted successfully",
+    "data": null
+  }
+  ```
+
+  ## Response Error (Not Found):
+  ```json
+  {
+    "success": false,
+    "message": "Technique not found or unauthorized",
+    "data": null
+  }
+  ```
+
+  ## Notes:
+  - Only affects custom techniques (built-in options cannot be deleted)
+  - Uses soft delete, so technique can be restored by re-adding it with same name
+  - Deleted techniques will not appear in GET /method-technique-options
+  - User must have access to the house or client that owns the technique
+}
