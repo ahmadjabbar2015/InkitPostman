@@ -1,18 +1,18 @@
 meta {
-  name: 1 - Get All Documents
+  name: 2 - Show plan Document
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/record-plan
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/record-plan/39
   body: none
   auth: bearer
 }
 
 params:path {
   youngPerson: 1
-  house: 1
+  house: 4
 }
 
 auth:bearer {
