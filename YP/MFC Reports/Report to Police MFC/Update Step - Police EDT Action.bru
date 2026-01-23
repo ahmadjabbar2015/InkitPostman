@@ -1,0 +1,34 @@
+meta {
+  name: Update Step - Police EDT Action
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/police-edt-action
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "police_contacted": "yes",
+    "police_contact_datetime": "2026-01-23 10:30:00",
+    "police_contacted_by": "John Smith - Duty Manager",
+    "police_cad_reference": "CAD123456",
+    "police_officer_batch_name": "Officer Johnson",
+    "police_officer_batch_number": "PC12345",
+    "police_advice_action": "Police advised to continue monitoring. YP classified as medium risk. Officers will conduct welfare check if YP returns."
+  }
+}
+

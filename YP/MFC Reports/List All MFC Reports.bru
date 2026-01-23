@@ -1,0 +1,24 @@
+meta {
+  name: List All MFC Reports
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports?per_page=15
+  body: none
+  auth: bearer
+}
+
+params:query {
+  per_page: 15
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}

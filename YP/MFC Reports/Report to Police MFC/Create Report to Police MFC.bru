@@ -1,0 +1,38 @@
+meta {
+  name: Create Report to Police MFC
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "mfc_type": "report_to_police_mfc",
+    "status": "active",
+    "clothing_worn": "Red jacket, black trousers, grey trainers",
+    "last_sighting_datetime": "2026-01-23 06:00:00",
+    "place_of_last_sighting": "Residential home",
+    "seen_by_whom": "Night staff - Sarah Johnson",
+    "gone_missing_datetime": "2026-01-23 07:00:00",
+    "known_addresses_locations": "Previous care home address, family home in London, friend's flat",
+    "file_and_care_plan_checked": "Yes, all documentation reviewed and risk assessment updated",
+    "events_leading_to_missing": "YP left during shift change, did not return for breakfast",
+    "actions_to_locate_yp": "Checked all known locations, contacted family and friends, police notified",
+    "missing_protocol_update_needed": "yes",
+    "risk_assessment_update_needed": "yes"
+  }
+}

@@ -1,0 +1,38 @@
+meta {
+  name: Create Unauthorized Absence Report
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "mfc_type": "unauthorized_absence",
+    "status": "draft",
+    "clothing_worn": "Black hoodie, blue jeans, white sneakers",
+    "last_sighting_datetime": "2026-01-23 08:00:00",
+    "place_of_last_sighting": "School grounds",
+    "seen_by_whom": "Teacher Mrs. Smith",
+    "gone_missing_datetime": "2026-01-23 09:30:00",
+    "known_addresses_locations": "Local park, friend's house on Oak Street",
+    "file_and_care_plan_checked": "Yes, all records reviewed",
+    "events_leading_to_missing": "YP left school without permission during break",
+    "actions_to_locate_yp": "Called known contacts, checking usual locations",
+    "missing_protocol_update_needed": "yes",
+    "risk_assessment_update_needed": "yes"
+  }
+}

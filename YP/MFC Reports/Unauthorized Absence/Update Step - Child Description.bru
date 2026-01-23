@@ -1,0 +1,27 @@
+meta {
+  name: Update Step - Child Description
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/child_description
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "clothing_worn": "Black hoodie, blue jeans, white sneakers, carrying blue backpack"
+  }
+}

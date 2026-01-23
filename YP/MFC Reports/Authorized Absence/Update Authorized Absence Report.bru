@@ -1,0 +1,29 @@
+meta {
+  name: Update Authorized Absence Report
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "status": "active",
+    "clothing_worn": "Updated clothing description",
+    "actions_to_locate_yp": "Additional actions taken"
+  }
+}
