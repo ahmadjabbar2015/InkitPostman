@@ -1,7 +1,7 @@
 meta {
   name: Create Record
   type: http
-  seq: 4
+  seq: 5
 }
 
 post {
@@ -11,7 +11,7 @@ post {
 }
 
 params:path {
-  house: 4
+  house: 3
   youngPersonId: 1
 }
 
@@ -20,13 +20,15 @@ auth:bearer {
 }
 
 body:multipart-form {
-  ~signed_gp_consent_form_uploaded: 1
-  ~gp_consent_form: @file(/path/to/gp_consent_form.pdf)
-  ~parental_consent_required: 1
-  ~legal_basis: section_20
-  ~consent_for_emergency_treatment: 1
-  ~emergency_instructions: Contact social worker and parents immediately
-  ~emergency_restrictions: No blood transfusions without parental consent
-  ~consent_for_medication: 1
-  ~medication_consent_documents[]: @file(/path/to/medication_consent.pdf)
+  signed_gp_consent_form_uploaded: yes
+  gp_consent_form: @file(C:\Users\Forrun\Downloads\download (1).pdf)
+  parental_consent_required: yes
+  legal_basis: la
+  consent_for_emergency_treatment: yes
+  emergency_instructions: Contact social worker and parents immediately
+  emergency_restrictions: No blood transfusions without parental consent
+  consent_for_medication: yes
+  medication_consent_documents[]: @file(C:\Users\Forrun\Downloads\download.pdf)
+  parental_consent_document: @file(C:\Users\Forrun\Downloads\download (1).pdf)
+  emergency_treatment_document: @file(C:\Users\Forrun\Downloads\download (1).pdf)
 }
