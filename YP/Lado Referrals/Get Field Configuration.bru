@@ -1,11 +1,11 @@
 meta {
-  name: Master Data
+  name: Get Field Configuration
   type: http
-  seq: 4
+  seq: 5
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-summary/master-data
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/lado-referrals/field-configuration
   body: none
   auth: bearer
 }
