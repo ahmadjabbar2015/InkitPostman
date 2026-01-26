@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/5/professional-network-review
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/20/professional-network-review
   body: multipartForm
   auth: bearer
-}
-
-params:query {
-  ~yp_placement_overview_id: 1
 }
 
 params:path {
@@ -25,16 +21,16 @@ auth:bearer {
 
 body:multipart-form {
   yp_placement_overview_id: 5
-  professional_engagement: 1
+  professional_engagement: yes
   professional_engagement_summary: Social worker and therapist involved
   inter_professional_communication_rating: Consistent
-  delays_or_barriers: 1
+  delays_or_barriers: yes
   coordination_description: Delay in response from LA
   action_taken: Follow-up calls and escalation
   information_pack_files: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
-  support_continuity_arranged: 1
+  support_continuity_arranged: yes
   contact_name: Sarah Williams
-  information_pack_sent: 1
+  information_pack_sent: yes
 }
 
 vars:pre-request {
