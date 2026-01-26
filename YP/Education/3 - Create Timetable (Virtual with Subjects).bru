@@ -1,0 +1,43 @@
+meta {
+  name: 3 - Create Timetable (Virtual with Subjects)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  mode_of_education: virtual
+  has_fixed_timetable: true
+  timetable_attachment: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-23 01-21-15.png)
+  subjects[0][subject_name]: Math
+  subjects[0][check_in_time]: 09:00
+  subjects[0][check_out_time]: 10:30
+  subjects[0][sort_order]: 0
+  subjects[1][subject_name]: Physics
+  subjects[1][check_in_time]: 11:00
+  subjects[1][check_out_time]: 12:30
+  subjects[1][sort_order]: 1
+  subjects[2][subject_name]: English
+  subjects[2][check_in_time]: 14:00
+  subjects[2][check_out_time]: 15:30
+  subjects[2][sort_order]: 2
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

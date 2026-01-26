@@ -1,0 +1,31 @@
+meta {
+  name: 2 - Create Timetable (Non-Virtual)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  mode_of_education: school
+  has_fixed_timetable: true
+  timetable_attachment: @file(/path/to/timetable.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
