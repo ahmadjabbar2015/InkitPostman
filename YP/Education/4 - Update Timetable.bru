@@ -22,7 +22,9 @@ auth:bearer {
 
 body:multipart-form {
   mode_of_education: virtual
-  has_fixed_timetable: false
+  has_fixed_timetable: no
+  check_in_time: 10:00
+  check_out_time: 16:00
   timetable_attachment: @file(/path/to/updated_timetable.pdf)
   subjects[0][subject_name]: Math
   subjects[0][check_in_time]: 10:00

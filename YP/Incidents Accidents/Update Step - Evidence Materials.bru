@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents/:id/steps/evidence-materials
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,18 +20,13 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "evidence_materials": "CCTV footage from common room (14:15-15:00) - saved to incident folder\nPhotographs of damaged TV remote control\nWritten statements from two staff members present\nYP's daily log entry from that day",
-    "evidences": [
-      {
-        "id": 5,
-        "description": "Updated description for existing evidence",
-        "evidence_type": "photo"
-      }
-    ],
-    "delete_evidence_ids": [3, 4]
-  }
+body:multipart-form {
+  evidence_materials: CCTV footage from common room (14:15-15:00) - saved to incident folder. Photographs of damaged TV remote control. Written statements from two staff members present. YP's daily log entry from that day.
+  evidences[0][id]: 5
+  evidences[0][description]: Updated description for existing evidence
+  evidences[0][evidence_type]: photo
+  delete_evidence_ids[0]: 3
+  delete_evidence_ids[1]: 4
 }
 
 docs {
