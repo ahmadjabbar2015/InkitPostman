@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/5/outcomes-development
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/20/outcomes-development
   body: multipartForm
   auth: bearer
-}
-
-params:query {
-  ~yp_placement_overview_id: 1
 }
 
 params:path {
@@ -33,7 +29,7 @@ body:multipart-form {
   social_skills_evidence_notes: Healthy peer interactions observed
   independent_living_skills_progress: Other
   other_independent_living_skills: Time management
-  therapeutic_work_completed: 1
+  therapeutic_work_completed: yes
   therapeutic_summary_file: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
   therapeutic_outcomes: Improved coping strategies
   key_achievement: Completed vocational training

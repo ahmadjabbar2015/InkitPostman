@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/5/engagement-wellbeing
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/placement-overview/20/engagement-wellbeing
   body: multipartForm
   auth: bearer
 }
@@ -45,13 +45,12 @@ body:json {
 }
 
 body:multipart-form {
-  yp_admission_id: 4
-  yp_involved_in_transition_planning: 0
+  yp_involved_in_transition_planning: no
   reason: YP not ready for transition planning
-  advocacy_offered: 1
+  advocacy_offered: yes
   yp_feelings_about_move: Anxious but hopeful
   staff_supported_yp_through_transition: Keyworker
-  yp_feedback_recorded: 1
+  yp_feedback_recorded: yes
   feedback_form: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
   feedback_summary: YP shared concerns and expectations
   staff_emotional_reflection: YP required reassurance and consistency
@@ -60,6 +59,7 @@ body:multipart-form {
   trauma_triggers_identified: Sudden changes in routine
   key_behaviour_observed: Withdrawal when stressed
   emotional_support_strategies_used: One-to-one sessions and grounding techniques
+  ~yp_admission_id: 4
 }
 
 vars:pre-request {
