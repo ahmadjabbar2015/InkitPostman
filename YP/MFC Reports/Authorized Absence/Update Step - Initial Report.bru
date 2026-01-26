@@ -1,0 +1,36 @@
+meta {
+  name: Update Step - Initial Report
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/initial-report
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "last_sighting_datetime": "2026-01-23 10:00:00",
+    "place_of_last_sighting": "Home address",
+    "seen_by_whom": "Staff member John Doe",
+    "gone_missing_datetime": "2026-01-23 11:00:00",
+    "known_addresses_locations": "Friend's house at 123 Main St",
+    "file_and_care_plan_checked": "Yes, reviewed all documentation",
+    "events_leading_to_missing": "YP requested to visit family, permission granted",
+    "actions_to_locate_yp": "Contacted family members, waiting for return",
+    "missing_protocol_update_needed": "no",
+    "risk_assessment_update_needed": "no"
+  }
+}

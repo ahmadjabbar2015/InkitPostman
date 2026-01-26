@@ -1,0 +1,27 @@
+meta {
+  name: Upload Evidence
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/event-logs/:eventLogId/evidence
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+  eventLogId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  evidence: @file(/path/to/evidence.pdf)
+  description: Police report document
+}

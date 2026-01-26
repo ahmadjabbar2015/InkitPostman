@@ -1,0 +1,63 @@
+meta {
+  name: Add Custom Method Technique
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/incidents/custom-technique
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "technique_name": "Modified basket hold with verbal de-poiuygf"
+  }
+}
+
+docs {
+  # Add Custom Method/Technique
+  
+  Adds a custom method/technique for physical interventions that can be reused for future incidents.
+  This is useful when the standard options (Baskethold, Two-arm hold, etc.) don't match the technique used.
+  
+  ## Request Body:
+  ```json
+  {
+    "technique_name": "Custom technique name"
+  }
+  ```
+  
+  ## Response:
+  ```json
+  {
+    "success": true,
+    "message": "Custom technique added successfully",
+    "data": {
+      "value": "Custom technique name",
+      "label": "Custom technique name",
+      "custom": true,
+      "house_id": 4,
+      "client_id": 1
+    }
+  }
+  ```
+  
+  ## Use Case:
+  1. User selects "Other" from the method/technique dropdown
+  2. User enters custom technique in the text field
+  3. Optionally, call this endpoint to save the custom technique for future use
+  4. The technique will appear in the dropdown for subsequent incidents
+  
+  ## Future Enhancement:
+  Once saved, custom techniques will be included in the "Get Method Technique Options" endpoint response.
+}

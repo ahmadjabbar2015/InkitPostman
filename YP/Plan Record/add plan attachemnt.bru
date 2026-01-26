@@ -1,0 +1,35 @@
+meta {
+  name: add plan attachemnt
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/record-plan/store
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
+}
+
+body:multipart-form {
+  files[0]: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  type: plan_record
+  ~files[1]: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
+  ~files[2]: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
+  ~files[3]: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
+  ~files[4]: @file(C:\Users\Growup Labs\Pictures\Report.pdf)
+}
+
+vars:pre-request {
+  house: 1
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

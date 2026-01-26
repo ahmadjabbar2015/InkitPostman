@@ -1,0 +1,68 @@
+meta {
+  name: Toggle Technique Status
+  type: http
+  seq: 18
+}
+
+patch {
+  url: {{baseURL}}/v1/house/:house/incidents/custom-technique/:techniqueId/toggle
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+  techniqueId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Toggle Custom Technique Active Status
+
+  Toggles the active/inactive status of a custom intervention technique.
+  Inactive techniques will not appear in the dropdown options.
+
+  ## Path Parameters:
+  - `house` - House ID
+  - `youngPersonId` - Young person ID
+  - `techniqueId` - The ID of the custom technique to toggle
+
+  ## Authorization:
+  Must have `update_incident` permission.
+
+  ## Behavior:
+  - If technique is currently active → sets to inactive
+  - If technique is currently inactive → sets to active
+  - Inactive techniques are hidden from GET /method-technique-options
+
+  ## Response Success:
+  ```json
+  {
+    "success": true,
+    "message": "Technique status updated successfully",
+    "data": null
+  }
+  ```
+
+  ## Response Error:
+  ```json
+  {
+    "success": false,
+    "message": "Technique not found or unauthorized",
+    "data": null
+  }
+  ```
+
+  ## Use Cases:
+  - Temporarily disable a technique without deleting it
+  - Reactivate a previously disabled technique
+  - Manage which custom techniques are available to staff
+
+  ## Notes:
+  - Only affects custom techniques (built-in options are always active)
+  - User must have access to the house or client that owns the technique
+  - Status change is immediate and affects all future dropdown loads
+}

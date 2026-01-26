@@ -1,0 +1,20 @@
+meta {
+  name: 2 - Get Field Configuration
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/medications/field-configuration
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
