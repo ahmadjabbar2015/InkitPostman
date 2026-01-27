@@ -1,0 +1,37 @@
+meta {
+  name: 2 - Create Attendance
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/attendance
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "mode_of_education": "school",
+    "attendance_date": "2024-01-15",
+    "attendance_status": "present",
+    "check_in_time": "08:00",
+    "check_out_time": "15:00",
+    "staff_notes": "Young person attended school regularly and participated actively in classes.",
+    "school_feedback": "Good behavior and engagement observed throughout the day."
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,37 @@
+meta {
+  name: 5 - Update Attendance
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/attendance/:attendance
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  attendance: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "attendance_status": "late",
+    "check_in_time": "09:30",
+    "check_out_time": "15:00",
+    "reason_for_absence": "Late arrival due to medical appointment in the morning.",
+    "staff_notes": "Young person attended medical appointment and arrived at school afterwards.",
+    "school_feedback": "Late arrival noted. Young person engaged well once in class."
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

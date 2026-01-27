@@ -1,0 +1,31 @@
+meta {
+  name: 1 - List Transport
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/transport?per_page=15
+  body: none
+  auth: bearer
+}
+
+params:query {
+  per_page: 15
+  ~from_date: 2024-01-01
+  ~to_date: 2024-12-31
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Update Educational Award
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/educational-awards/:award
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  award: 1
+}
+
+body:multipart-form {
+  ~date: 2025-12-25
+  ~type: Medal
+  ~what_did_yp_achieve: Updated achievement description
+  ~school_feedback: Updated school feedback
+  ~home_feedback: Updated home feedback
+  ~reward_given: Updated reward
+  ~evidence: @file(/path/to/updated-certificate.pdf)
+}

@@ -1,0 +1,28 @@
+meta {
+  name: 1 - List Attendance
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:housesId/young-persons/:youngPersonId/attendance?per_page=15
+  body: none
+  auth: bearer
+}
+
+params:query {
+  per_page: 15
+  ~mode_of_education: school
+  ~attendance_status: present
+  ~from_date: 2024-01-01
+  ~to_date: 2024-12-31
+}
+
+params:path {
+  youngPersonId: 4
+  housesId: 2
+}
+
+auth:bearer {
+  token: {{token}}
+}

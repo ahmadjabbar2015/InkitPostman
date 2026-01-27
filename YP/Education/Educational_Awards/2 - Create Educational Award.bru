@@ -1,0 +1,26 @@
+meta {
+  name: Create Educational Award
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/educational-awards
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+body:multipart-form {
+  date: 2025-12-20
+  type: Certificate
+  what_did_yp_achieve: Completed first aid training with excellent performance
+  school_feedback: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  home_feedback: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  reward_given: Gift voucher
+  ~evidence: @file(/path/to/certificate.pdf)
+}
