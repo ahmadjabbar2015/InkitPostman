@@ -1,17 +1,17 @@
 meta {
-  name: Master Data
+  name: Get Field Configuration
   type: http
   seq: 4
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/cause-concern/master-data
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-summary/field-configuration
   body: none
   auth: bearer
 }
 
 params:path {
-  youngPerson: 1
+  youngPersonId: 1
   house: 3
 }
 

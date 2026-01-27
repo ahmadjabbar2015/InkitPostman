@@ -1,11 +1,11 @@
 meta {
-  name: List Discharge Pack
+  name: Get Field Configuration
   type: http
-  seq: 1
+  seq: 5
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-pack
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lado-referrals/field-configuration
   body: none
   auth: bearer
 }
