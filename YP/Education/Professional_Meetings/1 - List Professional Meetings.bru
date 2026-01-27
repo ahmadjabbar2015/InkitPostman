@@ -1,0 +1,24 @@
+meta {
+  name: List Professional Meetings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/education-professional-meetings?per_page=15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  per_page: 15
+  ~from_date: 2025-01-01
+  ~to_date: 2026-01-27
+  ~meeting_type: EHCP
+  ~young_person_present: yes
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
