@@ -1,0 +1,36 @@
+meta {
+  name: Get Professional Meetings Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/education-professional-meetings/field-configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+docs {
+  # Get Professional Meetings Field Configuration
+  
+  Returns the form configuration for the professional meetings module.
+  
+  Includes:
+  - meeting_type options (PEP, EHCP Review, Annual Review, Parent Evening, etc.)
+  - therapy_updates options (Ongoing, Completed, Pending, Not Required)
+  
+  Four main sections:
+  - Meeting Details
+  - Key Discussion Points
+  - Actions / Impact Summary
+  - Manager Oversight
+}

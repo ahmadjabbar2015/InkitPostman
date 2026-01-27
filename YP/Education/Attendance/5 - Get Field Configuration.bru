@@ -1,0 +1,61 @@
+meta {
+  name: Get Attendance Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:houseId/young-persons/:youngPersonId/attendance/field-configuration
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPersonId: 2
+  houseId: 4
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Attendance Field Configuration
+  
+  Returns the form configuration for the attendance module including field options and form structure.
+  
+  ## Response Example:
+  ```json
+  {
+    "success": true,
+    "data": {
+      "field_options": {
+        "yes_no": [...],
+        "mode_of_education": [...],
+        "attendance_status": [
+          {"value": "present", "label": "Present"},
+          {"value": "late", "label": "Late"},
+          {"value": "absent", "label": "Absent"},
+          {"value": "excused", "label": "Excused"}
+        ]
+      },
+      "form_config": {
+        "field_options": [],
+        "sections": [
+          {
+            "title": "Attendance Record",
+            "section_type": "main_section",
+            "fields": {...}
+          }
+        ]
+      }
+    },
+    "message": "Attendance field configuration retrieved successfully"
+  }
+  ```
+}
