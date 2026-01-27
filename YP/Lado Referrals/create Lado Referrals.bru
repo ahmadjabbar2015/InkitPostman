@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/lado-referrals
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lado-referrals
   body: multipartForm
   auth: inherit
 }
 
 params:path {
-  house: 3
-  youngPerson: 1
+  youngPersonId: 1
+  house: 4
 }
 
 body:multipart-form {

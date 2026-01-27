@@ -5,9 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/{{house}}/young-persons/{{youngPerson}}/cause-concern
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/cause-concern
   body: multipartForm
   auth: inherit
+}
+
+params:path {
+  house: 4
+  youngPersonId: 1
 }
 
 body:json {
@@ -27,11 +32,11 @@ body:multipart-form {
   action_taken: Immediate supervision and medical check
   informed_person: 7
   other_informed_person: School Counsellor
-  follow_up_required: 1
+  follow_up_required: yes
   action_owner: Key Worker
   due_date: 2026-01-25
   follow_up_notes: Daily monitoring and counselling referral
-  ofsted_notification_required: 1
+  ofsted_notification_required: yes
   manager_comments: Escalated appropriately
   manager_signature: signed-by-manager-lado
   new_concern_option: new fields add

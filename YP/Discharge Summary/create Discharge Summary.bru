@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-summary
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-summary
   body: multipartForm
   auth: inherit
 }
 
 params:path {
+  youngPersonId: 1
   house: 4
-  youngPerson: 1
 }
 
 body:multipart-form {
