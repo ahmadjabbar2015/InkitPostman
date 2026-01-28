@@ -1,0 +1,29 @@
+meta {
+  name: 2 - Show plan Document
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/mfc-grab-packs/8
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPerson: 1
+  house: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
