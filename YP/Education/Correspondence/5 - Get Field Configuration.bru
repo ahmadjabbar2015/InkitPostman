@@ -1,0 +1,33 @@
+meta {
+  name: Get Correspondence Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:houseId/young-persons/:youngPersonId/correspondence/field-configuration
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPersonId: 4
+  houseId: 2
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Correspondence Field Configuration
+  
+  Returns the form configuration for the correspondence module.
+  
+  Includes correspondence_type options (Letter, Email, Phone Call, Meeting, Report, Other) and form structure with action tracking fields.
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Get PEP/EHCP Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/pep-ehcp/field-configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+docs {
+  # Get PEP/EHCP Field Configuration
+  
+  Returns the form configuration for PEP (Personal Education Plan) and EHCP (Education Health Care Plan) modules.
+  
+  Includes two main sections:
+  - PEP section with meeting details, targets, and actions
+  - EHCP section with needs, outcomes, and amendments
+}

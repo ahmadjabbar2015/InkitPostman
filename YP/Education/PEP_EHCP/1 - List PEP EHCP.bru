@@ -1,0 +1,33 @@
+meta {
+  name: 1 - List PEP EHCP
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp?per_page=15
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+params:query {
+  per_page: 15
+  ~latest_pep_meeting_completed: yes
+  ~does_yp_have_ehcp: yes
+  ~from_date: 2024-01-01
+  ~to_date: 2024-12-31
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,38 @@
+meta {
+  name: 4 - Update Correspondence
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/correspondence/:correspondence
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  correspondence: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~date_received: 2024-12-21
+  ~type: Phone Call
+  ~from_whom: Jane Doe
+  ~does_require_action: no
+  ~action: Updated action notes
+  ~due_date: 2024-12-31
+  ~completed_date: 2024-12-29
+  ~evidence_attachment: @file(/path/to/updated-file.pdf)
+  ~staff_notes: Updated staff notes with additional information.
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

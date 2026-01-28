@@ -1,0 +1,68 @@
+meta {
+  name: Get Timetable Field Configuration
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/timetables/field-configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+docs {
+  # Get Timetable Field Configuration
+  
+  Returns the form configuration for the timetable module including:
+  - Global field_options (dropdowns for mode_of_education, yes_no, etc.)
+  - Form configuration with sections and fields
+  
+  ## Response Structure:
+  - field_options: Global dropdown options
+  - form_config: Module-specific configuration
+    - sections: Array of form sections
+      - title: Section name
+      - section_type: main_section or subsection
+      - repeatable: Boolean (true for subjects)
+      - fields: Object with field definitions
+  
+  ## Response Example:
+  ```json
+  {
+    "success": true,
+    "data": {
+      "field_options": {
+        "yes_no": [...],
+        "mode_of_education": [...]
+      },
+      "form_config": {
+        "field_options": [],
+        "sections": [
+          {
+            "title": "Timetable Details",
+            "section_type": "main_section",
+            "repeatable": false,
+            "fields": {...}
+          },
+          {
+            "title": "Virtual School Subjects",
+            "section_type": "subsection",
+            "repeatable": true,
+            "fields": {...}
+          }
+        ]
+      }
+    },
+    "message": "Timetable field configuration retrieved successfully"
+  }
+  ```
+}

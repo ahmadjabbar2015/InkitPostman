@@ -1,0 +1,28 @@
+meta {
+  name: Get Educational Awards Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/educational-awards/field-configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+docs {
+  # Get Educational Awards Field Configuration
+  
+  Returns the form configuration for the educational awards module.
+  
+  Includes award_type options (Certificate, Medal, Trophy, Badge, Recognition, Other) and fields for achievement tracking.
+}

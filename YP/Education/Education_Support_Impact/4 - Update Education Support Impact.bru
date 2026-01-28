@@ -1,0 +1,39 @@
+meta {
+  name: Update Education Support & Impact
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/education-support-impact/:supportImpact
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  supportImpact: 3
+}
+
+body:multipart-form {
+  ~house_id: 2
+  ~client_id: 1
+  ~date: 2026-01-25
+  ~daily_homework_support_provided: no
+  ~duration: Morning
+  ~time_schedule: 10:00 AM - 12:00 PM
+  ~additional_learning_materials_used: Updated materials
+  ~yp_engaged_learning_at_home: Updated engagement notes
+  ~has_support_improved_attendance: no
+  ~has_behaviour_improved: yes
+  ~provider_feedback: Updated feedback
+  ~has_mental_emotional_state_improved: yes
+  ~are_new_concerns_raised: no
+  ~summary: Updated summary
+  ~motivations_used: Updated motivations
+  ~barriers_to_engagement: Updated barriers
+  ~yp_feedback: Updated YP feedback
+  ~upload_evidence: @file(/path/to/updated-support-evidence.pdf)
+  ~attendance_evidence: @file(/path/to/updated-attendance-evidence.pdf)
+}

@@ -1,0 +1,38 @@
+meta {
+  name: 2 - Create Transport
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/transport
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  date: 2025-12-20
+  is_transported_by_staff: yes
+  staff_names: John Wick
+  time_schedule: 11:00 AM - 02:30 PM
+  transported_via_taxi_or_escort: yes
+  service_provider_name: Dummy
+  pickup_time: 11:00
+  dropoff_time: 14:30
+  risk_concerns: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~risk_assessment: @file(/path/to/risk-assessment.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

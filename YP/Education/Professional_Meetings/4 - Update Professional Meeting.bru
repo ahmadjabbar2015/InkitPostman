@@ -1,0 +1,51 @@
+meta {
+  name: Update Professional Meeting
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/education-professional-meetings/:meeting
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  meeting: 1
+}
+
+body:multipart-form {
+  ~house_id: 2
+  ~client_id: 1
+  ~date: 2025-12-25
+  ~meeting_type: PEP
+  ~location: Virtual
+  ~professionals_present: Updated professionals
+  ~staff_present: Updated staff
+  ~young_person_present: yes
+  ~reason: Updated reason
+  ~key_discussion_points: Updated discussion points
+  ~attendance_pattern: Updated pattern
+  ~emotional_wellbeing: Updated wellbeing
+  ~sen_needs: Updated needs
+  ~new_risks: Updated risks
+  ~any_exclusion_or_sanctions: Updated sanctions
+  ~therapy_updates: Updated therapy
+  ~notes_from_teacher: Updated teacher notes
+  ~notes_from_senco: Updated SENCO notes
+  ~notes_from_social_worker: Updated social worker notes
+  ~agreed_actions: Updated actions
+  ~how_will_actions_help_yp: Updated help
+  ~what_changes_must_staff_make_at_home: Updated changes
+  ~expected_improvements: Updated improvements
+  ~yp_feedback: Updated feedback
+  ~what_yp_wants_to_change: Updated wants
+  ~manager_comments: Updated comments
+  ~approvals: Updated approvals
+  ~required_changes_to_behaviour_plan: Updated plan
+  ~sign_off_date: 2025-12-26
+  ~attached_documents: @file(/path/to/updated-documents.pdf)
+  ~email_summaries: @file(/path/to/updated-summaries.pdf)
+}

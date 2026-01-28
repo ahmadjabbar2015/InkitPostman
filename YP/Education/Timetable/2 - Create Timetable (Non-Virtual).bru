@@ -1,0 +1,33 @@
+meta {
+  name: 2 - Create Timetable (Non-Virtual)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  mode_of_education: school
+  has_fixed_timetable: yes
+  check_in_time: 08:00
+  check_out_time: 15:00
+  timetable_attachment: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 13-23-33.png)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
