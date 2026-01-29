@@ -1,0 +1,17 @@
+meta {
+  name: Show Educational Award
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/educational-awards/:award
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  award: 1
+}

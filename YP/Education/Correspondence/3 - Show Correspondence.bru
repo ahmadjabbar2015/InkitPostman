@@ -1,0 +1,26 @@
+meta {
+  name: 3 - Show Correspondence
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/correspondence/:correspondence
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  correspondence: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

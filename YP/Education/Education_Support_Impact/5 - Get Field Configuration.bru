@@ -1,0 +1,31 @@
+meta {
+  name: Get Education Support & Impact Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/education-support-impact/field-configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+docs {
+  # Get Education Support & Impact Field Configuration
+  
+  Returns the form configuration for the education support & impact module.
+  
+  Includes three main sections:
+  - Home Support Provided Details
+  - Impact on YP (attendance, behaviour, emotional state)
+  - Engagement Strategies (motivations, barriers, feedback)
+}

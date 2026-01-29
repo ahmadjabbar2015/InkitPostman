@@ -1,0 +1,25 @@
+meta {
+  name: 1 - List Timetables
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables/
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

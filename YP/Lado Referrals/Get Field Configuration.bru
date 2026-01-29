@@ -1,0 +1,29 @@
+meta {
+  name: Get Field Configuration
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lado-referrals/field-configuration
+  body: none
+  auth: bearer
+}
+
+params:path {
+  youngPersonId: 1
+  house: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  youngPerson: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

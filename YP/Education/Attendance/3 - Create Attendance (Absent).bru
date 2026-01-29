@@ -1,0 +1,36 @@
+meta {
+  name: 3 - Create Attendance (Absent)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/attendance
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "mode_of_education": "school",
+    "attendance_date": "2024-01-16",
+    "attendance_status": "absent",
+    "reason_for_absence": "Young person was feeling unwell and stayed home for rest.",
+    "staff_notes": "Contacted school to inform about absence. Doctor's appointment scheduled.",
+    "action_taken": "Monitored young person's health throughout the day. Ensured adequate rest and hydration."
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

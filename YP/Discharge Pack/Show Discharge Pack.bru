@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/discharge-pack/20
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-pack/20
   body: none
   auth: bearer
 }
 
 params:path {
-  youngPerson: 1
+  youngPersonId: 1
   house: 4
 }
 

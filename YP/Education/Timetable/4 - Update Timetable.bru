@@ -1,0 +1,42 @@
+meta {
+  name: 4 - Update Timetable
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables/:timetable
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  timetable: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  mode_of_education: virtual
+  has_fixed_timetable: no
+  check_in_time: 10:00
+  check_out_time: 16:00
+  timetable_attachment: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-30 17-32-53.png)
+  subjects[0][subject_name]: Math
+  subjects[0][check_in_time]: 10:00
+  subjects[0][check_out_time]: 11:30
+  subjects[0][sort_order]: 0
+  subjects[1][subject_name]: Chemistry
+  subjects[1][check_in_time]: 13:00
+  subjects[1][check_out_time]: 14:30
+  subjects[1][sort_order]: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

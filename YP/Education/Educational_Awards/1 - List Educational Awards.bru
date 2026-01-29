@@ -1,0 +1,23 @@
+meta {
+  name: List Educational Awards
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/educational-awards?per_page=15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  per_page: 15
+  ~from_date: 2025-01-01
+  ~to_date: 2026-01-26
+  ~type: Certificate
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}

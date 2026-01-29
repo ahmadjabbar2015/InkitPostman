@@ -1,0 +1,39 @@
+meta {
+  name: 4 - Update Transport
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/transport/:transport
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  transport: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~date: 2025-12-21
+  ~is_transported_by_staff: no
+  ~staff_names: Jane Doe
+  ~time_schedule: 09:00 AM - 03:00 PM
+  ~transported_via_taxi_or_escort: no
+  ~service_provider_name: Updated Provider
+  ~pickup_time: 09:00
+  ~dropoff_time: 15:00
+  ~risk_concerns: Updated risk concerns text
+  ~risk_assessment: @file(/path/to/updated-risk-assessment.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

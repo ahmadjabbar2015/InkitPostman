@@ -1,0 +1,37 @@
+meta {
+  name: 2 - Create Correspondence
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/correspondence
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  date_received: 2024-12-20
+  type: Email
+  from_whom: John Wick
+  does_require_action: yes
+  action: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  due_date: 2026-12-30
+  completed_date: 2024-12-28
+  evidence_attachment: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-31 16-32-13.png)
+  staff_notes: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

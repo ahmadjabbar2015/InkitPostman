@@ -1,0 +1,47 @@
+meta {
+  name: 4 - Update PEP EHCP
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepEhcp
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  pepEhcp: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  ~latest_pep_meeting_completed: yes
+  ~pep_date: 2026-01-15
+  ~pep_attendees: John Wick, Jane Doe
+  ~pep_summary: Updated summary text
+  ~pep_targets: Updated targets
+  ~pep_document: @file(/path/to/updated-pep-document.pdf)
+  ~have_pep_actions_implemented_at_home: no
+  ~pep_action: Updated action
+  ~pep_staff_responsible: Jane Doe
+  ~pep_review_date: 2026-02-15
+  ~does_yp_have_ehcp: no
+  ~ehcp_areas_of_need: Updated areas
+  ~ehcp_current_outcomes: Updated outcomes
+  ~ehcp_responsibilities: Updated responsibilities
+  ~ehcp_attachment: @file(/path/to/updated-ehcp-attachment.pdf)
+  ~are_new_amendments_requested: no
+  ~ehcp_reason: Updated reason
+  ~ehcp_evidence: @file(/path/to/updated-ehcp-evidence.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

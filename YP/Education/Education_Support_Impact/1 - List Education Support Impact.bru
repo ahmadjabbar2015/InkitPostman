@@ -1,0 +1,23 @@
+meta {
+  name: List Education Support & Impact
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/education-support-impact?per_page=15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  per_page: 15
+  ~from_date: 2025-01-01
+  ~to_date: 2026-01-27
+  ~daily_homework_support_provided: yes
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}

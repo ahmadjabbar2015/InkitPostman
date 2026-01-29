@@ -1,0 +1,50 @@
+meta {
+  name: Create Professional Meeting
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/education-professional-meetings
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+body:multipart-form {
+  house_id: 2
+  client_id: 1
+  date: 2025-12-20
+  meeting_type: EHCP
+  location: School
+  professionals_present: Educational Psychologist, SENCO
+  staff_present: John Wick
+  young_person_present: No
+  reason: Annual EHCP review meeting
+  key_discussion_points: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  attendance_pattern: Regular attendance with some absences
+  emotional_wellbeing: Showing improvement
+  sen_needs: Support with reading and writing
+  new_risks: Dummy
+  any_exclusion_or_sanctions: None reported
+  therapy_updates: Ongoing sessions weekly
+  notes_from_teacher: Good progress in mathematics
+  notes_from_senco: Additional support recommended
+  notes_from_social_worker: Family engagement positive
+  agreed_actions: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  how_will_actions_help_yp: Improved learning outcomes
+  what_changes_must_staff_make_at_home: Consistent routine implementation
+  expected_improvements: Better engagement and academic progress
+  yp_feedback: Wants more support in certain subjects
+  what_yp_wants_to_change: More breaks during lessons
+  manager_comments: Approved for implementation
+  approvals: Signed off by manager
+  required_changes_to_behaviour_plan: Update reward system
+  sign_off_date: 2025-12-20
+  ~attached_documents: @file(/path/to/meeting-documents.pdf)
+  ~email_summaries: @file(/path/to/email-summaries.pdf)
+}
