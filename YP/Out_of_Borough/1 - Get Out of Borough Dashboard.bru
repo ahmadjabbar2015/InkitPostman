@@ -1,0 +1,110 @@
+meta {
+  name: Get Out of Borough Dashboard
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:houseId/young-persons/:youngPersonId/out-of-borough
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~from_date: 2026-01-01
+  ~to_date: 2026-01-31
+  ~mfc_type: unauthorized_absence
+}
+
+params:path {
+  houseId: 2
+  youngPersonId: 4
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Get Out of Borough Dashboard
+  
+  Returns comprehensive dashboard data for Out of Borough young persons, including:
+  - **MFC Logs**: Missing From Care logs (authorized absence, unauthorized absence, report to police)
+  - **Incident Logs**: Incident and accident records
+  - **LADO Logs**: Local Authority Designated Officer referrals
+  
+  ## Query Parameters (Optional):
+  - `from_date` - Filter records from this date (YYYY-MM-DD)
+  - `to_date` - Filter records to this date (YYYY-MM-DD)
+  - `mfc_type` - Filter MFC logs by type: `authorized_absence`, `unauthorized_absence`, `report_to_police_mfc`
+  
+  ## Response Example:
+  ```json
+  {
+    "success": true,
+    "data": {
+      "mfc_logs": {
+        "data": [
+          {
+            "id": 1,
+            "type": "unauthorized_absence",
+            "missing_date": "2025-12-10T00:00:00.000000Z",
+            "return_date": "2025-12-12T00:00:00.000000Z",
+            "return_interview_requested_social_worker": "Yes",
+            "return_interview_held": "Yes",
+            "police_ref_no": "Dummy",
+            "action_taken": "---"
+          }
+        ],
+        "total": 1
+      },
+      "incident_logs": {
+        "data": [
+          {
+            "id": 3,
+            "no": "BRT/INC/00003",
+            "incident_datetime": "2025-12-12T00:00:00.000000Z",
+            "reason_of_incident": "Self-harm | Room Search",
+            "restraint": "No",
+            "sanction_given": "N/A",
+            "incident_report_sent_to_sw": "N/A",
+            "action_taken": "---"
+          }
+        ],
+        "total": 1
+      },
+      "lado_logs": {
+        "data": [
+          {
+            "id": 1,
+            "no": 1,
+            "activity_time": "2025-12-10T11:20:00.000000Z",
+            "reason_for_contact": "Advice Sought",
+            "contact_person_name": "John Wick",
+            "contact_person_phone": "+4778527633910",
+            "contact_person_email": "johnwick123@gmail.com",
+            "action_taken": "---"
+          }
+        ],
+        "total": 1
+      }
+    },
+    "message": "Out of Borough data retrieved successfully"
+  }
+  ```
+  
+  ## MFC Types:
+  - `authorized_absence` - Authorized Absence (approved leave)
+  - `unauthorized_absence` - Unauthorized Absence (missing without permission)
+  - `report_to_police_mfc` - Report to Police MFC (police involvement)
+  
+  ## Notes:
+  - All logs are sorted by date (most recent first)
+  - Totals indicate the number of records for each log type
+  - Action tracking placeholders show "---" for future implementation
+}

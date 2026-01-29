@@ -1,0 +1,93 @@
+meta {
+  name: 5 - Get Single Timetable
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/timetables/:timetable
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  timetable: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  # Get Single Timetable
+  
+  Retrieves a specific timetable record for a young person.
+  
+  ## Response includes:
+  - Timetable details (mode of education, fixed timetable status)
+  - Upload timetable attachment
+  - Associated subjects (for virtual school)
+  - Young person details
+  - House details
+  - Client details
+  
+  ## Response Example:
+  ```json
+  {
+    "success": true,
+    "message": "Timetable retrieved successfully",
+    "data": {
+      "id": 1,
+      "young_person_id": 4,
+      "house_id": 2,
+      "client_id": 1,
+      "mode_of_education": "virtual_school",
+      "has_fixed_timetable": "yes",
+      "timetable_attachment": "path/to/file.pdf",
+      "created_at": "2026-01-29T10:00:00.000000Z",
+      "updated_at": "2026-01-29T10:00:00.000000Z",
+      "young_person": {
+        "id": 4,
+        "first_name": "John",
+        "middle_name": "Michael",
+        "last_name": "Doe"
+      },
+      "house": {
+        "id": 2,
+        "house_name": "Springfield House"
+      },
+      "client": {
+        "id": 1,
+        "business_legal_name": "Care Services Ltd"
+      },
+      "subjects": [
+        {
+          "id": 1,
+          "timetable_id": 1,
+          "subjects_covered": "Math",
+          "check_in_time": "09:00:00",
+          "check_out_time": "10:00:00"
+        },
+        {
+          "id": 2,
+          "timetable_id": 1,
+          "subjects_covered": "Physics",
+          "check_in_time": "10:15:00",
+          "check_out_time": "11:15:00"
+        }
+      ]
+    }
+  }
+  ```
+  
+  ## Error Responses:
+  - 403: Young person not found or does not belong to this house
+  - 404: Timetable not found
+}
