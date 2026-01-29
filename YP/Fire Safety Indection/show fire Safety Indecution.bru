@@ -1,0 +1,24 @@
+meta {
+  name: show fire Safety Indecution
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/1/fire-induction/3
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
