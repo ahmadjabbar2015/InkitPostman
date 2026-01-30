@@ -5,9 +5,14 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/4/young-persons/1/fire-induction/sign-off/1
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/sign-off/12
   body: multipartForm
   auth: bearer
+}
+
+params:path {
+  house: 4
+  youngPerson: 1
 }
 
 auth:bearer {

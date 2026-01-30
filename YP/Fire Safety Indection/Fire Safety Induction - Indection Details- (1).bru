@@ -5,14 +5,15 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/fire-induction/induction-details/:induction
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/:induction
   body: multipartForm
   auth: bearer
 }
 
 params:path {
+  youngPerson: 1
   house: 4
-  induction: 2
+  induction: 12
 }
 
 auth:bearer {

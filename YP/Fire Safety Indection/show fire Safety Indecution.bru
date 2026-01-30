@@ -1,16 +1,17 @@
 meta {
-  name: 1 - Get fire Safety Indecution
+  name: show fire Safety Indecution
   type: http
-  seq: 4
+  seq: 7
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/1/fire-induction
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/12
   body: none
   auth: bearer
 }
 
 params:path {
+  youngPerson: 1
   house: 4
 }
 
