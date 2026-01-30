@@ -1,0 +1,34 @@
+inmeta {
+  name: Update Step - Risk Assessment
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/risk-assessment
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "last_known_intentions": "YP expressed frustration earlier in the day about house rules",
+    "out_of_character": "yes",
+    "access_to_money": "Unknown - may have taken cash from bedroom",
+    "previous_harm_episodes": "Previous incidents of self-harm noted in care plan - last incident 3 months ago",
+    "personal_items_taken": "Mobile phone, coat, unknown amount of cash",
+    "vehicle_transport_details": "No vehicle access. Known to use local bus services and sometimes gets lifts from peers",
+    "social_media_messaging_details": "Last active on Snapchat 30 minutes ago. Location services disabled. Not responding to messages.",
+    "other_relevant_risk_info": "YP has history of associating with older peers. Previous concerns about CSE. Known to frequent local shopping center and park area."
+  }
+}
