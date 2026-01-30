@@ -5,18 +5,23 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/pep-ehcp/field-configuration
+  url: {{baseURL}}/v1/house/:houseId/young-persons/:youngPersonId/pep-ehcp/field-configuration
   body: none
   auth: bearer
 }
 
-auth:bearer {
-  token: {{ACCESS_TOKEN}}
+params:path {
+  youngPersonId: 4
+  houseId: 2
 }
 
 headers {
   Accept: application/json
   Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 docs {
