@@ -5,12 +5,13 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/1/fire-induction/details
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/details
   body: multipartForm
   auth: bearer
 }
 
 params:path {
+  youngPerson: 1
   house: 4
 }
 
@@ -22,9 +23,9 @@ body:multipart-form {
   date_of_induction: 2026-01-05
   start_time: 10:00
   end_time: 11:00
-  lead_employee_id_one: 5
-  lead_employee_id_second: 5
-  consent_form_received: 0
+  lead_employee_id_one: 4
+  lead_employee_id_second: 4
+  consent_form_received: 1
   fire_alarm_signal_demonstrated: 1
   actions_on_alarm_explained: 1
   escape_routes_and_assembly_point: 1
@@ -34,5 +35,5 @@ body:multipart-form {
   extinguishers_identified: 0
   clear_route_management: 0
   young_persons_id: 1
-  ~consent_form: @file(C:\Users\Growup Labs\Pictures\cute-cat-wearing-sunglasses-and-relaxing-on-orange-chair-generative-ai-illustration-free-photo.jpg)
+  consent_form: @file(C:\Users\Growup Labs\Pictures\cute-cat-wearing-sunglasses-and-relaxing-on-orange-chair-generative-ai-illustration-free-photo.jpg)
 }

@@ -5,12 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/1/fire-induction/3
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/12
   body: none
   auth: bearer
 }
 
 params:path {
+  youngPerson: 1
   house: 4
 }
 
