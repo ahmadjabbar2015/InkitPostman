@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs?page=1&per_page=20&date_from=2026-01-01&date_to=2026-01-31
+  url: {{baseURL}}/v1/house/1/young-persons/1/daily-logs?page=1&per_page=20&date_from=2026-01-01&date_to=2026-01-31&shift_time=Morning
   body: none
   auth: bearer
 }
@@ -15,7 +15,7 @@ params:query {
   per_page: 20
   date_from: 2026-01-01
   date_to: 2026-01-31
-  ~shift_time: Morning
+  shift_time: Morning
   ~status: Approved
 }
 

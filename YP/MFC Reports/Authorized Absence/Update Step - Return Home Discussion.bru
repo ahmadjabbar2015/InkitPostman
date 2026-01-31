@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/return-home-discussion
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,21 +20,19 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "discussion_datetime": "2026-01-23 19:00:00",
-    "childs_account_of_absence": "YP stated they had a good visit with grandmother. Enjoyed home-cooked meal and watched TV together.",
-    "is_yp_aware_of_risks": "yes",
-    "safety_wellbeing_checked": "yes",
-    "did_they_get_hurt": "no",
-    "how_are_they_feeling": "YP reports feeling happy and content. Looking forward to next authorized visit.",
-    "what_experiences_encountered": "Positive family interaction. Grandmother discussed YP's progress at school.",
-    "is_additional_support_required": "no",
-    "staff_present": "John Smith (Key Worker), Sarah Jones (Support Worker)",
-    "interviewer_name": "John Smith",
-    "interview_datetime": "2026-01-23 19:00:00",
-    "interview_location": "YP's room",
-    "interview_notes": "YP cooperative during interview. Shared positive experiences from visit. No safeguarding concerns identified. YP demonstrated good understanding of boundaries and agreements.",
-    "signature": "John Smith - Key Worker"
-  }
+body:multipart-form {
+  discussion_datetime: 2026-01-23 19:00:00
+  childs_account_of_absence: YP stated they had a good visit with grandmother. Enjoyed home-cooked meal and watched TV together.
+  is_yp_aware_of_risks: yes
+  safety_wellbeing_checked: yes
+  did_they_get_hurt: no
+  how_are_they_feeling: YP reports feeling happy and content. Looking forward to next authorized visit.
+  what_experiences_encountered: Positive family interaction. Grandmother discussed YP's progress at school.
+  is_additional_support_required: no
+  staff_present: John Smith (Key Worker), Sarah Jones (Support Worker)
+  interviewer_name: John Smith
+  interview_datetime: 2026-01-23 19:00:00
+  interview_location: YP's room
+  interview_notes: YP cooperative during interview. Shared positive experiences from visit. No safeguarding concerns identified. YP demonstrated good understanding of boundaries and agreements.
+  ~signature: @file(/path/to/signature.png)
 }
