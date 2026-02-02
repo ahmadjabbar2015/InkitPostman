@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/other-details/12
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/fire-induction/other-details/14
   body: json
   auth: bearer
 }
@@ -22,13 +22,18 @@ auth:bearer {
 body:json {
   {
     "peep_required": 1,
-    "mobility_medical_factor": "hearing",
+    "mobility_medical_factor": "other",
     "speech": 1,
-    "non_verbal": 0,
+      "speech_input": "Details about speech communication",
+    "non_verbal": 1,
+     "non_verbal_input": "my name is khannanna",
+     "aac_input": "Details about AAC device usage",
     "aac": 1,
-    "makaton": 0,
-    "other_communication": 0,
-    "sounder": 1,
+    "makaton": 1,
+    "makaton_input": " Details about AAC device usage",
+    "other_communication": 1,
+    "other_communication_input":" Details about AAC device usage",
+    "sounder": 0,
     "visual_beacon": 1,
     "staff_prompt": 1,
     "tactile_prompt": 0,
@@ -56,7 +61,7 @@ body:json {
     "candles_prohibited_guidelines": 1,
     "candles_safer_alternatives": 1,
     "bedroom_overnight_charging": 1,
-    "bedroom_multi_adapter": 0,
+    "bedroom_multi_adapter": 1,
     "bedroom_timetable_explained": 1,
     "oxygen_special_precautions": 0,
     "oxygen_placement_ventilation": 0,
@@ -65,6 +70,7 @@ body:json {
     "assembly_point_action": "Gather at the front garden assembly point",
     "fire_seen_action": "Raise the alarm and evacuate",
     "route_blocked_contact": "Contact emergency services and use alternative route",
+       "mobility_medical_factor_other": "other mobilty medilcal facter data ",
     "overall_clear": 1,
     "overall_partial": 0,
     "overall_not_yet": 0,
