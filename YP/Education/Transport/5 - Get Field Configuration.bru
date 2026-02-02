@@ -5,18 +5,23 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/house/{{HOUSE_ID}}/young-persons/{{YOUNG_PERSON_ID}}/transport/field-configuration
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/transport/field-configuration
   body: none
   auth: bearer
 }
 
-auth:bearer {
-  token: {{ACCESS_TOKEN}}
+params:path {
+  house: 2
+  youngPersonId: 2
 }
 
 headers {
   Accept: application/json
   Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 docs {

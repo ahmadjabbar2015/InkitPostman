@@ -29,16 +29,18 @@ body:multipart-form {
   ~pep_document: @file(/path/to/updated-pep-document.pdf)
   ~have_pep_actions_implemented_at_home: no
   ~pep_action: Updated action
-  ~pep_staff_responsible: Jane Doe
+  ~pep_staff_responsible[]: 1
+  ~pep_staff_responsible[]: 3
   ~pep_review_date: 2026-02-15
-  ~does_yp_have_ehcp: no
-  ~ehcp_areas_of_need: Updated areas
-  ~ehcp_current_outcomes: Updated outcomes
-  ~ehcp_responsibilities: Updated responsibilities
-  ~ehcp_attachment: @file(/path/to/updated-ehcp-attachment.pdf)
-  ~are_new_amendments_requested: no
-  ~ehcp_reason: Updated reason
-  ~ehcp_evidence: @file(/path/to/updated-ehcp-evidence.pdf)
+  ~ehcp_records[0][id]: 1
+  ~ehcp_records[0][does_yp_have_ehcp]: no
+  ~ehcp_records[0][ehcp_areas_of_need]: Updated areas
+  ~ehcp_records[0][ehcp_current_outcomes]: Updated outcomes
+  ~ehcp_records[0][ehcp_responsibilities]: Updated responsibilities
+  ~ehcp_records[0][ehcp_attachment]: @file(/path/to/updated-ehcp-attachment.pdf)
+  ~ehcp_records[0][are_new_amendments_requested]: no
+  ~ehcp_records[0][ehcp_reason]: Updated reason
+  ~ehcp_records[0][ehcp_evidence]: @file(/path/to/updated-ehcp-evidence.pdf)
 }
 
 settings {

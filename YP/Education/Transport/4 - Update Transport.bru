@@ -23,7 +23,8 @@ auth:bearer {
 body:multipart-form {
   ~date: 2025-12-21
   ~is_transported_by_staff: no
-  ~staff_names: Jane Doe
+  ~transport_staff[]: 1
+  ~transport_staff[]: 3
   ~time_schedule: 09:00 AM - 03:00 PM
   ~transported_via_taxi_or_escort: no
   ~service_provider_name: Updated Provider

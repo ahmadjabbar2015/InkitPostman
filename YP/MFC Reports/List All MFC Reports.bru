@@ -5,13 +5,9 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports?per_page=15
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/2
   body: none
   auth: bearer
-}
-
-params:query {
-  per_page: 15
 }
 
 params:path {
