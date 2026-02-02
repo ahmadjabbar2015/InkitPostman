@@ -1,0 +1,38 @@
+meta {
+  name: Update Step - Return Home Discussion
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/return-home-discussion
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  discussion_datetime: 2026-01-25 11:00:00
+  childs_account_of_absence: YP stated they felt overwhelmed and needed to get away. Went to coastal area as it's 'peaceful'. Denies planning to harm themselves but acknowledges having thoughts about it. States they sat and thought about things. Eventually felt cold and scared and was relieved when police found them.
+  is_yp_aware_of_risks: yes
+  safety_wellbeing_checked: yes
+  did_they_get_hurt: no
+  how_are_they_feeling: YP reports feeling exhausted and emotionally drained. Still experiencing low mood but states they feel 'a bit safer' being back. Expressed appreciation for staff concern.
+  what_experiences_encountered: YP spent time alone at coastal area in distress. Did not interact with others. Reports intrusive thoughts and emotional crisis. States the incident has made them realize they need more help.
+  is_additional_support_required: yes
+  staff_present: Dr. Sarah Mitchell (CAMHS), Jane Doe (Key Worker), Mark Wilson (Manager), Emma Roberts (Social Worker)
+  interviewer_name: Dr. Sarah Mitchell
+  interview_datetime: 2026-01-25 11:00:00
+  interview_location: Private Meeting Room
+  interview_notes: URGENT ACTIONS REQUIRED: Comprehensive mental health crisis assessment completed. YP displaying significant indicators of depression and suicidal ideation. Enhanced safety plan implemented with 1:1 supervision for minimum 72 hours. Medication to be administered under supervision. All sharps and ligature points removed from YP's environment. CAMHS emergency review scheduled for tomorrow. Strategy meeting convened for 2026-01-26. YP showing some engagement and has agreed to work with crisis team. Key triggers identified: anniversary of trauma, recent family contact breakdown, peer rejection. YP expressed willingness to engage with therapy. Positive protective factors: strong relationship with key worker, enjoys creative activities, has expressed desire to continue education. Risk remains HIGH but YP demonstrating some safety awareness. Continuous monitoring essential.
+  ~signature: @file(/path/to/signature.png)
+}

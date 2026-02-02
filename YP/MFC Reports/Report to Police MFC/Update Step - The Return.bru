@@ -1,0 +1,42 @@
+meta {
+  name: Update Step - The Return
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/the-return
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "return_datetime": "2026-01-24 14:30:00",
+    "was_young_person_found": "yes",
+    "did_yp_return_on_their_own": "no",
+    "returned_by": "Police - Located at coastal location, transported back by Police Officers PC Brown and PC Davies",
+    "was_medical_attention_required": "yes",
+    "what_was_medical_attention": "YP taken to A&E for assessment. No physical injuries. Mental health crisis team consulted. YP assessed as requiring ongoing monitoring. Medication checked - no overdose taken.",
+    "food_drink_offered": "yes",
+    "what_kind_food_drink": "Light snack and water initially - full meal after medical assessment",
+    "details_general_appearance_moods": "YP appeared extremely distressed and tearful on return. Disheveled appearance. Minimal verbal communication. Avoiding eye contact. Visibly upset.",
+    "does_yp_agree_to_return": "yes",
+    "do_police_wish_to_interview": "no",
+    "has_child_returned_with_new_items": "no",
+    "did_yp_have_same_clothing_on": "yes",
+    "any_smell_of_substances": "no",
+    "what_kind_of_smell": null,
+    "unauthorized_absence_overview": "HIGH RISK EPISODE: YP located by police at coastal cliff area following extensive search operation. YP found in distressed state. Police report YP was alone and in crisis. No evidence of third party involvement. YP's medication still in possession. Immediate mental health assessment completed. Enhanced supervision implemented. Social worker and CAMHS team notified. Safety plan to be reviewed urgently."
+  }
+}

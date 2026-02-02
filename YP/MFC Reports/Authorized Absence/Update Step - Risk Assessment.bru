@@ -1,0 +1,34 @@
+meta {
+  name: Update Step - Risk Assessment
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/risk-assessment
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "last_known_intentions": "Mentioned wanting to visit grandmother",
+    "out_of_character": "no",
+    "access_to_money": "Has approximately £20 pocket money",
+    "previous_harm_episodes": "No previous incidents of self-harm",
+    "personal_items_taken": "Mobile phone, wallet, house keys",
+    "vehicle_transport_details": "May use public transport - bus pass in possession",
+    "social_media_messaging_details": "Last seen active on WhatsApp 2 hours ago",
+    "other_relevant_risk_info": "YP has good relationship with family. Expected to return by agreed time."
+  }
+}

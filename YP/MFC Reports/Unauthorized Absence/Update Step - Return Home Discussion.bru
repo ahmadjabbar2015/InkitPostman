@@ -1,0 +1,38 @@
+meta {
+  name: Update Step - Return Home Discussion
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/return-home-discussion
+  body: multipartForm
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  discussion_datetime: 2026-01-24 10:00:00
+  childs_account_of_absence: YP stated they left after argument about bedtime. Went to meet friends at shopping center. Denies any illegal activity or substance use. States they were 'just hanging out'.
+  is_yp_aware_of_risks: partially
+  safety_wellbeing_checked: yes
+  did_they_get_hurt: yes
+  how_are_they_feeling: YP reports feeling 'okay' but appears subdued. Expressed some regret about leaving without permission but also defensive about reasons.
+  what_experiences_encountered: YP spent time with older peer group at shopping center and local park. Reports smoking cigarettes but denies other substance use. States older peers offered them vape but refused.
+  is_additional_support_required: yes
+  staff_present: Jane Doe (Key Worker), Mark Wilson (Manager)
+  interviewer_name: Jane Doe
+  interview_datetime: 2026-01-24 10:00:00
+  interview_location: Meeting Room
+  interview_notes: YP initially reluctant to engage but became more open as discussion progressed. Key concerns: association with older peers, potential CSE risks, need for better emotional regulation strategies. YP agreed to work with key worker on managing frustrations. Referral to therapeutic support recommended. Follow-up discussion scheduled with social worker regarding risk assessment update. YP showed some insight into consequences of actions.
+  ~signature: @file(/path/to/signature.png)
+}

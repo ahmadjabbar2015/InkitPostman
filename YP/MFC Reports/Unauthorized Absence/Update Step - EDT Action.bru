@@ -1,0 +1,36 @@
+meta {
+  name: Update Step - EDT Action
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/edt-action
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "edt_contacts": [
+      {
+        "contact_datetime": "2026-01-23 11:30:00",
+        "contacted_by": "Sarah Johnson - Duty Manager",
+        "person_organization_contacted": "Emergency Duty Team - Local Authority",
+        "contact_method": "phone",
+        "reference_number": "EDT2026012301",
+        "advice_action_taken": "EDT advised to continue search efforts. Confirmed YP risk level as medium. Advised to contact police if not located within 2 hours. EDT will remain available for consultation."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+meta {
+  name: Update Step - The Return
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/the-return
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "return_datetime": "2026-01-23 18:30:00",
+    "was_young_person_found": "no",
+    "did_yp_return_on_their_own": "yes",
+    "returned_by": "Returned independently as agreed",
+    "was_medical_attention_required": "no",
+    "what_was_medical_attention": null,
+    "food_drink_offered": "yes",
+    "what_kind_food_drink": "Hot meal and soft drinks",
+    "details_general_appearance_moods": "YP appeared happy and relaxed. No visible signs of distress or injury. Clothing clean and appropriate.",
+    "does_yp_agree_to_return": "yes",
+    "do_police_wish_to_interview": "no",
+    "has_child_returned_with_new_items": "no",
+    "did_yp_have_same_clothing_on": "yes",
+    "any_smell_of_substances": "no",
+    "what_kind_of_smell": null,
+    "unauthorized_absence_overview": "YP returned as agreed after authorized visit to grandmother. No concerns raised."
+  }
+}

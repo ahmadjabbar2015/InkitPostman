@@ -1,0 +1,34 @@
+meta {
+  name: Update Step - Risk Assessment
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/steps/risk-assessment
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "last_known_intentions": "YP made concerning statements about not wanting to be alive during last keywork session",
+    "out_of_character": "yes",
+    "access_to_money": "Approximately £50 in savings - accessible",
+    "previous_harm_episodes": "Multiple incidents of self-harm in past 6 months. Last incident 2 weeks ago - superficial cuts to forearm. Currently under CAMHS for mental health support.",
+    "personal_items_taken": "Mobile phone, medication (2 weeks supply of antidepressants), coat, personal diary",
+    "vehicle_transport_details": "No vehicle access. Known to use trains and buses. Has valid railcard. Has previously traveled to coastal areas.",
+    "social_media_messaging_details": "Deleted all social media apps before leaving. Phone switched off - not locatable. Last online 5 hours ago with concerning post on Instagram story (screenshot saved).",
+    "other_relevant_risk_info": "HIGH RISK: YP has expressed suicidal ideation. History of mental health difficulties and self-harm. Recently disclosed historical abuse. Known to visit isolated coastal locations when distressed. Has access to medication. Family relationships strained - unlikely to go to family. Previous missing episodes lasted 24-48 hours. Vulnerable to exploitation."
+  }
+}
