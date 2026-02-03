@@ -1,5 +1,5 @@
 meta {
-  name: 2 - Create PEP EHCP
+  name: 2 - Create PEP Action
   type: http
   seq: 2
 }
@@ -20,28 +20,79 @@ auth:bearer {
 }
 
 body:multipart-form {
-  latest_pep_meeting_completed: yes
-  pep_date: 2026-01-12
-  pep_attendees: John Wick, Steve Smith
-  pep_summary: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-  pep_targets: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-  pep_document: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 12-49-41.png)
-  have_pep_actions_implemented_at_home: yes
-  pep_action: Dummy
-  pep_staff_responsible[]: 1
-  pep_staff_responsible[]: 2
-  pep_review_date: 2026-01-12
-  ehcp_records[0][does_yp_have_ehcp]: yes
-  ehcp_records[0][ehcp_areas_of_need]: Dummy
-  ehcp_records[0][ehcp_current_outcomes]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-  ehcp_records[0][ehcp_responsibilities]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-  ehcp_records[0][ehcp_attachment]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-30 17-32-53.png)
-  ehcp_records[0][are_new_amendments_requested]: yes
-  ehcp_records[0][ehcp_reason]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-  ehcp_records[0][ehcp_evidence]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-31 16-32-13.png)
+  ~have_pep_actions_implemented_at_home: yes
+  ~pep_action: Dummy action to implement at home
+  ~pep_staff_responsible[]: 1
+  ~pep_staff_responsible[]: 2
+  ~pep_review_date: 2026-01-12
+  ~pep_records[0][latest_pep_meeting_completed]: yes
+  ~pep_records[0][pep_date]: 2026-01-12
+  ~pep_records[0][pep_attendees]: John Wick, Steve Smith
+  ~pep_records[0][pep_summary]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~pep_records[0][pep_targets]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~pep_records[0][pep_document]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-29 12-49-41.png)
+  ~pep_records[1][latest_pep_meeting_completed]: yes
+  ~pep_records[1][pep_date]: 2026-01-20
+  ~pep_records[1][pep_attendees]: Jane Doe, Mike Johnson
+  ~pep_records[1][pep_summary]: Second PEP record summary
+  ~pep_records[1][pep_targets]: Second PEP record targets
+  ~ehcp_records[0][does_yp_have_ehcp]: yes
+  ~ehcp_records[0][ehcp_areas_of_need]: Communication and interaction
+  ~ehcp_records[0][ehcp_current_outcomes]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~ehcp_records[0][ehcp_responsibilities]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~ehcp_records[0][ehcp_attachment]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-30 17-32-53.png)
+  ~ehcp_records[0][are_new_amendments_requested]: yes
+  ~ehcp_records[0][ehcp_reason]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+  ~ehcp_records[0][ehcp_evidence]: @file(/home/umer/Pictures/Screenshots/Screenshot from 2025-12-31 16-32-13.png)
+  ~ehcp_records[1][does_yp_have_ehcp]: yes
+  ~ehcp_records[1][ehcp_areas_of_need]: Cognition and learning
+  ~ehcp_records[1][ehcp_current_outcomes]: Second EHCP outcomes
+  ~ehcp_records[1][ehcp_responsibilities]: Second EHCP responsibilities
 }
 
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+docs {
+  # Create PEP Action
+  
+  Creates a new PEP Action record with optional nested PEP and EHCP records.
+  
+  ## Request Structure
+  
+  ### PEP Actions Fields (Parent - Single Record)
+  - `have_pep_actions_implemented_at_home` - yes/no
+  - `pep_action` - Text description
+  - `pep_staff_responsible[]` - Array of staff IDs
+  - `pep_review_date` - Date format YYYY-MM-DD
+  
+  ### PEP Records (Child - Multiple via "Add More" button)
+  - `pep_records[0][latest_pep_meeting_completed]` - yes/no
+  - `pep_records[0][pep_date]` - Date
+  - `pep_records[0][pep_attendees]` - Text
+  - `pep_records[0][pep_summary]` - Long text
+  - `pep_records[0][pep_targets]` - Text
+  - `pep_records[0][pep_document]` - File upload
+  
+  Add more PEP records with `pep_records[1][...]`, `pep_records[2][...]`, etc.
+  
+  ### EHCP Records (Child - Multiple via "Add More" button)
+  - `ehcp_records[0][does_yp_have_ehcp]` - yes/no
+  - `ehcp_records[0][ehcp_areas_of_need]` - Text
+  - `ehcp_records[0][ehcp_current_outcomes]` - Text
+  - `ehcp_records[0][ehcp_responsibilities]` - Text
+  - `ehcp_records[0][ehcp_attachment]` - File upload
+  - `ehcp_records[0][are_new_amendments_requested]` - yes/no
+  - `ehcp_records[0][ehcp_reason]` - Text
+  - `ehcp_records[0][ehcp_evidence]` - File upload
+  
+  Add more EHCP records with `ehcp_records[1][...]`, `ehcp_records[2][...]`, etc.
+  
+  ## Notes
+  
+  - All fields are optional (prefixed with ~)
+  - Files must be uploaded using multipart/form-data
+  - The parent PEP Action is created first, then child records are linked to it
 }

@@ -1,5 +1,5 @@
 meta {
-  name: 1 - List PEP EHCP
+  name: 1 - List PEP Actions
   type: http
   seq: 1
 }
@@ -17,8 +17,7 @@ params:path {
 
 params:query {
   per_page: 15
-  ~latest_pep_meeting_completed: yes
-  ~does_yp_have_ehcp: yes
+  ~have_pep_actions_implemented_at_home: yes
   ~from_date: 2024-01-01
   ~to_date: 2024-12-31
 }
@@ -30,4 +29,25 @@ auth:bearer {
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+docs {
+  # List PEP Actions
+  
+  Returns all PEP Action records for a young person with nested PEP and EHCP records.
+  
+  ## Response Structure
+  
+  Each PEP Action includes:
+  - PEP Actions fields (have_pep_actions_implemented_at_home, pep_action, pep_review_date)
+  - Array of PEP records (pep_records)
+  - Array of EHCP records (ehcp_records)
+  - Array of responsible staff (responsible_staff)
+  
+  ## Query Parameters
+  
+  - `per_page` - Number of records per page (default: 15)
+  - `have_pep_actions_implemented_at_home` - Filter by yes/no
+  - `from_date` - Filter PEP Actions from this date
+  - `to_date` - Filter PEP Actions to this date
 }

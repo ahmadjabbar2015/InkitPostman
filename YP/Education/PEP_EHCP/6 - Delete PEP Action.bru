@@ -1,0 +1,40 @@
+meta {
+  name: 6 - Delete PEP Action
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepAction
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+  pepAction: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  # Delete PEP Action
+  
+  Deletes a PEP Action record along with all associated PEP and EHCP records.
+  
+  **Note:** This will cascade delete:
+  - The parent PEP Action record
+  - All associated PEP records
+  - All associated EHCP records
+  - All staff assignments
+  
+  **Returns:** 204 No Content on success
+}
