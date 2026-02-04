@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/event-logs/:eventLogId
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -21,10 +21,15 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "event_description": "Called YP's mobile phone - answered this time",
-    "action_taken": "Spoke with YP, requested return to home",
-    "outcome": "YP agreed to return within 2 hours"
-  }
+body:multipart-form {
+  event_datetime: 2026-01-23 16:30:00
+  person_contacted: Police Officer Johnson
+  advice: Updated advice received from police
+  evidence: @file(/path/to/updated-evidence.pdf)
+  event_log: Updated log with new information from police contact
+  return_informed: true
+  informed_datetime: 2026-01-23 17:00:00
+  informed_person: Social Worker Jane Doe
+  contact_method: email
+  informed_by: John Smith
 }
