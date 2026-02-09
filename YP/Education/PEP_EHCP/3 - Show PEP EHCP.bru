@@ -1,11 +1,11 @@
 meta {
-  name: 3 - Show PEP EHCP
+  name: 3 - Show PEP Action
   type: http
   seq: 3
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepEhcp
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepAction
   body: none
   auth: bearer
 }
@@ -13,7 +13,7 @@ get {
 params:path {
   house: 2
   youngPerson: 4
-  pepEhcp: 1
+  pepAction: 1
 }
 
 auth:bearer {
@@ -23,4 +23,58 @@ auth:bearer {
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+docs {
+  # Show PEP Action
+  
+  Returns a single PEP Action record with all nested PEP and EHCP records.
+  
+  ## Response Structure
+  
+  ```json
+  {
+    "id": 1,
+    "yp_id": 4,
+    "house_id": 2,
+    "have_pep_actions_implemented_at_home": "yes",
+    "pep_action": "Action description",
+    "pep_review_date": "2026-01-12",
+    "pep_records": [
+      {
+        "id": 1,
+        "yp_pep_action_id": 1,
+        "latest_pep_meeting_completed": "yes",
+        "pep_date": "2026-01-12",
+        "pep_attendees": "John Wick, Steve Smith",
+        "pep_summary": "Summary text...",
+        "pep_targets": "Targets...",
+        "pep_document": "storage/path/to/document.pdf",
+        "pep_document_url": "https://temporary-url..."
+      }
+    ],
+    "ehcp_records": [
+      {
+        "id": 1,
+        "yp_pep_action_id": 1,
+        "does_yp_have_ehcp": "yes",
+        "ehcp_areas_of_need": "Areas...",
+        "ehcp_current_outcomes": "Outcomes...",
+        "ehcp_responsibilities": "Responsibilities...",
+        "ehcp_attachment": "storage/path/to/attachment.pdf",
+        "ehcp_attachment_url": "https://temporary-url...",
+        "are_new_amendments_requested": "yes",
+        "ehcp_reason": "Reason...",
+        "ehcp_evidence": "storage/path/to/evidence.pdf",
+        "ehcp_evidence_url": "https://temporary-url..."
+      }
+    ],
+    "responsible_staff": [
+      {
+        "id": 1,
+        "name": "John Doe"
+      }
+    ]
+  }
+  ```
 }

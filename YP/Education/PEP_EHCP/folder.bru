@@ -1,11 +1,72 @@
 meta {
-  name: folder
-  type: http
-  seq: 1
+  name: PEP_EHCP
+  type: folder
 }
 
-get {
-  url: 
-  body: none
-  auth: none
+docs {
+  # PEP (Personal Education Plan) & EHCP (Education Health Care Plan)
+  
+  This module manages PEP and EHCP records for young persons using a three-table structure:
+  
+  ## Database Structure
+  
+  ### 1. PEP Actions (Parent Table)
+  - Single record per young person
+  - Contains PEP Actions fields:
+    - have_pep_actions_implemented_at_home
+    - pep_action
+    - pep_review_date
+  - Staff responsible assignments (many-to-many via pivot table)
+  
+  ### 2. PEP Records (Child Table)
+  - Multiple PEP records per PEP Action
+  - Contains PEP meeting details:
+    - latest_pep_meeting_completed
+    - pep_date
+    - pep_attendees
+    - pep_summary
+    - pep_targets
+    - pep_document (file upload)
+  
+  ### 3. EHCP Records (Child Table)
+  - Multiple EHCP records per PEP Action
+  - Contains EHCP details:
+    - does_yp_have_ehcp
+    - ehcp_areas_of_need
+    - ehcp_current_outcomes
+    - ehcp_responsibilities
+    - ehcp_attachment (file upload)
+    - are_new_amendments_requested
+    - ehcp_reason
+    - ehcp_evidence (file upload)
+  
+  ## API Endpoints
+  
+  1. **List PEP Actions** - GET `/pep-ehcp`
+     - Returns all PEP Action records with nested PEP and EHCP records
+     - Supports filtering by date range and field values
+  
+  2. **Create PEP Action** - POST `/pep-ehcp`
+     - Creates PEP Action with optional nested PEP and EHCP records
+     - Supports file uploads for documents
+  
+  3. **Show PEP Action** - GET `/pep-ehcp/{id}`
+     - Returns single PEP Action with all nested records
+  
+  4. **Update PEP Action** - PUT `/pep-ehcp/{id}`
+     - Updates PEP Action and nested records
+     - Supports adding new PEP/EHCP records or updating existing ones
+  
+  5. **Delete PEP Action** - DELETE `/pep-ehcp/{id}`
+     - Soft deletes PEP Action and cascades to all nested records
+  
+  6. **Get Field Configuration** - GET `/pep-ehcp/field-configuration`
+     - Returns form configuration for dynamic form rendering
+  
+  ## Notes
+  
+  - The parameter name in routes is still `pep` for backwards compatibility
+  - All file uploads use multipart/form-data
+  - Nested records use array notation: `pep_records[0][field_name]`
+  - Staff assignments use array notation: `pep_staff_responsible[]`
 }

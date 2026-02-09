@@ -1,11 +1,11 @@
 meta {
-  name: 4 - Update PEP EHCP
+  name: 4 - Update PEP Action
   type: http
   seq: 4
 }
 
 put {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepEhcp
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/pep-ehcp/:pepAction
   body: multipartForm
   auth: bearer
 }
@@ -13,7 +13,7 @@ put {
 params:path {
   house: 2
   youngPerson: 4
-  pepEhcp: 1
+  pepAction: 1
 }
 
 auth:bearer {
@@ -21,29 +21,76 @@ auth:bearer {
 }
 
 body:multipart-form {
-  ~latest_pep_meeting_completed: yes
-  ~pep_date: 2026-01-15
-  ~pep_attendees: John Wick, Jane Doe
-  ~pep_summary: Updated summary text
-  ~pep_targets: Updated targets
-  ~pep_document: @file(/path/to/updated-pep-document.pdf)
-  ~have_pep_actions_implemented_at_home: no
-  ~pep_action: Updated action
+  ~have_pep_actions_implemented_at_home: yes
+  ~pep_action: Updated action to implement at home
   ~pep_staff_responsible[]: 1
   ~pep_staff_responsible[]: 3
   ~pep_review_date: 2026-02-15
+  ~pep_records[0][id]: 1
+  ~pep_records[0][latest_pep_meeting_completed]: yes
+  ~pep_records[0][pep_date]: 2026-01-15
+  ~pep_records[0][pep_attendees]: John Wick, Jane Doe
+  ~pep_records[0][pep_summary]: Updated summary text
+  ~pep_records[0][pep_targets]: Updated targets
+  ~pep_records[0][pep_document]: @file(/path/to/updated-pep-document.pdf)
+  ~pep_records[1][id]: 2
+  ~pep_records[1][latest_pep_meeting_completed]: yes
+  ~pep_records[1][pep_date]: 2026-01-25
+  ~pep_records[1][pep_attendees]: Updated attendees
+  ~pep_records[1][pep_summary]: Updated second PEP summary
+  ~pep_records[1][pep_targets]: Updated second PEP targets
   ~ehcp_records[0][id]: 1
-  ~ehcp_records[0][does_yp_have_ehcp]: no
+  ~ehcp_records[0][does_yp_have_ehcp]: yes
   ~ehcp_records[0][ehcp_areas_of_need]: Updated areas
   ~ehcp_records[0][ehcp_current_outcomes]: Updated outcomes
   ~ehcp_records[0][ehcp_responsibilities]: Updated responsibilities
   ~ehcp_records[0][ehcp_attachment]: @file(/path/to/updated-ehcp-attachment.pdf)
-  ~ehcp_records[0][are_new_amendments_requested]: no
+  ~ehcp_records[0][are_new_amendments_requested]: yes
   ~ehcp_records[0][ehcp_reason]: Updated reason
   ~ehcp_records[0][ehcp_evidence]: @file(/path/to/updated-ehcp-evidence.pdf)
+  ~ehcp_records[1][id]: 2
+  ~ehcp_records[1][does_yp_have_ehcp]: yes
+  ~ehcp_records[1][ehcp_areas_of_need]: Updated second EHCP areas
+  ~ehcp_records[1][ehcp_current_outcomes]: Updated second outcomes
 }
 
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+docs {
+  # Update PEP Action
+  
+  Updates an existing PEP Action record and its nested PEP and EHCP records.
+  
+  ## Request Structure
+  
+  Same as Create, but include `id` field for existing nested records:
+  
+  ### Updating Existing PEP Record
+  - `pep_records[0][id]` - Existing PEP record ID (updates record)
+  - `pep_records[0][latest_pep_meeting_completed]` - Updated value
+  - ... other fields
+  
+  ### Adding New PEP Record
+  - `pep_records[1][latest_pep_meeting_completed]` - No ID means new record
+  - ... other fields
+  
+  ### Updating Existing EHCP Record
+  - `ehcp_records[0][id]` - Existing EHCP record ID (updates record)
+  - `ehcp_records[0][does_yp_have_ehcp]` - Updated value
+  - ... other fields
+  
+  ### Adding New EHCP Record
+  - `ehcp_records[1][does_yp_have_ehcp]` - No ID means new record
+  - ... other fields
+  
+  ## Notes
+  
+  - Include `id` to update existing nested records
+  - Omit `id` to create new nested records
+  - All fields are optional (prefixed with ~)
+  - Files can be re-uploaded to replace existing ones
+  - Omitting a file field keeps the existing file
 }

@@ -6,7 +6,7 @@ meta {
 
 post {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/event-logs
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,13 +20,17 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "event_datetime": "2026-01-23 14:30:00",
-    "event_type": "contact_attempt",
-    "event_description": "Called YP's mobile phone - no answer",
-    "action_taken": "Left voicemail requesting return call",
-    "outcome": "No response yet",
-    "staff_involved": "John Doe"
-  }
+body:multipart-form {
+  event_datetime: 2026-01-23 14:30:00
+  person_contacted: Police Officer Smith
+  reference_number_type: police_cad
+  police_cad_reference_number: CAD123456
+  advice: Advised to contact if YP returns
+  evidence: @file(/path/to/evidence.pdf)
+  event_log: Contact made with local police station regarding missing YP
+  return_informed: true
+  informed_datetime: 2026-01-23 15:00:00
+  informed_person: Social Worker Jane Doe
+  contact_method: telephone
+  informed_by: John Smith
 }
