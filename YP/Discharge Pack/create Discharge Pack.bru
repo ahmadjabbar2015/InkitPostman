@@ -18,27 +18,27 @@ params:path {
 body:multipart-form {
   discharge_pack_prepared: yes
   upload_file: @file(C:\Users\Growup Labs\Pictures\sound-and-fury.pdf)
-  birth_certificate: yes
-  passport: no
-  id_document: yes
-  education_records: yes
-  health_records: yes
-  medication_summary: yes
-  risk_plan: no
-  behaviour_plan: yes
-  contact_list: no
-  life_story_book: no
-  property_inventory: yes
-  photos: yes
+  pack_content_checklist[]: birth_certificate
+  pack_content_checklist[]: passport
+  pack_content_checklist[]: id_document
+  pack_content_checklist[]: education_records
+  pack_content_checklist[]: health_records
+  pack_content_checklist[]: medication_summary
+  pack_content_checklist[]: risk_plan
+  pack_content_checklist[]: behaviour_plan
+  pack_content_checklist[]: contact_list
+  pack_content_checklist[]: life_story_book
+  pack_content_checklist[]: property_inventory
+  pack_content_checklist[]: photos
   custom_pack_item: Extra documentsssssss
   data_sharing_method: secure_portal
-  recipient_la: yes
-  recipient_next_placement: yes
-  recipient_yp: yes
-  recipient_parent: no
-  recipient_guardian: no
-  recipient_health_service: no
-  recipient_education_provider: no
+  receipt_of_discharge_pack[]: recipient_la
+  receipt_of_discharge_pack[]: recipient_next_placement
+  receipt_of_discharge_pack[]: recipient_yp
+  receipt_of_discharge_pack[]: recipient_parent
+  receipt_of_discharge_pack[]: recipient_guardian
+  receipt_of_discharge_pack[]: recipient_health_service
+  receipt_of_discharge_pack[]: recipient_education_provider
   confirmation_received: no
   receipt_proof: My name is khan
   follow_up_required: yes

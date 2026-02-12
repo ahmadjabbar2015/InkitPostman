@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-pack/95
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/discharge-pack/20
   body: multipartForm
   auth: inherit
 }
@@ -17,38 +17,39 @@ params:path {
 
 body:multipart-form {
   discharge_pack_prepared: yes
-  upload_file: @file(C:\Users\Growup Labs\Pictures\Resume.pdf)
-  birth_certificate: yes
-  passport: no
-  id_document: yes
-  education_records: yes
-  health_records: yes
-  medication_summary: yes
-  risk_plan: yes
-  behaviour_plan: no
-  contact_list: yes
-  life_story_book: yes
-  property_inventory: no
-  photos: yes
-  custom_pack_item: Extra documents
+  upload_file: @file(C:\Users\Growup Labs\Pictures\sound-and-fury.pdf)
+  pack_content_checklist[]: birth_certificate
+  pack_content_checklist[]: passport
+  pack_content_checklist[]: id_document
+  pack_content_checklist[]: education_records
+  pack_content_checklist[]: health_records
+  pack_content_checklist[]: medication_summary
+  pack_content_checklist[]: risk_plan
+  pack_content_checklist[]: behaviour_plan
+  pack_content_checklist[]: contact_list
+  pack_content_checklist[]: life_story_book
+  pack_content_checklist[]: property_inventory
+  pack_content_checklist[]: photos
+  custom_pack_item: Extra documentssssssssssasfsafadsfas
   data_sharing_method: secure_portal
-  recipient_la: yes
-  recipient_next_placement: yes
-  recipient_yp: yes
-  recipient_parent: yes
-  recipient_guardian: no
-  recipient_health_service: yes
-  recipient_education_provider: yes
+  receipt_of_discharge_pack[]: recipient_la
+  receipt_of_discharge_pack[]: recipient_next_placement
+  receipt_of_discharge_pack[]: recipient_yp
+  receipt_of_discharge_pack[]: recipient_parent
+  receipt_of_discharge_pack[]: recipient_guardian
+  receipt_of_discharge_pack[]: recipient_health_service
+  receipt_of_discharge_pack[]: recipient_education_provider
   confirmation_received: no
-  receipt_proof: my name is khannnnnnnnnnn
+  receipt_proof: My name is khan
   follow_up_required: yes
-  support_type: Emotional Support
+  support_type: emotional
   assigned_to: 4
   start_date: 2026-01-21
   end_date: 2026-02-21
   date_created: 2026-01-20
   prepared_by: 4
   verified_by: 4
+  _method: PUT
 }
 
 vars:pre-request {
