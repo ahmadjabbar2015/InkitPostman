@@ -1,0 +1,30 @@
+meta {
+  name: Export Monthly Report
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report?year=2026&month=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  year: 2026
+  month: 1
+}
+
+params:path {
+  house: 2
+  youngPerson: 4
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
