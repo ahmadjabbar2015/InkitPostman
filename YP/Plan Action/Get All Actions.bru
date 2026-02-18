@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/action-plan
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/action-plan?action_type&date_created
   body: none
   auth: bearer
+}
+
+params:query {
+  action_type: 
+  date_created: 
 }
 
 params:path {

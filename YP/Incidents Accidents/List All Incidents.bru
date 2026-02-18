@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/incidents?incident_datetime=2026-02-01&status=pending
   body: none
   auth: bearer
+}
+
+params:query {
+  incident_datetime: 2026-02-01
+  status: pending
 }
 
 params:path {
