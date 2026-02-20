@@ -1,0 +1,28 @@
+meta {
+  name: Young Persons Recordings
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/dashboard/young-persons-recordings
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+}
+
+docs {
+  Get latest recordings for each young person (not paginated).
+  Shows latest entries for:
+  - Daily Log
+  - Keywork Sessions (KWS)
+  - Incidents
+  - MFC
+  - Authorized/Unauthorized Absence
+  - Medication
+  
+  Only returns active young persons.
+}

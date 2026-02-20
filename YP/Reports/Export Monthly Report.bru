@@ -5,19 +5,19 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report?year=2026&month=1
+  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report?year=2026&month=2
   body: none
   auth: bearer
 }
 
 params:query {
   year: 2026
-  month: 1
+  month: 2
 }
 
 params:path {
-  house: 2
-  youngPerson: 4
+  house: 11
+  youngPerson: 33
 }
 
 auth:bearer {
