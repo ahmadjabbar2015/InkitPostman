@@ -1,0 +1,32 @@
+meta {
+  name: Incidents-Absence Chart
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/dashboard/incidents-absence?month=2026-02
+  body: none
+  auth: inherit
+}
+
+params:query {
+  month: 2026-02
+}
+
+params:path {
+  house: 1
+}
+
+docs {
+  Get incidents and absence data for chart visualization.
+  
+  Returns per young person:
+  - Incidents/Accidents count
+  - MFC count
+  - Authorized Absence count
+  - Unauthorized Absence count
+  
+  Query Parameters:
+  - month: Month in YYYY-MM format (default: current month)
+}

@@ -1,0 +1,39 @@
+meta {
+  name: Upcoming Events
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/dashboard/upcoming-events?date=2026-02-19
+  body: none
+  auth: inherit
+}
+
+params:query {
+  date: 2026-02-19
+  ~startDate: 2026-01-20
+  ~endDate: 2026-02-19
+}
+
+params:path {
+  house: 1
+}
+
+docs {
+  Get upcoming events (appointments, supervisions, meetings).
+  
+  Default behavior: Returns events from last 30 days from specified date.
+  
+  Query Parameters:
+  - date: Reference date (default: current date)
+  - startDate: Optional custom start date (overrides 30-day default)
+  - endDate: Optional custom end date (default: date parameter)
+  
+  Returns:
+  - Appointments (with young persons)
+  - Supervisions (with staff)
+  - Team Meetings
+  
+  All sorted by date.
+}

@@ -1,0 +1,34 @@
+meta {
+  name: Activity List (To-Do)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/dashboard/todo-list?page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  perPage: 10
+}
+
+params:path {
+  house: 1
+}
+
+docs {
+  Get paginated list of pending activities.
+  
+  Includes:
+  - Keywork Sessions (pending/in-progress)
+  - Action Plans (not completed)
+  
+  Groups by young person with activity counts.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - perPage: Items per page (default: 10)
+}

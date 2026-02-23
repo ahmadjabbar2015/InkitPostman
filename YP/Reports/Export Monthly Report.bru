@@ -1,19 +1,23 @@
 meta {
-  name: 3 - Show Transport
+  name: Export Monthly Report
   type: http
-  seq: 3
+  seq: 1
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPerson/transport/:transport
+  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report?year=2026&month=2
   body: none
   auth: bearer
+}
+
+params:query {
+  year: 2026
+  month: 2
 }
 
 params:path {
   house: 11
   youngPerson: 33
-  transport: 1
 }
 
 auth:bearer {

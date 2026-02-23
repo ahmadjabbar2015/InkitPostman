@@ -1,0 +1,28 @@
+meta {
+  name: Dashboard Summary
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/dashboard/summary
+  body: none
+  auth: bearer
+}
+
+params:path {
+  house: 15
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Get dashboard summary with counts for:
+  - Young Persons (active/archived)
+  - Employed Staff (active/archived)
+  - Agency Staff (current/archived)
+  - Pending to-do items
+  - Upcoming events (next 7 days)
+}

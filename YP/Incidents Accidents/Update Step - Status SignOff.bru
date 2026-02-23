@@ -38,13 +38,13 @@ docs {
   
   This endpoint updates the final step - status and sign-off information.
   
-  ## Primary Fields:
-  - `reviewed_by` - Role of reviewer. One of: `manager`, `deputy_manager`
+  ## ⚠️ REQUIRED for Step Completion:
+  - `reviewed_by` - **REQUIRED**. Role of reviewer. One of: `manager`, `deputy_manager`
+  
+  ## Optional Fields:
   - `date_of_review` - Date and time when the incident was reviewed
   - `manager_comments` - Manager's review comments, lessons learned, and action points
   - `status` - One of: `draft`, `pending_review`, `reviewed`, `closed`
-  
-  ## Legacy Fields (Optional):
   - `staff_sign_off_name` - Name of staff member signing off
   - `staff_sign_off_datetime` - When staff signed off
   - `manager_sign_off_name` - Name of manager signing off

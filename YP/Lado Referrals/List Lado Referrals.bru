@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lado-referrals
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/lado-referrals?created_at=2026-01-27
   body: none
   auth: bearer
+}
+
+params:query {
+  created_at: 2026-01-27
 }
 
 params:path {

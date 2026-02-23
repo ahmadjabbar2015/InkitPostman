@@ -7,17 +7,19 @@ meta {
 post {
   url: {{baseURL}}/v1/house/:house/staff-meetings
   body: json
-  auth: inherit
+  auth: bearer
 }
 
 params:path {
-  house: 9
+  house: 14
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
   {
-  "houseId": 9,
-  "clientId": 9,
   "title": "Weekly Staff Meeting",
   "mode": "Online",
   "date": "2025-11-05",

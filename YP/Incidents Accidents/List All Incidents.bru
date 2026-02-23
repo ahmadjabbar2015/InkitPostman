@@ -10,9 +10,14 @@ get {
   auth: bearer
 }
 
+params:query {
+  ~incident_datetime: 2026-02-01
+  ~status: pending
+}
+
 params:path {
-  house: 2
-  youngPersonId: 4
+  house: 11
+  youngPersonId: 33
 }
 
 auth:bearer {

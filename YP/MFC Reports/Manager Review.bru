@@ -1,0 +1,29 @@
+meta {
+  name: Manager Review
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/mfc-reports/:id/manager-review
+  body: json
+  auth: bearer
+}
+
+params:path {
+  house: 2
+  youngPersonId: 4
+  id: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "manager_comments": "Report reviewed. All procedures were followed correctly. Good documentation throughout the incident.",
+    "updates_to_protocol_risk_assessment": "Updated risk assessment to include new contact information. Protocol revised to include additional monitoring during evening hours.",
+    "manager_sign_off_id": 5
+  }
+}
