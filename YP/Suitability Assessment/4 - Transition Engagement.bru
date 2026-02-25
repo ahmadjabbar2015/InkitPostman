@@ -6,7 +6,7 @@ meta {
 
 put {
   url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/suitability-assessments/:assessmentId/transition-engagement
-  body: json
+  body: multipartForm
   auth: bearer
 }
 
@@ -20,74 +20,55 @@ auth:bearer {
   token: {{token}}
 }
 
-body:json {
-  {
-    "transition_planning_done": true,
-    "transition_planning_reason": "Planned move from previous placement",
-    "work_done_to_support_transition": true,
-    "work_done_summary": "Multiple visits and meetings arranged",
-    "activities_to_support_transition": "Introduction meetings, house tour, meet and greet with residents",
-    "preparation_logs": [
-      {
-        "log_date": "2025-12-01",
-        "method": "Video call",
-        "summary_actions": "Initial introduction to key worker and manager",
-        "practical_preparation_completed": false,
-        "clothing_prepared": false,
-        "room_prepared": false,
-        "belongings_prepared": false,
-        "reason_not_completed": "First contact only",
-        "attendee_ids": [1, 2]
-      },
-      {
-        "log_date": "2025-12-10",
-        "method": "In-person visit",
-        "summary_actions": "House tour and room viewing",
-        "practical_preparation_completed": true,
-        "clothing_prepared": false,
-        "room_prepared": true,
-        "belongings_prepared": false,
-        "reason_not_completed": "",
-        "attendee_ids": [1, 2, 3]
-      }
-    ],
-    "pre_admission_visits": [
-      {
-        "visit_date": "2025-12-10",
-        "keyworker_present": true,
-        "outcome_notes": "Positive visit, YP engaged well with staff and residents"
-      },
-      {
-        "visit_date": "2025-12-15",
-        "keyworker_present": true,
-        "outcome_notes": "Second visit went well, YP expressed interest in joining activities"
-      }
-    ],
-    "stay_over_visits": [
-      {
-        "stay_over_completed": true,
-        "stay_over_log": "Overnight stay completed successfully",
-        "stay_over_date": "2025-12-20",
-        "young_person_feelings": "Felt comfortable, slept well, enjoyed evening activities",
-        "staff_observations": "YP settled quickly, engaged with peers appropriately"
-      }
-    ],
-    "yp_feelings": [
-      {
-        "recorded_at": "2025-12-20",
-        "recorded_by": "Sarah Jones - Key Worker",
-        "feelings_details": "Excited about the move, slightly nervous but overall positive"
-      }
-    ],
-    "yp_questions": [
-      {
-        "question_raised": "Can I bring my gaming console?",
-        "response_given": "Yes, there are appropriate times for gaming as per house rules"
-      },
-      {
-        "question_raised": "Will I have my own room?",
-        "response_given": "Yes, you will have a single room with ensuite bathroom"
-      }
-    ]
-  }
+body:multipart-form {
+  transition_planning_done: true
+  unlock_logs:
+  transition_planning_reason: Planned move from previous placement
+  work_done_to_support_transition: true
+  work_done_summary: Multiple visits and meetings arranged
+  activities_to_support_transition: Introduction meetings, house tour, meet and greet with residents
+  practical_preparation_completed: false
+  clothing_prepared: false
+  room_prepared: true
+  belongings_prepared: false
+  preparation_logs[0][log_date]: 2025-12-01
+  preparation_logs[0][method]: Video call
+  preparation_logs[0][summary_actions]: Initial introduction to key worker and manager
+  preparation_logs[0][reason_not_completed]: First contact only
+  preparation_logs[0][attendee_ids][]: 1
+  preparation_logs[0][attendee_ids][]: 2
+  preparation_logs[1][log_date]: 2025-12-10
+  preparation_logs[1][method]: In-person visit
+  preparation_logs[1][summary_actions]: House tour and room viewing
+  preparation_logs[1][reason_not_completed]:
+  preparation_logs[1][attendee_ids][]: 1
+  preparation_logs[1][attendee_ids][]: 2
+  preparation_logs[1][attendee_ids][]: 3
+  pre_admission_visits[0][visit_date]: 2025-12-10
+  pre_admission_visits[0][keyworker_present]: true
+  pre_admission_visits[0][outcome_notes]: Positive visit, YP engaged well with staff and residents
+  pre_admission_visits[1][visit_date]: 2025-12-15
+  pre_admission_visits[1][keyworker_present]: true
+  pre_admission_visits[1][outcome_notes]: Second visit went well, YP expressed interest in joining activities
+  stay_over_visits[0][stay_over_completed]: true
+  stay_over_visits[0][unlock_stay_over_log]:
+  stay_over_visits[0][stay_over_log]: Overnight stay completed successfully
+  stay_over_visits[0][stay_over_date]: 2025-12-20
+  stay_over_visits[0][young_person_feelings]: Felt comfortable, slept well, enjoyed evening activities
+  stay_over_visits[0][staff_observations]: YP settled quickly, engaged with peers appropriately
+  yp_feelings[0][recorded_at]: 2025-12-20
+  yp_feelings[0][recorded_by]: Sarah Jones - Key Worker
+  yp_feelings[0][feelings_details]: Excited about the move, slightly nervous but overall positive
+  yp_questions[0][question_raised]: Can I bring my gaming console?
+  yp_questions[0][response_given]: Yes, there are appropriate times for gaming as per house rules
+  yp_questions[1][question_raised]: Will I have my own room?
+  yp_questions[1][response_given]: Yes, you will have a single room with ensuite bathroom
+  ~attachments[0][file][]: @file(/path/to/file.pdf)
+  ~attachments[0][description]:
+  ~attachments[0][field_name]: transition_engagement
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
 }
