@@ -1,0 +1,49 @@
+meta {
+  name: Get Young Persons by Report Type
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/custom-reports/young-persons/:youngPerson/?report_type=mfc&date_from=2026-01-01&date_to=2026-02-25
+  body: none
+  auth: bearer
+}
+
+params:query {
+  report_type: mfc
+  date_from: 2026-01-01
+  date_to: 2026-02-25
+}
+
+params:path {
+  youngPerson: 22
+  house: 5
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Returns distinct young persons in the house who have at least one record
+  of the given report type, optionally scoped to a date range.
+  
+  Used to populate the Young Person filter dropdown on the Custom Reports
+  search form — filtered by the currently selected Report Type.
+  
+  Query Parameters:
+  - report_type  (required) One of: mfc, incident/accident, daily logs, attendance, appointments
+  - date_from    (optional) Filter start date. Format: YYYY-MM-DD
+  - date_to      (optional) Filter end date.   Format: YYYY-MM-DD. Must be >= date_from.
+  
+  Response:
+  {
+    "data": {
+      "young_persons": [
+        { "id": 4, "first_name": "John", "last_name": "Wick" }
+      ]
+    },
+    "message": "Young persons retrieved."
+  }
+}

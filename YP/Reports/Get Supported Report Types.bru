@@ -1,0 +1,45 @@
+meta {
+  name: Get Supported Report Types
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/custom-reports/supported-types?report_type&date_from&date_to
+  body: none
+  auth: bearer
+}
+
+params:query {
+  report_type: 
+  date_from: 
+  date_to: 
+}
+
+params:path {
+  house: 5
+}
+
+headers {
+  : 11
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Returns the list of all registered custom report types available for generation.
+  Each entry includes a machine-readable `value` (slug used in generate requests)
+  and a human-readable `label` for display in dropdowns.
+  
+  Response:
+  {
+    "data": {
+      "types": [
+        { "value": "mfc", "label": "Missing From Care Report" }
+      ]
+    },
+    "message": "Supported report types retrieved."
+  }
+}

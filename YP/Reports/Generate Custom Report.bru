@@ -1,0 +1,64 @@
+meta {
+  name: Generate Custom Report
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}/v1/house/:house//young-persons/:youngPerson/custom-reports/generate
+  body: json
+  auth: bearer
+}
+
+params:path {
+  youngPerson: 22
+  house: 5
+}
+
+headers {
+  Accept: application/pdf
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "report_type": "mfc",
+    "date_from": "2026-01-01",
+    "date_to": "2026-01-31",
+    "model_id": 3 
+  }
+}
+
+docs {
+  Generates a custom report PDF for the given house and streams it directly as a
+  file download. No record is stored in the database — the PDF is built on the fly
+  from existing data.
+  
+  The `report_type` field selects which generator is used (strategy pattern).
+  Use the "Get Supported Report Types" endpoint to discover valid slugs.
+  
+  Path Parameters:
+  - house (required): ID of the house to scope the report to.
+  
+  Body Parameters:
+  - report_type      (required) Slug of the report to generate.
+                               Supported values:
+                                 "mfc"               → Missing From Care Report
+                                 "incident/accident" → Incident / Accident Report
+                                 "daily logs"        → Daily Logs Report
+                                 "attendance"        → Education Attendance Report
+                                 "appointments"      → Appointments Report
+  - date_from        (required) Start of the reporting period. Format: YYYY-MM-DD.
+  - date_to          (required) End of the reporting period. Must be >= date_from. Format: YYYY-MM-DD.
+  - young_person_id  (optional) Filter the report to a specific young person.
+                               Must belong to the given house.
+  
+  Response:
+  - 200: application/pdf — binary PDF streamed as an attachment.
+         Content-Disposition: attachment; filename="MFC_Report_<name>_<date_from>_to_<date_to>.pdf"
+  - 422: Validation error (invalid report_type, bad dates, YP not in house, etc.)
+  - 500: Generation failure.
+}
