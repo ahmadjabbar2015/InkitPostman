@@ -31,21 +31,29 @@ settings {
 }
 
 docs {
-  Uploads a Word document (.docx / .doc) to replace or finalise a generated monthly
-  report for the given young person. Once uploaded the report is marked as
-  is_uploaded = true and cannot be replaced again.
+  Upload monthly report file for a specific generated YP monthly report record.
+
+  Endpoint:
+  POST /v1/reports/houses/:house/young-persons/:youngPerson/monthly-reports/:report/upload
+
+  Purpose:
+  - Finalises one generated monthly report by uploading a manager-reviewed Word file.
+  - Sets `is_uploaded = true`.
+  - Uploaded reports cannot be replaced again.
 
   Path Parameters:
-  - house        (required) ID of the house.
-  - youngPerson  (required) ID of the young person. Must belong to the given house.
-  - report       (required) ID of the YpMonthlyReport record to upload against.
-                            Obtain this from the "Export Monthly Report" or
-                            "List Monthly Reports" response.
+  - house        (required) House ID.
+  - youngPerson  (required) Young person ID; must belong to the same house.
+  - report       (required) Monthly report record ID (YpMonthlyReport).
+                            Must belong to the same house and young person.
 
   Body (multipart/form-data):
-  - file     (required) A Word document file. Accepted MIME types: .docx, .doc.
-                        Maximum size: 10 MB.
-  - remarks  (optional) Free-text notes about the upload. Max 1000 characters.
+  - file     (required) Word file (`.docx` or `.doc`), max 10 MB.
+  - remarks  (optional) Notes, max 1000 characters.
+
+  Where to get `report` ID:
+  - From `Export Monthly Report` response (`data.id`)
+  - From `List Monthly Reports` response (`data.reports[].id`)
 
   Response 200:
   {
@@ -65,11 +73,11 @@ docs {
     }
   }
 
-  Response 422:
-  - Young person does not belong to the specified house.
-  - Report does not belong to the specified young person and house.
-  - This report has already been uploaded and cannot be replaced.
-  - Validation errors (missing file, wrong MIME type, file too large).
-
-  Response 500: Failed to upload monthly report.
+  Common errors:
+  - 404: Young person or report not found (route model binding).
+  - 422: Young person does not belong to the specified house.
+  - 422: Report does not belong to the specified young person and house.
+  - 422: This report has already been uploaded and cannot be replaced.
+  - 422: Validation errors (file missing, invalid type, file too large, remarks too long).
+  - 500: Failed to upload monthly report.
 }
