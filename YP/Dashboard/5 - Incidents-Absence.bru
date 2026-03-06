@@ -1,0 +1,27 @@
+meta {
+  name: Incidents-Absence
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dashboard/incidents-absence?month=2026-02
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+params:query {
+  month: 2026-02
+}
+
+docs {
+  Get incidents and absence summary for a single young person.
+
+  Query parameters:
+  - month in YYYY-MM format (default: current month)
+}

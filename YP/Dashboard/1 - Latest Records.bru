@@ -1,0 +1,28 @@
+meta {
+  name: Latest Records
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dashboard/latest-records
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+docs {
+  Get latest dashboard records for a single young person.
+
+  Returns latest:
+  - Daily Log
+  - Attendance
+  - Medication
+  - Keywork Session
+  - Incident
+  - MFC
+}

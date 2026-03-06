@@ -1,0 +1,34 @@
+meta {
+  name: Upcoming Events
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dashboard/upcoming-events?startDate=2026-02-01&endDate=2026-03-15
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+params:query {
+  startDate: 2026-02-01
+  endDate: 2026-03-15
+}
+
+docs {
+  Get upcoming events for a single young person.
+
+  Includes:
+  - Appointments
+  - Keywork Sessions
+  - Medication Reviews
+
+  Query parameters:
+  - startDate (YYYY-MM-DD)
+  - endDate (YYYY-MM-DD)
+}

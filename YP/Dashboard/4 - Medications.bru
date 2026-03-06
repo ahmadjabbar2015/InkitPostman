@@ -1,0 +1,31 @@
+meta {
+  name: Medications
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dashboard/medications?page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+params:query {
+  page: 1
+  perPage: 10
+  ~status: active
+  ~is_prn: false
+}
+
+docs {
+  Get paginated medication list for a single young person dashboard.
+
+  Optional filters:
+  - status
+  - is_prn (true/false)
+}

@@ -1,0 +1,37 @@
+meta {
+  name: Attendance List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/young-persons/:youngPersonId/dashboard/attendance?page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  youngPersonId: 1
+}
+
+params:query {
+  page: 1
+  perPage: 10
+  ~attendance_status: Present
+  ~from_date: 2026-02-01
+  ~to_date: 2026-02-28
+}
+
+docs {
+  Get paginated attendance list for a single young person.
+
+  Optional filters:
+  - attendance_status
+  - from_date (YYYY-MM-DD)
+  - to_date (YYYY-MM-DD)
+
+  Pagination:
+  - page
+  - perPage
+}
