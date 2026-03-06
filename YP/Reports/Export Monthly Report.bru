@@ -5,19 +5,19 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report?year=2026&month=2
+  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-report
   body: none
   auth: bearer
 }
 
 params:query {
-  year: 2026
   month: 2
+  year: 2026
 }
 
 params:path {
-  house: 11
-  youngPerson: 33
+  house: 5
+  youngPerson: 22
 }
 
 auth:bearer {
@@ -27,4 +27,41 @@ auth:bearer {
 settings {
   encodeUrl: true
   timeout: 0
+}
+
+docs {
+  Generates a monthly report Word document (.docx) for a specific young person and
+  returns a download URL and metadata. The file is saved to storage; subsequent
+  calls for the same month/year overwrite the previous generated file unless the
+  report has already been manually uploaded (is_uploaded = true).
+
+  Path Parameters:
+  - house        (required) ID of the house.
+  - youngPerson  (required) ID of the young person. Must belong to the given house.
+
+  Query Parameters:
+  - month  (required) Month number (1–12).
+  - year   (required) Four-digit year (2000 – current year). Cannot be a future date.
+
+  Response 200:
+  {
+    "status": "success",
+    "message": "Monthly report generated successfully.",
+    "data": {
+      "id": 1,
+      "filename": "Monthly_Report_John_Doe_February_2026.docx",
+      "download_url": "https://...",
+      "storage_path": "young-persons/22/houses/5/monthly-reports/2026/February/...",
+      "is_uploaded": false,
+      "young_person": { "id": 22, "name": "John Doe" },
+      "house": { "id": 5, "name": "House Name" },
+      "report_period": { "month": "February", "year": 2026 }
+    }
+  }
+
+  Response 422:
+  - Young person does not belong to the specified house.
+  - Validation errors (missing month/year, future date, out-of-range values).
+
+  Response 500: Failed to generate monthly report.
 }

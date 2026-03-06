@@ -1,0 +1,75 @@
+meta {
+  name: Upload Monthly Report
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseURL}}/v1/reports/houses/:house/young-persons/:youngPerson/monthly-reports/:report/upload
+  body: multipart
+  auth: bearer
+}
+
+params:path {
+  house: 5
+  youngPerson: 22
+  report: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart {
+  file: @file()
+  ~remarks: Reviewed and approved by manager.
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  Uploads a Word document (.docx / .doc) to replace or finalise a generated monthly
+  report for the given young person. Once uploaded the report is marked as
+  is_uploaded = true and cannot be replaced again.
+
+  Path Parameters:
+  - house        (required) ID of the house.
+  - youngPerson  (required) ID of the young person. Must belong to the given house.
+  - report       (required) ID of the YpMonthlyReport record to upload against.
+                            Obtain this from the "Export Monthly Report" or
+                            "List Monthly Reports" response.
+
+  Body (multipart/form-data):
+  - file     (required) A Word document file. Accepted MIME types: .docx, .doc.
+                        Maximum size: 10 MB.
+  - remarks  (optional) Free-text notes about the upload. Max 1000 characters.
+
+  Response 200:
+  {
+    "status": "success",
+    "message": "Monthly report uploaded successfully.",
+    "data": {
+      "id": 1,
+      "month": 2,
+      "month_name": "February",
+      "year": 2026,
+      "filename": "Monthly_Report_John_Doe_February_2026_UPLOADED.docx",
+      "is_uploaded": true,
+      "download_url": "https://...",
+      "uploaded_by": { "id": 3, "name": "Staff Name" },
+      "uploaded_at": "2026-02-28 11:00:00",
+      "remarks": "Reviewed and approved by manager."
+    }
+  }
+
+  Response 422:
+  - Young person does not belong to the specified house.
+  - Report does not belong to the specified young person and house.
+  - This report has already been uploaded and cannot be replaced.
+  - Validation errors (missing file, wrong MIME type, file too large).
+
+  Response 500: Failed to upload monthly report.
+}

@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}/v1/house/:house/custom-reports/young-persons/:youngPerson/?report_type=mfc&date_from=2026-01-01&date_to=2026-02-25
+  url: {{baseURL}}/v1/house/:house/custom-reports/young-persons/:youngPerson/?report_type=daily logs&date_from=2026-01-01&date_to=2026-02-25
   body: none
   auth: bearer
 }
 
 params:query {
-  report_type: mfc
+  report_type: daily logs
   date_from: 2026-01-01
   date_to: 2026-02-25
 }
