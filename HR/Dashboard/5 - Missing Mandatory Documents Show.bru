@@ -1,0 +1,20 @@
+meta {
+  name: 5 - Missing Mandatory Documents Show
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/missing-mandatory-documents/:employeeJobId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 5
+  employeeJobId: 7
+}
+
+docs {
+  Show missing mandatory documents detail for one active staff job.
+}

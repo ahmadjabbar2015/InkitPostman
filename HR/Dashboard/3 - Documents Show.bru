@@ -1,0 +1,27 @@
+meta {
+  name: 3 - Documents Show
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/documents/:module/:recordId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 5
+  module: all
+  recordId: 1
+}
+
+docs {
+  Get a single HR module document detail by module and record id.
+  
+  Supported modules:
+  - dbs
+  - id-documents
+  - right-to-work
+  - proof-of-address
+}

@@ -1,0 +1,35 @@
+meta {
+  name: 2 - Documents List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/documents?page=1&perPage=10&filter=all
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  perPage: 10
+  filter: all
+}
+
+params:path {
+  house: 5
+}
+
+docs {
+  Get module documents list for active staff.
+  
+  Modules included:
+  - dbs
+  - id-documents
+  - right-to-work
+  - proof-of-address
+  
+  Filters:
+  - filter=all
+  - filter=expired
+}

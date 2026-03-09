@@ -1,0 +1,28 @@
+meta {
+  name: 6 - Pending Trainings List
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/pending-trainings?page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  perPage: 10
+}
+
+params:path {
+  house: 5
+}
+
+docs {
+  List active staff with pending trainings.
+  
+  Returns:
+  - staffName
+  - pendingTrainingCount
+}

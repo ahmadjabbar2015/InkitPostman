@@ -1,0 +1,28 @@
+meta {
+  name: 4 - Missing Mandatory Documents List
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/missing-mandatory-documents?page=1&perPage=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  perPage: 10
+}
+
+params:path {
+  house: 5
+}
+
+docs {
+  List active staff with missing mandatory documents.
+  
+  Returns:
+  - staffName
+  - pendingDocumentCount
+}

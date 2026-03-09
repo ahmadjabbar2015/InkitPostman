@@ -1,0 +1,20 @@
+meta {
+  name: 7 - Pending Trainings Show
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/hr-dashboard/pending-trainings/:employeeJobId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 1
+  employeeJobId: 1
+}
+
+docs {
+  Show pending training detail for one active staff job.
+}
