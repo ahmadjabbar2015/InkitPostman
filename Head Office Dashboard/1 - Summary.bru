@@ -1,0 +1,19 @@
+meta {
+  name: 1 - Summary
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/head-office-dashboard/summary
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 5
+}
+
+docs {
+  Head office dashboard summary.
+}

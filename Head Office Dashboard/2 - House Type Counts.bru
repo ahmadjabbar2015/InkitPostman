@@ -1,0 +1,22 @@
+meta {
+  name: 2 - House Type Counts
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/v1/house/:house/head-office-dashboard/house-type-counts
+  body: none
+  auth: inherit
+}
+
+params:path {
+  house: 5
+}
+
+docs {
+  Head office dashboard counts by house type:
+  - headOffice
+  - agencyHouse
+  - createdHouse
+}
